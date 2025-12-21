@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_shared_open_graphs",
+  "info": {
+    "displayName": "OpenGraph",
+    "icon": "share",
+    "description": "Social sharing meta tags"
+  },
+  "options": {},
+  "attributes": {
+    "ogTitle": {
+      "type": "string",
+      "maxLength": 95
+    },
+    "ogDescription": {
+      "type": "text",
+      "maxLength": 200
+    },
+    "ogImage": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "twitterCard": {
+      "type": "enumeration",
+      "enum": ["summary", "summary_large_image"],
+      "default": "summary_large_image"
+    }
+  }
+}
+
+
+

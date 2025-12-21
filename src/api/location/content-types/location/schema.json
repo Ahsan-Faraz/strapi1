@@ -1,0 +1,113 @@
+{
+  "kind": "collectionType",
+  "collectionName": "locations",
+  "info": {
+    "singularName": "location",
+    "pluralName": "locations",
+    "displayName": "Location",
+    "description": "Service locations (Bergen, Essex, etc.)"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "county": {
+      "type": "string",
+      "required": true
+    },
+    "state": {
+      "type": "string",
+      "default": "NJ"
+    },
+    "heroTitle": {
+      "type": "string",
+      "required": true
+    },
+    "heroSubtitle": {
+      "type": "text"
+    },
+    "heroBackgroundImage": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "heroBackgroundImageUrl": {
+      "type": "string"
+    },
+    "ctaButton1Text": {
+      "type": "string",
+      "default": "Get a Quote"
+    },
+    "ctaButton2Text": {
+      "type": "string",
+      "default": "Contact Us"
+    },
+    "contactPhone": {
+      "type": "string"
+    },
+    "contactEmail": {
+      "type": "string"
+    },
+    "contactAddress": {
+      "type": "text"
+    },
+    "operatingHours": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.operating-hours"
+    },
+    "serviceAreas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.service-area"
+    },
+    "aboutTitle": {
+      "type": "string"
+    },
+    "aboutDescription": {
+      "type": "richtext"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "openGraph": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.open-graph"
+    },
+    "localSeo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.local-seo"
+    },
+    "schema": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.schema-template"
+    },
+    "scripts": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.script-injection"
+    },
+    "excludeFromSitemap": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
+
+
+

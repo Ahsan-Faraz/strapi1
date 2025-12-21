@@ -1,0 +1,63 @@
+{
+  "kind": "singleType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Contact Page",
+    "description": "Contact page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroHeading": {
+      "type": "string"
+    },
+    "heroSubheading": {
+      "type": "text"
+    },
+    "contactEmail": {
+      "type": "string"
+    },
+    "contactPhone": {
+      "type": "string"
+    },
+    "contactAddress": {
+      "type": "text"
+    },
+    "operatingHours": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.operating-hours"
+    },
+    "mapEmbedCode": {
+      "type": "text"
+    },
+    "formHeading": {
+      "type": "string"
+    },
+    "formSubheading": {
+      "type": "text"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "openGraph": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.open-graph"
+    },
+    "scripts": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.script-injection"
+    }
+  }
+}
+
+
+

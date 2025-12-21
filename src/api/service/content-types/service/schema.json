@@ -1,0 +1,206 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Service",
+    "description": "Cleaning services (routine, deep, airbnb, etc.)"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "serviceType": {
+      "type": "enumeration",
+      "enum": ["routine", "deep", "airbnb", "moving", "post-construction", "office", "medical", "gym", "retail", "school", "property", "extras", "other-commercial"],
+      "required": true
+    },
+    "heroTopLabel": {
+      "type": "string"
+    },
+    "heroHeading": {
+      "type": "string",
+      "required": true
+    },
+    "heroSubheading": {
+      "type": "text"
+    },
+    "heroBackgroundImage": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "heroBackgroundImageUrl": {
+      "type": "string"
+    },
+    "heroServiceDuration": {
+      "type": "string"
+    },
+    "heroServiceGuarantee": {
+      "type": "string",
+      "default": "100% Satisfaction"
+    },
+    "includedSectionHeading": {
+      "type": "string"
+    },
+    "includedSectionSubheading": {
+      "type": "text"
+    },
+    "cleaningAreas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.cleaning-area"
+    },
+    "featureSectionHeading": {
+      "type": "string"
+    },
+    "featureSectionSubheading": {
+      "type": "text"
+    },
+    "featureSectionImage": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "featureSectionPoints": {
+      "type": "json"
+    },
+    "howItWorksHeading": {
+      "type": "string"
+    },
+    "howItWorksSubheading": {
+      "type": "text"
+    },
+    "step1Title": {
+      "type": "string",
+      "default": "Book Online"
+    },
+    "step1Description": {
+      "type": "text"
+    },
+    "step1Image": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "step2Title": {
+      "type": "string",
+      "default": "We Clean"
+    },
+    "step2Description": {
+      "type": "text"
+    },
+    "step2Image": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "step3Title": {
+      "type": "string",
+      "default": "Relax & Enjoy"
+    },
+    "step3Description": {
+      "type": "text"
+    },
+    "step3Image": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "benefitsHeading": {
+      "type": "string"
+    },
+    "benefitsSubheading": {
+      "type": "text"
+    },
+    "benefitsImage": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "benefit1Title": {
+      "type": "string"
+    },
+    "benefit1Description": {
+      "type": "text"
+    },
+    "benefit2Title": {
+      "type": "string"
+    },
+    "benefit2Description": {
+      "type": "text"
+    },
+    "benefit3Title": {
+      "type": "string"
+    },
+    "benefit3Description": {
+      "type": "text"
+    },
+    "clientTestimonialsHeading": {
+      "type": "string",
+      "default": "What Our Clients Say"
+    },
+    "clientTestimonialsSubheading": {
+      "type": "text"
+    },
+    "clientTestimonials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.testimonial"
+    },
+    "frequencyGuideHeading": {
+      "type": "string"
+    },
+    "frequencyGuideSubheading": {
+      "type": "text"
+    },
+    "frequencyOptions": {
+      "type": "json"
+    },
+    "faqs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.faq-item"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "openGraph": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.open-graph"
+    },
+    "localSeo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.local-seo"
+    },
+    "scripts": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.script-injection"
+    },
+    "schema": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.schema-template"
+    },
+    "excludeFromSitemap": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

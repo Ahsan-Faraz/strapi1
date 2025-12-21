@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_content_trust_indicators",
+  "info": {
+    "displayName": "TrustIndicator",
+    "icon": "shield",
+    "description": "Trust/stat indicator"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
+
+
+

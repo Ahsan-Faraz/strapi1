@@ -1,0 +1,12 @@
+{
+  "name": "strapi-migration-scripts",
+  "version": "1.0.0",
+  "description": "Migration scripts for Clensy CMS",
+  "scripts": {
+    "migrate": "node migrate-from-mongodb.js"
+  },
+  "dependencies": {
+    "mongoose": "^8.0.0"
+  }
+}
+

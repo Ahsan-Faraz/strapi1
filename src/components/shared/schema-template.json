@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_shared_schema_templates",
+  "info": {
+    "displayName": "SchemaTemplate",
+    "icon": "code",
+    "description": "Form-based structured data templates"
+  },
+  "options": {},
+  "attributes": {
+    "schemaType": {
+      "type": "enumeration",
+      "enum": ["LocalBusiness", "Service", "FAQPage", "Review", "Article", "BreadcrumbList", "Organization"],
+      "required": true
+    },
+    "businessName": {
+      "type": "string"
+    },
+    "businessType": {
+      "type": "string"
+    },
+    "telephone": {
+      "type": "string"
+    },
+    "priceRange": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
+    "openingHours": {
+      "type": "json"
+    },
+    "customJsonLd": {
+      "type": "json"
+    }
+  }
+}
+
+
+

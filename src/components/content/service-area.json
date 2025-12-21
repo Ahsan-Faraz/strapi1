@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_content_service_areas",
+  "info": {
+    "displayName": "ServiceArea",
+    "icon": "pin",
+    "description": "Service coverage area/town"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string"
+    }
+  }
+}
+
+
+

@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "privacy_policies",
+  "info": {
+    "singularName": "privacy-policy",
+    "pluralName": "privacy-policies",
+    "displayName": "Privacy Policy",
+    "description": "Privacy policy page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Privacy Policy"
+    },
+    "lastUpdated": {
+      "type": "date"
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "openGraph": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.open-graph"
+    }
+  }
+}
+
+
+

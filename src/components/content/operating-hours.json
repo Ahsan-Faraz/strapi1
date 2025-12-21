@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_content_operating_hours",
+  "info": {
+    "displayName": "OperatingHours",
+    "icon": "clock",
+    "description": "Business operating hours"
+  },
+  "options": {},
+  "attributes": {
+    "day": {
+      "type": "string",
+      "required": true
+    },
+    "hours": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
+
+
+

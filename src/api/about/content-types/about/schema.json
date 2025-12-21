@@ -1,0 +1,112 @@
+{
+  "kind": "singleType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "About Page",
+    "description": "About us page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroHeading": {
+      "type": "string",
+      "default": "About Clensy"
+    },
+    "heroTagline": {
+      "type": "string",
+      "default": "Raising the Standard, One Clean at a Time."
+    },
+    "ourStoryHeading": {
+      "type": "string",
+      "default": "Our Story"
+    },
+    "ourStoryContent": {
+      "type": "richtext"
+    },
+    "ourStoryImage": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "whyWeStartedHeading": {
+      "type": "string"
+    },
+    "whyWeStartedSubtitle": {
+      "type": "string"
+    },
+    "whyWeStartedQuote": {
+      "type": "text"
+    },
+    "whyWeStartedContent": {
+      "type": "richtext"
+    },
+    "whatMakesUsDifferentHeading": {
+      "type": "string"
+    },
+    "differentiators": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.feature-item"
+    },
+    "whatMakesUsDifferentImage": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "clientFocusedTechHeading": {
+      "type": "string"
+    },
+    "clientFocusedTechFeatures": {
+      "type": "json"
+    },
+    "whoWeServeHeading": {
+      "type": "string"
+    },
+    "whoWeServeSubtitle": {
+      "type": "string"
+    },
+    "customerTypes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.feature-item"
+    },
+    "ourMissionHeading": {
+      "type": "string"
+    },
+    "ourMissionContent": {
+      "type": "richtext"
+    },
+    "ctaHeading": {
+      "type": "string"
+    },
+    "ctaDescription": {
+      "type": "text"
+    },
+    "ctaBookButtonText": {
+      "type": "string"
+    },
+    "ctaContactButtonText": {
+      "type": "string"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "openGraph": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.open-graph"
+    },
+    "scripts": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.script-injection"
+    }
+  }
+}
+

@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "redirects",
+  "info": {
+    "singularName": "redirect",
+    "pluralName": "redirects",
+    "displayName": "Redirect",
+    "description": "301 redirect management"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fromPath": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "toPath": {
+      "type": "string",
+      "required": true
+    },
+    "statusCode": {
+      "type": "enumeration",
+      "enum": ["permanent_301", "temporary_302", "temporary_307", "permanent_308"],
+      "default": "permanent_301"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}
+

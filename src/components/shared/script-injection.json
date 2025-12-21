@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_shared_script_injections",
+  "info": {
+    "displayName": "ScriptInjection",
+    "icon": "code",
+    "description": "Custom script/tracking code injection"
+  },
+  "options": {},
+  "attributes": {
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    }
+  }
+}
+
+
+

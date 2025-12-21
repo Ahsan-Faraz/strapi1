@@ -1,0 +1,86 @@
+{
+  "kind": "singleType",
+  "collectionName": "faq_pages",
+  "info": {
+    "singularName": "faq-page",
+    "pluralName": "faq-pages",
+    "displayName": "FAQ Page",
+    "description": "FAQ page content and settings"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroTopLabel": {
+      "type": "string",
+      "default": "Answers to your questions"
+    },
+    "heroHeading": {
+      "type": "string",
+      "default": "Frequently Asked Questions"
+    },
+    "heroDescription": {
+      "type": "text"
+    },
+    "faqCategories": {
+      "type": "json"
+    },
+    "faqItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.faq-item"
+    },
+    "stillHaveQuestionsHeading": {
+      "type": "string",
+      "default": "Still Have Questions?"
+    },
+    "stillHaveQuestionsDescription": {
+      "type": "text"
+    },
+    "stillHaveQuestionsCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.cta-card"
+    },
+    "contactSectionHeading": {
+      "type": "string",
+      "default": "Can't Find Your Answer?"
+    },
+    "contactSectionDescription": {
+      "type": "text"
+    },
+    "contactEmail": {
+      "type": "string"
+    },
+    "contactPhone": {
+      "type": "string"
+    },
+    "trustIndicators": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.trust-indicator"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "openGraph": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.open-graph"
+    },
+    "schema": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.schema-template"
+    },
+    "scripts": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.script-injection"
+    }
+  }
+}
+

@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_shared_local_seos",
+  "info": {
+    "displayName": "LocalSEO",
+    "icon": "pin",
+    "description": "Local SEO fields for service/location pages"
+  },
+  "options": {},
+  "attributes": {
+    "city": {
+      "type": "string"
+    },
+    "county": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zipCode": {
+      "type": "string"
+    },
+    "serviceType": {
+      "type": "enumeration",
+      "enum": ["residential", "commercial", "airbnb", "medical", "office", "construction", "other"]
+    },
+    "metaTitleTemplate": {
+      "type": "string",
+      "default": "{{serviceType}} Cleaning in {{city}} | Clensy"
+    },
+    "metaDescriptionTemplate": {
+      "type": "text"
+    }
+  }
+}
+
+
+

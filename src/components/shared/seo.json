@@ -1,0 +1,33 @@
+{
+    "collectionName": "components_shared_seos",
+    "info": {
+      "displayName": "SEO",
+      "icon": "search",
+      "description": "SEO metadata component"
+    },
+    "options": {},
+    "attributes": {
+      "metaTitle": {
+        "type": "string",
+        "maxLength": 60
+      },
+      "metaDescription": {
+        "type": "text",
+        "maxLength": 160
+      },
+      "metaRobots": {
+        "type": "enumeration",
+        "enum": ["index,follow", "index,nofollow", "noindex,follow", "noindex,nofollow"],
+        "default": "index,follow"
+      },
+      "canonicalURL": {
+        "type": "string"
+      },
+      "keywords": {
+        "type": "text"
+      },
+      "structuredData": {
+        "type": "json"
+      }
+    }
+  }

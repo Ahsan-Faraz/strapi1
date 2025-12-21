@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_content_feature_items",
+  "info": {
+    "displayName": "FeatureItem",
+    "icon": "check",
+    "description": "Feature list item with optional icon"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "string"
+    }
+  }
+}
+
+
+

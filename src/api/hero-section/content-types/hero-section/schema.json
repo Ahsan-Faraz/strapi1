@@ -1,0 +1,56 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_sections",
+  "info": {
+    "singularName": "hero-section",
+    "pluralName": "hero-sections",
+    "displayName": "Hero Section",
+    "description": "Homepage hero section content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "topLabel": {
+      "type": "string",
+      "default": "Professional Cleaning Services"
+    },
+    "heading": {
+      "type": "string",
+      "required": true,
+      "default": "Professional cleaning for your home"
+    },
+    "subheading": {
+      "type": "text",
+      "default": "We make it easy to get your home cleaned. Professional cleaning services tailored to your needs."
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "See my price"
+    },
+    "buttonLink": {
+      "type": "string",
+      "default": "/booking"
+    },
+    "feature1": {
+      "type": "string",
+      "default": "30-second pricing"
+    },
+    "feature2": {
+      "type": "string",
+      "default": "100% Satisfaction guaranteed"
+    },
+    "backgroundImage": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "backgroundImageUrl": {
+      "type": "string"
+    }
+  }
+}
+
+
+

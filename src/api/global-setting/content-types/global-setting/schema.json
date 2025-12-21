@@ -1,0 +1,80 @@
+{
+  "kind": "singleType",
+  "collectionName": "global_settings",
+  "info": {
+    "singularName": "global-setting",
+    "pluralName": "global-settings",
+    "displayName": "Global Settings",
+    "description": "Site-wide settings, scripts, and SEO defaults"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "siteName": {
+      "type": "string",
+      "required": true,
+      "default": "Clensy"
+    },
+    "siteTagline": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "favicon": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "defaultSeo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "defaultOpenGraph": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.open-graph"
+    },
+    "globalHeadScripts": {
+      "type": "text"
+    },
+    "globalBodyEndScripts": {
+      "type": "text"
+    },
+    "robotsTxt": {
+      "type": "text",
+      "default": "User-agent: *\nAllow: /\n\nSitemap: https://clensy.com/sitemap.xml"
+    },
+    "googleAnalyticsId": {
+      "type": "string"
+    },
+    "facebookPixelId": {
+      "type": "string"
+    },
+    "contactPhone": {
+      "type": "string",
+      "default": "(551) 305-4081"
+    },
+    "contactEmail": {
+      "type": "string",
+      "default": "info@clensy.com"
+    },
+    "businessAddress": {
+      "type": "text"
+    },
+    "socialLinks": {
+      "type": "json"
+    },
+    "defaultSchema": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.schema-template"
+    }
+  }
+}
+

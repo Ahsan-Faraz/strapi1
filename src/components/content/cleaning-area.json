@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_content_cleaning_areas",
+  "info": {
+    "displayName": "CleaningArea",
+    "icon": "home",
+    "description": "Cleaning area section (kitchen, bathroom, etc.)"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "features": {
+      "type": "json"
+    }
+  }
+}
+
+
+

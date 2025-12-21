@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "checklists",
+  "info": {
+    "singularName": "checklist",
+    "pluralName": "checklists",
+    "displayName": "Checklist Section",
+    "description": "Cleaning checklist section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subheading": {
+      "type": "text"
+    },
+    "checklistItems": {
+      "type": "json"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "openGraph": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.open-graph"
+    }
+  }
+}
+
+
+

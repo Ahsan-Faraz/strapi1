@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "how_it_works",
+  "info": {
+    "singularName": "how-it-work",
+    "pluralName": "how-it-works",
+    "displayName": "How It Works",
+    "description": "How it works section content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subheading": {
+      "type": "text"
+    },
+    "steps": {
+      "type": "json"
+    }
+  }
+}
+
