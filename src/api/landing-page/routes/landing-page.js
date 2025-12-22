@@ -1,5 +1,37 @@
 'use strict';
 
-const { createCoreRouter } = require('@strapi/strapi').factories;
+/**
+ * landing-page router
+ */
 
-module.exports = createCoreRouter('api::landing-page.landing-page');
+module.exports = {
+  routes: [
+    {
+      method: 'GET',
+      path: '/landing-page',
+      handler: 'landing-page.find',
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+    },
+    {
+      method: 'PUT',
+      path: '/landing-page',
+      handler: 'landing-page.update',
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+    },
+    {
+      method: 'DELETE',
+      path: '/landing-page',
+      handler: 'landing-page.delete',
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+    },
+  ],
+};
