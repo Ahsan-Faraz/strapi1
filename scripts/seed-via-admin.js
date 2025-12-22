@@ -38,29 +38,27 @@ const landingPageData = {
   howItWorksButtonText: "Book Now",
   
   // Checklist Section
-  checklistHeading: "Our Cleaning Checklist",
-  checklistDescription: "We follow a comprehensive 50-point checklist to ensure nothing is missed during your cleaning service.",
+  checklistHeading: "Our 50-Point Cleaning Checklist",
+  checklistDescription: "We don't miss a spot. Here's our comprehensive cleaning checklist for every room in your home.",
   checklistButtonText: "View Full Checklist",
   checklistItems: {
-    livingRoom: {
-      routine: ["Dust all surfaces and furniture", "Vacuum carpets and rugs", "Mop hard floors", "Clean mirrors and glass", "Empty trash bins", "Wipe light switches and door handles", "Straighten cushions and pillows", "Dust ceiling fans and light fixtures"],
-      deep: ["Clean inside windows", "Deep clean upholstery", "Clean baseboards", "Dust blinds and curtains", "Clean air vents", "Move furniture and clean underneath"],
-      moving: ["Clean inside all cabinets", "Clean inside closets", "Remove all marks from walls", "Deep clean all flooring"]
+    routine: {
+      living: ["Sweep, Vacuum, & Mop Floors", "Upholstered furniture vacuumed", "Dust all surfaces and decor", "Dust electronics and TV stands", "Fluff and straighten couch cushions & pillows", "Clean mirrors and glass surfaces", "Light (5 minutes) Organization of room", "Trash emptied"],
+      kitchen: ["Sweep, Vacuum, & Mop Floors", "Wipe down countertops", "Wipe down Stove Top", "Clean exterior of appliances", "Sinks scrubbed and disinfected", "Wipe exterior of cabinets and handles", "Clean Stove Top", "Trash emptied"],
+      bathroom: ["Sweep, Vacuum, & Mop Floors", "Scrub and sanitize showers and tubs", "Clean and disinfect toilets", "Scrub and disinfect sink and countertops", "Chrome fixtures cleaned and shined", "Clean mirrors", "Towels neatly hung and folded", "Trash Emptied"],
+      bedroom: ["Sweep, Vacuum, & Mop Floors", "Beds made, linens changed (if linens are left on bed)", "Dust bedroom shelving, night stand, & bed frame", "Picture frames dusted", "Mirrors Cleaned", "Light (5 minutes) Organization of room", "Ensure overall room looks neat, tidy, and hotel-fresh", "Trash Emptied"]
     },
-    kitchen: {
-      routine: ["Clean countertops and backsplash", "Clean exterior of appliances", "Clean stovetop and range hood", "Clean sink and faucet", "Wipe cabinet fronts", "Mop floors", "Empty trash and recycling", "Clean microwave inside and out"],
-      deep: ["Clean inside oven", "Clean inside refrigerator", "Degrease range hood filter", "Clean inside dishwasher", "Deep clean grout"],
-      moving: ["Clean inside all cabinets and drawers", "Clean behind and under appliances", "Remove all shelf liners"]
+    deep: {
+      living: ["Everything in routine +", "Vacuum inside couch cushions (if removable)", "Ceiling fans and light fixtures dusted", "Remove cobwebs from corners and ceilings", "Wipe baseboards and molding", "Doors, door frames, & light switches", "Behind/under furniture", "Window Sills"],
+      kitchen: ["Everything in routine +", "Clean inside microwave", "Kitchen Backsplash", "Degrease Stovetop", "Wipe baseboards and molding", "Doors, door frames, & light switches", "Tables, chairs, & behind/under furniture", "Window Sills"],
+      bathroom: ["Everything in routine +", "Remove hard water stains (where possible)", "Scrub grout lines (moderate scrubbing)", "Ceiling fans and light fixtures dusted", "Dust vent covers and ceiling corners", "Wipe baseboards and molding", "Doors, door frames, & light switches", "Window Sills"],
+      bedroom: ["Everything in routine +", "Ceiling fans and light fixtures dusted", "Remove cobwebs from corners and ceilings", "Wipe baseboards and molding", "Doors, door frames, & light switches", "Behind/under furniture", "Window Sills", "Inside closets (upon request)"]
     },
-    bathroom: {
-      routine: ["Clean and sanitize toilet", "Clean shower and bathtub", "Clean sink and vanity", "Clean mirrors", "Mop floors", "Empty trash", "Replace towels if provided", "Wipe light switches and handles"],
-      deep: ["Deep clean grout and tile", "Clean exhaust fan", "Descale showerhead", "Clean inside medicine cabinet", "Polish chrome fixtures"],
-      moving: ["Clean inside all cabinets", "Remove soap scum buildup", "Clean behind toilet"]
-    },
-    bedroom: {
-      routine: ["Make beds and change linens if provided", "Dust all surfaces", "Vacuum carpets", "Mop hard floors", "Empty trash", "Dust ceiling fan", "Clean mirrors", "Organize visible items"],
-      deep: ["Vacuum under bed", "Clean inside closet", "Dust blinds", "Clean baseboards", "Flip or rotate mattress"],
-      moving: ["Clean inside all closets", "Clean inside all drawers", "Remove marks from walls"]
+    moving: {
+      living: ["Everything in deep +", "Inside all cabinets and drawers", "Clean inside closets", "Wipe down all shelving", "Clean inside windows", "Remove all marks from walls", "Deep clean all flooring", "Final walkthrough inspection"],
+      kitchen: ["Everything in deep +", "Inside all cabinets and drawers", "Inside oven", "Inside refrigerator", "Inside dishwasher", "Behind and under appliances", "Deep clean all flooring", "Final walkthrough inspection"],
+      bathroom: ["Everything in deep +", "Inside all cabinets and drawers", "Deep clean grout and tile", "Remove all soap scum buildup", "Clean behind toilet", "Polish all fixtures", "Deep clean all flooring", "Final walkthrough inspection"],
+      bedroom: ["Everything in deep +", "Inside all closets", "Inside all drawers", "Clean inside windows", "Remove all marks from walls", "Deep clean all flooring", "Wipe down all shelving", "Final walkthrough inspection"]
     }
   },
   
