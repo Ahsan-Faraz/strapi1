@@ -1,20 +1,26 @@
 import path from 'path';
 
 export default ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'postgres');
+  const client = env('DATABASE_CLIENT', 'sqlite');
   
   // Log for debugging
   console.log('Database client:', client);
-  console.log('DATABASE_URL exists:', !!env('DATABASE_URL'));
+  console.log('DATABASE_HOST:', env('DATABASE_HOST', 'not set'));
 
-  // For Supabase/PostgreSQL in production
-  if (env('DATABASE_URL')) {
+  // PostgreSQL (Supabase) configuration
+  if (client === 'postgres') {
     return {
       connection: {
         client: 'postgres',
         connection: {
-          connectionString: env('DATABASE_URL'),
-          ssl: { rejectUnauthorized: false },
+          host: env('DATABASE_HOST'),
+          port: env.int('DATABASE_PORT', 5432),
+          database: env('DATABASE_NAME', 'postgres'),
+          user: env('DATABASE_USERNAME', 'postgres'),
+          password: env('DATABASE_PASSWORD'),
+          ssl: {
+            rejectUnauthorized: false,
+          },
         },
         pool: { 
           min: 0, 
