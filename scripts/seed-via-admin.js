@@ -1,4 +1,18 @@
-import type { Core } from '@strapi/strapi';
+/**
+ * Seed Landing Page Data via Strapi Admin API
+ * 
+ * This script uses the content-manager admin API to create/update the landing page.
+ * You need to provide admin credentials.
+ * 
+ * Usage: 
+ *   set STRAPI_ADMIN_EMAIL=your-email@example.com
+ *   set STRAPI_ADMIN_PASSWORD=your-password
+ *   node scripts/seed-via-admin.js
+ */
+
+const STRAPI_URL = process.env.STRAPI_URL || 'https://strapi-production-8d56.up.railway.app';
+const ADMIN_EMAIL = process.env.STRAPI_ADMIN_EMAIL;
+const ADMIN_PASSWORD = process.env.STRAPI_ADMIN_PASSWORD;
 
 const landingPageData = {
   // Hero Section
@@ -91,53 +105,98 @@ const landingPageData = {
   ctaRightCardButtonText: "(551) 305-4081"
 };
 
-export default {
-  /**
-   * An asynchronous register function that runs before
-   * your application is initialized.
-   */
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+async function loginAdmin() {
+  console.log('🔐 Logging in to Strapi admin...');
+  
+  const response = await fetch(`${STRAPI_URL}/admin/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: ADMIN_EMAIL,
+      password: ADMIN_PASSWORD
+    })
+  });
+  
+  if (!response.ok) {
+    throw new Error(`Login failed: ${response.status}`);
+  }
+  
+  const data = await response.json();
+  return data.data.token;
+}
 
-  /**
-   * An asynchronous bootstrap function that runs before
-   * your application gets started.
-   * 
-   * Seeds the Landing Page with default content if empty.
-   */
-  async bootstrap({ strapi }: { strapi: Core.Strapi }) {
-    // Check if landing page has content
-    try {
-      const existingLandingPage = await strapi.documents('api::landing-page.landing-page').findFirst({
-        status: 'published'
-      });
-      
-      if (!existingLandingPage) {
-        console.log('🌱 Seeding Landing Page with default content...');
-        
-        // Check for draft
-        const draft = await strapi.documents('api::landing-page.landing-page').findFirst();
-        
-        if (draft) {
-          // Update and publish existing draft
-          await strapi.documents('api::landing-page.landing-page').update({
-            documentId: draft.documentId,
-            data: landingPageData,
-            status: 'published'
-          });
-          console.log('✅ Landing Page updated and published!');
-        } else {
-          // Create new
-          await strapi.documents('api::landing-page.landing-page').create({
-            data: landingPageData,
-            status: 'published'
-          });
-          console.log('✅ Landing Page created and published!');
-        }
-      } else {
-        console.log('📄 Landing Page already has content, skipping seed.');
+async function seedLandingPage() {
+  if (!ADMIN_EMAIL || !ADMIN_PASSWORD) {
+    console.log('❌ Missing admin credentials!');
+    console.log('\nPlease set environment variables:');
+    console.log('  set STRAPI_ADMIN_EMAIL=your-email@example.com');
+    console.log('  set STRAPI_ADMIN_PASSWORD=your-password');
+    console.log('\nOr manually enter the data in Strapi admin:');
+    console.log(`  ${STRAPI_URL}/admin`);
+    console.log('\n📋 Here is the data to enter:\n');
+    console.log(JSON.stringify(landingPageData, null, 2));
+    return;
+  }
+  
+  console.log('🚀 Starting Landing Page seed via Admin API...');
+  console.log(`📡 Strapi URL: ${STRAPI_URL}`);
+  
+  try {
+    const token = await loginAdmin();
+    console.log('✅ Logged in successfully!');
+    
+    // Get existing landing page
+    console.log('\n📋 Checking existing landing page...');
+    const getResponse = await fetch(`${STRAPI_URL}/content-manager/single-types/api::landing-page.landing-page`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
       }
-    } catch (error) {
-      console.error('❌ Error seeding landing page:', error);
+    });
+    
+    const existing = await getResponse.json();
+    console.log('Existing:', existing.id ? 'Found' : 'Not found');
+    
+    // Update/Create landing page
+    console.log('\n📝 Saving Landing Page content...');
+    const saveResponse = await fetch(`${STRAPI_URL}/content-manager/single-types/api::landing-page.landing-page`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(landingPageData)
+    });
+    
+    if (!saveResponse.ok) {
+      const error = await saveResponse.text();
+      throw new Error(`Save failed: ${error}`);
     }
-  },
-};
+    
+    const result = await saveResponse.json();
+    console.log('✅ Landing Page saved!');
+    
+    // Publish
+    console.log('\n📢 Publishing...');
+    const publishResponse = await fetch(`${STRAPI_URL}/content-manager/single-types/api::landing-page.landing-page/actions/publish`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    if (publishResponse.ok) {
+      console.log('✅ Published!');
+    } else {
+      console.log('⚠️ Could not auto-publish. Please publish manually.');
+    }
+    
+    console.log('\n🎉 Done! Your landing page data is now in Strapi.');
+    
+  } catch (error) {
+    console.error('❌ Error:', error.message);
+  }
+}
+
+seedLandingPage();

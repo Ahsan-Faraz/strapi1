@@ -255,79 +255,30 @@ async function seedLandingPage() {
     
     let documentId = existingData.data?.documentId;
     
-    if (hasExistingData && documentId) {
-      // Update existing landing page using document ID
-      console.log('\n📝 Updating existing Landing Page...');
-      console.log('Document ID:', documentId);
-      
-      const response = await fetch(`${STRAPI_URL}/api/landing-page`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${STRAPI_API_TOKEN}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ data: landingPageData })
-      });
-      
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('❌ PUT Error response:', errorText);
-        
-        // Try DELETE and POST approach
-        console.log('\n🔄 Trying alternative approach...');
-        const deleteResponse = await fetch(`${STRAPI_URL}/api/landing-page`, {
-          method: 'DELETE',
-          headers: {
-            'Authorization': `Bearer ${STRAPI_API_TOKEN}`,
-          }
-        });
-        console.log('Delete response:', deleteResponse.status);
-        
-        // Now create new
-        const createResponse = await fetch(`${STRAPI_URL}/api/landing-page`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${STRAPI_API_TOKEN}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ data: landingPageData })
-        });
-        
-        if (!createResponse.ok) {
-          const createError = await createResponse.text();
-          throw new Error(`Create failed: ${createError}`);
-        }
-        
-        const createResult = await createResponse.json();
-        console.log('✅ Landing Page created successfully!');
-        documentId = createResult.data?.documentId;
-      } else {
-        const result = await response.json();
-        console.log('✅ Landing Page updated successfully!');
-        documentId = result.data?.documentId || documentId;
-      }
-    } else {
-      // Create new landing page
-      console.log('\n📝 Creating new Landing Page...');
-      const response = await fetch(`${STRAPI_URL}/api/landing-page`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${STRAPI_API_TOKEN}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ data: landingPageData })
-      });
-      
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('❌ POST Error response:', errorText);
-        throw new Error(`HTTP ${response.status}: ${errorText}`);
-      }
-      
-      const result = await response.json();
-      console.log('✅ Landing Page created successfully!');
-      documentId = result.data?.documentId || result.data?.id;
+    // Always use PUT - our custom controller handles create/update
+    console.log('\n📝 Creating/Updating Landing Page via PUT...');
+    
+    const response = await fetch(`${STRAPI_URL}/api/landing-page`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${STRAPI_API_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ data: landingPageData })
+    });
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('❌ PUT Error response:', errorText);
+      console.log('\n⚠️ The custom routes may not be deployed yet.');
+      console.log('Please wait for Railway to finish deploying and try again.');
+      console.log('Or manually enter the data in Strapi admin.');
+      throw new Error(`HTTP ${response.status}: ${errorText}`);
     }
+    
+    const result = await response.json();
+    console.log('✅ Landing Page created/updated successfully!');
+    documentId = result.data?.documentId || result.data?.id;
     
     console.log('📄 Document ID:', documentId);
     
