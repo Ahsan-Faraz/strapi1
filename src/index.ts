@@ -1,16 +1,6 @@
 export default {
-  /**
-   * An asynchronous register function that runs before
-   * your application is initialized.
-   */
-  register(/* { strapi } */) {},
+  register() {},
 
-  /**
-   * An asynchronous bootstrap function that runs before
-   * your application gets started.
-   * 
-   * Seeds the Landing Page with default content if empty.
-   */
   async bootstrap({ strapi }: { strapi: any }) {
     const landingPageData = {
       heroTopLabel: "Professional Cleaning Services",
@@ -36,28 +26,28 @@ export default {
       checklistButtonText: "View Full Checklist",
       checklistItems: {
         livingRoom: {
-          routine: ["Dust all surfaces and furniture", "Vacuum carpets and rugs", "Mop hard floors", "Clean mirrors and glass", "Empty trash bins", "Wipe light switches and door handles", "Straighten cushions and pillows", "Dust ceiling fans and light fixtures"],
-          deep: ["Clean inside windows", "Deep clean upholstery", "Clean baseboards", "Dust blinds and curtains", "Clean air vents", "Move furniture and clean underneath"],
-          moving: ["Clean inside all cabinets", "Clean inside closets", "Remove all marks from walls", "Deep clean all flooring"]
+          routine: ["Dust all surfaces", "Vacuum carpets", "Mop floors", "Clean mirrors", "Empty trash", "Wipe switches", "Straighten cushions", "Dust fans"],
+          deep: ["Clean windows", "Deep clean upholstery", "Clean baseboards", "Dust blinds", "Clean vents", "Move furniture"],
+          moving: ["Clean cabinets", "Clean closets", "Remove wall marks", "Deep clean floors"]
         },
         kitchen: {
-          routine: ["Clean countertops and backsplash", "Clean exterior of appliances", "Clean stovetop and range hood", "Clean sink and faucet", "Wipe cabinet fronts", "Mop floors", "Empty trash and recycling", "Clean microwave inside and out"],
-          deep: ["Clean inside oven", "Clean inside refrigerator", "Degrease range hood filter", "Clean inside dishwasher", "Deep clean grout"],
-          moving: ["Clean inside all cabinets and drawers", "Clean behind and under appliances", "Remove all shelf liners"]
+          routine: ["Clean countertops", "Clean appliances", "Clean stovetop", "Clean sink", "Wipe cabinets", "Mop floors", "Empty trash", "Clean microwave"],
+          deep: ["Clean oven", "Clean refrigerator", "Degrease hood", "Clean dishwasher", "Deep clean grout"],
+          moving: ["Clean all cabinets", "Clean behind appliances", "Remove shelf liners"]
         },
         bathroom: {
-          routine: ["Clean and sanitize toilet", "Clean shower and bathtub", "Clean sink and vanity", "Clean mirrors", "Mop floors", "Empty trash", "Replace towels if provided", "Wipe light switches and handles"],
-          deep: ["Deep clean grout and tile", "Clean exhaust fan", "Descale showerhead", "Clean inside medicine cabinet", "Polish chrome fixtures"],
-          moving: ["Clean inside all cabinets", "Remove soap scum buildup", "Clean behind toilet"]
+          routine: ["Sanitize toilet", "Clean shower", "Clean sink", "Clean mirrors", "Mop floors", "Empty trash", "Replace towels", "Wipe handles"],
+          deep: ["Deep clean grout", "Clean exhaust fan", "Descale showerhead", "Clean medicine cabinet", "Polish fixtures"],
+          moving: ["Clean all cabinets", "Remove soap scum", "Clean behind toilet"]
         },
         bedroom: {
-          routine: ["Make beds and change linens if provided", "Dust all surfaces", "Vacuum carpets", "Mop hard floors", "Empty trash", "Dust ceiling fan", "Clean mirrors", "Organize visible items"],
-          deep: ["Vacuum under bed", "Clean inside closet", "Dust blinds", "Clean baseboards", "Flip or rotate mattress"],
-          moving: ["Clean inside all closets", "Clean inside all drawers", "Remove marks from walls"]
+          routine: ["Make beds", "Dust surfaces", "Vacuum carpets", "Mop floors", "Empty trash", "Dust fan", "Clean mirrors", "Organize items"],
+          deep: ["Vacuum under bed", "Clean closet", "Dust blinds", "Clean baseboards", "Flip mattress"],
+          moving: ["Clean all closets", "Clean all drawers", "Remove wall marks"]
         }
       },
       comparisonHeading: "The Clensy <blue>Difference</blue>",
-      comparisonDescription: "We're leading the cleaning industry in customer satisfaction and service quality. Try Clensy and see why cleaning is a big deal to us.",
+      comparisonDescription: "We're leading the cleaning industry in customer satisfaction and service quality.",
       comparisonButtonText: "Book Now",
       comparisonFeatures: [
         { name: "Locally Owned and Operated", clensy: true, others: true, icon: "users" },
@@ -65,7 +55,7 @@ export default {
         { name: "Easy Online Booking", clensy: true, others: false, icon: "calendar" },
         { name: "Over The Phone Estimates", clensy: true, others: false, icon: "phone" },
         { name: "Bonded and Insured", clensy: true, others: false, icon: "shield-check" },
-        { name: "Eco-Friendly Supplies Included", clensy: true, others: false, icon: "leaf" },
+        { name: "Eco-Friendly Supplies", clensy: true, others: false, icon: "leaf" },
         { name: "Background Checked Cleaners", clensy: true, others: false, icon: "user-check" },
         { name: "PRO Clean Promise", clensy: true, others: false, icon: "medal" },
         { name: "Premium Cleaning Supplies", clensy: true, others: false, icon: "sparkles" }
@@ -73,14 +63,10 @@ export default {
       reviewsHeading: "What People Are <blue>Saying About Us</blue>",
       reviewsButtonText: "Load More",
       testimonials: [
-        { name: "Sarah Johnson", title: "1 day ago", text: "Monica was excellent. Went beyond in helping me. My sheets and comforter were not just washed but perfectly folded. Everything was spotless!", rating: 5, initial: "S", initialColor: "#9C27B0" },
-        { name: "Michael Chen", title: "3 days ago", text: "Clensy does the best job taking care of our house. Bailey recently cleaned our home and did an amazing job. Very thorough and professional.", rating: 5, initial: "M", initialColor: "#4CAF50" },
-        { name: "Emily Rodriguez", title: "1 week ago", text: "Arrived as planned! Great job! Everything polished. Baseboards done. Kitchen and bathroom spotless. Will definitely book again.", rating: 5, initial: "E", initialColor: "#E91E63" },
-        { name: "David Thompson", title: "2 weeks ago", text: "My house was cleaned by Clensy today. Susan did a great job. I asked them to pay special attention to the kitchen and they delivered.", rating: 5, initial: "D", initialColor: "#FF5722" },
-        { name: "Jennifer Lee", title: "1 month ago", text: "The team did a great job cleaning! They were professional, polite and very thorough. I'm so happy with the results!", rating: 5, initial: "J", initialColor: "#2196F3" },
-        { name: "Robert Garcia", title: "2 months ago", text: "Awesome job by Rashida! Consistently excellent work! Keep it up! My home has never looked better.", rating: 5, initial: "R", initialColor: "#673AB7" },
-        { name: "Maxine Patel", title: "3 months ago", text: "Maxine was terrific! Worked fast and accurate. Looking forward to her again!!!", rating: 5, initial: "P", initialColor: "#3F51B5" },
-        { name: "Brandon Smith", title: "4 months ago", text: "Techs are so friendly and very efficient. You will not regret one single second!", rating: 5, initial: "B", initialColor: "#4CAF50" }
+        { name: "Sarah Johnson", title: "1 day ago", text: "Monica was excellent. Everything was spotless!", rating: 5, initial: "S", initialColor: "#9C27B0" },
+        { name: "Michael Chen", title: "3 days ago", text: "Clensy does the best job. Very thorough and professional.", rating: 5, initial: "M", initialColor: "#4CAF50" },
+        { name: "Emily Rodriguez", title: "1 week ago", text: "Great job! Kitchen and bathroom spotless.", rating: 5, initial: "E", initialColor: "#E91E63" },
+        { name: "David Thompson", title: "2 weeks ago", text: "Susan did a great job on the kitchen.", rating: 5, initial: "D", initialColor: "#FF5722" }
       ],
       ctaHeading: "Home cleaning you can trust",
       ctaDescription: "Book our professional cleaning services today and experience the difference.",
@@ -93,42 +79,47 @@ export default {
     };
 
     try {
-      // Use strapi.db.query for direct database access (works better with single types)
-      const existingLandingPage = await strapi.db.query('api::landing-page.landing-page').findOne({
-        where: { publishedAt: { $notNull: true } }
+      console.log('🌱 Checking Landing Page...');
+      
+      // Use entityService for Strapi v5
+      const existing = await strapi.entityService.findMany('api::landing-page.landing-page', {
+        limit: 1
       });
       
-      if (!existingLandingPage) {
-        console.log('🌱 Seeding Landing Page with default content...');
+      console.log('Existing records:', existing ? (Array.isArray(existing) ? existing.length : 1) : 0);
+      
+      if (!existing || (Array.isArray(existing) && existing.length === 0)) {
+        console.log('🌱 Creating Landing Page with default content...');
         
-        // Check for any existing record (draft or published)
-        const anyExisting = await strapi.db.query('api::landing-page.landing-page').findOne({});
+        const created = await strapi.entityService.create('api::landing-page.landing-page', {
+          data: {
+            ...landingPageData,
+            publishedAt: new Date()
+          }
+        });
         
-        if (anyExisting) {
-          // Update existing record
-          await strapi.db.query('api::landing-page.landing-page').update({
-            where: { id: anyExisting.id },
-            data: {
-              ...landingPageData,
-              publishedAt: new Date()
-            }
-          });
-          console.log('✅ Landing Page updated and published!');
-        } else {
-          // Create new record
-          await strapi.db.query('api::landing-page.landing-page').create({
-            data: {
-              ...landingPageData,
-              publishedAt: new Date()
-            }
-          });
-          console.log('✅ Landing Page created and published!');
-        }
+        console.log('✅ Landing Page created! ID:', created?.id);
       } else {
-        console.log('📄 Landing Page already has published content, skipping seed.');
+        const record = Array.isArray(existing) ? existing[0] : existing;
+        
+        // Check if it has content
+        if (!record.heroHeading) {
+          console.log('🌱 Updating Landing Page with default content...');
+          
+          await strapi.entityService.update('api::landing-page.landing-page', record.id, {
+            data: {
+              ...landingPageData,
+              publishedAt: new Date()
+            }
+          });
+          
+          console.log('✅ Landing Page updated!');
+        } else {
+          console.log('📄 Landing Page already has content:', record.heroHeading);
+        }
       }
-    } catch (error) {
-      console.error('❌ Error seeding landing page:', error);
+    } catch (error: any) {
+      console.error('❌ Bootstrap error:', error?.message || error);
     }
   },
 };
