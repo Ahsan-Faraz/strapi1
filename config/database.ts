@@ -1,71 +1,40 @@
 import path from 'path';
 
 export default ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'sqlite');
+  const client = env('DATABASE_CLIENT', 'postgres');
   
   // Log for debugging
-  if (env('NODE_ENV') === 'production') {
-    console.log('Database client:', client);
-    console.log('DATABASE_URL exists:', !!env('DATABASE_URL'));
+  console.log('Database client:', client);
+  console.log('DATABASE_URL exists:', !!env('DATABASE_URL'));
+
+  // For Supabase/PostgreSQL in production
+  if (env('DATABASE_URL')) {
+    return {
+      connection: {
+        client: 'postgres',
+        connection: {
+          connectionString: env('DATABASE_URL'),
+          ssl: { rejectUnauthorized: false },
+        },
+        pool: { 
+          min: 0, 
+          max: 5,
+          acquireTimeoutMillis: 60000,
+          idleTimeoutMillis: 30000,
+        },
+        acquireConnectionTimeout: 60000,
+      },
+    };
   }
 
-  const connections = {
-    mysql: {
-      connection: {
-        host: env('DATABASE_HOST', 'localhost'),
-        port: env.int('DATABASE_PORT', 3306),
-        database: env('DATABASE_NAME', 'strapi'),
-        user: env('DATABASE_USERNAME', 'strapi'),
-        password: env('DATABASE_PASSWORD', 'strapi'),
-        ssl: env.bool('DATABASE_SSL', false) && {
-          key: env('DATABASE_SSL_KEY', undefined),
-          cert: env('DATABASE_SSL_CERT', undefined),
-          ca: env('DATABASE_SSL_CA', undefined),
-          capath: env('DATABASE_SSL_CAPATH', undefined),
-          cipher: env('DATABASE_SSL_CIPHER', undefined),
-          rejectUnauthorized: env.bool('DATABASE_SSL_REJECT_UNAUTHORIZED', true),
-        },
-      },
-      pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
-    },
-    postgres: {
-      connection: env('DATABASE_URL') 
-        ? {
-            connectionString: env('DATABASE_URL'),
-            ssl: { rejectUnauthorized: false },
-          }
-        : {
-            host: env('DATABASE_HOST', 'localhost'),
-            port: env.int('DATABASE_PORT', 5432),
-            database: env('DATABASE_NAME', 'strapi'),
-            user: env('DATABASE_USERNAME', 'strapi'),
-            password: env('DATABASE_PASSWORD', 'strapi'),
-            ssl: env.bool('DATABASE_SSL', false),
-          },
-      pool: { 
-        min: env.int('DATABASE_POOL_MIN', 0), 
-        max: env.int('DATABASE_POOL_MAX', 5),
-        acquireTimeoutMillis: 60000,
-        createTimeoutMillis: 30000,
-        idleTimeoutMillis: 30000,
-        reapIntervalMillis: 1000,
-        createRetryIntervalMillis: 200,
-      },
-      debug: false,
-    },
-    sqlite: {
-      connection: {
-        filename: path.join(__dirname, '..', '..', env('DATABASE_FILENAME', '.tmp/data.db')),
-      },
-      useNullAsDefault: true,
-    },
-  };
-
+  // SQLite for local development
   return {
     connection: {
-      client,
-      ...connections[client],
-      acquireConnectionTimeout: env.int('DATABASE_CONNECTION_TIMEOUT', 60000),
+      client: 'sqlite',
+      connection: {
+        filename: path.join(__dirname, '..', '..', '.tmp/data.db'),
+      },
+      useNullAsDefault: true,
     },
   };
 };

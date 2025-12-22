@@ -1,0 +1,163 @@
+{
+  "kind": "singleType",
+  "collectionName": "landing_pages",
+  "info": {
+    "singularName": "landing-page",
+    "pluralName": "landing-pages",
+    "displayName": "Landing Page",
+    "description": "Main landing page with all sections"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "heroTopLabel": {
+      "type": "string",
+      "default": "PROFESSIONAL CLEANING SERVICES"
+    },
+    "heroHeading": {
+      "type": "string",
+      "default": "Premium Cleaning Services for Your Home & Business"
+    },
+    "heroSubheading": {
+      "type": "text",
+      "default": "Experience the difference with our professional cleaning team. We bring sparkle to every corner."
+    },
+    "heroButtonText": {
+      "type": "string",
+      "default": "Book Now"
+    },
+    "heroButtonLink": {
+      "type": "string",
+      "default": "/booking"
+    },
+    "heroFeature1": {
+      "type": "string",
+      "default": "Licensed & Insured"
+    },
+    "heroFeature2": {
+      "type": "string",
+      "default": "100% Satisfaction Guaranteed"
+    },
+    "heroBackgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "howItWorksHeading": {
+      "type": "string",
+      "default": "How It Works"
+    },
+    "step1Title": {
+      "type": "string",
+      "default": "Book Online"
+    },
+    "step1Description": {
+      "type": "text",
+      "default": "Choose your service and schedule a time that works for you."
+    },
+    "step1FeatureText": {
+      "type": "string",
+      "default": "Easy scheduling"
+    },
+    "step2Title": {
+      "type": "string",
+      "default": "We Clean"
+    },
+    "step2Description": {
+      "type": "text",
+      "default": "Our professional team arrives on time with all supplies needed."
+    },
+    "step2FeatureText": {
+      "type": "string",
+      "default": "Professional team"
+    },
+    "step3Title": {
+      "type": "string",
+      "default": "Enjoy"
+    },
+    "step3Description": {
+      "type": "text",
+      "default": "Relax in your spotless space. We guarantee your satisfaction."
+    },
+    "step3FeatureText": {
+      "type": "string",
+      "default": "Satisfaction guaranteed"
+    },
+    "howItWorksButtonText": {
+      "type": "string",
+      "default": "Get Started"
+    },
+    "checklistHeading": {
+      "type": "string",
+      "default": "Our Cleaning Checklist"
+    },
+    "checklistDescription": {
+      "type": "text",
+      "default": "We follow a comprehensive checklist to ensure nothing is missed."
+    },
+    "checklistItems": {
+      "type": "json"
+    },
+    "checklistButtonText": {
+      "type": "string",
+      "default": "View Full Checklist"
+    },
+    "comparisonHeading": {
+      "type": "string",
+      "default": "Why Choose Clensy?"
+    },
+    "comparisonDescription": {
+      "type": "text",
+      "default": "See how we compare to other cleaning services."
+    },
+    "comparisonFeatures": {
+      "type": "json"
+    },
+    "comparisonButtonText": {
+      "type": "string",
+      "default": "Book Now"
+    },
+    "reviewsHeading": {
+      "type": "string",
+      "default": "What Our Clients Say"
+    },
+    "reviewsButtonText": {
+      "type": "string",
+      "default": "See All Reviews"
+    },
+    "testimonials": {
+      "type": "json"
+    },
+    "ctaHeading": {
+      "type": "string",
+      "default": "Ready for a Cleaner Space?"
+    },
+    "ctaDescription": {
+      "type": "text",
+      "default": "Book your cleaning service today and experience the Clensy difference."
+    },
+    "ctaLeftCardTitle": {
+      "type": "string",
+      "default": "Residential Cleaning"
+    },
+    "ctaLeftCardDescription": {
+      "type": "text"
+    },
+    "ctaLeftCardButtonText": {
+      "type": "string",
+      "default": "Book Home Cleaning"
+    },
+    "ctaRightCardTitle": {
+      "type": "string",
+      "default": "Commercial Cleaning"
+    },
+    "ctaRightCardDescription": {
+      "type": "text"
+    },
+    "ctaRightCardButtonText": {
+      "type": "string",
+      "default": "Get a Quote"
+    }
+  }
+}
