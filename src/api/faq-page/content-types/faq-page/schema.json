@@ -5,82 +5,175 @@
     "singularName": "faq-page",
     "pluralName": "faq-pages",
     "displayName": "FAQ Page",
-    "description": "FAQ page content and settings"
+    "description": "FAQ page content with full SEO"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
+    "seoTitle": {
+      "type": "string",
+      "default": "FAQ | Frequently Asked Questions | Clensy Cleaning Services"
+    },
+    "seoMetaDescription": {
+      "type": "text",
+      "default": "Find answers to common questions about Clensy cleaning services, booking, pricing, and more. Get the information you need about our professional cleaning."
+    },
+    "seoKeywords": {
+      "type": "text",
+      "default": "cleaning FAQ, cleaning questions, house cleaning FAQ, professional cleaning questions, Clensy FAQ"
+    },
+    "seoCanonicalUrl": {
+      "type": "string",
+      "default": "https://clensy.com/faq"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string",
+      "default": "FAQ | Clensy Cleaning Services"
+    },
+    "ogDescription": {
+      "type": "text",
+      "default": "Get answers to your cleaning questions. Learn about our services, pricing, and booking process."
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "ogImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847616/shutterstock_2209715823_1_x80cn8.jpg"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyStartScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
     "heroTopLabel": {
       "type": "string",
       "default": "Answers to your questions"
     },
     "heroHeading": {
       "type": "string",
-      "default": "Frequently Asked Questions"
+      "default": "Frequently Asked <blue>Questions</blue>"
     },
     "heroDescription": {
-      "type": "text"
+      "type": "text",
+      "default": "Find answers to common questions about our cleaning services, booking process, and pricing. Can't find what you're looking for? Contact us directly for personalized assistance."
+    },
+    "heroBackgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "heroBackgroundImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847616/shutterstock_2209715823_1_x80cn8.jpg"
     },
     "faqCategories": {
-      "type": "json"
-    },
-    "faqItems": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.faq-item"
+      "type": "json",
+      "default": {
+        "general": {
+          "name": "General Questions",
+          "questions": [
+            {"question": "What areas do you serve?", "answer": "We provide cleaning services throughout Northern New Jersey, including Bergen, Essex, Hudson, Passaic, and Union counties. We serve all major cities and towns within these counties."},
+            {"question": "Are your cleaners background checked?", "answer": "Yes, all of our cleaning professionals undergo thorough background checks before joining our team. We prioritize your safety and security, and only employ trustworthy individuals with verified credentials."},
+            {"question": "Are you insured and bonded?", "answer": "Yes, we are fully insured and bonded. This provides protection for both our clients and our team in the rare event of an accident or damage during service."},
+            {"question": "What cleaning products do you use?", "answer": "We use a combination of industry-grade professional cleaning products and eco-friendly options. If you have specific preferences or concerns about allergies, we're happy to accommodate your needs with alternative products."},
+            {"question": "Do I need to be home during the cleaning?", "answer": "No, you don't need to be home during the cleaning service. Many of our clients provide a key or access instructions. We ensure secure handling of all property access methods and can arrange for secure key return or storage."}
+          ]
+        }
+      }
     },
     "stillHaveQuestionsHeading": {
       "type": "string",
       "default": "Still Have Questions?"
     },
     "stillHaveQuestionsDescription": {
-      "type": "text"
+      "type": "text",
+      "default": "Here are some other topics our customers frequently ask about."
     },
     "stillHaveQuestionsCards": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.cta-card"
+      "type": "json",
+      "default": [
+        {"title": "First-Time Customers", "description": "Learn what to expect during your first cleaning appointment and how to prepare your space.", "buttonText": "Get More Information", "buttonLink": "/contact", "icon": "clock"},
+        {"title": "Pricing & Estimates", "description": "Learn more about our transparent pricing structure and how to get an accurate estimate for your property.", "buttonText": "View Pricing", "buttonLink": "/booking", "icon": "credit-card"},
+        {"title": "Service Areas", "description": "Find out if we service your area and learn about our coverage throughout Northern New Jersey.", "buttonText": "Check Service Areas", "buttonLink": "/locations", "icon": "calendar"}
+      ]
     },
     "contactSectionHeading": {
       "type": "string",
       "default": "Can't Find Your Answer?"
     },
     "contactSectionDescription": {
-      "type": "text"
+      "type": "text",
+      "default": "Our customer service team is ready to help with any questions not addressed in our FAQ section. Contact us for personalized assistance."
+    },
+    "contactEmailHeading": {
+      "type": "string",
+      "default": "Email Us"
+    },
+    "contactEmailDescription": {
+      "type": "string",
+      "default": "Send us a message and we'll respond within 24 hours."
     },
     "contactEmail": {
-      "type": "string"
+      "type": "string",
+      "default": "info@clensy.com"
+    },
+    "contactCallHeading": {
+      "type": "string",
+      "default": "Call Us"
+    },
+    "contactCallDescription": {
+      "type": "string",
+      "default": "Speak with our customer service team directly."
     },
     "contactPhone": {
-      "type": "string"
+      "type": "string",
+      "default": "(551) 305-4081"
+    },
+    "contactButtonText": {
+      "type": "string",
+      "default": "Contact Us"
     },
     "trustIndicators": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.trust-indicator"
-    },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
-    },
-    "openGraph": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.open-graph"
-    },
-    "schema": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.schema-template"
-    },
-    "scripts": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.script-injection"
+      "type": "json",
+      "default": [
+        {"number": "1000+", "description": "Questions Answered"},
+        {"number": "24/7", "description": "Online Support"},
+        {"number": "5.0", "description": "Customer Satisfaction"},
+        {"number": "15+", "description": "Years of Experience"}
+      ]
     }
   }
 }
-

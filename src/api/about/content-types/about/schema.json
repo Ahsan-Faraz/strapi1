@@ -5,13 +5,79 @@
     "singularName": "about",
     "pluralName": "abouts",
     "displayName": "About Page",
-    "description": "About us page content"
+    "description": "About us page content with full SEO"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
+    "seoTitle": {
+      "type": "string",
+      "default": "About Clensy | Professional Cleaning Services in New Jersey"
+    },
+    "seoMetaDescription": {
+      "type": "text",
+      "default": "Learn about Clensy - New Jersey's trusted professional cleaning company. Our story, mission, and commitment to exceptional cleaning services."
+    },
+    "seoKeywords": {
+      "type": "text",
+      "default": "about clensy, cleaning company, professional cleaners, New Jersey cleaning service, our story"
+    },
+    "seoCanonicalUrl": {
+      "type": "string",
+      "default": "https://clensy.com/company/about"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string",
+      "default": "About Clensy | Professional Cleaning Services"
+    },
+    "ogDescription": {
+      "type": "text",
+      "default": "Discover the Clensy difference. Professional, reliable cleaning services for homes and businesses."
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "ogImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847413/shutterstock_2138293517_1_nqcmei.jpg"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyStartScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
     "heroHeading": {
       "type": "string",
       "default": "About Clensy"
@@ -20,93 +86,167 @@
       "type": "string",
       "default": "Raising the Standard, One Clean at a Time."
     },
+    "heroBackgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "heroBackgroundImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750069427/website-images/guvnsgfqcmcx8k1gusum.jpg"
+    },
     "ourStoryHeading": {
       "type": "string",
       "default": "Our Story"
     },
-    "ourStoryContent": {
-      "type": "richtext"
+    "ourStoryParagraph1": {
+      "type": "text",
+      "default": "Clensy was built to solve a problem — the frustrating experience of unreliable cleaners who are late, don't communicate, and leave you wondering if the job will ever be done right."
+    },
+    "ourStoryParagraph2": {
+      "type": "text",
+      "default": "We set out to create something better. A company that not only delivers amazing results — but makes the entire experience seamless from start to finish."
+    },
+    "ourStoryParagraph3": {
+      "type": "text",
+      "default": "Whether you're managing a busy home, multiple Airbnb properties, or a commercial space that needs to stay spotless and presentable, Clensy is your go-to team."
     },
     "ourStoryImage": {
       "type": "media",
       "allowedTypes": ["images"],
       "multiple": false
     },
+    "ourStoryImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847413/shutterstock_2138293517_1_nqcmei.jpg"
+    },
     "whyWeStartedHeading": {
-      "type": "string"
+      "type": "string",
+      "default": "Why We Started"
     },
     "whyWeStartedSubtitle": {
-      "type": "string"
+      "type": "string",
+      "default": "Let's be honest: the cleaning industry is broken."
     },
-    "whyWeStartedQuote": {
-      "type": "text"
+    "whyWeStartedQuoteText": {
+      "type": "text",
+      "default": "My cleaner didn't show up. No one responded. The job was half-done."
     },
-    "whyWeStartedContent": {
-      "type": "richtext"
+    "whyWeStartedParagraph1": {
+      "type": "text",
+      "default": "We were tired of the low standards across the industry – Whether it's flaky independent cleaners or cookie-cutter franchises with zero customer service — it's hard to find a company that actually cares and does the job right."
+    },
+    "whyWeStartedParagraph2": {
+      "type": "text",
+      "default": "We listened. And then we built Clensy — a cleaning company that actually shows up, delivers exceptional results, and treats every client like a priority."
+    },
+    "whyWeStartedParagraph3": {
+      "type": "text",
+      "default": "We know that when you book a cleaning, you want peace of mind — not more headaches."
     },
     "whatMakesUsDifferentHeading": {
-      "type": "string"
+      "type": "string",
+      "default": "What Makes Us Different?"
     },
-    "differentiators": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.feature-item"
+    "residentialCommercialTitle": {
+      "type": "string",
+      "default": "Residential & Commercial Cleaning"
     },
-    "whatMakesUsDifferentImage": {
+    "residentialCommercialParagraph1": {
+      "type": "text",
+      "default": "From homes and apartments to offices, retail spaces, gyms, medical facilities, and even construction sites — if it's indoors and needs to be cleaned, we've got it covered."
+    },
+    "residentialCommercialParagraph2": {
+      "type": "text",
+      "default": "Not sure if we handle your specific needs? Chances are, we do. If you're looking for something custom, head over to our Contact Us page or give us a call. We're happy to create a tailored plan that fits exactly what you're looking for."
+    },
+    "eliteTeamTitle": {
+      "type": "string",
+      "default": "Elite Team"
+    },
+    "eliteTeamParagraph1": {
+      "type": "text",
+      "default": "Out of every 100 applicants, we only hire 1 cleaner. Seriously. Our hiring process is extensive, and only the best make it through."
+    },
+    "eliteTeamParagraph2": {
+      "type": "text",
+      "default": "We're fully licensed, bonded, and insured, so you can feel confident knowing your home, business, or property is in trusted, professional hands."
+    },
+    "eliteTeamImage": {
       "type": "media",
       "allowedTypes": ["images"],
       "multiple": false
     },
+    "eliteTeamImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847481/shutterstock_2200915291_vewsyn.jpg"
+    },
     "clientFocusedTechHeading": {
-      "type": "string"
+      "type": "string",
+      "default": "Client-Focused Tech"
     },
     "clientFocusedTechFeatures": {
-      "type": "json"
+      "type": "json",
+      "default": ["Customer portal to manage your bookings", "Text/email reminders before every job", "Real-time ETA when your cleaner is en route", "Secure online payments for convenience"]
     },
     "whoWeServeHeading": {
-      "type": "string"
+      "type": "string",
+      "default": "Who We Serve"
     },
     "whoWeServeSubtitle": {
-      "type": "string"
+      "type": "string",
+      "default": "Clensy is made for people and businesses who expect more from a cleaning company."
     },
     "customerTypes": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.feature-item"
+      "type": "json",
+      "default": [
+        {"title": "Busy parents", "description": "Who need a safe, clean home without the stress"},
+        {"title": "Professionals and entrepreneurs", "description": "Focused on growing, not cleaning"},
+        {"title": "Property managers and business owners", "description": "Who need reliable commercial upkeep"},
+        {"title": "Airbnb hosts", "description": "Who demand fast, spotless turnovers"},
+        {"title": "Contractors or developers", "description": "Who need sharp post-construction cleanup"},
+        {"title": "Anyone who values quality", "description": "And needs a trustworthy cleaning service"}
+      ]
     },
     "ourMissionHeading": {
-      "type": "string"
+      "type": "string",
+      "default": "Our Mission"
     },
-    "ourMissionContent": {
-      "type": "richtext"
+    "ourMissionParagraph1": {
+      "type": "text",
+      "default": "We're obsessed with making the cleaning process feel effortless for our clients. You book. We show up. We do the job right — the first time."
+    },
+    "ourMissionParagraph2": {
+      "type": "text",
+      "default": "No rescheduling nightmares. No communication breakdowns. No wondering if your space was actually cleaned."
+    },
+    "ourMissionParagraph3": {
+      "type": "text",
+      "default": "With Clensy, you get a team that's committed to your satisfaction — from the first message to the final wipe-down."
+    },
+    "ourMissionParagraph4": {
+      "type": "text",
+      "default": "If you're looking for a company that understands the value of your time, respects your space, and consistently delivers results — welcome to Clensy."
+    },
+    "ourMissionClosingLine": {
+      "type": "string",
+      "default": "We're here to raise the standard."
     },
     "ctaHeading": {
-      "type": "string"
+      "type": "string",
+      "default": "Ready to Experience the Clensy Difference?"
     },
     "ctaDescription": {
-      "type": "text"
+      "type": "text",
+      "default": "Join thousands of satisfied customers who've discovered what a truly exceptional cleaning service feels like."
     },
     "ctaBookButtonText": {
-      "type": "string"
+      "type": "string",
+      "default": "Book Your Cleaning"
     },
     "ctaContactButtonText": {
-      "type": "string"
-    },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
-    },
-    "openGraph": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.open-graph"
-    },
-    "scripts": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.script-injection"
+      "type": "string",
+      "default": "Contact Us"
     }
   }
 }
-

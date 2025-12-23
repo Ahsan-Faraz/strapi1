@@ -5,59 +5,220 @@
     "singularName": "contact",
     "pluralName": "contacts",
     "displayName": "Contact Page",
-    "description": "Contact page content"
+    "description": "Contact page content with full SEO"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
+    "seoTitle": {
+      "type": "string",
+      "default": "Contact Us | Clensy Professional Cleaning Services"
+    },
+    "seoMetaDescription": {
+      "type": "text",
+      "default": "Get in touch with Clensy for professional cleaning services in New Jersey. Call us, email us, or fill out our contact form for a free quote."
+    },
+    "seoKeywords": {
+      "type": "text",
+      "default": "contact clensy, cleaning service contact, New Jersey cleaning company, get a quote, cleaning consultation"
+    },
+    "seoCanonicalUrl": {
+      "type": "string",
+      "default": "https://clensy.com/contact"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string",
+      "default": "Contact Clensy | Professional Cleaning Services"
+    },
+    "ogDescription": {
+      "type": "text",
+      "default": "Ready for a cleaner space? Contact Clensy today for professional cleaning services."
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "ogImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847694/shutterstock_2478230727_bt7fos.jpg"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyStartScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
+    "heroTopLabel": {
+      "type": "string",
+      "default": "We'd Love To Hear From You"
+    },
     "heroHeading": {
-      "type": "string"
+      "type": "string",
+      "default": "Let's Start A <blue>Conversation</blue>"
     },
-    "heroSubheading": {
-      "type": "text"
+    "heroDescription": {
+      "type": "text",
+      "default": "Have questions or need a personalized cleaning solution? Our team is ready to provide the support you need for all your requirements."
     },
-    "contactEmail": {
-      "type": "string"
+    "heroSendMessageButtonText": {
+      "type": "string",
+      "default": "Send a Message"
     },
-    "contactPhone": {
-      "type": "string"
+    "heroSupportText": {
+      "type": "string",
+      "default": "24/7 Support"
     },
-    "contactAddress": {
-      "type": "text"
+    "heroResponseText": {
+      "type": "string",
+      "default": "Quick Response"
     },
-    "operatingHours": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.operating-hours"
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
     },
-    "mapEmbedCode": {
-      "type": "text"
+    "heroImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847694/shutterstock_2478230727_bt7fos.jpg"
     },
-    "formHeading": {
-      "type": "string"
+    "trustMainText": {
+      "type": "string",
+      "default": "Trusted by 5,000+ Customers"
     },
-    "formSubheading": {
-      "type": "text"
+    "trustSubtitle": {
+      "type": "string",
+      "default": "Professional cleaning for every need"
     },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
+    "serviceTags": {
+      "type": "json",
+      "default": [{"name": "Residential"}, {"name": "Commercial"}, {"name": "Specialized"}]
     },
-    "openGraph": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.open-graph"
+    "statsIndicators": {
+      "type": "json",
+      "default": [
+        {"number": "24/7", "description": "Customer Support"},
+        {"number": "1h", "description": "Response Time"},
+        {"number": "4.9", "description": "Customer Rating"},
+        {"number": "100%", "description": "Satisfaction Guarantee"}
+      ]
     },
-    "scripts": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.script-injection"
+    "contactSectionTitle": {
+      "type": "string",
+      "default": "Contact Information"
+    },
+    "phoneTitle": {
+      "type": "string",
+      "default": "Phone"
+    },
+    "phoneDescription": {
+      "type": "string",
+      "default": "Speak directly with our customer service team"
+    },
+    "phoneNumber": {
+      "type": "string",
+      "default": "(551) 305-4081"
+    },
+    "emailTitle": {
+      "type": "string",
+      "default": "Email"
+    },
+    "emailDescription": {
+      "type": "string",
+      "default": "Get a response within 24 hours"
+    },
+    "emailAddress": {
+      "type": "string",
+      "default": "info@clensy.com"
+    },
+    "officeTitle": {
+      "type": "string",
+      "default": "Office Location"
+    },
+    "officeDescription": {
+      "type": "string",
+      "default": "Our headquarters"
+    },
+    "addressLine1": {
+      "type": "string",
+      "default": "123 Cleaning Street"
+    },
+    "addressLine2": {
+      "type": "string",
+      "default": "Suite 456"
+    },
+    "cityStateZip": {
+      "type": "string",
+      "default": "Jersey City, NJ 07302"
+    },
+    "businessHoursTitle": {
+      "type": "string",
+      "default": "Business Hours"
+    },
+    "businessHoursDescription": {
+      "type": "string",
+      "default": "When you can reach us"
+    },
+    "businessHours": {
+      "type": "json",
+      "default": [
+        {"day": "Monday - Friday", "hours": "8:00 AM - 6:00 PM"},
+        {"day": "Saturday", "hours": "9:00 AM - 3:00 PM"},
+        {"day": "Sunday", "hours": "Closed"}
+      ]
+    },
+    "immediateAssistanceTitle": {
+      "type": "string",
+      "default": "Need Immediate Assistance?"
+    },
+    "immediateAssistanceDescription": {
+      "type": "text",
+      "default": "Our customer support team is available during business hours to help you with any questions."
+    },
+    "immediateAssistanceButtonText": {
+      "type": "string",
+      "default": "Call Us Now"
+    },
+    "consultationHeading": {
+      "type": "string",
+      "default": "Need a Personalized Cleaning Solution?"
+    },
+    "consultationDescription": {
+      "type": "text",
+      "default": "Schedule a consultation with our cleaning experts to discuss your unique requirements and get a customized cleaning plan tailored to your specific needs."
+    },
+    "consultationButtonText": {
+      "type": "string",
+      "default": "Schedule a Consultation"
     }
   }
 }
-
-
-

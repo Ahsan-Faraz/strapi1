@@ -15,6 +15,108 @@ const ADMIN_EMAIL = process.env.STRAPI_ADMIN_EMAIL;
 const ADMIN_PASSWORD = process.env.STRAPI_ADMIN_PASSWORD;
 
 const landingPageData = {
+  // SEO Section
+  seoTitle: "Professional Cleaning Services in New Jersey | Clensy - Home & Office Cleaning",
+  seoMetaDescription: "Clensy offers professional cleaning services for homes and offices in New Jersey. Book online in 30 seconds. 100% satisfaction guaranteed. Licensed & insured cleaners.",
+  seoKeywords: "cleaning services, house cleaning, office cleaning, professional cleaners, New Jersey cleaning, maid service, deep cleaning, routine cleaning, move in cleaning, move out cleaning",
+  seoCanonicalUrl: "https://clensy.com",
+  seoRobots: "index, follow",
+  ogTitle: "Professional Cleaning Services | Clensy",
+  ogDescription: "Book professional cleaning services online in 30 seconds. 100% satisfaction guaranteed. Licensed & insured cleaners in New Jersey.",
+  ogImageUrl: "https://res.cloudinary.com/dgjmm3usy/image/upload/v1751356490/clensy-og-image.jpg",
+  ogType: "website",
+  twitterCard: "summary_large_image",
+  twitterTitle: "Professional Cleaning Services | Clensy",
+  twitterDescription: "Book professional cleaning services online in 30 seconds. 100% satisfaction guaranteed.",
+  schemaJsonLd: {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Clensy",
+    "description": "Professional cleaning services for homes and offices in New Jersey. We offer routine cleaning, deep cleaning, move in/out cleaning, and commercial cleaning services.",
+    "url": "https://clensy.com",
+    "telephone": "(551) 305-4081",
+    "email": "info@clensy.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "New Jersey",
+      "addressRegion": "NJ",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.7128",
+      "longitude": "-74.0060"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "16:00"
+      }
+    ],
+    "priceRange": "$$",
+    "image": "https://clensy.com/logo.png",
+    "sameAs": [
+      "https://facebook.com/clensy",
+      "https://instagram.com/clensy"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "150"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Cleaning Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Routine Cleaning",
+            "description": "Regular house cleaning service with our 50-point checklist"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Deep Cleaning",
+            "description": "Thorough deep cleaning service for a spotless home"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Move In/Out Cleaning",
+            "description": "Complete cleaning for moving transitions"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Airbnb Cleaning",
+            "description": "Professional cleaning for short-term rentals"
+          }
+        }
+      ]
+    }
+  },
+  additionalSchemas: [],
+  headScripts: "",
+  bodyStartScripts: "",
+  bodyEndScripts: "",
+  customCss: "",
+
   // Hero Section
   heroTopLabel: "Professional Cleaning Services",
   heroHeading: "Professional cleaning for your home",
@@ -23,6 +125,8 @@ const landingPageData = {
   heroButtonLink: "/booking",
   heroFeature1: "30-second pricing",
   heroFeature2: "100% Satisfaction guaranteed",
+  heroBackgroundImageUrl: "https://res.cloudinary.com/dgjmm3usy/image/upload/v1751356490/shutterstock_2392393465__3_.jpg-0LMVCo8sUiQDVXDeUykdUtzKRTrvHa_qkbjiu.jpg",
+  heroBackgroundImageAlt: "Professional cleaning service - clean modern kitchen",
   
   // How It Works Section
   howItWorksHeading: "How It Works",
