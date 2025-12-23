@@ -5,12 +5,156 @@
     "singularName": "landing-page",
     "pluralName": "landing-pages",
     "displayName": "Landing Page",
-    "description": "Main landing page with all sections"
+    "description": "Main landing page with all sections and SEO"
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
+    "seoTitle": {
+      "type": "string",
+      "default": "Professional Cleaning Services | Clensy - Home & Office Cleaning"
+    },
+    "seoMetaDescription": {
+      "type": "text",
+      "default": "Clensy offers professional cleaning services for homes and offices in New Jersey. Book online in 30 seconds. 100% satisfaction guaranteed. Licensed & insured cleaners."
+    },
+    "seoKeywords": {
+      "type": "text",
+      "default": "cleaning services, house cleaning, office cleaning, professional cleaners, New Jersey cleaning, maid service, deep cleaning, routine cleaning"
+    },
+    "seoCanonicalUrl": {
+      "type": "string",
+      "default": "https://clensy.com"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string",
+      "default": "Professional Cleaning Services | Clensy"
+    },
+    "ogDescription": {
+      "type": "text",
+      "default": "Book professional cleaning services online in 30 seconds. 100% satisfaction guaranteed."
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "ogImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1751356490/clensy-og-image.jpg"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json",
+      "default": {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Clensy",
+        "description": "Professional cleaning services for homes and offices in New Jersey",
+        "url": "https://clensy.com",
+        "telephone": "(551) 305-4081",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "New Jersey",
+          "addressRegion": "NJ",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "40.7128",
+          "longitude": "-74.0060"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "09:00",
+            "closes": "16:00"
+          }
+        ],
+        "priceRange": "$$",
+        "image": "https://clensy.com/logo.png",
+        "sameAs": [
+          "https://facebook.com/clensy",
+          "https://instagram.com/clensy"
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "150"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Cleaning Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Routine Cleaning",
+                "description": "Regular house cleaning service"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Deep Cleaning",
+                "description": "Thorough deep cleaning service"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Move In/Out Cleaning",
+                "description": "Cleaning for moving transitions"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "additionalSchemas": {
+      "type": "json",
+      "default": []
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyStartScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
     "heroTopLabel": {
       "type": "string",
       "default": "PROFESSIONAL CLEANING SERVICES"
@@ -43,6 +187,14 @@
       "type": "media",
       "multiple": false,
       "allowedTypes": ["images"]
+    },
+    "heroBackgroundImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1751356490/shutterstock_2392393465__3_.jpg"
+    },
+    "heroBackgroundImageAlt": {
+      "type": "string",
+      "default": "Professional cleaning service - clean modern kitchen"
     },
     "howItWorksHeading": {
       "type": "string",
