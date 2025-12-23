@@ -5,36 +5,132 @@
     "singularName": "terms-of-service",
     "pluralName": "terms-of-services",
     "displayName": "Terms of Service",
-    "description": "Terms of service page content"
+    "description": "Terms of service page content with full SEO"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "seoTitle": {
       "type": "string",
-      "default": "Terms of Service"
+      "default": "Terms of Service | Clensy Cleaning Services"
+    },
+    "seoMetaDescription": {
+      "type": "text",
+      "default": "Read Clensy's terms of service. Understand the terms and conditions for using our professional cleaning services."
+    },
+    "seoKeywords": {
+      "type": "text",
+      "default": "terms of service, terms and conditions, cleaning service terms, Clensy terms"
+    },
+    "seoCanonicalUrl": {
+      "type": "string",
+      "default": "https://clensy.com/terms-of-service"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string",
+      "default": "Terms of Service | Clensy"
+    },
+    "ogDescription": {
+      "type": "text",
+      "default": "Terms and conditions for using Clensy cleaning services."
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "heroHeading": {
+      "type": "string",
+      "default": "Terms & Conditions"
+    },
+    "heroDescription": {
+      "type": "text",
+      "default": "Please read these terms and conditions carefully before using our services"
+    },
+    "websiteUrl": {
+      "type": "string",
+      "default": "clensy.com"
+    },
+    "companyEmail": {
+      "type": "string",
+      "default": "info@clensy.com"
+    },
+    "companyPhone": {
+      "type": "string",
+      "default": "(551) 305-4081"
     },
     "lastUpdated": {
-      "type": "date"
+      "type": "string",
+      "default": "December 2024"
     },
-    "content": {
-      "type": "richtext",
-      "required": true
+    "agreementDescription": {
+      "type": "text",
+      "default": "By booking any service with Clensy LLC ('Clensy Cleaning'), either through our website, over the phone, or by email/text, you agree to comply with these Terms & Conditions. If you do not agree with any part of these terms, do not proceed with booking a service."
     },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
-    },
-    "openGraph": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.open-graph"
+    "sections": {
+      "type": "json",
+      "default": [
+        {
+          "title": "1. Service Agreement",
+          "content": "By booking a cleaning service with Clensy, you agree to these terms and conditions. Our services are provided on an as-is basis, and we reserve the right to refuse service to anyone for any reason.",
+          "order": 1
+        },
+        {
+          "title": "2. Booking and Cancellation",
+          "content": "• Bookings can be made online, by phone, or email\n• Cancellations must be made at least 24 hours before the scheduled service\n• Late cancellations (less than 24 hours) may incur a cancellation fee of up to 50% of the service cost\n• No-shows will be charged the full service amount",
+          "order": 2
+        },
+        {
+          "title": "3. Payment Terms",
+          "content": "• Payment is due upon completion of service unless otherwise arranged\n• We accept major credit cards, debit cards, and electronic payments\n• Recurring service customers may set up automatic billing\n• Prices are subject to change with 30 days notice for recurring customers",
+          "order": 3
+        },
+        {
+          "title": "4. Service Guarantee",
+          "content": "We stand behind our work with a 100% satisfaction guarantee. If you're not completely satisfied with our cleaning, contact us within 24 hours and we'll return to re-clean the areas of concern at no additional charge.",
+          "order": 4
+        },
+        {
+          "title": "5. Access and Security",
+          "content": "• You must provide safe and reasonable access to your property\n• If providing keys or access codes, you authorize our team to enter your property\n• We maintain strict security protocols for all access information\n• Pets should be secured during cleaning for safety",
+          "order": 5
+        },
+        {
+          "title": "6. Liability and Insurance",
+          "content": "• Clensy is fully insured and bonded\n• We are not liable for damage to items not properly secured or fragile items not disclosed\n• Claims for damage must be reported within 24 hours of service\n• Our liability is limited to the cost of repair or replacement, not exceeding the service cost",
+          "order": 6
+        },
+        {
+          "title": "7. Customer Responsibilities",
+          "content": "• Ensure a safe working environment for our team\n• Disclose any hazardous materials or conditions\n• Secure valuables and fragile items\n• Provide accurate information about your property",
+          "order": 7
+        },
+        {
+          "title": "8. Privacy",
+          "content": "Your privacy is important to us. Please refer to our Privacy Policy for information on how we collect, use, and protect your personal information.",
+          "order": 8
+        },
+        {
+          "title": "9. Changes to Terms",
+          "content": "We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting to our website. Continued use of our services constitutes acceptance of modified terms.",
+          "order": 9
+        }
+      ]
     }
   }
 }
-
-
-
