@@ -353,7 +353,6 @@ const privacyPolicyData = {
   websiteUrl: "clensy.com",
   companyEmail: "info@clensy.com",
   companyPhone: "(551) 305-4081",
-  lastUpdated: "December 2024",
   
   sections: [
     {
@@ -421,7 +420,6 @@ const termsOfServiceData = {
   websiteUrl: "clensy.com",
   companyEmail: "info@clensy.com",
   companyPhone: "(551) 305-4081",
-  lastUpdated: "December 2024",
   agreementDescription: "By booking any service with Clensy LLC ('Clensy Cleaning'), either through our website, over the phone, or by email/text, you agree to comply with these Terms & Conditions. If you do not agree with any part of these terms, do not proceed with booking a service.",
   
   sections: [

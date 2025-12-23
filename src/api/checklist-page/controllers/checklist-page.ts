@@ -1,3 +1,3 @@
 import { factories } from '@strapi/strapi';
 
-export default factories.createCoreController('api::checklist-page.checklist-page');
+export default factories.createCoreController('api::checklist-page.checklist-page' as any);
