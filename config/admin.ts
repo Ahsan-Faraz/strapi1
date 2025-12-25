@@ -73,8 +73,15 @@ const getPreviewPathname = (uid: string, { locale, document }: { locale?: string
 
 export default ({ env }) => {
   // Get environment variables for preview
-  const clientUrl = env('CLIENT_URL') || env('NEXT_PUBLIC_SITE_URL') || 'http://localhost:3000';
-  const previewSecret = env('PREVIEW_SECRET') || env('NEXT_PUBLIC_PREVIEW_SECRET') || 'your-secret-key';
+  // In production, use the production URL, otherwise use localhost for development
+  const isProduction = env('NODE_ENV') === 'production';
+  const clientUrl = env('CLIENT_URL') || 
+                    env('NEXT_PUBLIC_SITE_URL') || 
+                    (isProduction ? 'https://clensy2.0.vercel.app' : 'http://localhost:3000');
+  const previewSecret = env('PREVIEW_SECRET') || 
+                        env('NEXT_PUBLIC_PREVIEW_SECRET') || 
+                        env('STRAPI_PREVIEW_SECRET') ||
+                        'your-secret-key';
 
   return {
     auth: {
