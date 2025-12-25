@@ -27,6 +27,11 @@
     },
     "datePublished": {
       "type": "date"
+    },
+    "publisher": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.organization"
     }
   }
 }

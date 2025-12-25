@@ -33,6 +33,23 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.offer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
     }
   }
 }

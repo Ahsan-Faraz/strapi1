@@ -50,6 +50,35 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.aggregate-rating"
+    },
+    "description": {
+      "type": "text"
+    },
+    "logo": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "logoUrl": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "paymentAccepted": {
+      "type": "text"
+    },
+    "currenciesAccepted": {
+      "type": "string",
+      "default": "USD"
+    },
+    "hasMap": {
+      "type": "string"
     }
   }
 }
