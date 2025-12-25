@@ -105,11 +105,6 @@
     "excludeFromSitemap": {
       "type": "boolean",
       "default": false
-    },
-    "htmlBlocks": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.html-block"
     }
   }
 }
