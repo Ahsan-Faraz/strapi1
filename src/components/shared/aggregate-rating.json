@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_aggregate_ratings",
+  "info": {
+    "displayName": "Aggregate Rating",
+    "icon": "star",
+    "description": "Aggregate rating for reviews"
+  },
+  "options": {},
+  "attributes": {
+    "ratingValue": {
+      "type": "decimal",
+      "required": true
+    },
+    "bestRating": {
+      "type": "decimal",
+      "default": 5
+    },
+    "worstRating": {
+      "type": "decimal",
+      "default": 1
+    },
+    "ratingCount": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}
+

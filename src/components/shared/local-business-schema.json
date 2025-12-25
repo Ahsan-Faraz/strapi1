@@ -1,0 +1,56 @@
+{
+  "collectionName": "components_shared_local_business_schemas",
+  "info": {
+    "displayName": "LocalBusiness Schema",
+    "icon": "store",
+    "description": "Form-based LocalBusiness schema generator"
+  },
+  "options": {},
+  "attributes": {
+    "businessName": {
+      "type": "string",
+      "required": true
+    },
+    "businessType": {
+      "type": "enumeration",
+      "enum": ["LocalBusiness", "CleaningService", "HomeAndGardenBusiness"],
+      "default": "CleaningService"
+    },
+    "url": {
+      "type": "string"
+    },
+    "telephone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.postal-address"
+    },
+    "priceRange": {
+      "type": "enumeration",
+      "enum": ["$", "$$", "$$$", "$$$$"],
+      "default": "$$"
+    },
+    "openingHours": {
+      "type": "text"
+    },
+    "areaServed": {
+      "type": "text"
+    },
+    "serviceArea": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.geo-coordinates"
+    },
+    "aggregateRating": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.aggregate-rating"
+    }
+  }
+}
+

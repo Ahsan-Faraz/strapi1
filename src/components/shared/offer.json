@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_shared_offers",
+  "info": {
+    "displayName": "Offer",
+    "icon": "tag",
+    "description": "Offer component for service schema"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "priceCurrency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "availability": {
+      "type": "enumeration",
+      "enum": ["InStock", "OutOfStock", "PreOrder"],
+      "default": "InStock"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}
+

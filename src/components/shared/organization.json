@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shared_organizations",
+  "info": {
+    "displayName": "Organization",
+    "icon": "building",
+    "description": "Organization component for schema"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "string"
+    },
+    "sameAs": {
+      "type": "json"
+    }
+  }
+}
+

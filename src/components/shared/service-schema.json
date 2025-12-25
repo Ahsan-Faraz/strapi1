@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_shared_service_schemas",
+  "info": {
+    "displayName": "Service Schema",
+    "icon": "wrench",
+    "description": "Form-based Service schema generator"
+  },
+  "options": {},
+  "attributes": {
+    "serviceType": {
+      "type": "string",
+      "required": true
+    },
+    "provider": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.organization"
+    },
+    "areaServed": {
+      "type": "text"
+    },
+    "serviceArea": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.geo-coordinates"
+    },
+    "availableChannel": {
+      "type": "enumeration",
+      "enum": ["Online", "Phone", "InPerson"],
+      "default": "Online"
+    },
+    "offers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.offer"
+    }
+  }
+}
+

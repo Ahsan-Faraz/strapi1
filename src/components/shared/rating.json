@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_shared_ratings",
+  "info": {
+    "displayName": "Rating",
+    "icon": "star",
+    "description": "Rating component for reviews"
+  },
+  "options": {},
+  "attributes": {
+    "ratingValue": {
+      "type": "decimal",
+      "required": true
+    },
+    "bestRating": {
+      "type": "decimal",
+      "default": 5
+    },
+    "worstRating": {
+      "type": "decimal",
+      "default": 1
+    }
+  }
+}
+

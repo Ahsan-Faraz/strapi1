@@ -9,8 +9,29 @@
   "attributes": {
     "schemaType": {
       "type": "enumeration",
-      "enum": ["LocalBusiness", "Service", "FAQPage", "Review", "Article", "BreadcrumbList", "Organization"],
-      "required": true
+      "enum": ["LocalBusiness", "Service", "FAQPage", "Review", "Article", "BreadcrumbList", "Organization", "Custom"],
+      "required": true,
+      "default": "Custom"
+    },
+    "localBusiness": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.local-business-schema"
+    },
+    "service": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.service-schema"
+    },
+    "faqPage": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.faq-page-schema"
+    },
+    "review": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.review-schema"
     },
     "businessName": {
       "type": "string"

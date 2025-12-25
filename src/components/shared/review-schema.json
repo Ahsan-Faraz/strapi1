@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_shared_review_schemas",
+  "info": {
+    "displayName": "Review Schema",
+    "icon": "star",
+    "description": "Form-based Review/Testimonial schema generator"
+  },
+  "options": {},
+  "attributes": {
+    "itemReviewed": {
+      "type": "string",
+      "required": true
+    },
+    "reviewRating": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.rating"
+    },
+    "author": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.person"
+    },
+    "reviewBody": {
+      "type": "text",
+      "required": true
+    },
+    "datePublished": {
+      "type": "date"
+    }
+  }
+}
+

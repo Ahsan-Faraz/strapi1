@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_people",
+  "info": {
+    "displayName": "Person",
+    "icon": "user",
+    "description": "Person component for review author"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}
+

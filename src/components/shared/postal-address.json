@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_postal_addresses",
+  "info": {
+    "displayName": "Postal Address",
+    "icon": "map-pin",
+    "description": "Postal address component for schema"
+  },
+  "options": {},
+  "attributes": {
+    "streetAddress": {
+      "type": "string"
+    },
+    "addressLocality": {
+      "type": "string"
+    },
+    "addressRegion": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string"
+    },
+    "addressCountry": {
+      "type": "string",
+      "default": "US"
+    }
+  }
+}
+

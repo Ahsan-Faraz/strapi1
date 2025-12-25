@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_geo_coordinates",
+  "info": {
+    "displayName": "Geo Coordinates",
+    "icon": "map",
+    "description": "Geographic coordinates for service area"
+  },
+  "options": {},
+  "attributes": {
+    "latitude": {
+      "type": "decimal"
+    },
+    "longitude": {
+      "type": "decimal"
+    }
+  }
+}
+
