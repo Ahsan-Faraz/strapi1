@@ -1,0 +1,62 @@
+{
+  "collectionName": "components_shared_html_blocks",
+  "info": {
+    "displayName": "HTMLBlock",
+    "icon": "code",
+    "description": "Flexible HTML block that can be placed anywhere on the page"
+  },
+  "options": {},
+  "attributes": {
+    "blockName": {
+      "type": "string",
+      "required": false
+    },
+    "htmlContent": {
+      "type": "text",
+      "required": true
+    },
+    "placement": {
+      "type": "enumeration",
+      "enum": [
+        "after-hero",
+        "after-trust-indicators",
+        "after-included",
+        "after-features",
+        "after-how-it-works",
+        "after-benefits",
+        "after-testimonials",
+        "after-frequency",
+        "after-faq",
+        "before-cta",
+        "after-cta",
+        "before-footer",
+        "custom"
+      ],
+      "default": "after-hero",
+      "required": true
+    },
+    "customPosition": {
+      "type": "string",
+      "required": false
+    },
+    "cssClasses": {
+      "type": "string",
+      "required": false
+    },
+    "cssId": {
+      "type": "string",
+      "required": false
+    },
+    "order": {
+      "type": "integer",
+      "default": 0,
+      "required": false
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true,
+      "required": false
+    }
+  }
+}
+
