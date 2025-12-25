@@ -3,15 +3,31 @@
   "info": {
     "displayName": "ScriptInjection",
     "icon": "code",
-    "description": "Custom script/tracking code injection"
+    "description": "Custom script/tracking code injection with placement control"
   },
   "options": {},
   "attributes": {
     "headScripts": {
-      "type": "text"
+      "type": "text",
+      "required": false
+    },
+    "bodyStartScripts": {
+      "type": "text",
+      "required": false
     },
     "bodyEndScripts": {
-      "type": "text"
+      "type": "text",
+      "required": false
+    },
+    "perPageScript": {
+      "type": "text",
+      "required": false
+    },
+    "perPageScriptPlacement": {
+      "type": "enumeration",
+      "enum": ["head", "body-start", "body-end"],
+      "default": "body-end",
+      "required": false
     }
   }
 }
