@@ -1,5 +1,3 @@
-import type { StrapiApp } from '@strapi/strapi/admin';
-
 export default {
   config: {
     // Replace the Strapi logo in auth (login) views
@@ -37,9 +35,44 @@ export default {
     // Disable notifications about new Strapi releases
     notifications: { releases: false },
   },
-  bootstrap(app: StrapiApp) {
-    console.log('Strapi Admin Panel initialized');
-    //new
+  bootstrap() {
+    // Inject custom CSS to force sidebar expanded
+    const style = document.createElement('style');
+    style.textContent = `
+      /* Force left navigation sidebar to be expanded */
+      nav[aria-label="Main Navigation"] {
+        width: 224px !important;
+        min-width: 224px !important;
+      }
+      
+      /* Show text labels in sidebar */
+      nav[aria-label="Main Navigation"] span {
+        display: inline !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      /* Ensure nav items show full width */
+      nav[aria-label="Main Navigation"] a,
+      nav[aria-label="Main Navigation"] button {
+        justify-content: flex-start !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+      }
+      
+      /* Hide the collapse/expand toggle button */
+      nav[aria-label="Main Navigation"] button[aria-label="Collapse the navbar"],
+      nav[aria-label="Main Navigation"] button[aria-label="Expand the navbar"] {
+        display: none !important;
+      }
+      
+      /* Adjust main content area to account for expanded sidebar */
+      main {
+        margin-left: 224px !important;
+      }
+    `;
+    document.head.appendChild(style);
+    console.log('Strapi Admin Panel initialized with expanded sidebar');
   },
 };
 
