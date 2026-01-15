@@ -36,54 +36,10 @@ export default {
     tutorials: false,
     // Disable notifications about new Strapi releases
     notifications: { releases: false },
-    // Locales for the admin panel
-    locales: ['en'],
   },
   bootstrap(app: StrapiApp) {
     console.log('Strapi Admin Panel initialized');
-    
-    // Inject custom CSS to keep sidebar expanded with visible labels
-    const style = document.createElement('style');
-    style.innerHTML = `
-      /* Keep sidebar always expanded */
-      nav[aria-label="Main Navigation"] {
-        width: 230px !important;
-        min-width: 230px !important;
-      }
-      
-      /* Always show menu item labels */
-      nav[aria-label="Main Navigation"] span {
-        display: inline !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        width: auto !important;
-        overflow: visible !important;
-      }
-      
-      /* Hide the collapse button */
-      nav[aria-label="Main Navigation"] button[aria-label="Collapse the navbar"],
-      nav[aria-label="Main Navigation"] button[aria-label="Expand the navbar"] {
-        display: none !important;
-      }
-      
-      /* Ensure main content adjusts */
-      main {
-        margin-left: 230px !important;
-      }
-      
-      /* Style menu items for better readability */
-      nav[aria-label="Main Navigation"] a,
-      nav[aria-label="Main Navigation"] button {
-        padding: 10px 16px !important;
-        font-size: 14px !important;
-      }
-      
-      /* Make sure the logo area is visible */
-      nav[aria-label="Main Navigation"] > div:first-child {
-        padding: 16px !important;
-      }
-    `;
-    document.head.appendChild(style);
+    //new
   },
 };
 
