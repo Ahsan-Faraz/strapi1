@@ -4,6 +4,23 @@ import type { StrapiApp } from '@strapi/strapi/admin';
  * Finds and replaces "Content Manager" with "Maaz" throughout the admin panel
  */
 function replaceContentManagerWithMaaz(): void {
+  // Target the specific h2 heading in the sidebar with class pattern
+  const sidebarHeadings = document.querySelectorAll('h2');
+  sidebarHeadings.forEach((h2) => {
+    if (h2.textContent?.trim() === 'Content Manager') {
+      h2.textContent = 'Maaz';
+    }
+  });
+
+  // Also target by the specific class pattern (sc-bRKDuR, sc-fhHczv)
+  const styledHeadings = document.querySelectorAll('h2[class*="sc-"]');
+  styledHeadings.forEach((h2) => {
+    if (h2.textContent?.trim() === 'Content Manager') {
+      h2.textContent = 'Maaz';
+    }
+  });
+
+  // Generic text node replacement for any other occurrences
   const replaceText = (node: Node): void => {
     if (node.nodeType === Node.TEXT_NODE) {
       if (node.textContent && node.textContent.includes('Content Manager')) {
