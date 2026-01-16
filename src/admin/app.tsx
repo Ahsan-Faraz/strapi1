@@ -1,84 +1,5 @@
 import type { StrapiApp } from '@strapi/strapi/admin';
 
-/**
- * Finds and replaces "Content Manager" with "Maaz" throughout the admin panel
- */
-function replaceContentManagerWithMaaz(): void {
-  // Target the specific h2 heading in the sidebar with class pattern
-  const sidebarHeadings = document.querySelectorAll('h2');
-  sidebarHeadings.forEach((h2) => {
-    if (h2.textContent?.trim() === 'Content Manager') {
-      h2.textContent = 'Maaz';
-    }
-  });
-
-  // Also target by the specific class pattern (sc-bRKDuR, sc-fhHczv)
-  const styledHeadings = document.querySelectorAll('h2[class*="sc-"]');
-  styledHeadings.forEach((h2) => {
-    if (h2.textContent?.trim() === 'Content Manager') {
-      h2.textContent = 'Maaz';
-    }
-  });
-
-  // Generic text node replacement for any other occurrences
-  const replaceText = (node: Node): void => {
-    if (node.nodeType === Node.TEXT_NODE) {
-      if (node.textContent && node.textContent.includes('Content Manager')) {
-        node.textContent = node.textContent.replace(/Content Manager/g, 'Maaz');
-      }
-      if (node.textContent && node.textContent.includes('Content manager')) {
-        node.textContent = node.textContent.replace(/Content manager/g, 'Maaz');
-      }
-    } else {
-      node.childNodes.forEach(replaceText);
-    }
-  };
-
-  // Replace in document body
-  replaceText(document.body);
-
-  // Also check and replace in document title
-  if (document.title.includes('Content Manager')) {
-    document.title = document.title.replace(/Content Manager/g, 'Maaz');
-  }
-}
-
-/**
- * Sets up a MutationObserver to continuously watch for DOM changes
- * and replace "Content Manager" with "Maaz" as new elements are added
- */
-function setupContentManagerObserver(): void {
-  // Initial replacement
-  replaceContentManagerWithMaaz();
-
-  // Create observer to watch for DOM changes
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      // Check added nodes
-      mutation.addedNodes.forEach((node) => {
-        if (node.nodeType === Node.ELEMENT_NODE || node.nodeType === Node.TEXT_NODE) {
-          replaceContentManagerWithMaaz();
-        }
-      });
-      
-      // Check if text content changed
-      if (mutation.type === 'characterData') {
-        replaceContentManagerWithMaaz();
-      }
-    });
-  });
-
-  // Start observing the document body for changes
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true,
-    characterData: true,
-  });
-
-  // Also run periodically to catch any missed changes
-  setInterval(replaceContentManagerWithMaaz, 1000);
-}
-
 export default {
   config: {
     // Replace the Strapi logo in auth (login) views
@@ -115,27 +36,8 @@ export default {
     tutorials: false,
     // Disable notifications about new Strapi releases
     notifications: { releases: false },
-    // Use translations to replace "Content Manager" with "Maaz"
-    translations: {
-      en: {
-        'content-manager.plugin.name': 'Maaz',
-        'app.components.LeftMenu.navbrand.title': 'Maaz Dashboard',
-        'content-manager.header.name': 'Maaz',
-      },
-    },
   },
-  bootstrap(_app: StrapiApp) {
-    console.log('Strapi Admin Panel initialized');
-    
-    // Wait for DOM to be ready, then setup the observer
-    if (typeof window !== 'undefined') {
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupContentManagerObserver);
-      } else {
-        setupContentManagerObserver();
-      }
-    }
+  bootstrap(app: StrapiApp) {
+    console.log(app);
   },
 };
-
-
