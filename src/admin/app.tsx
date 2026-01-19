@@ -32,6 +32,23 @@ export default {
         },
       },
     },
+    // Custom translations to change "Collection Types" to "Listings" and "Single Types" to "Single Pages"
+    translations: {
+      en: {
+        'content-manager.containers.Home.collectionTypes': 'Listings',
+        'content-manager.containers.Home.singleTypes': 'Single Pages',
+        'content-manager.components.DragLayer.item.collection-type': 'Listing',
+        'content-manager.components.DragLayer.item.single-type': 'Single Page',
+        'content-type-builder.menu.section.models.name.collectionType': 'Listing',
+        'content-type-builder.menu.section.models.name.singleType': 'Single Page',
+        'content-type-builder.menu.section.models.name.collectionTypes': 'Listings',
+        'content-type-builder.menu.section.models.name.singleTypes': 'Single Pages',
+        'global.collectionType': 'Listing',
+        'global.singleType': 'Single Page',
+        'global.collectionTypes': 'Listings',
+        'global.singleTypes': 'Single Pages',
+      },
+    },
     // Disable video tutorials
     tutorials: false,
     // Disable notifications about new Strapi releases
