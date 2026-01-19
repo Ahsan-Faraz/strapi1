@@ -56,5 +56,63 @@ export default {
   },
   bootstrap(app: StrapiApp) {
     console.log(app);
+    
+    // Replace text content using MutationObserver
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              if (node.textContent === 'Collection Types') {
+                node.textContent = 'Listings';
+              } else if (node.textContent === 'Single Types') {
+                node.textContent = 'Single Pages';
+              }
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+              const element = node as Element;
+              const walker = document.createTreeWalker(
+                element,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+              );
+              
+              let textNode;
+              while (textNode = walker.nextNode()) {
+                if (textNode.textContent === 'Collection Types') {
+                  textNode.textContent = 'Listings';
+                } else if (textNode.textContent === 'Single Types') {
+                  textNode.textContent = 'Single Pages';
+                }
+              }
+            }
+          });
+        }
+      });
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+    
+    // Replace existing text on page load
+    setTimeout(() => {
+      const walker = document.createTreeWalker(
+        document.body,
+        NodeFilter.SHOW_TEXT,
+        null,
+        false
+      );
+      
+      let textNode;
+      while (textNode = walker.nextNode()) {
+        if (textNode.textContent === 'Collection Types') {
+          textNode.textContent = 'Listings';
+        } else if (textNode.textContent === 'Single Types') {
+          textNode.textContent = 'Single Pages';
+        }
+      }
+    }, 1000);
   },
 };
