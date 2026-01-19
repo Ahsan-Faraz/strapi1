@@ -57,39 +57,6 @@ export default {
   bootstrap(app: StrapiApp) {
     console.log(app);
     
-    // Add custom CSS to hide specific collection types
-    const style = document.createElement('style');
-    style.textContent = `
-      /* Hide Redirect collection type */
-      a[href*="/admin/content-manager/collection-types/api::redirect.redirect"] {
-        display: none !important;
-      }
-      
-      /* Hide Page collection type */
-      a[href*="/admin/content-manager/collection-types/api::page.page"] {
-        display: none !important;
-      }
-      
-      /* Hide User collection type */
-      a[href*="/admin/content-manager/collection-types/plugin::users-permissions.user"] {
-        display: none !important;
-      }
-      
-      /* Hide the parent li elements as well */
-      li:has(a[href*="/admin/content-manager/collection-types/api::redirect.redirect"]) {
-        display: none !important;
-      }
-      
-      li:has(a[href*="/admin/content-manager/collection-types/api::page.page"]) {
-        display: none !important;
-      }
-      
-      li:has(a[href*="/admin/content-manager/collection-types/plugin::users-permissions.user"]) {
-        display: none !important;
-      }
-    `;
-    document.head.appendChild(style);
-    
     // Replace text content using MutationObserver
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
@@ -119,7 +86,7 @@ export default {
                 }
               }
               
-              // Also hide elements after DOM changes
+              // Hide specific collection types after DOM changes
               hideUnwantedCollectionTypes();
             }
           });
@@ -129,16 +96,21 @@ export default {
     
     // Function to hide unwanted collection types
     const hideUnwantedCollectionTypes = () => {
-      // Hide by href attribute
-      const redirectLinks = document.querySelectorAll('a[href*="/admin/content-manager/collection-types/api::redirect.redirect"]');
-      const pageLinks = document.querySelectorAll('a[href*="/admin/content-manager/collection-types/api::page.page"]');
-      const userLinks = document.querySelectorAll('a[href*="/admin/content-manager/collection-types/plugin::users-permissions.user"]');
+      // Find and hide specific collection types by their href
+      const linksToHide = [
+        'a[href*="/admin/content-manager/collection-types/api::redirect.redirect"]',
+        'a[href*="/admin/content-manager/collection-types/api::page.page"]', 
+        'a[href*="/admin/content-manager/collection-types/plugin::users-permissions.user"]'
+      ];
       
-      [...redirectLinks, ...pageLinks, ...userLinks].forEach(link => {
-        const listItem = link.closest('li');
-        if (listItem) {
-          listItem.style.display = 'none';
-        }
+      linksToHide.forEach(selector => {
+        const links = document.querySelectorAll(selector);
+        links.forEach(link => {
+          const listItem = link.closest('li');
+          if (listItem) {
+            listItem.style.display = 'none';
+          }
+        });
       });
     };
     
