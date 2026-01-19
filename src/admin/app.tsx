@@ -57,192 +57,6 @@ export default {
   bootstrap(app: StrapiApp) {
     console.log(app);
     
-    // Create custom dashboard widget
-    const createCustomDashboard = () => {
-      // Find the main content area
-      const mainContent = document.querySelector('[data-strapi-header-sticky]')?.parentElement;
-      if (!mainContent) return;
-      
-      // Check if widget already exists
-      if (document.getElementById('custom-dashboard-widget')) return;
-      
-      // Create the custom widget container
-      const widgetContainer = document.createElement('div');
-      widgetContainer.id = 'custom-dashboard-widget';
-      widgetContainer.style.cssText = `
-        background: white;
-        border-radius: 8px;
-        padding: 24px;
-        margin: 24px 0;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        border: 1px solid #eaeaef;
-      `;
-      
-      // Create widget content
-      widgetContainer.innerHTML = `
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-          <div>
-            <h2 style="margin: 0; font-size: 24px; font-weight: 600; color: #32324d;">Content Overview</h2>
-            <p style="margin: 4px 0 0 0; color: #666687; font-size: 14px;">Monitor your content and track activities at a glance.</p>
-          </div>
-          <button id="refresh-dashboard" style="
-            background: #4945ff;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-          ">Refresh Data</button>
-        </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;">
-          <div id="total-content" style="
-            background: #f6f6f9;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #4945ff;
-          ">
-            <div style="font-size: 32px; font-weight: 700; color: #32324d; margin-bottom: 4px;" id="total-count">-</div>
-            <div style="color: #666687; font-size: 14px; margin-bottom: 8px;">Total Content</div>
-            <div style="color: #328048; font-size: 12px;" id="total-change">Loading...</div>
-          </div>
-          
-          <div id="blog-posts" style="
-            background: #f6f6f9;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #f59e0b;
-          ">
-            <div style="font-size: 32px; font-weight: 700; color: #32324d; margin-bottom: 4px;" id="blog-count">-</div>
-            <div style="color: #666687; font-size: 14px; margin-bottom: 8px;">Blog Posts</div>
-            <div style="color: #f59e0b; font-size: 12px;" id="blog-change">Loading...</div>
-          </div>
-          
-          <div id="locations" style="
-            background: #f6f6f9;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #10b981;
-          ">
-            <div style="font-size: 32px; font-weight: 700; color: #32324d; margin-bottom: 4px;" id="location-count">-</div>
-            <div style="color: #666687; font-size: 14px; margin-bottom: 8px;">Locations</div>
-            <div style="color: #10b981; font-size: 12px;" id="location-change">Loading...</div>
-          </div>
-          
-          <div id="services" style="
-            background: #f6f6f9;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #ef4444;
-          ">
-            <div style="font-size: 32px; font-weight: 700; color: #32324d; margin-bottom: 4px;" id="service-count">-</div>
-            <div style="color: #666687; font-size: 14px; margin-bottom: 8px;">Services</div>
-            <div style="color: #ef4444; font-size: 12px;" id="service-change">Loading...</div>
-          </div>
-        </div>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-          <div style="background: #f6f6f9; padding: 20px; border-radius: 8px;">
-            <h3 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #32324d;">Recent Activity</h3>
-            <div id="recent-activity" style="color: #666687; font-size: 14px;">
-              Loading recent activities...
-            </div>
-          </div>
-          
-          <div style="background: #f6f6f9; padding: 20px; border-radius: 8px;">
-            <h3 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #32324d;">Quick Actions</h3>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              <a href="/admin/content-manager/collection-types/api::blog-post.blog-post?page=1&pageSize=10&sort=title:ASC" 
-                 style="color: #4945ff; text-decoration: none; font-size: 14px; padding: 8px 0; border-bottom: 1px solid #eaeaef;">
-                📝 Create New Blog Post
-              </a>
-              <a href="/admin/content-manager/collection-types/api::service.service?page=1&pageSize=10&sort=name:ASC" 
-                 style="color: #4945ff; text-decoration: none; font-size: 14px; padding: 8px 0; border-bottom: 1px solid #eaeaef;">
-                🛠️ Manage Services
-              </a>
-              <a href="/admin/content-manager/collection-types/api::location.location?page=1&pageSize=10&sort=name:ASC" 
-                 style="color: #4945ff; text-decoration: none; font-size: 14px; padding: 8px 0; border-bottom: 1px solid #eaeaef;">
-                📍 Update Locations
-              </a>
-              <a href="/admin/content-manager/single-types/api::landing-page.landing-page" 
-                 style="color: #4945ff; text-decoration: none; font-size: 14px; padding: 8px 0;">
-                🏠 Edit Landing Page
-              </a>
-            </div>
-          </div>
-        </div>
-      `;
-      
-      // Insert the widget at the top of the main content
-      const firstChild = mainContent.firstElementChild;
-      if (firstChild) {
-        mainContent.insertBefore(widgetContainer, firstChild);
-      } else {
-        mainContent.appendChild(widgetContainer);
-      }
-      
-      // Load dashboard data
-      loadDashboardData();
-      
-      // Add refresh button functionality
-      const refreshBtn = document.getElementById('refresh-dashboard');
-      if (refreshBtn) {
-        refreshBtn.addEventListener('click', loadDashboardData);
-      }
-    };
-    
-    // Function to load dashboard data
-    const loadDashboardData = async () => {
-      try {
-        // Simulate API calls to get content counts
-        const blogCount = Math.floor(Math.random() * 50) + 10;
-        const locationCount = Math.floor(Math.random() * 20) + 5;
-        const serviceCount = Math.floor(Math.random() * 15) + 8;
-        const totalCount = blogCount + locationCount + serviceCount;
-        
-        // Update counts
-        const totalCountEl = document.getElementById('total-count');
-        const blogCountEl = document.getElementById('blog-count');
-        const locationCountEl = document.getElementById('location-count');
-        const serviceCountEl = document.getElementById('service-count');
-        
-        if (totalCountEl) totalCountEl.textContent = totalCount.toString();
-        if (blogCountEl) blogCountEl.textContent = blogCount.toString();
-        if (locationCountEl) locationCountEl.textContent = locationCount.toString();
-        if (serviceCountEl) serviceCountEl.textContent = serviceCount.toString();
-        
-        // Update change indicators
-        const totalChangeEl = document.getElementById('total-change');
-        const blogChangeEl = document.getElementById('blog-change');
-        const locationChangeEl = document.getElementById('location-change');
-        const serviceChangeEl = document.getElementById('service-change');
-        
-        if (totalChangeEl) totalChangeEl.textContent = '+' + Math.floor(Math.random() * 10) + ' this week';
-        if (blogChangeEl) blogChangeEl.textContent = 'Updated today';
-        if (locationChangeEl) locationChangeEl.textContent = 'All synced';
-        if (serviceChangeEl) serviceChangeEl.textContent = Math.floor(Math.random() * 3) + ' pending review';
-        
-        // Update recent activity
-        const recentActivityEl = document.getElementById('recent-activity');
-        if (recentActivityEl) {
-          const activities = [
-            '📝 Blog post "Cleaning Tips" updated 2 hours ago',
-            '📍 Location "Downtown Office" published 1 day ago',
-            '🛠️ Service "Deep Cleaning" scheduled 3 hours ago',
-            '🏠 Landing page content refreshed 5 minutes ago'
-          ];
-          recentActivityEl.innerHTML = activities.map(activity => 
-            `<div style="padding: 4px 0; border-bottom: 1px solid #eaeaef; font-size: 13px;">${activity}</div>`
-          ).join('');
-        }
-        
-      } catch (error) {
-        console.error('Error loading dashboard data:', error);
-      }
-    };
-    
     // Replace text content using MutationObserver
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
@@ -272,13 +86,9 @@ export default {
                 }
               }
               
-              // Hide specific collection types after DOM changes
+              // Hide specific collection types and add widgets after DOM changes
               hideUnwantedCollectionTypes();
-              
-              // Create dashboard widget when content manager loads
-              if (window.location.pathname === '/admin' || window.location.pathname === '/admin/') {
-                setTimeout(createCustomDashboard, 500);
-              }
+              addCustomWidgets();
             }
           });
         }
@@ -312,6 +122,188 @@ export default {
         }
       });
     };
+
+    // Function to fetch content statistics
+    const fetchContentStats = async () => {
+      try {
+        const token = localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken');
+        const headers = {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        };
+
+        const [blogPosts, services, locations, pages] = await Promise.all([
+          fetch('/admin/content-manager/collection-types/api::blog-post.blog-post', { headers }).then(r => r.json()).catch(() => ({ pagination: { total: 0 } })),
+          fetch('/admin/content-manager/collection-types/api::service.service', { headers }).then(r => r.json()).catch(() => ({ pagination: { total: 0 } })),
+          fetch('/admin/content-manager/collection-types/api::location.location', { headers }).then(r => r.json()).catch(() => ({ pagination: { total: 0 } })),
+          fetch('/admin/content-manager/single-types/api::landing-page.landing-page', { headers }).then(r => r.json()).catch(() => ({}))
+        ]);
+
+        return {
+          blogPosts: blogPosts.pagination?.total || 0,
+          services: services.pagination?.total || 0,
+          locations: locations.pagination?.total || 0,
+          totalContent: (blogPosts.pagination?.total || 0) + (services.pagination?.total || 0) + (locations.pagination?.total || 0),
+          landingPageStatus: pages.publishedAt ? 'Published' : 'Draft'
+        };
+      } catch (error) {
+        console.error('Error fetching content stats:', error);
+        return {
+          blogPosts: 0,
+          services: 0,
+          locations: 0,
+          totalContent: 0,
+          landingPageStatus: 'Unknown'
+        };
+      }
+    };
+
+    // Function to add custom widgets
+    const addCustomWidgets = async () => {
+      // Check if we're on the home page and widgets haven't been added yet
+      if (!window.location.pathname.includes('/admin') || window.location.pathname !== '/admin' || document.querySelector('#custom-widgets-container')) {
+        return;
+      }
+
+      const stats = await fetchContentStats();
+      
+      // Find the main content area
+      const mainContent = document.querySelector('main') || document.querySelector('[data-strapi="main-content"]') || document.body;
+      
+      if (!mainContent) return;
+
+      // Create widgets container
+      const widgetsContainer = document.createElement('div');
+      widgetsContainer.id = 'custom-widgets-container';
+      widgetsContainer.style.cssText = `
+        margin: 24px;
+        padding: 0;
+        background: transparent;
+      `;
+
+      // Create header
+      const header = document.createElement('div');
+      header.style.cssText = `
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        padding: 0 8px;
+      `;
+
+      const title = document.createElement('h2');
+      title.textContent = 'Content Overview';
+      title.style.cssText = `
+        font-size: 24px;
+        font-weight: 600;
+        color: #32324d;
+        margin: 0;
+      `;
+
+      const subtitle = document.createElement('p');
+      subtitle.textContent = 'Monitor your content and track activities at a glance.';
+      subtitle.style.cssText = `
+        font-size: 14px;
+        color: #666687;
+        margin: 4px 0 0 0;
+      `;
+
+      const headerText = document.createElement('div');
+      headerText.appendChild(title);
+      headerText.appendChild(subtitle);
+
+      header.appendChild(headerText);
+
+      // Create widgets grid
+      const widgetsGrid = document.createElement('div');
+      widgetsGrid.style.cssText = `
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-bottom: 32px;
+      `;
+
+      // Widget data
+      const widgets = [
+        {
+          title: 'Total Content',
+          value: stats.totalContent.toString(),
+          subtitle: 'All published content',
+          color: '#4945ff',
+          bgColor: '#f0f0ff'
+        },
+        {
+          title: 'Blog Posts',
+          value: stats.blogPosts.toString(),
+          subtitle: 'Published articles',
+          color: '#328048',
+          bgColor: '#f0fff4'
+        },
+        {
+          title: 'Services',
+          value: stats.services.toString(),
+          subtitle: 'Active services',
+          color: '#b72b1a',
+          bgColor: '#fff5f5'
+        },
+        {
+          title: 'Locations',
+          value: stats.locations.toString(),
+          subtitle: 'Service areas',
+          color: '#b54708',
+          bgColor: '#fffbeb'
+        }
+      ];
+
+      // Create widget elements
+      widgets.forEach(widget => {
+        const widgetElement = document.createElement('div');
+        widgetElement.style.cssText = `
+          background: white;
+          border: 1px solid #eaeaef;
+          border-radius: 8px;
+          padding: 20px;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          transition: all 0.2s ease;
+          cursor: pointer;
+        `;
+
+        widgetElement.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <div style="width: 40px; height: 40px; border-radius: 8px; background: ${widget.bgColor}; display: flex; align-items: center; justify-content: center;">
+              <div style="width: 20px; height: 20px; background: ${widget.color}; border-radius: 4px;"></div>
+            </div>
+          </div>
+          <div style="font-size: 28px; font-weight: 700; color: #32324d; margin-bottom: 4px;">${widget.value}</div>
+          <div style="font-size: 16px; font-weight: 600; color: #32324d; margin-bottom: 4px;">${widget.title}</div>
+          <div style="font-size: 14px; color: #666687;">${widget.subtitle}</div>
+        `;
+
+        widgetElement.addEventListener('mouseenter', () => {
+          widgetElement.style.transform = 'translateY(-2px)';
+          widgetElement.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+        });
+
+        widgetElement.addEventListener('mouseleave', () => {
+          widgetElement.style.transform = 'translateY(0)';
+          widgetElement.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+        });
+
+        widgetsGrid.appendChild(widgetElement);
+      });
+
+      // Assemble the widgets
+      widgetsContainer.appendChild(header);
+      widgetsContainer.appendChild(widgetsGrid);
+
+      // Insert widgets at the top of main content
+      const firstChild = mainContent.firstChild;
+      if (firstChild) {
+        mainContent.insertBefore(widgetsContainer, firstChild);
+      } else {
+        mainContent.appendChild(widgetsContainer);
+      }
+    };
     
     observer.observe(document.body, {
       childList: true,
@@ -336,13 +328,9 @@ export default {
         }
       }
       
-      // Hide unwanted collection types
+      // Hide unwanted collection types and add widgets
       hideUnwantedCollectionTypes();
-      
-      // Create dashboard widget on initial load
-      if (window.location.pathname === '/admin' || window.location.pathname === '/admin/') {
-        createCustomDashboard();
-      }
-    }, 1000);
+      addCustomWidgets();
+    }, 1500);
   },
 };
