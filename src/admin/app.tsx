@@ -86,9 +86,13 @@ export default {
                 }
               }
               
-              // Hide specific collection types and add widgets after DOM changes
+              // Hide specific collection types after DOM changes
               hideUnwantedCollectionTypes();
-              addCustomWidgets();
+              
+              // Only add widgets if we're on the home page
+              if (window.location.pathname === '/admin' || window.location.pathname === '/admin/') {
+                setTimeout(() => addCustomWidgets(), 500);
+              }
             }
           });
         }
@@ -127,68 +131,78 @@ export default {
     const fetchContentStats = async () => {
       try {
         const token = localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken');
+        if (!token) {
+          return { blogPosts: 0, services: 0, locations: 0, totalContent: 0 };
+        }
+
         const headers = {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         };
 
-        const [blogPosts, services, locations, pages] = await Promise.all([
-          fetch('/admin/content-manager/collection-types/api::blog-post.blog-post', { headers }).then(r => r.json()).catch(() => ({ pagination: { total: 0 } })),
-          fetch('/admin/content-manager/collection-types/api::service.service', { headers }).then(r => r.json()).catch(() => ({ pagination: { total: 0 } })),
-          fetch('/admin/content-manager/collection-types/api::location.location', { headers }).then(r => r.json()).catch(() => ({ pagination: { total: 0 } })),
-          fetch('/admin/content-manager/single-types/api::landing-page.landing-page', { headers }).then(r => r.json()).catch(() => ({}))
+        const [blogResponse, servicesResponse, locationsResponse] = await Promise.all([
+          fetch('/admin/content-manager/collection-types/api::blog-post.blog-post?page=1&pageSize=1', { headers }),
+          fetch('/admin/content-manager/collection-types/api::service.service?page=1&pageSize=1', { headers }),
+          fetch('/admin/content-manager/collection-types/api::location.location?page=1&pageSize=1', { headers })
         ]);
 
+        const [blogData, servicesData, locationsData] = await Promise.all([
+          blogResponse.ok ? blogResponse.json() : { pagination: { total: 0 } },
+          servicesResponse.ok ? servicesResponse.json() : { pagination: { total: 0 } },
+          locationsResponse.ok ? locationsResponse.json() : { pagination: { total: 0 } }
+        ]);
+
+        const blogPosts = blogData.pagination?.total || 0;
+        const services = servicesData.pagination?.total || 0;
+        const locations = locationsData.pagination?.total || 0;
+
         return {
-          blogPosts: blogPosts.pagination?.total || 0,
-          services: services.pagination?.total || 0,
-          locations: locations.pagination?.total || 0,
-          totalContent: (blogPosts.pagination?.total || 0) + (services.pagination?.total || 0) + (locations.pagination?.total || 0),
-          landingPageStatus: pages.publishedAt ? 'Published' : 'Draft'
+          blogPosts,
+          services,
+          locations,
+          totalContent: blogPosts + services + locations
         };
       } catch (error) {
         console.error('Error fetching content stats:', error);
-        return {
-          blogPosts: 0,
-          services: 0,
-          locations: 0,
-          totalContent: 0,
-          landingPageStatus: 'Unknown'
-        };
+        return { blogPosts: 0, services: 0, locations: 0, totalContent: 0 };
       }
     };
 
-    // Function to add custom widgets
+    // Function to add custom widgets (only once)
     const addCustomWidgets = async () => {
       // Check if we're on the home page and widgets haven't been added yet
-      if (!window.location.pathname.includes('/admin') || window.location.pathname !== '/admin' || document.querySelector('#custom-widgets-container')) {
+      if (window.location.pathname !== '/admin' && window.location.pathname !== '/admin/') {
+        return;
+      }
+
+      if (document.querySelector('#custom-widgets-container')) {
+        return; // Already added
+      }
+
+      // Wait for the main content to be available
+      const mainContent = document.querySelector('main[data-strapi="main-content"]') || 
+                          document.querySelector('main') || 
+                          document.querySelector('[role="main"]');
+      
+      if (!mainContent) {
         return;
       }
 
       const stats = await fetchContentStats();
       
-      // Find the main content area
-      const mainContent = document.querySelector('main') || document.querySelector('[data-strapi="main-content"]') || document.body;
-      
-      if (!mainContent) return;
-
       // Create widgets container
       const widgetsContainer = document.createElement('div');
       widgetsContainer.id = 'custom-widgets-container';
       widgetsContainer.style.cssText = `
-        margin: 24px;
-        padding: 0;
+        margin: 0 0 32px 0;
+        padding: 24px;
         background: transparent;
       `;
 
       // Create header
       const header = document.createElement('div');
       header.style.cssText = `
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         margin-bottom: 24px;
-        padding: 0 8px;
       `;
 
       const title = document.createElement('h2');
@@ -197,7 +211,7 @@ export default {
         font-size: 24px;
         font-weight: 600;
         color: #32324d;
-        margin: 0;
+        margin: 0 0 8px 0;
       `;
 
       const subtitle = document.createElement('p');
@@ -205,14 +219,11 @@ export default {
       subtitle.style.cssText = `
         font-size: 14px;
         color: #666687;
-        margin: 4px 0 0 0;
+        margin: 0;
       `;
 
-      const headerText = document.createElement('div');
-      headerText.appendChild(title);
-      headerText.appendChild(subtitle);
-
-      header.appendChild(headerText);
+      header.appendChild(title);
+      header.appendChild(subtitle);
 
       // Create widgets grid
       const widgetsGrid = document.createElement('div');
@@ -220,7 +231,6 @@ export default {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         gap: 16px;
-        margin-bottom: 32px;
       `;
 
       // Widget data
@@ -328,9 +338,12 @@ export default {
         }
       }
       
-      // Hide unwanted collection types and add widgets
+      // Hide unwanted collection types and add widgets only on home page
       hideUnwantedCollectionTypes();
-      addCustomWidgets();
+      
+      if (window.location.pathname === '/admin' || window.location.pathname === '/admin/') {
+        setTimeout(() => addCustomWidgets(), 1000);
+      }
     }, 1500);
   },
 };
