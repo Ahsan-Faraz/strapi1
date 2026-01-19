@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Widget } from '@strapi/admin/strapi-admin';
-import { useFetchClient } from '@strapi/helper-plugin';
-import { Box, Typography, Flex, Button, Badge } from '@strapi/design-system';
+import { useFetchClient } from '@strapi/strapi/admin';
+import { Box, Typography, Flex, Button, Badge, Loader } from '@strapi/design-system';
 import { Link } from 'react-router-dom';
 
 const SeoIssuesWidget = () => {
@@ -28,8 +27,22 @@ const SeoIssuesWidget = () => {
     fetchData();
   }, []);
 
-  if (loading) return <Widget.Loading />;
-  if (!data) return <Widget.NoData />;
+  if (loading) {
+    return (
+      <Box padding={4} background="neutral0" hasRadius shadow="tableShadow">
+        <Flex justifyContent="center" padding={4}>
+          <Loader small>Loading content...</Loader>
+        </Flex>
+      </Box>
+    );
+  }
+  if (!data) {
+    return (
+      <Box padding={4} background="neutral0" hasRadius shadow="tableShadow">
+        <Typography textColor="neutral600">No data available</Typography>
+      </Box>
+    );
+  }
 
   return (
     <Box padding={4} background="neutral0" hasRadius shadow="tableShadow">

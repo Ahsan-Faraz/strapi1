@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Widget } from '@strapi/admin/strapi-admin';
-import { useFetchClient } from '@strapi/helper-plugin';
-import { Box, Typography, Flex, Button, Badge } from '@strapi/design-system';
+import { useFetchClient } from '@strapi/strapi/admin';
+import { Box, Typography, Flex, Button, Badge, Loader } from '@strapi/design-system';
 import { Link } from 'react-router-dom';
 
 interface RecentActivity {
@@ -33,8 +32,22 @@ const RecentlyEditedWidget = () => {
     fetchData();
   }, []);
 
-  if (loading) return <Widget.Loading />;
-  if (!data || !data.recentActivities.length) return <Widget.NoData />;
+  if (loading) {
+    return (
+      <Box padding={4} background="neutral0" hasRadius shadow="tableShadow">
+        <Flex justifyContent="center" padding={4}>
+          <Loader small>Loading content...</Loader>
+        </Flex>
+      </Box>
+    );
+  }
+  if (!data || !data.recentActivities.length) {
+    return (
+      <Box padding={4} background="neutral0" hasRadius shadow="tableShadow">
+        <Typography textColor="neutral600">No recent activities</Typography>
+      </Box>
+    );
+  }
 
   const getTypeColor = (type: string) => {
     switch (type) {

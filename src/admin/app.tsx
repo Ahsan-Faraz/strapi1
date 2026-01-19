@@ -1,13 +1,4 @@
 import type { StrapiApp } from '@strapi/strapi/admin';
-import React from 'react';
-
-// Import widget components
-import TotalPagesWidget from './extensions/widgets/TotalPagesWidget';
-import MissingMetaTitlesWidget from './extensions/widgets/MissingMetaTitlesWidget';
-import RedirectIssuesWidget from './extensions/widgets/RedirectIssuesWidget';
-import SitemapStatusWidget from './extensions/widgets/SitemapStatusWidget';
-import SeoIssuesWidget from './extensions/widgets/SeoIssuesWidget';
-import RecentlyEditedWidget from './extensions/widgets/RecentlyEditedWidget';
 
 export default {
   config: {
@@ -75,7 +66,10 @@ export default {
           id: 'admin.dashboard.totalPages.title',
           defaultMessage: 'Total Pages',
         },
-        component: async () => TotalPagesWidget,
+        component: async () => {
+          const { default: TotalPagesWidget } = await import('./extensions/widgets/TotalPagesWidget');
+          return TotalPagesWidget;
+        },
         link: {
           href: '/admin/content-manager',
           label: {
@@ -92,7 +86,10 @@ export default {
           id: 'admin.dashboard.missingMetaTitles.title',
           defaultMessage: 'Missing Meta Titles',
         },
-        component: async () => MissingMetaTitlesWidget,
+        component: async () => {
+          const { default: MissingMetaTitlesWidget } = await import('./extensions/widgets/MissingMetaTitlesWidget');
+          return MissingMetaTitlesWidget;
+        },
         link: {
           href: '/admin/content-manager/collection-types/api::page.page',
           label: {
@@ -109,7 +106,10 @@ export default {
           id: 'admin.dashboard.redirectIssues.title',
           defaultMessage: 'Redirect Issues',
         },
-        component: async () => RedirectIssuesWidget,
+        component: async () => {
+          const { default: RedirectIssuesWidget } = await import('./extensions/widgets/RedirectIssuesWidget');
+          return RedirectIssuesWidget;
+        },
         link: {
           href: '/admin/content-manager/collection-types/api::redirect.redirect',
           label: {
@@ -126,7 +126,10 @@ export default {
           id: 'admin.dashboard.sitemapStatus.title',
           defaultMessage: 'Sitemap Status',
         },
-        component: async () => SitemapStatusWidget,
+        component: async () => {
+          const { default: SitemapStatusWidget } = await import('./extensions/widgets/SitemapStatusWidget');
+          return SitemapStatusWidget;
+        },
       });
 
       // SEO Issues Widget
@@ -136,7 +139,10 @@ export default {
           id: 'admin.dashboard.seoIssues.title',
           defaultMessage: 'Open SEO Issues',
         },
-        component: async () => SeoIssuesWidget,
+        component: async () => {
+          const { default: SeoIssuesWidget } = await import('./extensions/widgets/SeoIssuesWidget');
+          return SeoIssuesWidget;
+        },
       });
 
       // Recently Edited Widget
@@ -146,7 +152,10 @@ export default {
           id: 'admin.dashboard.recentlyEdited.title',
           defaultMessage: 'Recently Edited Pages',
         },
-        component: async () => RecentlyEditedWidget,
+        component: async () => {
+          const { default: RecentlyEditedWidget } = await import('./extensions/widgets/RecentlyEditedWidget');
+          return RecentlyEditedWidget;
+        },
       });
     }
     
