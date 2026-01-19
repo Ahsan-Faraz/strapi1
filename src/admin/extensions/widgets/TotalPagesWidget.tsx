@@ -10,16 +10,19 @@ const TotalPagesWidget = () => {
   useEffect(() => {
     async function fetchData() {
       try {
+        console.log('TotalPagesWidget: Fetching dashboard stats...');
         const response = await get('/api/dashboard/stats');
+        console.log('TotalPagesWidget: Received data:', response.data);
         setData(response.data);
       } catch (error) {
-        console.error('Error fetching dashboard stats:', error);
+        console.error('TotalPagesWidget: Error fetching dashboard stats:', error);
+        setLoading(false);
       } finally {
         setLoading(false);
       }
     }
     fetchData();
-  }, []);
+  }, [get]);
 
   if (loading) {
     return (

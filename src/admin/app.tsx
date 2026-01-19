@@ -54,11 +54,15 @@ export default {
     // Disable notifications about new Strapi releases
     notifications: { releases: false },
   },
-  bootstrap(app: StrapiApp) {
-    console.log(app);
+  register(app: StrapiApp) {
+    console.log('=== Strapi Admin App Register Called ===');
+    console.log('App object:', app);
+    console.log('Has widgets property:', 'widgets' in app);
+    console.log('Widgets type:', typeof app.widgets);
     
     // Register custom dashboard widgets
     if ('widgets' in app && typeof app.widgets?.register === 'function') {
+      console.log('✅ Widgets API is available! Registering custom widgets...');
       // Total Pages Widget
       app.widgets.register({
         id: 'total-pages',
@@ -157,7 +161,13 @@ export default {
           return RecentlyEditedWidget;
         },
       });
+      console.log('Custom widgets registered successfully');
+    } else {
+      console.warn('Widgets API not available. Strapi version might be too old or widgets API not supported.');
     }
+  },
+  bootstrap(app: StrapiApp) {
+    console.log(app);
     
     // Replace text content using MutationObserver
     const observer = new MutationObserver((mutations) => {
