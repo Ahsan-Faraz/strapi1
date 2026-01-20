@@ -21,30 +21,53 @@ const RecentlyEditedWidget = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await get('/api/dashboard/stats');
-        setData(response.data);
-      } catch (error) {
+        const response = await get('/dashboard/stats');
+        if (response && response.data) {
+          setData(response.data);
+        }
+      } catch (error: any) {
         console.error('Error fetching dashboard stats:', error);
+        setData({ recentActivities: [] });
       } finally {
         setLoading(false);
       }
     }
     fetchData();
-  }, []);
+  }, [get]);
 
   if (loading) {
     return (
-      <Box padding={4} background="neutral0" hasRadius shadow="tableShadow">
-        <Flex justifyContent="center" padding={4}>
-          <Loader small>Loading content...</Loader>
+      <Box padding={6} background="neutral0" hasRadius shadow="tableShadow" style={{ minHeight: '300px' }}>
+        <Flex justifyContent="center" alignItems="center" style={{ height: '100%' }}>
+          <Loader small>Loading...</Loader>
         </Flex>
       </Box>
     );
   }
-  if (!data || !data.recentActivities.length) {
+
+  const displayData = data || { recentActivities: [] };
+  
+  if (!displayData.recentActivities || displayData.recentActivities.length === 0) {
     return (
-      <Box padding={4} background="neutral0" hasRadius shadow="tableShadow">
-        <Typography textColor="neutral600">No recent activities</Typography>
+      <Box padding={6} background="neutral0" hasRadius shadow="tableShadow" style={{ border: '1px solid #eaeaef' }}>
+        <Flex direction="column" gap={3}>
+          <Flex justifyContent="space-between" alignItems="flex-start">
+            <Box>
+              <Typography variant="sigma" textColor="neutral800" fontWeight="semiBold" style={{ fontSize: '14px', marginBottom: '4px' }}>
+                Recently Edited Pages
+              </Typography>
+              <Typography variant="pi" textColor="neutral600" style={{ fontSize: '12px' }}>
+                Latest activities across teams.
+              </Typography>
+            </Box>
+            <Button variant="tertiary" size="S" style={{ fontSize: '12px' }}>
+              Activity Log
+            </Button>
+          </Flex>
+          <Typography textColor="neutral600" style={{ fontSize: '13px', padding: '20px 0' }}>
+            No recent activities
+          </Typography>
+        </Flex>
       </Box>
     );
   }
@@ -74,51 +97,52 @@ const RecentlyEditedWidget = () => {
   };
 
   return (
-    <Box padding={4} background="neutral0" hasRadius shadow="tableShadow">
-      <Flex direction="column" gap={3}>
-        <Flex justifyContent="space-between" alignItems="center">
+    <Box padding={6} background="neutral0" hasRadius shadow="tableShadow" style={{ border: '1px solid #eaeaef' }}>
+      <Flex direction="column" gap={4}>
+        <Flex justifyContent="space-between" alignItems="flex-start">
           <Box>
-            <Typography variant="sigma" textColor="neutral600">
+            <Typography variant="sigma" textColor="neutral800" fontWeight="semiBold" style={{ fontSize: '14px', marginBottom: '4px' }}>
               Recently Edited Pages
             </Typography>
-            <Typography variant="pi" textColor="neutral600" style={{ marginTop: '4px' }}>
+            <Typography variant="pi" textColor="neutral600" style={{ fontSize: '12px' }}>
               Latest activities across teams.
             </Typography>
           </Box>
-          <Button variant="tertiary" size="S">
+          <Button variant="tertiary" size="S" style={{ fontSize: '12px' }}>
             Activity Log
           </Button>
         </Flex>
 
-        <Flex direction="column" gap={2}>
-          {data.recentActivities.map((activity) => {
+        <Flex direction="column" gap={3}>
+          {displayData.recentActivities.map((activity: RecentActivity) => {
             const typeColors = getTypeColor(activity.type);
             return (
               <Box
                 key={activity.id}
-                padding={3}
+                padding={4}
                 background="neutral100"
                 hasRadius
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: 'pointer', border: '1px solid #eaeaef', transition: 'all 0.2s ease' }}
                 as={Link}
                 to={`${getCollectionTypePath(activity.type)}/${activity.id}`}
               >
-                <Flex direction="column" gap={1}>
+                <Flex direction="column" gap={1.5}>
                   <Flex alignItems="center" gap={2}>
                     <Badge
                       backgroundColor={typeColors.backgroundColor}
                       textColor={typeColors.textColor}
+                      style={{ fontSize: '11px', padding: '2px 8px', fontWeight: '600' }}
                     >
                       {activity.type}
                     </Badge>
-                    <Typography variant="pi" fontWeight="semiBold" textColor="neutral800">
+                    <Typography variant="pi" fontWeight="semiBold" textColor="neutral800" style={{ fontSize: '14px' }}>
                       {activity.title}
                     </Typography>
                   </Flex>
                   <Typography variant="pi" textColor="neutral600" style={{ fontSize: '12px' }}>
                     /{activity.slug}
                   </Typography>
-                  <Typography variant="pi" textColor="neutral500" style={{ fontSize: '11px' }}>
+                  <Typography variant="pi" textColor="neutral500" style={{ fontSize: '12px' }}>
                     {activity.action} by {activity.updatedBy} · {activity.timeAgo}
                   </Typography>
                 </Flex>
