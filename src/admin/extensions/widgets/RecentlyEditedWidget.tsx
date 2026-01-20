@@ -49,22 +49,22 @@ const RecentlyEditedWidget = () => {
   
   if (!displayData.recentActivities || displayData.recentActivities.length === 0) {
     return (
-      <Box padding={6} background="neutral0" hasRadius shadow="tableShadow" style={{ border: '1px solid #eaeaef' }}>
-        <Flex direction="column" gap={3}>
-          <Flex justifyContent="space-between" alignItems="flex-start">
-            <Box>
-              <Typography variant="sigma" textColor="neutral800" fontWeight="semiBold" style={{ fontSize: '14px', marginBottom: '4px' }}>
+      <Box padding={6} background="neutral0" hasRadius shadow="tableShadow" style={{ border: '1px solid #eaeaef', width: '100%' }}>
+        <Flex direction="column" gap={3} style={{ width: '100%' }}>
+          <Flex justifyContent="space-between" alignItems="flex-start" style={{ width: '100%', gap: '16px' }}>
+            <Box style={{ flex: '1', minWidth: 0 }}>
+              <Typography variant="sigma" textColor="neutral800" fontWeight="semiBold" style={{ fontSize: '14px', marginBottom: '4px', display: 'block' }}>
                 Recently Edited Pages
               </Typography>
-              <Typography variant="pi" textColor="neutral600" style={{ fontSize: '12px' }}>
+              <Typography variant="pi" textColor="neutral600" style={{ fontSize: '12px', display: 'block' }}>
                 Latest activities across teams.
               </Typography>
             </Box>
-            <Button variant="tertiary" size="S" style={{ fontSize: '12px' }}>
+            <Button variant="tertiary" size="S" style={{ fontSize: '12px', flexShrink: 0, whiteSpace: 'nowrap' }}>
               Activity Log
             </Button>
           </Flex>
-          <Typography textColor="neutral600" style={{ fontSize: '13px', padding: '20px 0' }}>
+          <Typography textColor="neutral600" style={{ fontSize: '13px', padding: '20px 0', display: 'block', textAlign: 'center' }}>
             No recent activities
           </Typography>
         </Flex>
@@ -97,23 +97,23 @@ const RecentlyEditedWidget = () => {
   };
 
   return (
-    <Box padding={6} background="neutral0" hasRadius shadow="tableShadow" style={{ border: '1px solid #eaeaef' }}>
-      <Flex direction="column" gap={4}>
-        <Flex justifyContent="space-between" alignItems="flex-start">
-          <Box>
-            <Typography variant="sigma" textColor="neutral800" fontWeight="semiBold" style={{ fontSize: '14px', marginBottom: '4px' }}>
+    <Box padding={6} background="neutral0" hasRadius shadow="tableShadow" style={{ border: '1px solid #eaeaef', width: '100%' }}>
+      <Flex direction="column" gap={4} style={{ width: '100%' }}>
+        <Flex justifyContent="space-between" alignItems="flex-start" style={{ width: '100%', gap: '16px' }}>
+          <Box style={{ flex: '1', minWidth: 0 }}>
+            <Typography variant="sigma" textColor="neutral800" fontWeight="semiBold" style={{ fontSize: '14px', marginBottom: '4px', display: 'block' }}>
               Recently Edited Pages
             </Typography>
-            <Typography variant="pi" textColor="neutral600" style={{ fontSize: '12px' }}>
+            <Typography variant="pi" textColor="neutral600" style={{ fontSize: '12px', display: 'block' }}>
               Latest activities across teams.
             </Typography>
           </Box>
-          <Button variant="tertiary" size="S" style={{ fontSize: '12px' }}>
+          <Button variant="tertiary" size="S" style={{ fontSize: '12px', flexShrink: 0, whiteSpace: 'nowrap' }}>
             Activity Log
           </Button>
         </Flex>
 
-        <Flex direction="column" gap={3}>
+        <Flex direction="column" gap={3} style={{ width: '100%' }}>
           {displayData.recentActivities.map((activity: RecentActivity) => {
             const typeColors = getTypeColor(activity.type);
             return (
@@ -122,27 +122,32 @@ const RecentlyEditedWidget = () => {
                 padding={4}
                 background="neutral100"
                 hasRadius
-                style={{ cursor: 'pointer', border: '1px solid #eaeaef', transition: 'all 0.2s ease' }}
+                style={{ cursor: 'pointer', border: '1px solid #eaeaef', transition: 'all 0.2s ease', width: '100%' }}
                 as={Link}
                 to={`${getCollectionTypePath(activity.type)}/${activity.id}`}
               >
-                <Flex direction="column" gap={1.5}>
-                  <Flex alignItems="center" gap={2}>
+                <Flex direction="column" gap={1.5} style={{ width: '100%' }}>
+                  <Flex alignItems="center" gap={2} style={{ flexWrap: 'wrap' }}>
                     <Badge
                       backgroundColor={typeColors.backgroundColor}
                       textColor={typeColors.textColor}
-                      style={{ fontSize: '11px', padding: '2px 8px', fontWeight: '600' }}
+                      style={{ fontSize: '11px', padding: '2px 8px', fontWeight: '600', flexShrink: 0 }}
                     >
                       {activity.type}
                     </Badge>
-                    <Typography variant="pi" fontWeight="semiBold" textColor="neutral800" style={{ fontSize: '14px' }}>
+                    <Typography 
+                      variant="pi" 
+                      fontWeight="semiBold" 
+                      textColor="neutral800" 
+                      style={{ fontSize: '14px', flex: '1', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis' }}
+                    >
                       {activity.title}
                     </Typography>
                   </Flex>
-                  <Typography variant="pi" textColor="neutral600" style={{ fontSize: '12px' }}>
+                  <Typography variant="pi" textColor="neutral600" style={{ fontSize: '12px', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     /{activity.slug}
                   </Typography>
-                  <Typography variant="pi" textColor="neutral500" style={{ fontSize: '12px' }}>
+                  <Typography variant="pi" textColor="neutral500" style={{ fontSize: '12px', display: 'block' }}>
                     {activity.action} by {activity.updatedBy} · {activity.timeAgo}
                   </Typography>
                 </Flex>
