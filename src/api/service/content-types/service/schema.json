@@ -14,243 +14,193 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true,
-      "description": "Service name (e.g., Routine Cleaning, Deep Cleaning)"
+      "required": true
     },
     "slug": {
       "type": "uid",
       "targetField": "name",
-      "required": true,
-      "description": "URL-friendly slug automatically generated from name"
+      "required": true
     },
     "serviceType": {
       "type": "enumeration",
       "enum": ["routine", "deep", "airbnb", "moving", "post-construction", "office", "medical", "gym", "retail", "school", "property", "extras", "other-commercial"],
-      "required": true,
-      "description": "Type/category of cleaning service"
+      "required": true
     },
     "heroTopLabel": {
-      "type": "string",
-      "description": "Small label text displayed above the hero heading"
+      "type": "string"
     },
     "heroHeading": {
       "type": "string",
-      "required": true,
-      "description": "Main headline at the top of the service page"
+      "required": true
     },
     "heroSubheading": {
-      "type": "text",
-      "description": "Short description under the hero title"
+      "type": "text"
     },
     "heroBackgroundImage": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false,
-      "description": "Background image for the hero section"
+      "multiple": false
     },
     "heroBackgroundImageUrl": {
-      "type": "string",
-      "description": "Fallback URL for hero background image if media not uploaded"
+      "type": "string"
     },
     "heroServiceDuration": {
-      "type": "string",
-      "description": "Service duration displayed in hero (e.g., '2-3 hours')"
+      "type": "string"
     },
     "heroServiceGuarantee": {
       "type": "string",
-      "default": "100% Satisfaction",
-      "description": "Guarantee text displayed in hero section"
+      "default": "100% Satisfaction"
     },
     "includedSectionHeading": {
-      "type": "string",
-      "description": "Heading for the 'What's Included' section"
+      "type": "string"
     },
     "includedSectionSubheading": {
-      "type": "text",
-      "description": "Subheading for the 'What's Included' section"
+      "type": "text"
     },
     "cleaningAreas": {
       "type": "component",
       "repeatable": true,
-      "component": "content.cleaning-area",
-      "description": "List of cleaning areas/tasks included in this service"
+      "component": "content.cleaning-area"
     },
     "featureSectionHeading": {
-      "type": "string",
-      "description": "Heading for the features section"
+      "type": "string"
     },
     "featureSectionSubheading": {
-      "type": "text",
-      "description": "Subheading for the features section"
+      "type": "text"
     },
     "featureSectionImage": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false,
-      "description": "Image displayed in the features section"
+      "multiple": false
     },
     "featureSectionPoints": {
-      "type": "json",
-      "description": "JSON array of feature points/benefits"
+      "type": "json"
     },
     "howItWorksHeading": {
-      "type": "string",
-      "description": "Heading for the How It Works section"
+      "type": "string"
     },
     "howItWorksSubheading": {
-      "type": "text",
-      "description": "Subheading for the How It Works section"
+      "type": "text"
     },
     "step1Title": {
       "type": "string",
-      "default": "Book Online",
-      "description": "Title for step 1 in How It Works"
+      "default": "Book Online"
     },
     "step1Description": {
-      "type": "text",
-      "description": "Description text for step 1"
+      "type": "text"
     },
     "step1Image": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false,
-      "description": "Image for step 1"
+      "multiple": false
     },
     "step2Title": {
       "type": "string",
-      "default": "We Clean",
-      "description": "Title for step 2 in How It Works"
+      "default": "We Clean"
     },
     "step2Description": {
-      "type": "text",
-      "description": "Description text for step 2"
+      "type": "text"
     },
     "step2Image": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false,
-      "description": "Image for step 2"
+      "multiple": false
     },
     "step3Title": {
       "type": "string",
-      "default": "Relax & Enjoy",
-      "description": "Title for step 3 in How It Works"
+      "default": "Relax & Enjoy"
     },
     "step3Description": {
-      "type": "text",
-      "description": "Description text for step 3"
+      "type": "text"
     },
     "step3Image": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false,
-      "description": "Image for step 3"
+      "multiple": false
     },
     "benefitsHeading": {
-      "type": "string",
-      "description": "Heading for the benefits section"
+      "type": "string"
     },
     "benefitsSubheading": {
-      "type": "text",
-      "description": "Subheading for the benefits section"
+      "type": "text"
     },
     "benefitsImage": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false,
-      "description": "Image displayed in the benefits section"
+      "multiple": false
     },
     "benefit1Title": {
-      "type": "string",
-      "description": "Title for benefit 1"
+      "type": "string"
     },
     "benefit1Description": {
-      "type": "text",
-      "description": "Description text for benefit 1"
+      "type": "text"
     },
     "benefit2Title": {
-      "type": "string",
-      "description": "Title for benefit 2"
+      "type": "string"
     },
     "benefit2Description": {
-      "type": "text",
-      "description": "Description text for benefit 2"
+      "type": "text"
     },
     "benefit3Title": {
-      "type": "string",
-      "description": "Title for benefit 3"
+      "type": "string"
     },
     "benefit3Description": {
-      "type": "text",
-      "description": "Description text for benefit 3"
+      "type": "text"
     },
     "clientTestimonialsHeading": {
       "type": "string",
-      "default": "What Our Clients Say",
-      "description": "Heading for the testimonials section"
+      "default": "What Our Clients Say"
     },
     "clientTestimonialsSubheading": {
-      "type": "text",
-      "description": "Subheading for the testimonials section"
+      "type": "text"
     },
     "clientTestimonials": {
       "type": "component",
       "repeatable": true,
-      "component": "content.testimonial",
-      "description": "List of customer testimonials for this service"
+      "component": "content.testimonial"
     },
     "frequencyGuideHeading": {
-      "type": "string",
-      "description": "Heading for the frequency guide section"
+      "type": "string"
     },
     "frequencyGuideSubheading": {
-      "type": "text",
-      "description": "Subheading for the frequency guide section"
+      "type": "text"
     },
     "frequencyOptions": {
-      "type": "json",
-      "description": "JSON array of frequency options (weekly, bi-weekly, monthly, etc.)"
+      "type": "json"
     },
     "faqs": {
       "type": "component",
       "repeatable": true,
-      "component": "content.faq-item",
-      "description": "List of frequently asked questions for this service"
+      "component": "content.faq-item"
     },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo",
-      "description": "SEO metadata component"
+      "component": "shared.seo"
     },
     "openGraph": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.open-graph",
-      "description": "Open Graph metadata for social media sharing"
+      "component": "shared.open-graph"
     },
     "localSeo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.local-seo",
-      "description": "Local SEO metadata component"
+      "component": "shared.local-seo"
     },
     "scripts": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.script-injection",
-      "description": "Custom scripts injection component"
+      "component": "shared.script-injection"
     },
     "schema": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.schema-template",
-      "description": "JSON-LD schema template component"
+      "component": "shared.schema-template"
     },
     "excludeFromSitemap": {
       "type": "boolean",
-      "default": false,
-      "description": "Whether to exclude this service page from the sitemap"
+      "default": false
     }
   }
 }

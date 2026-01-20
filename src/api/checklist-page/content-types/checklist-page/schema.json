@@ -12,88 +12,135 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "seoTitle": {
+      "type": "string",
+      "default": "Our Cleaning Checklist | Clensy Professional Cleaning"
+    },
+    "seoMetaDescription": {
+      "type": "text",
+      "default": "Explore Clensy's comprehensive cleaning checklist. See exactly what's included in our routine, deep, and move-in/out cleaning services for every room."
+    },
+    "seoKeywords": {
+      "type": "text",
+      "default": "cleaning checklist, house cleaning checklist, professional cleaning checklist, deep cleaning checklist, move out cleaning checklist"
+    },
+    "seoCanonicalUrl": {
+      "type": "string",
+      "default": "https://clensy.com/company/checklist"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string",
+      "default": "Our Cleaning Checklist | Clensy"
+    },
+    "ogDescription": {
+      "type": "text",
+      "default": "See our comprehensive cleaning checklist. We don't miss a spot!"
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "ogImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750069438/website-images/j5wxvoguffksq4fwffuc.svg"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
     "heroHeading": {
       "type": "string",
-      "default": "Our Clensy Cleaning <blue>Checklist</blue>",
-      "description": "Main headline at the top of the page"
+      "default": "Our Clensy Cleaning <blue>Checklist</blue>"
     },
     "heroDescription": {
       "type": "text",
-      "default": "We've developed a comprehensive cleaning system that ensures nothing is overlooked. Every detail matters, and our meticulous approach guarantees exceptional results.",
-      "description": "Short description under the hero title"
+      "default": "We've developed a comprehensive cleaning system that ensures nothing is overlooked. Every detail matters, and our meticulous approach guarantees exceptional results."
     },
     "heroSubDescription": {
       "type": "text",
-      "default": "From high-touch surfaces to hidden corners, our trained professionals follow a systematic process that transforms your space into a spotless sanctuary you can trust.",
-      "description": "Additional description text under hero"
+      "default": "From high-touch surfaces to hidden corners, our trained professionals follow a systematic process that transforms your space into a spotless sanctuary you can trust."
     },
     "heroBackgroundImage": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"],
-      "description": "Background image for the hero section"
+      "allowedTypes": ["images"]
     },
     "heroBackgroundImageUrl": {
       "type": "string",
-      "default": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop",
-      "description": "Fallback URL for hero background image if media not uploaded"
+      "default": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2070&auto=format&fit=crop"
     },
     "heroCtaButtonText": {
       "type": "string",
-      "default": "Book Your Cleaning",
-      "description": "Text for the call-to-action button in hero"
+      "default": "Book Your Cleaning"
     },
     "heroRatingText": {
       "type": "string",
-      "default": "4.9/5 Rating",
-      "description": "Rating text displayed in hero"
+      "default": "4.9/5 Rating"
     },
     "heroSatisfactionText": {
       "type": "string",
-      "default": "100% Satisfaction",
-      "description": "Satisfaction guarantee text displayed in hero"
+      "default": "100% Satisfaction"
     },
     "interactiveGuideHeading": {
       "type": "string",
-      "default": "Our Clensy Cleaning Guide",
-      "description": "Heading for the interactive guide section"
+      "default": "Our Clensy Cleaning Guide"
     },
     "interactiveGuideDescription": {
       "type": "text",
-      "default": "Click on any room to explore our detailed cleaning protocols and see exactly what's included in each service level.",
-      "description": "Description text for interactive guide"
+      "default": "Click on any room to explore our detailed cleaning protocols and see exactly what's included in each service level."
     },
     "floorPlanImageDesktop": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"],
-      "description": "Floor plan image for desktop view"
+      "allowedTypes": ["images"]
     },
     "floorPlanImageDesktopUrl": {
       "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750069438/website-images/j5wxvoguffksq4fwffuc.svg",
-      "description": "Fallback URL for desktop floor plan image"
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750069438/website-images/j5wxvoguffksq4fwffuc.svg"
     },
     "floorPlanImageMobile": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"],
-      "description": "Floor plan image for mobile view"
+      "allowedTypes": ["images"]
     },
     "floorPlanImageMobileUrl": {
       "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750069449/website-images/rzv9r7sgs6wgchwgh7kq.svg",
-      "description": "Fallback URL for mobile floor plan image"
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750069449/website-images/rzv9r7sgs6wgchwgh7kq.svg"
     },
     "checklistSectionHeading": {
       "type": "string",
-      "default": "Clensy Cleaning Checklist",
-      "description": "Heading for the checklist section"
+      "default": "Clensy Cleaning Checklist"
     },
     "checklistSectionDescription": {
       "type": "text",
-      "default": "Choose your cleaning level to see exactly what's included in each comprehensive service package",
-      "description": "Description text for checklist section"
+      "default": "Choose your cleaning level to see exactly what's included in each comprehensive service package"
     },
     "checklistData": {
       "type": "json",
@@ -126,108 +173,23 @@
           "moving": ["Sweep, Vacuum and mop floors thoroughly", "Dust and wipe all baseboards and molding", "Clean interior window glass and wipe window sills", "Remove cobwebs from ceilings and corners", "Clean doors, handles, and light switches", "Dust and wipe ceiling fans and light fixtures", "Clean inside closets and shelving (if any)", "Trash Emptied"],
           "image": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750069416/website-images/ybxxaliusujslwciplyb.jpg"
         }
-      },
-      "description": "JSON object containing cleaning checklist data organized by room and service level"
+      }
     },
     "ctaHeading": {
       "type": "string",
-      "default": "Ready for a Spotless Home?",
-      "description": "Call-to-action heading at the bottom of the page"
+      "default": "Ready for a Spotless Home?"
     },
     "ctaDescription": {
       "type": "text",
-      "default": "Book your cleaning today and experience the Clensy difference. Our comprehensive checklist ensures nothing is missed.",
-      "description": "Call-to-action description text"
+      "default": "Book your cleaning today and experience the Clensy difference. Our comprehensive checklist ensures nothing is missed."
     },
     "ctaButtonText": {
       "type": "string",
-      "default": "Book Now",
-      "description": "Text for the call-to-action button"
+      "default": "Book Now"
     },
     "ctaPhoneNumber": {
       "type": "string",
-      "default": "(551) 305-4081",
-      "description": "Phone number displayed in CTA section"
-    },
-    "seoTitle": {
-      "type": "string",
-      "default": "Our Cleaning Checklist | Clensy Professional Cleaning",
-      "description": "SEO meta title for the page"
-    },
-    "seoMetaDescription": {
-      "type": "text",
-      "default": "Explore Clensy's comprehensive cleaning checklist. See exactly what's included in our routine, deep, and move-in/out cleaning services for every room.",
-      "description": "SEO meta description for search engines"
-    },
-    "seoKeywords": {
-      "type": "text",
-      "default": "cleaning checklist, house cleaning checklist, professional cleaning checklist, deep cleaning checklist, move out cleaning checklist",
-      "description": "SEO keywords for the page"
-    },
-    "seoCanonicalUrl": {
-      "type": "string",
-      "default": "https://clensy.com/company/checklist",
-      "description": "Canonical URL for SEO"
-    },
-    "seoRobots": {
-      "type": "string",
-      "default": "index, follow",
-      "description": "Robots meta tag value (index/noindex, follow/nofollow)"
-    },
-    "ogTitle": {
-      "type": "string",
-      "default": "Our Cleaning Checklist | Clensy",
-      "description": "Open Graph title for social media sharing"
-    },
-    "ogDescription": {
-      "type": "text",
-      "default": "See our comprehensive cleaning checklist. We don't miss a spot!",
-      "description": "Open Graph description for social media sharing"
-    },
-    "ogImage": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": ["images"],
-      "description": "Open Graph image for social media sharing"
-    },
-    "ogImageUrl": {
-      "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750069438/website-images/j5wxvoguffksq4fwffuc.svg",
-      "description": "Fallback URL for Open Graph image if media not uploaded"
-    },
-    "ogType": {
-      "type": "string",
-      "default": "website",
-      "description": "Open Graph type (website, article, etc.)"
-    },
-    "twitterCard": {
-      "type": "string",
-      "default": "summary_large_image",
-      "description": "Twitter card type (summary or summary_large_image)"
-    },
-    "twitterTitle": {
-      "type": "string",
-      "description": "Twitter card title"
-    },
-    "twitterDescription": {
-      "type": "text",
-      "description": "Twitter card description"
-    },
-    "schemaJsonLd": {
-      "type": "json",
-      "description": "JSON-LD structured data for SEO"
-    },
-    "headScripts": {
-      "type": "text",
-      "description": "Custom scripts to inject in the <head> tag"
-    },
-    "bodyEndScripts": {
-      "type": "text",
-      "description": "Custom scripts to inject at the end of <body> tag"
-    },
-    "customCss": {
-      "type": "text",
-      "description": "Custom CSS styles for this page"
+      "default": "(551) 305-4081"
     }
   }
 }

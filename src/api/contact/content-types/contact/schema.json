@@ -12,61 +12,116 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "seoTitle": {
+      "type": "string",
+      "default": "Contact Us | Clensy Professional Cleaning Services"
+    },
+    "seoMetaDescription": {
+      "type": "text",
+      "default": "Get in touch with Clensy for professional cleaning services in New Jersey. Call us, email us, or fill out our contact form for a free quote."
+    },
+    "seoKeywords": {
+      "type": "text",
+      "default": "contact clensy, cleaning service contact, New Jersey cleaning company, get a quote, cleaning consultation"
+    },
+    "seoCanonicalUrl": {
+      "type": "string",
+      "default": "https://clensy.com/contact"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string",
+      "default": "Contact Clensy | Professional Cleaning Services"
+    },
+    "ogDescription": {
+      "type": "text",
+      "default": "Ready for a cleaner space? Contact Clensy today for professional cleaning services."
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "ogImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847694/shutterstock_2478230727_bt7fos.jpg"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyStartScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
     "heroTopLabel": {
       "type": "string",
-      "default": "We'd Love To Hear From You",
-      "description": "Small label text displayed above the hero heading"
+      "default": "We'd Love To Hear From You"
     },
     "heroHeading": {
       "type": "string",
-      "default": "Let's Start A <blue>Conversation</blue>",
-      "description": "Main headline at the top of the page"
+      "default": "Let's Start A <blue>Conversation</blue>"
     },
     "heroDescription": {
       "type": "text",
-      "default": "Have questions or need a personalized cleaning solution? Our team is ready to provide the support you need for all your requirements.",
-      "description": "Short description under the hero title"
+      "default": "Have questions or need a personalized cleaning solution? Our team is ready to provide the support you need for all your requirements."
     },
     "heroSendMessageButtonText": {
       "type": "string",
-      "default": "Send a Message",
-      "description": "Text for the send message button in hero section"
+      "default": "Send a Message"
     },
     "heroSupportText": {
       "type": "string",
-      "default": "24/7 Support",
-      "description": "Support feature text displayed in hero"
+      "default": "24/7 Support"
     },
     "heroResponseText": {
       "type": "string",
-      "default": "Quick Response",
-      "description": "Response time feature text displayed in hero"
+      "default": "Quick Response"
     },
     "heroImage": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"],
-      "description": "Hero section image"
+      "allowedTypes": ["images"]
     },
     "heroImageUrl": {
       "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847694/shutterstock_2478230727_bt7fos.jpg",
-      "description": "Fallback URL for hero image if media not uploaded"
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847694/shutterstock_2478230727_bt7fos.jpg"
     },
     "trustMainText": {
       "type": "string",
-      "default": "Trusted by 5,000+ Customers",
-      "description": "Main trust indicator text"
+      "default": "Trusted by 5,000+ Customers"
     },
     "trustSubtitle": {
       "type": "string",
-      "default": "Professional cleaning for every need",
-      "description": "Subtitle text under trust indicator"
+      "default": "Professional cleaning for every need"
     },
     "serviceTags": {
       "type": "json",
-      "default": [{"name": "Residential"}, {"name": "Commercial"}, {"name": "Specialized"}],
-      "description": "Array of service type tags to display"
+      "default": [{"name": "Residential"}, {"name": "Commercial"}, {"name": "Specialized"}]
     },
     "statsIndicators": {
       "type": "json",
@@ -75,78 +130,63 @@
         {"number": "1h", "description": "Response Time"},
         {"number": "4.9", "description": "Customer Rating"},
         {"number": "100%", "description": "Satisfaction Guarantee"}
-      ],
-      "description": "Array of statistics with number and description"
+      ]
     },
     "contactSectionTitle": {
       "type": "string",
-      "default": "Contact Information",
-      "description": "Heading for the contact information section"
+      "default": "Contact Information"
     },
     "phoneTitle": {
       "type": "string",
-      "default": "Phone",
-      "description": "Label for phone contact section"
+      "default": "Phone"
     },
     "phoneDescription": {
       "type": "string",
-      "default": "Speak directly with our customer service team",
-      "description": "Description text for phone contact"
+      "default": "Speak directly with our customer service team"
     },
     "phoneNumber": {
       "type": "string",
-      "default": "(551) 305-4081",
-      "description": "Phone number to display"
+      "default": "(551) 305-4081"
     },
     "emailTitle": {
       "type": "string",
-      "default": "Email",
-      "description": "Label for email contact section"
+      "default": "Email"
     },
     "emailDescription": {
       "type": "string",
-      "default": "Get a response within 24 hours",
-      "description": "Description text for email contact"
+      "default": "Get a response within 24 hours"
     },
     "emailAddress": {
       "type": "string",
-      "default": "info@clensy.com",
-      "description": "Email address to display"
+      "default": "info@clensy.com"
     },
     "officeTitle": {
       "type": "string",
-      "default": "Office Location",
-      "description": "Label for office location section"
+      "default": "Office Location"
     },
     "officeDescription": {
       "type": "string",
-      "default": "Our headquarters",
-      "description": "Description text for office location"
+      "default": "Our headquarters"
     },
     "addressLine1": {
       "type": "string",
-      "default": "123 Cleaning Street",
-      "description": "First line of the office address"
+      "default": "123 Cleaning Street"
     },
     "addressLine2": {
       "type": "string",
-      "default": "Suite 456",
-      "description": "Second line of the office address"
+      "default": "Suite 456"
     },
     "cityStateZip": {
       "type": "string",
-      "default": "Jersey City, NJ 07302",
-      "description": "City, state, and zip code"
+      "default": "Jersey City, NJ 07302"
     },
     "businessHoursTitle": {
       "type": "string",
-      "default": "Business Hours",
-      "description": "Heading for business hours section"
+      "default": "Business Hours"
     },
     "businessHoursDescription": {
       "type": "string",
-      "default": "When you can reach us",
-      "description": "Description text for business hours"
+      "default": "When you can reach us"
     },
     "businessHours": {
       "type": "json",
@@ -154,122 +194,31 @@
         {"day": "Monday - Friday", "hours": "8:00 AM - 6:00 PM"},
         {"day": "Saturday", "hours": "9:00 AM - 3:00 PM"},
         {"day": "Sunday", "hours": "Closed"}
-      ],
-      "description": "Array of business hours with day and hours"
+      ]
     },
     "immediateAssistanceTitle": {
       "type": "string",
-      "default": "Need Immediate Assistance?",
-      "description": "Heading for immediate assistance section"
+      "default": "Need Immediate Assistance?"
     },
     "immediateAssistanceDescription": {
       "type": "text",
-      "default": "Our customer support team is available during business hours to help you with any questions.",
-      "description": "Description text for immediate assistance"
+      "default": "Our customer support team is available during business hours to help you with any questions."
     },
     "immediateAssistanceButtonText": {
       "type": "string",
-      "default": "Call Us Now",
-      "description": "Button text for immediate assistance"
+      "default": "Call Us Now"
     },
     "consultationHeading": {
       "type": "string",
-      "default": "Need a Personalized Cleaning Solution?",
-      "description": "Heading for consultation section"
+      "default": "Need a Personalized Cleaning Solution?"
     },
     "consultationDescription": {
       "type": "text",
-      "default": "Schedule a consultation with our cleaning experts to discuss your unique requirements and get a customized cleaning plan tailored to your specific needs.",
-      "description": "Description text for consultation section"
+      "default": "Schedule a consultation with our cleaning experts to discuss your unique requirements and get a customized cleaning plan tailored to your specific needs."
     },
     "consultationButtonText": {
       "type": "string",
-      "default": "Schedule a Consultation",
-      "description": "Button text for consultation section"
-    },
-    "seoTitle": {
-      "type": "string",
-      "default": "Contact Us | Clensy Professional Cleaning Services",
-      "description": "SEO meta title for the page"
-    },
-    "seoMetaDescription": {
-      "type": "text",
-      "default": "Get in touch with Clensy for professional cleaning services in New Jersey. Call us, email us, or fill out our contact form for a free quote.",
-      "description": "SEO meta description for search engines"
-    },
-    "seoKeywords": {
-      "type": "text",
-      "default": "contact clensy, cleaning service contact, New Jersey cleaning company, get a quote, cleaning consultation",
-      "description": "SEO keywords for the page"
-    },
-    "seoCanonicalUrl": {
-      "type": "string",
-      "default": "https://clensy.com/contact",
-      "description": "Canonical URL for SEO"
-    },
-    "seoRobots": {
-      "type": "string",
-      "default": "index, follow",
-      "description": "Robots meta tag value (index/noindex, follow/nofollow)"
-    },
-    "ogTitle": {
-      "type": "string",
-      "default": "Contact Clensy | Professional Cleaning Services",
-      "description": "Open Graph title for social media sharing"
-    },
-    "ogDescription": {
-      "type": "text",
-      "default": "Ready for a cleaner space? Contact Clensy today for professional cleaning services.",
-      "description": "Open Graph description for social media sharing"
-    },
-    "ogImage": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": ["images"],
-      "description": "Open Graph image for social media sharing"
-    },
-    "ogImageUrl": {
-      "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847694/shutterstock_2478230727_bt7fos.jpg",
-      "description": "Fallback URL for Open Graph image if media not uploaded"
-    },
-    "ogType": {
-      "type": "string",
-      "default": "website",
-      "description": "Open Graph type (website, article, etc.)"
-    },
-    "twitterCard": {
-      "type": "string",
-      "default": "summary_large_image",
-      "description": "Twitter card type (summary or summary_large_image)"
-    },
-    "twitterTitle": {
-      "type": "string",
-      "description": "Twitter card title"
-    },
-    "twitterDescription": {
-      "type": "text",
-      "description": "Twitter card description"
-    },
-    "schemaJsonLd": {
-      "type": "json",
-      "description": "JSON-LD structured data for SEO"
-    },
-    "headScripts": {
-      "type": "text",
-      "description": "Custom scripts to inject in the <head> tag"
-    },
-    "bodyStartScripts": {
-      "type": "text",
-      "description": "Custom scripts to inject at the start of <body> tag"
-    },
-    "bodyEndScripts": {
-      "type": "text",
-      "description": "Custom scripts to inject at the end of <body> tag"
-    },
-    "customCss": {
-      "type": "text",
-      "description": "Custom CSS styles for this page"
+      "default": "Schedule a Consultation"
     }
   }
 }

@@ -13,55 +13,46 @@
   "pluginOptions": {},
   "attributes": {
     "heroHeading": {
-      "type": "string",
-      "description": "Main headline at the top of the page"
+      "type": "string"
     },
     "heroSubheading": {
-      "type": "text",
-      "description": "Short description under the hero title"
+      "type": "text"
     },
     "heroBackgroundImage": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false,
-      "description": "Background image for the hero section"
+      "multiple": false
     },
     "whyWorkWithUsHeading": {
-      "type": "string",
-      "description": "Heading for the Why Work With Us section"
+      "type": "string"
     },
     "benefits": {
       "type": "component",
       "repeatable": true,
-      "component": "content.feature-item",
-      "description": "List of employee benefits/features"
+      "component": "content.feature-item"
     },
     "openPositions": {
-      "type": "json",
-      "description": "JSON array of open job positions with title, description, requirements, etc."
+      "type": "json"
     },
     "applicationFormEnabled": {
       "type": "boolean",
-      "default": true,
-      "description": "Whether to show the job application form"
+      "default": true
     },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo",
-      "description": "SEO metadata component"
+      "component": "shared.seo"
     },
     "openGraph": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.open-graph",
-      "description": "Open Graph metadata for social media sharing"
+      "component": "shared.open-graph"
     },
     "scripts": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.script-injection",
-      "description": "Custom scripts injection component"
+      "component": "shared.script-injection"
     }
   }
 }
+

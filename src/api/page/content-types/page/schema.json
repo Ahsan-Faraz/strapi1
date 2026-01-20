@@ -14,51 +14,43 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true,
-      "description": "Page title"
+      "required": true
     },
     "slug": {
       "type": "uid",
       "targetField": "title",
-      "required": true,
-      "description": "URL-friendly slug automatically generated from title"
+      "required": true
     },
     "content": {
-      "type": "richtext",
-      "description": "Main page content in rich text format"
+      "type": "richtext"
     },
     "htmlBlocks": {
-      "type": "text",
-      "description": "Raw HTML blocks for custom content sections"
-    },
-    "featuredImage": {
-      "type": "media",
-      "allowedTypes": ["images"],
-      "multiple": false,
-      "description": "Featured image for the page"
+      "type": "text"
     },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo",
-      "description": "SEO metadata component"
+      "component": "shared.seo"
     },
     "openGraph": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.open-graph",
-      "description": "Open Graph metadata for social media sharing"
+      "component": "shared.open-graph"
     },
     "scripts": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.script-injection",
-      "description": "Custom scripts injection component"
+      "component": "shared.script-injection"
     },
     "excludeFromSitemap": {
       "type": "boolean",
-      "default": false,
-      "description": "Whether to exclude this page from the sitemap"
+      "default": false
+    },
+    "featuredImage": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false
     }
   }
 }
+

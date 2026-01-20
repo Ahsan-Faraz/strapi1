@@ -14,120 +14,100 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true,
-      "description": "Location name (e.g., Bergen County, Essex County)"
+      "required": true
     },
     "slug": {
       "type": "uid",
       "targetField": "name",
-      "required": true,
-      "description": "URL-friendly slug automatically generated from name"
+      "required": true
     },
     "county": {
       "type": "string",
-      "required": true,
-      "description": "County name where service is provided"
+      "required": true
     },
     "state": {
       "type": "string",
-      "default": "NJ",
-      "description": "State abbreviation (default: NJ)"
+      "default": "NJ"
     },
     "heroTitle": {
       "type": "string",
-      "required": true,
-      "description": "Main headline at the top of the location page"
+      "required": true
     },
     "heroSubtitle": {
-      "type": "text",
-      "description": "Short description under the hero title"
+      "type": "text"
     },
     "heroBackgroundImage": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false,
-      "description": "Background image for the hero section"
+      "multiple": false
     },
     "heroBackgroundImageUrl": {
-      "type": "string",
-      "description": "Fallback URL for hero background image if media not uploaded"
+      "type": "string"
     },
     "ctaButton1Text": {
       "type": "string",
-      "default": "Get a Quote",
-      "description": "Text for the first call-to-action button"
+      "default": "Get a Quote"
     },
     "ctaButton2Text": {
       "type": "string",
-      "default": "Contact Us",
-      "description": "Text for the second call-to-action button"
+      "default": "Contact Us"
     },
     "contactPhone": {
-      "type": "string",
-      "description": "Phone number for this location"
+      "type": "string"
     },
     "contactEmail": {
-      "type": "string",
-      "description": "Email address for this location"
+      "type": "string"
     },
     "contactAddress": {
-      "type": "text",
-      "description": "Physical address for this location"
+      "type": "text"
     },
     "operatingHours": {
       "type": "component",
       "repeatable": true,
-      "component": "content.operating-hours",
-      "description": "Operating hours for this location"
+      "component": "content.operating-hours"
     },
     "serviceAreas": {
       "type": "component",
       "repeatable": true,
-      "component": "content.service-area",
-      "description": "List of specific service areas within this location"
+      "component": "content.service-area"
     },
     "aboutTitle": {
-      "type": "string",
-      "description": "Heading for the about section"
+      "type": "string"
     },
     "aboutDescription": {
-      "type": "richtext",
-      "description": "Rich text content describing this location"
+      "type": "richtext"
     },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo",
-      "description": "SEO metadata component"
+      "component": "shared.seo"
     },
     "openGraph": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.open-graph",
-      "description": "Open Graph metadata for social media sharing"
+      "component": "shared.open-graph"
     },
     "localSeo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.local-seo",
-      "description": "Local SEO metadata component"
+      "component": "shared.local-seo"
     },
     "schema": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.schema-template",
-      "description": "JSON-LD schema template component"
+      "component": "shared.schema-template"
     },
     "scripts": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.script-injection",
-      "description": "Custom scripts injection component"
+      "component": "shared.script-injection"
     },
     "excludeFromSitemap": {
       "type": "boolean",
-      "default": false,
-      "description": "Whether to exclude this location page from the sitemap"
+      "default": false
     }
   }
 }
+
+
+

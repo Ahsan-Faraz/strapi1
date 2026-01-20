@@ -12,40 +12,75 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "seoTitle": {
+      "type": "string",
+      "default": "Terms of Service | Clensy Cleaning Services"
+    },
+    "seoMetaDescription": {
+      "type": "text",
+      "default": "Read Clensy's terms of service. Understand the terms and conditions for using our professional cleaning services."
+    },
+    "seoKeywords": {
+      "type": "text",
+      "default": "terms of service, terms and conditions, cleaning service terms, Clensy terms"
+    },
+    "seoCanonicalUrl": {
+      "type": "string",
+      "default": "https://clensy.com/terms-of-service"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string",
+      "default": "Terms of Service | Clensy"
+    },
+    "ogDescription": {
+      "type": "text",
+      "default": "Terms and conditions for using Clensy cleaning services."
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
     "heroHeading": {
       "type": "string",
-      "default": "Terms & Conditions",
-      "description": "Main headline at the top of the page"
+      "default": "Terms & Conditions"
     },
     "heroDescription": {
       "type": "text",
-      "default": "Please read these terms and conditions carefully before using our services",
-      "description": "Short description under the hero title"
+      "default": "Please read these terms and conditions carefully before using our services"
     },
     "websiteUrl": {
       "type": "string",
-      "default": "clensy.com",
-      "description": "Website URL for reference in terms"
+      "default": "clensy.com"
     },
     "companyEmail": {
       "type": "string",
-      "default": "info@clensy.com",
-      "description": "Company email address for inquiries"
+      "default": "info@clensy.com"
     },
     "companyPhone": {
       "type": "string",
-      "default": "(551) 305-4081",
-      "description": "Company phone number for inquiries"
+      "default": "(551) 305-4081"
     },
     "lastUpdated": {
       "type": "string",
-      "default": "December 2024",
-      "description": "Last updated date of the terms of service"
+      "default": "December 2024"
     },
     "agreementDescription": {
       "type": "text",
-      "default": "By booking any service with Clensy LLC ('Clensy Cleaning'), either through our website, over the phone, or by email/text, you agree to comply with these Terms & Conditions. If you do not agree with any part of these terms, do not proceed with booking a service.",
-      "description": "Agreement description text at the top of terms"
+      "default": "By booking any service with Clensy LLC ('Clensy Cleaning'), either through our website, over the phone, or by email/text, you agree to comply with these Terms & Conditions. If you do not agree with any part of these terms, do not proceed with booking a service."
     },
     "sections": {
       "type": "json",
@@ -95,61 +130,7 @@
           "content": "We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting to our website. Continued use of our services constitutes acceptance of modified terms.",
           "order": 9
         }
-      ],
-      "description": "JSON array of terms sections with title, content, and order"
-    },
-    "seoTitle": {
-      "type": "string",
-      "default": "Terms of Service | Clensy Cleaning Services",
-      "description": "SEO meta title for the page"
-    },
-    "seoMetaDescription": {
-      "type": "text",
-      "default": "Read Clensy's terms of service. Understand the terms and conditions for using our professional cleaning services.",
-      "description": "SEO meta description for search engines"
-    },
-    "seoKeywords": {
-      "type": "text",
-      "default": "terms of service, terms and conditions, cleaning service terms, Clensy terms",
-      "description": "SEO keywords for the page"
-    },
-    "seoCanonicalUrl": {
-      "type": "string",
-      "default": "https://clensy.com/terms-of-service",
-      "description": "Canonical URL for SEO"
-    },
-    "seoRobots": {
-      "type": "string",
-      "default": "index, follow",
-      "description": "Robots meta tag value (index/noindex, follow/nofollow)"
-    },
-    "ogTitle": {
-      "type": "string",
-      "default": "Terms of Service | Clensy",
-      "description": "Open Graph title for social media sharing"
-    },
-    "ogDescription": {
-      "type": "text",
-      "default": "Terms and conditions for using Clensy cleaning services.",
-      "description": "Open Graph description for social media sharing"
-    },
-    "ogType": {
-      "type": "string",
-      "default": "website",
-      "description": "Open Graph type (website, article, etc.)"
-    },
-    "twitterCard": {
-      "type": "string",
-      "default": "summary",
-      "description": "Twitter card type (summary or summary_large_image)"
-    },
-    "headScripts": {
-      "type": "text",
-      "description": "Custom scripts to inject in the <head> tag"
-    },
-    "bodyEndScripts": {
-      "type": "text",
-      "description": "Custom scripts to inject at the end of <body> tag"
+      ]
     }
   }
 }
