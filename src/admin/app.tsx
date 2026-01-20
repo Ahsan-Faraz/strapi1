@@ -1,4 +1,5 @@
 import type { StrapiApp } from '@strapi/strapi/admin';
+import { File, AlertCircle, ArrowRight, CheckCircle, Search, Clock } from '@strapi/icons';
 
 export default {
   config: {
@@ -70,6 +71,7 @@ export default {
           id: 'admin.dashboard.totalPages.title',
           defaultMessage: 'Total Pages',
         },
+        icon: File,
         component: async () => {
           const { default: TotalPagesWidget } = await import('./extensions/widgets/TotalPagesWidget');
           return TotalPagesWidget;
@@ -90,6 +92,7 @@ export default {
           id: 'admin.dashboard.missingMetaTitles.title',
           defaultMessage: 'Missing Meta Titles',
         },
+        icon: AlertCircle,
         component: async () => {
           const { default: MissingMetaTitlesWidget } = await import('./extensions/widgets/MissingMetaTitlesWidget');
           return MissingMetaTitlesWidget;
@@ -110,6 +113,7 @@ export default {
           id: 'admin.dashboard.redirectIssues.title',
           defaultMessage: 'Redirect Issues',
         },
+        icon: ArrowRight,
         component: async () => {
           const { default: RedirectIssuesWidget } = await import('./extensions/widgets/RedirectIssuesWidget');
           return RedirectIssuesWidget;
@@ -130,6 +134,7 @@ export default {
           id: 'admin.dashboard.sitemapStatus.title',
           defaultMessage: 'Sitemap Status',
         },
+        icon: CheckCircle,
         component: async () => {
           const { default: SitemapStatusWidget } = await import('./extensions/widgets/SitemapStatusWidget');
           return SitemapStatusWidget;
@@ -143,6 +148,7 @@ export default {
           id: 'admin.dashboard.seoIssues.title',
           defaultMessage: 'Open SEO Issues',
         },
+        icon: Search,
         component: async () => {
           const { default: SeoIssuesWidget } = await import('./extensions/widgets/SeoIssuesWidget');
           return SeoIssuesWidget;
@@ -156,6 +162,7 @@ export default {
           id: 'admin.dashboard.recentlyEdited.title',
           defaultMessage: 'Recently Edited Pages',
         },
+        icon: Clock,
         component: async () => {
           const { default: RecentlyEditedWidget } = await import('./extensions/widgets/RecentlyEditedWidget');
           return RecentlyEditedWidget;
