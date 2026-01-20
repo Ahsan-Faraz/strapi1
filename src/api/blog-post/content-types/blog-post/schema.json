@@ -14,69 +14,82 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "Blog post title"
     },
     "slug": {
       "type": "uid",
       "targetField": "title",
-      "required": true
+      "required": true,
+      "description": "URL-friendly slug automatically generated from title"
     },
     "excerpt": {
       "type": "text",
-      "maxLength": 300
+      "maxLength": 300,
+      "description": "Short excerpt/summary of the blog post (max 300 characters)"
     },
     "content": {
       "type": "richtext",
-      "required": true
+      "required": true,
+      "description": "Main blog post content in rich text format"
     },
     "featuredImage": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false
+      "multiple": false,
+      "description": "Featured image displayed at the top of the blog post"
     },
     "featuredImageAlt": {
-      "type": "string"
+      "type": "string",
+      "description": "Alt text for the featured image"
     },
     "author": {
-      "type": "string"
+      "type": "string",
+      "description": "Author name of the blog post"
     },
     "publishedDate": {
-      "type": "date"
+      "type": "date",
+      "description": "Publication date of the blog post"
     },
     "categories": {
-      "type": "json"
+      "type": "json",
+      "description": "JSON array of category names for this blog post"
     },
     "tags": {
-      "type": "json"
+      "type": "json",
+      "description": "JSON array of tag names for this blog post"
     },
     "readingTime": {
-      "type": "integer"
+      "type": "integer",
+      "description": "Estimated reading time in minutes"
     },
     "enableArticleSchema": {
       "type": "boolean",
-      "default": true
+      "default": true,
+      "description": "Whether to enable Article schema markup for SEO"
     },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "description": "SEO metadata component"
     },
     "openGraph": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.open-graph"
+      "component": "shared.open-graph",
+      "description": "Open Graph metadata for social media sharing"
     },
     "scripts": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.script-injection"
+      "component": "shared.script-injection",
+      "description": "Custom scripts injection component"
     },
     "excludeFromSitemap": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "description": "Whether to exclude this blog post from the sitemap"
     }
   }
 }
-
-
-

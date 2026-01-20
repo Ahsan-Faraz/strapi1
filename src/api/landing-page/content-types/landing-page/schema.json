@@ -11,56 +11,265 @@
     "draftAndPublish": true
   },
   "attributes": {
+    "heroTopLabel": {
+      "type": "string",
+      "default": "PROFESSIONAL CLEANING SERVICES",
+      "description": "Small label text displayed above the hero heading"
+    },
+    "heroHeading": {
+      "type": "string",
+      "default": "Premium Cleaning Services for Your Home & Business",
+      "description": "Main headline at the top of the page"
+    },
+    "heroSubheading": {
+      "type": "text",
+      "default": "Experience the difference with our professional cleaning team. We bring sparkle to every corner.",
+      "description": "Short line under the hero title"
+    },
+    "heroButtonText": {
+      "type": "string",
+      "default": "Book Now",
+      "description": "Text displayed on the primary hero button"
+    },
+    "heroButtonLink": {
+      "type": "string",
+      "default": "/booking",
+      "description": "URL link for the hero button"
+    },
+    "heroFeature1": {
+      "type": "string",
+      "default": "Licensed & Insured",
+      "description": "First feature badge text displayed in hero section"
+    },
+    "heroFeature2": {
+      "type": "string",
+      "default": "100% Satisfaction Guaranteed",
+      "description": "Second feature badge text displayed in hero section"
+    },
+    "heroBackgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"],
+      "description": "Background image for the hero section"
+    },
+    "heroBackgroundImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1751356490/shutterstock_2392393465__3_.jpg",
+      "description": "Fallback URL for hero background image if media not uploaded"
+    },
+    "heroBackgroundImageAlt": {
+      "type": "string",
+      "default": "Professional cleaning service - clean modern kitchen",
+      "description": "Alt text for the hero background image"
+    },
+    "howItWorksHeading": {
+      "type": "string",
+      "default": "How It Works",
+      "description": "Heading for the How It Works section"
+    },
+    "step1Title": {
+      "type": "string",
+      "default": "Book Online",
+      "description": "Title for step 1 in How It Works section"
+    },
+    "step1Description": {
+      "type": "text",
+      "default": "Choose your service and schedule a time that works for you.",
+      "description": "Description text for step 1"
+    },
+    "step1FeatureText": {
+      "type": "string",
+      "default": "Easy scheduling",
+      "description": "Feature highlight text for step 1"
+    },
+    "step2Title": {
+      "type": "string",
+      "default": "We Clean",
+      "description": "Title for step 2 in How It Works section"
+    },
+    "step2Description": {
+      "type": "text",
+      "default": "Our professional team arrives on time with all supplies needed.",
+      "description": "Description text for step 2"
+    },
+    "step2FeatureText": {
+      "type": "string",
+      "default": "Professional team",
+      "description": "Feature highlight text for step 2"
+    },
+    "step3Title": {
+      "type": "string",
+      "default": "Enjoy",
+      "description": "Title for step 3 in How It Works section"
+    },
+    "step3Description": {
+      "type": "text",
+      "default": "Relax in your spotless space. We guarantee your satisfaction.",
+      "description": "Description text for step 3"
+    },
+    "step3FeatureText": {
+      "type": "string",
+      "default": "Satisfaction guaranteed",
+      "description": "Feature highlight text for step 3"
+    },
+    "howItWorksButtonText": {
+      "type": "string",
+      "default": "Get Started",
+      "description": "Text for the button in How It Works section"
+    },
+    "checklistHeading": {
+      "type": "string",
+      "default": "Our Cleaning Checklist",
+      "description": "Heading for the cleaning checklist section"
+    },
+    "checklistDescription": {
+      "type": "text",
+      "default": "We follow a comprehensive checklist to ensure nothing is missed.",
+      "description": "Description text for the checklist section"
+    },
+    "checklistItems": {
+      "type": "json",
+      "description": "JSON array of cleaning checklist items organized by room/area"
+    },
+    "checklistButtonText": {
+      "type": "string",
+      "default": "View Full Checklist",
+      "description": "Text for the button to view full checklist"
+    },
+    "comparisonHeading": {
+      "type": "string",
+      "default": "Why Choose Clensy?",
+      "description": "Heading for the comparison section"
+    },
+    "comparisonDescription": {
+      "type": "text",
+      "default": "See how we compare to other cleaning services.",
+      "description": "Description text for the comparison section"
+    },
+    "comparisonFeatures": {
+      "type": "json",
+      "description": "JSON array of comparison features showing Clensy vs competitors"
+    },
+    "comparisonButtonText": {
+      "type": "string",
+      "default": "Book Now",
+      "description": "Text for the button in comparison section"
+    },
+    "reviewsHeading": {
+      "type": "string",
+      "default": "What Our Clients Say",
+      "description": "Heading for the reviews/testimonials section"
+    },
+    "reviewsButtonText": {
+      "type": "string",
+      "default": "See All Reviews",
+      "description": "Text for the button to view all reviews"
+    },
+    "testimonials": {
+      "type": "json",
+      "description": "JSON array of customer testimonials with name, text, rating, etc."
+    },
+    "ctaHeading": {
+      "type": "string",
+      "default": "Ready for a Cleaner Space?",
+      "description": "Call-to-action heading at the bottom of the page"
+    },
+    "ctaDescription": {
+      "type": "text",
+      "default": "Book your cleaning service today and experience the Clensy difference.",
+      "description": "Call-to-action description text"
+    },
+    "ctaLeftCardTitle": {
+      "type": "string",
+      "default": "Residential Cleaning",
+      "description": "Title for the left CTA card"
+    },
+    "ctaLeftCardDescription": {
+      "type": "text",
+      "description": "Description text for the left CTA card"
+    },
+    "ctaLeftCardButtonText": {
+      "type": "string",
+      "default": "Book Home Cleaning",
+      "description": "Button text for the left CTA card"
+    },
+    "ctaRightCardTitle": {
+      "type": "string",
+      "default": "Commercial Cleaning",
+      "description": "Title for the right CTA card"
+    },
+    "ctaRightCardDescription": {
+      "type": "text",
+      "description": "Description text for the right CTA card"
+    },
+    "ctaRightCardButtonText": {
+      "type": "string",
+      "default": "Get a Quote",
+      "description": "Button text for the right CTA card"
+    },
     "seoTitle": {
       "type": "string",
-      "default": "Professional Cleaning Services | Clensy - Home & Office Cleaning"
+      "default": "Professional Cleaning Services | Clensy - Home & Office Cleaning",
+      "description": "SEO meta title for the page"
     },
     "seoMetaDescription": {
       "type": "text",
-      "default": "Clensy offers professional cleaning services for homes and offices in New Jersey. Book online in 30 seconds. 100% satisfaction guaranteed. Licensed & insured cleaners."
+      "default": "Clensy offers professional cleaning services for homes and offices in New Jersey. Book online in 30 seconds. 100% satisfaction guaranteed. Licensed & insured cleaners.",
+      "description": "SEO meta description for search engines"
     },
     "seoKeywords": {
       "type": "text",
-      "default": "cleaning services, house cleaning, office cleaning, professional cleaners, New Jersey cleaning, maid service, deep cleaning, routine cleaning"
+      "default": "cleaning services, house cleaning, office cleaning, professional cleaners, New Jersey cleaning, maid service, deep cleaning, routine cleaning",
+      "description": "SEO keywords for the page"
     },
     "seoCanonicalUrl": {
       "type": "string",
-      "default": "https://clensy.com"
+      "default": "https://clensy.com",
+      "description": "Canonical URL for SEO"
     },
     "seoRobots": {
       "type": "string",
-      "default": "index, follow"
+      "default": "index, follow",
+      "description": "Robots meta tag value (index/noindex, follow/nofollow)"
     },
     "ogTitle": {
       "type": "string",
-      "default": "Professional Cleaning Services | Clensy"
+      "default": "Professional Cleaning Services | Clensy",
+      "description": "Open Graph title for social media sharing"
     },
     "ogDescription": {
       "type": "text",
-      "default": "Book professional cleaning services online in 30 seconds. 100% satisfaction guaranteed."
+      "default": "Book professional cleaning services online in 30 seconds. 100% satisfaction guaranteed.",
+      "description": "Open Graph description for social media sharing"
     },
     "ogImage": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": ["images"],
+      "description": "Open Graph image for social media sharing"
     },
     "ogImageUrl": {
       "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1751356490/clensy-og-image.jpg"
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1751356490/clensy-og-image.jpg",
+      "description": "Fallback URL for Open Graph image if media not uploaded"
     },
     "ogType": {
       "type": "string",
-      "default": "website"
+      "default": "website",
+      "description": "Open Graph type (website, article, etc.)"
     },
     "twitterCard": {
       "type": "string",
-      "default": "summary_large_image"
+      "default": "summary_large_image",
+      "description": "Twitter card type (summary or summary_large_image)"
     },
     "twitterTitle": {
-      "type": "string"
+      "type": "string",
+      "description": "Twitter card title"
     },
     "twitterDescription": {
-      "type": "text"
+      "type": "text",
+      "description": "Twitter card description"
     },
     "schemaJsonLd": {
       "type": "json",
@@ -137,179 +346,29 @@
             }
           ]
         }
-      }
+      },
+      "description": "JSON-LD structured data for SEO (LocalBusiness schema)"
     },
     "additionalSchemas": {
       "type": "json",
-      "default": []
+      "default": [],
+      "description": "Additional JSON-LD schemas to add to the page"
     },
     "headScripts": {
-      "type": "text"
+      "type": "text",
+      "description": "Custom scripts to inject in the <head> tag"
     },
     "bodyStartScripts": {
-      "type": "text"
+      "type": "text",
+      "description": "Custom scripts to inject at the start of <body> tag"
     },
     "bodyEndScripts": {
-      "type": "text"
+      "type": "text",
+      "description": "Custom scripts to inject at the end of <body> tag"
     },
     "customCss": {
-      "type": "text"
-    },
-    "heroTopLabel": {
-      "type": "string",
-      "default": "PROFESSIONAL CLEANING SERVICES"
-    },
-    "heroHeading": {
-      "type": "string",
-      "default": "Premium Cleaning Services for Your Home & Business"
-    },
-    "heroSubheading": {
       "type": "text",
-      "default": "Experience the difference with our professional cleaning team. We bring sparkle to every corner."
-    },
-    "heroButtonText": {
-      "type": "string",
-      "default": "Book Now"
-    },
-    "heroButtonLink": {
-      "type": "string",
-      "default": "/booking"
-    },
-    "heroFeature1": {
-      "type": "string",
-      "default": "Licensed & Insured"
-    },
-    "heroFeature2": {
-      "type": "string",
-      "default": "100% Satisfaction Guaranteed"
-    },
-    "heroBackgroundImage": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": ["images"]
-    },
-    "heroBackgroundImageUrl": {
-      "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1751356490/shutterstock_2392393465__3_.jpg"
-    },
-    "heroBackgroundImageAlt": {
-      "type": "string",
-      "default": "Professional cleaning service - clean modern kitchen"
-    },
-    "howItWorksHeading": {
-      "type": "string",
-      "default": "How It Works"
-    },
-    "step1Title": {
-      "type": "string",
-      "default": "Book Online"
-    },
-    "step1Description": {
-      "type": "text",
-      "default": "Choose your service and schedule a time that works for you."
-    },
-    "step1FeatureText": {
-      "type": "string",
-      "default": "Easy scheduling"
-    },
-    "step2Title": {
-      "type": "string",
-      "default": "We Clean"
-    },
-    "step2Description": {
-      "type": "text",
-      "default": "Our professional team arrives on time with all supplies needed."
-    },
-    "step2FeatureText": {
-      "type": "string",
-      "default": "Professional team"
-    },
-    "step3Title": {
-      "type": "string",
-      "default": "Enjoy"
-    },
-    "step3Description": {
-      "type": "text",
-      "default": "Relax in your spotless space. We guarantee your satisfaction."
-    },
-    "step3FeatureText": {
-      "type": "string",
-      "default": "Satisfaction guaranteed"
-    },
-    "howItWorksButtonText": {
-      "type": "string",
-      "default": "Get Started"
-    },
-    "checklistHeading": {
-      "type": "string",
-      "default": "Our Cleaning Checklist"
-    },
-    "checklistDescription": {
-      "type": "text",
-      "default": "We follow a comprehensive checklist to ensure nothing is missed."
-    },
-    "checklistItems": {
-      "type": "json"
-    },
-    "checklistButtonText": {
-      "type": "string",
-      "default": "View Full Checklist"
-    },
-    "comparisonHeading": {
-      "type": "string",
-      "default": "Why Choose Clensy?"
-    },
-    "comparisonDescription": {
-      "type": "text",
-      "default": "See how we compare to other cleaning services."
-    },
-    "comparisonFeatures": {
-      "type": "json"
-    },
-    "comparisonButtonText": {
-      "type": "string",
-      "default": "Book Now"
-    },
-    "reviewsHeading": {
-      "type": "string",
-      "default": "What Our Clients Say"
-    },
-    "reviewsButtonText": {
-      "type": "string",
-      "default": "See All Reviews"
-    },
-    "testimonials": {
-      "type": "json"
-    },
-    "ctaHeading": {
-      "type": "string",
-      "default": "Ready for a Cleaner Space?"
-    },
-    "ctaDescription": {
-      "type": "text",
-      "default": "Book your cleaning service today and experience the Clensy difference."
-    },
-    "ctaLeftCardTitle": {
-      "type": "string",
-      "default": "Residential Cleaning"
-    },
-    "ctaLeftCardDescription": {
-      "type": "text"
-    },
-    "ctaLeftCardButtonText": {
-      "type": "string",
-      "default": "Book Home Cleaning"
-    },
-    "ctaRightCardTitle": {
-      "type": "string",
-      "default": "Commercial Cleaning"
-    },
-    "ctaRightCardDescription": {
-      "type": "text"
-    },
-    "ctaRightCardButtonText": {
-      "type": "string",
-      "default": "Get a Quote"
+      "description": "Custom CSS styles for this page"
     }
   }
 }

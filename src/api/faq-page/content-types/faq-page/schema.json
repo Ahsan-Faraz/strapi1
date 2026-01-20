@@ -12,67 +12,25 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "seoTitle": {
-      "type": "string",
-      "default": "FAQ | Frequently Asked Questions | Clensy Cleaning Services"
-    },
-    "seoMetaDescription": {
-      "type": "text",
-      "default": "Find answers to common questions about Clensy cleaning services, booking, pricing, and more."
-    },
-    "seoKeywords": {
-      "type": "text",
-      "default": "cleaning FAQ, cleaning questions, house cleaning FAQ, professional cleaning questions"
-    },
-    "seoCanonicalUrl": {
-      "type": "string",
-      "default": "https://clensy.com/faq"
-    },
-    "seoRobots": {
-      "type": "string",
-      "default": "index, follow"
-    },
-    "ogTitle": {
-      "type": "string",
-      "default": "FAQ | Clensy Cleaning Services"
-    },
-    "ogDescription": {
-      "type": "text",
-      "default": "Get answers to your cleaning questions."
-    },
-    "ogImageUrl": {
-      "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847616/shutterstock_2209715823_1_x80cn8.jpg"
-    },
-    "ogType": {
-      "type": "string",
-      "default": "website"
-    },
-    "twitterCard": {
-      "type": "string",
-      "default": "summary_large_image"
-    },
-    "twitterTitle": { "type": "string" },
-    "twitterDescription": { "type": "text" },
-    "schemaJsonLd": { "type": "json" },
-    "headScripts": { "type": "text" },
-    "bodyEndScripts": { "type": "text" },
-    "customCss": { "type": "text" },
     "heroTopLabel": {
       "type": "string",
-      "default": "Answers to your questions"
+      "default": "Answers to your questions",
+      "description": "Small label text displayed above the hero heading"
     },
     "heroHeading": {
       "type": "string",
-      "default": "Frequently Asked <blue>Questions</blue>"
+      "default": "Frequently Asked <blue>Questions</blue>",
+      "description": "Main headline at the top of the page"
     },
     "heroDescription": {
       "type": "text",
-      "default": "Find answers to common questions about our cleaning services, booking process, and pricing."
+      "default": "Find answers to common questions about our cleaning services, booking process, and pricing.",
+      "description": "Short description under the hero title"
     },
     "heroBackgroundImageUrl": {
       "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847616/shutterstock_2209715823_1_x80cn8.jpg"
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847616/shutterstock_2209715823_1_x80cn8.jpg",
+      "description": "Fallback URL for hero background image"
     },
     "comprehensiveFAQs": {
       "type": "json",
@@ -80,39 +38,122 @@
     },
     "stillHaveQuestionsHeading": {
       "type": "string",
-      "default": "Still Have Questions?"
+      "default": "Still Have Questions?",
+      "description": "Heading for additional questions section"
     },
     "stillHaveQuestionsDescription": {
       "type": "text",
-      "default": "Here are some other topics our customers frequently ask about."
+      "default": "Here are some other topics our customers frequently ask about.",
+      "description": "Description text for additional questions section"
     },
     "stillHaveQuestionsCards": {
       "type": "json",
-      "default": []
+      "default": [],
+      "description": "JSON array of question cards with topics and links"
     },
     "contactSectionHeading": {
       "type": "string",
-      "default": "Can't Find Your Answer?"
+      "default": "Can't Find Your Answer?",
+      "description": "Heading for contact section"
     },
     "contactSectionDescription": {
       "type": "text",
-      "default": "Our customer service team is ready to help."
+      "default": "Our customer service team is ready to help.",
+      "description": "Description text for contact section"
     },
     "contactEmail": {
       "type": "string",
-      "default": "info@clensy.com"
+      "default": "info@clensy.com",
+      "description": "Email address for contact"
     },
     "contactPhone": {
       "type": "string",
-      "default": "(551) 305-4081"
+      "default": "(551) 305-4081",
+      "description": "Phone number for contact"
     },
     "contactButtonText": {
       "type": "string",
-      "default": "Contact Us"
+      "default": "Contact Us",
+      "description": "Text for the contact button"
     },
     "trustIndicators": {
       "type": "json",
-      "default": []
+      "default": [],
+      "description": "JSON array of trust indicators/badges to display"
+    },
+    "seoTitle": {
+      "type": "string",
+      "default": "FAQ | Frequently Asked Questions | Clensy Cleaning Services",
+      "description": "SEO meta title for the page"
+    },
+    "seoMetaDescription": {
+      "type": "text",
+      "default": "Find answers to common questions about Clensy cleaning services, booking, pricing, and more.",
+      "description": "SEO meta description for search engines"
+    },
+    "seoKeywords": {
+      "type": "text",
+      "default": "cleaning FAQ, cleaning questions, house cleaning FAQ, professional cleaning questions",
+      "description": "SEO keywords for the page"
+    },
+    "seoCanonicalUrl": {
+      "type": "string",
+      "default": "https://clensy.com/faq",
+      "description": "Canonical URL for SEO"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow",
+      "description": "Robots meta tag value (index/noindex, follow/nofollow)"
+    },
+    "ogTitle": {
+      "type": "string",
+      "default": "FAQ | Clensy Cleaning Services",
+      "description": "Open Graph title for social media sharing"
+    },
+    "ogDescription": {
+      "type": "text",
+      "default": "Get answers to your cleaning questions.",
+      "description": "Open Graph description for social media sharing"
+    },
+    "ogImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847616/shutterstock_2209715823_1_x80cn8.jpg",
+      "description": "Fallback URL for Open Graph image"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website",
+      "description": "Open Graph type (website, article, etc.)"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image",
+      "description": "Twitter card type (summary or summary_large_image)"
+    },
+    "twitterTitle": {
+      "type": "string",
+      "description": "Twitter card title"
+    },
+    "twitterDescription": {
+      "type": "text",
+      "description": "Twitter card description"
+    },
+    "schemaJsonLd": {
+      "type": "json",
+      "description": "JSON-LD structured data for SEO (FAQPage schema)"
+    },
+    "headScripts": {
+      "type": "text",
+      "description": "Custom scripts to inject in the <head> tag"
+    },
+    "bodyEndScripts": {
+      "type": "text",
+      "description": "Custom scripts to inject at the end of <body> tag"
+    },
+    "customCss": {
+      "type": "text",
+      "description": "Custom CSS styles for this page"
     }
   }
 }

@@ -13,46 +13,55 @@
   "pluginOptions": {},
   "attributes": {
     "heroHeading": {
-      "type": "string"
+      "type": "string",
+      "description": "Main headline at the top of the page"
     },
     "heroSubheading": {
-      "type": "text"
+      "type": "text",
+      "description": "Short description under the hero title"
     },
     "heroBackgroundImage": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false
+      "multiple": false,
+      "description": "Background image for the hero section"
     },
     "whyWorkWithUsHeading": {
-      "type": "string"
+      "type": "string",
+      "description": "Heading for the Why Work With Us section"
     },
     "benefits": {
       "type": "component",
       "repeatable": true,
-      "component": "content.feature-item"
+      "component": "content.feature-item",
+      "description": "List of employee benefits/features"
     },
     "openPositions": {
-      "type": "json"
+      "type": "json",
+      "description": "JSON array of open job positions with title, description, requirements, etc."
     },
     "applicationFormEnabled": {
       "type": "boolean",
-      "default": true
+      "default": true,
+      "description": "Whether to show the job application form"
     },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "description": "SEO metadata component"
     },
     "openGraph": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.open-graph"
+      "component": "shared.open-graph",
+      "description": "Open Graph metadata for social media sharing"
     },
     "scripts": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.script-injection"
+      "component": "shared.script-injection",
+      "description": "Custom scripts injection component"
     }
   }
 }
-

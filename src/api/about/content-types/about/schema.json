@@ -12,190 +12,153 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "seoTitle": {
-      "type": "string",
-      "default": "About Clensy | Professional Cleaning Services in New Jersey"
-    },
-    "seoMetaDescription": {
-      "type": "text",
-      "default": "Learn about Clensy - New Jersey's trusted professional cleaning company. Our story, mission, and commitment to exceptional cleaning services."
-    },
-    "seoKeywords": {
-      "type": "text",
-      "default": "about clensy, cleaning company, professional cleaners, New Jersey cleaning service, our story"
-    },
-    "seoCanonicalUrl": {
-      "type": "string",
-      "default": "https://clensy.com/company/about"
-    },
-    "seoRobots": {
-      "type": "string",
-      "default": "index, follow"
-    },
-    "ogTitle": {
-      "type": "string",
-      "default": "About Clensy | Professional Cleaning Services"
-    },
-    "ogDescription": {
-      "type": "text",
-      "default": "Discover the Clensy difference. Professional, reliable cleaning services for homes and businesses."
-    },
-    "ogImage": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": ["images"]
-    },
-    "ogImageUrl": {
-      "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847413/shutterstock_2138293517_1_nqcmei.jpg"
-    },
-    "ogType": {
-      "type": "string",
-      "default": "website"
-    },
-    "twitterCard": {
-      "type": "string",
-      "default": "summary_large_image"
-    },
-    "twitterTitle": {
-      "type": "string"
-    },
-    "twitterDescription": {
-      "type": "text"
-    },
-    "schemaJsonLd": {
-      "type": "json"
-    },
-    "headScripts": {
-      "type": "text"
-    },
-    "bodyStartScripts": {
-      "type": "text"
-    },
-    "bodyEndScripts": {
-      "type": "text"
-    },
-    "customCss": {
-      "type": "text"
-    },
     "heroHeading": {
       "type": "string",
-      "default": "About Clensy"
+      "default": "About Clensy",
+      "description": "Main headline at the top of the page"
     },
     "heroTagline": {
       "type": "string",
-      "default": "Raising the Standard, One Clean at a Time."
+      "default": "Raising the Standard, One Clean at a Time.",
+      "description": "Short line under the hero title"
     },
     "heroBackgroundImage": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": ["images"],
+      "description": "Background image for the hero section"
     },
     "heroBackgroundImageUrl": {
       "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750069427/website-images/guvnsgfqcmcx8k1gusum.jpg"
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750069427/website-images/guvnsgfqcmcx8k1gusum.jpg",
+      "description": "Fallback URL for hero background image if media not uploaded"
     },
     "ourStoryHeading": {
       "type": "string",
-      "default": "Our Story"
+      "default": "Our Story",
+      "description": "Heading for the story section"
     },
     "ourStoryParagraph1": {
       "type": "text",
-      "default": "Clensy was built to solve a problem — the frustrating experience of unreliable cleaners who are late, don't communicate, and leave you wondering if the job will ever be done right."
+      "default": "Clensy was built to solve a problem — the frustrating experience of unreliable cleaners who are late, don't communicate, and leave you wondering if the job will ever be done right.",
+      "description": "First paragraph of the Our Story section"
     },
     "ourStoryParagraph2": {
       "type": "text",
-      "default": "We set out to create something better. A company that not only delivers amazing results — but makes the entire experience seamless from start to finish."
+      "default": "We set out to create something better. A company that not only delivers amazing results — but makes the entire experience seamless from start to finish.",
+      "description": "Second paragraph of the Our Story section"
     },
     "ourStoryParagraph3": {
       "type": "text",
-      "default": "Whether you're managing a busy home, multiple Airbnb properties, or a commercial space that needs to stay spotless and presentable, Clensy is your go-to team."
+      "default": "Whether you're managing a busy home, multiple Airbnb properties, or a commercial space that needs to stay spotless and presentable, Clensy is your go-to team.",
+      "description": "Third paragraph of the Our Story section"
     },
     "ourStoryImage": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false
+      "multiple": false,
+      "description": "Image displayed in the Our Story section"
     },
     "ourStoryImageUrl": {
       "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847413/shutterstock_2138293517_1_nqcmei.jpg"
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847413/shutterstock_2138293517_1_nqcmei.jpg",
+      "description": "Fallback URL for Our Story image if media not uploaded"
     },
     "whyWeStartedHeading": {
       "type": "string",
-      "default": "Why We Started"
+      "default": "Why We Started",
+      "description": "Section heading for Why We Started"
     },
     "whyWeStartedSubtitle": {
       "type": "string",
-      "default": "Let's be honest: the cleaning industry is broken."
+      "default": "Let's be honest: the cleaning industry is broken.",
+      "description": "Subtitle text under Why We Started heading"
     },
     "whyWeStartedQuoteText": {
       "type": "text",
-      "default": "My cleaner didn't show up. No one responded. The job was half-done."
+      "default": "My cleaner didn't show up. No one responded. The job was half-done.",
+      "description": "Quote text displayed in the Why We Started section"
     },
     "whyWeStartedParagraph1": {
       "type": "text",
-      "default": "We were tired of the low standards across the industry – Whether it's flaky independent cleaners or cookie-cutter franchises with zero customer service — it's hard to find a company that actually cares and does the job right."
+      "default": "We were tired of the low standards across the industry – Whether it's flaky independent cleaners or cookie-cutter franchises with zero customer service — it's hard to find a company that actually cares and does the job right.",
+      "description": "First paragraph explaining why Clensy was started"
     },
     "whyWeStartedParagraph2": {
       "type": "text",
-      "default": "We listened. And then we built Clensy — a cleaning company that actually shows up, delivers exceptional results, and treats every client like a priority."
+      "default": "We listened. And then we built Clensy — a cleaning company that actually shows up, delivers exceptional results, and treats every client like a priority.",
+      "description": "Second paragraph explaining why Clensy was started"
     },
     "whyWeStartedParagraph3": {
       "type": "text",
-      "default": "We know that when you book a cleaning, you want peace of mind — not more headaches."
+      "default": "We know that when you book a cleaning, you want peace of mind — not more headaches.",
+      "description": "Third paragraph explaining why Clensy was started"
     },
     "whatMakesUsDifferentHeading": {
       "type": "string",
-      "default": "What Makes Us Different?"
+      "default": "What Makes Us Different?",
+      "description": "Heading for the What Makes Us Different section"
     },
     "residentialCommercialTitle": {
       "type": "string",
-      "default": "Residential & Commercial Cleaning"
+      "default": "Residential & Commercial Cleaning",
+      "description": "Title for the Residential & Commercial section"
     },
     "residentialCommercialParagraph1": {
       "type": "text",
-      "default": "From homes and apartments to offices, retail spaces, gyms, medical facilities, and even construction sites — if it's indoors and needs to be cleaned, we've got it covered."
+      "default": "From homes and apartments to offices, retail spaces, gyms, medical facilities, and even construction sites — if it's indoors and needs to be cleaned, we've got it covered.",
+      "description": "First paragraph describing residential and commercial services"
     },
     "residentialCommercialParagraph2": {
       "type": "text",
-      "default": "Not sure if we handle your specific needs? Chances are, we do. If you're looking for something custom, head over to our Contact Us page or give us a call. We're happy to create a tailored plan that fits exactly what you're looking for."
+      "default": "Not sure if we handle your specific needs? Chances are, we do. If you're looking for something custom, head over to our Contact Us page or give us a call. We're happy to create a tailored plan that fits exactly what you're looking for.",
+      "description": "Second paragraph describing residential and commercial services"
     },
     "eliteTeamTitle": {
       "type": "string",
-      "default": "Elite Team"
+      "default": "Elite Team",
+      "description": "Title for the Elite Team section"
     },
     "eliteTeamParagraph1": {
       "type": "text",
-      "default": "Out of every 100 applicants, we only hire 1 cleaner. Seriously. Our hiring process is extensive, and only the best make it through."
+      "default": "Out of every 100 applicants, we only hire 1 cleaner. Seriously. Our hiring process is extensive, and only the best make it through.",
+      "description": "First paragraph about the elite team"
     },
     "eliteTeamParagraph2": {
       "type": "text",
-      "default": "We're fully licensed, bonded, and insured, so you can feel confident knowing your home, business, or property is in trusted, professional hands."
+      "default": "We're fully licensed, bonded, and insured, so you can feel confident knowing your home, business, or property is in trusted, professional hands.",
+      "description": "Second paragraph about the elite team"
     },
     "eliteTeamImage": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false
+      "multiple": false,
+      "description": "Image displayed in the Elite Team section"
     },
     "eliteTeamImageUrl": {
       "type": "string",
-      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847481/shutterstock_2200915291_vewsyn.jpg"
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847481/shutterstock_2200915291_vewsyn.jpg",
+      "description": "Fallback URL for Elite Team image if media not uploaded"
     },
     "clientFocusedTechHeading": {
       "type": "string",
-      "default": "Client-Focused Tech"
+      "default": "Client-Focused Tech",
+      "description": "Heading for the Client-Focused Tech section"
     },
     "clientFocusedTechFeatures": {
       "type": "json",
-      "default": ["Customer portal to manage your bookings", "Text/email reminders before every job", "Real-time ETA when your cleaner is en route", "Secure online payments for convenience"]
+      "default": ["Customer portal to manage your bookings", "Text/email reminders before every job", "Real-time ETA when your cleaner is en route", "Secure online payments for convenience"],
+      "description": "List of technology features offered to clients"
     },
     "whoWeServeHeading": {
       "type": "string",
-      "default": "Who We Serve"
+      "default": "Who We Serve",
+      "description": "Heading for the Who We Serve section"
     },
     "whoWeServeSubtitle": {
       "type": "string",
-      "default": "Clensy is made for people and businesses who expect more from a cleaning company."
+      "default": "Clensy is made for people and businesses who expect more from a cleaning company.",
+      "description": "Subtitle text under Who We Serve heading"
     },
     "customerTypes": {
       "type": "json",
@@ -206,47 +169,142 @@
         {"title": "Airbnb hosts", "description": "Who demand fast, spotless turnovers"},
         {"title": "Contractors or developers", "description": "Who need sharp post-construction cleanup"},
         {"title": "Anyone who values quality", "description": "And needs a trustworthy cleaning service"}
-      ]
+      ],
+      "description": "Array of customer types with title and description"
     },
     "ourMissionHeading": {
       "type": "string",
-      "default": "Our Mission"
+      "default": "Our Mission",
+      "description": "Heading for the Our Mission section"
     },
     "ourMissionParagraph1": {
       "type": "text",
-      "default": "We're obsessed with making the cleaning process feel effortless for our clients. You book. We show up. We do the job right — the first time."
+      "default": "We're obsessed with making the cleaning process feel effortless for our clients. You book. We show up. We do the job right — the first time.",
+      "description": "First paragraph of the Our Mission section"
     },
     "ourMissionParagraph2": {
       "type": "text",
-      "default": "No rescheduling nightmares. No communication breakdowns. No wondering if your space was actually cleaned."
+      "default": "No rescheduling nightmares. No communication breakdowns. No wondering if your space was actually cleaned.",
+      "description": "Second paragraph of the Our Mission section"
     },
     "ourMissionParagraph3": {
       "type": "text",
-      "default": "With Clensy, you get a team that's committed to your satisfaction — from the first message to the final wipe-down."
+      "default": "With Clensy, you get a team that's committed to your satisfaction — from the first message to the final wipe-down.",
+      "description": "Third paragraph of the Our Mission section"
     },
     "ourMissionParagraph4": {
       "type": "text",
-      "default": "If you're looking for a company that understands the value of your time, respects your space, and consistently delivers results — welcome to Clensy."
+      "default": "If you're looking for a company that understands the value of your time, respects your space, and consistently delivers results — welcome to Clensy.",
+      "description": "Fourth paragraph of the Our Mission section"
     },
     "ourMissionClosingLine": {
       "type": "string",
-      "default": "We're here to raise the standard."
+      "default": "We're here to raise the standard.",
+      "description": "Closing statement for the Our Mission section"
     },
     "ctaHeading": {
       "type": "string",
-      "default": "Ready to Experience the Clensy Difference?"
+      "default": "Ready to Experience the Clensy Difference?",
+      "description": "Call-to-action heading at the bottom of the page"
     },
     "ctaDescription": {
       "type": "text",
-      "default": "Join thousands of satisfied customers who've discovered what a truly exceptional cleaning service feels like."
+      "default": "Join thousands of satisfied customers who've discovered what a truly exceptional cleaning service feels like.",
+      "description": "Call-to-action description text"
     },
     "ctaBookButtonText": {
       "type": "string",
-      "default": "Book Your Cleaning"
+      "default": "Book Your Cleaning",
+      "description": "Text for the primary CTA button"
     },
     "ctaContactButtonText": {
       "type": "string",
-      "default": "Contact Us"
+      "default": "Contact Us",
+      "description": "Text for the secondary CTA button"
+    },
+    "seoTitle": {
+      "type": "string",
+      "default": "About Clensy | Professional Cleaning Services in New Jersey",
+      "description": "SEO meta title for the page"
+    },
+    "seoMetaDescription": {
+      "type": "text",
+      "default": "Learn about Clensy - New Jersey's trusted professional cleaning company. Our story, mission, and commitment to exceptional cleaning services.",
+      "description": "SEO meta description for search engines"
+    },
+    "seoKeywords": {
+      "type": "text",
+      "default": "about clensy, cleaning company, professional cleaners, New Jersey cleaning service, our story",
+      "description": "SEO keywords for the page"
+    },
+    "seoCanonicalUrl": {
+      "type": "string",
+      "default": "https://clensy.com/company/about",
+      "description": "Canonical URL for SEO"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow",
+      "description": "Robots meta tag value (index/noindex, follow/nofollow)"
+    },
+    "ogTitle": {
+      "type": "string",
+      "default": "About Clensy | Professional Cleaning Services",
+      "description": "Open Graph title for social media sharing"
+    },
+    "ogDescription": {
+      "type": "text",
+      "default": "Discover the Clensy difference. Professional, reliable cleaning services for homes and businesses.",
+      "description": "Open Graph description for social media sharing"
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"],
+      "description": "Open Graph image for social media sharing"
+    },
+    "ogImageUrl": {
+      "type": "string",
+      "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847413/shutterstock_2138293517_1_nqcmei.jpg",
+      "description": "Fallback URL for Open Graph image if media not uploaded"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website",
+      "description": "Open Graph type (website, article, etc.)"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image",
+      "description": "Twitter card type (summary or summary_large_image)"
+    },
+    "twitterTitle": {
+      "type": "string",
+      "description": "Twitter card title"
+    },
+    "twitterDescription": {
+      "type": "text",
+      "description": "Twitter card description"
+    },
+    "schemaJsonLd": {
+      "type": "json",
+      "description": "JSON-LD structured data for SEO"
+    },
+    "headScripts": {
+      "type": "text",
+      "description": "Custom scripts to inject in the <head> tag"
+    },
+    "bodyStartScripts": {
+      "type": "text",
+      "description": "Custom scripts to inject at the start of <body> tag"
+    },
+    "bodyEndScripts": {
+      "type": "text",
+      "description": "Custom scripts to inject at the end of <body> tag"
+    },
+    "customCss": {
+      "type": "text",
+      "description": "Custom CSS styles for this page"
     }
   }
 }

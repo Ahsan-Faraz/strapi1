@@ -15,24 +15,28 @@
     "fromPath": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": true,
+      "description": "Original URL path to redirect from (e.g., /old-page)"
     },
     "toPath": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "Destination URL path to redirect to (e.g., /new-page)"
     },
     "statusCode": {
       "type": "enumeration",
       "enum": ["permanent_301", "temporary_302", "temporary_307", "permanent_308"],
-      "default": "permanent_301"
+      "default": "permanent_301",
+      "description": "HTTP redirect status code (301 = permanent, 302/307 = temporary)"
     },
     "isActive": {
       "type": "boolean",
-      "default": true
+      "default": true,
+      "description": "Whether this redirect is currently active"
     },
     "notes": {
-      "type": "text"
+      "type": "text",
+      "description": "Optional notes about why this redirect was created"
     }
   }
 }
-

@@ -14,43 +14,51 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "Page title"
     },
     "slug": {
       "type": "uid",
       "targetField": "title",
-      "required": true
+      "required": true,
+      "description": "URL-friendly slug automatically generated from title"
     },
     "content": {
-      "type": "richtext"
+      "type": "richtext",
+      "description": "Main page content in rich text format"
     },
     "htmlBlocks": {
-      "type": "text"
-    },
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
-    },
-    "openGraph": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.open-graph"
-    },
-    "scripts": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.script-injection"
-    },
-    "excludeFromSitemap": {
-      "type": "boolean",
-      "default": false
+      "type": "text",
+      "description": "Raw HTML blocks for custom content sections"
     },
     "featuredImage": {
       "type": "media",
       "allowedTypes": ["images"],
-      "multiple": false
+      "multiple": false,
+      "description": "Featured image for the page"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo",
+      "description": "SEO metadata component"
+    },
+    "openGraph": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.open-graph",
+      "description": "Open Graph metadata for social media sharing"
+    },
+    "scripts": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.script-injection",
+      "description": "Custom scripts injection component"
+    },
+    "excludeFromSitemap": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to exclude this page from the sitemap"
     }
   }
 }
-

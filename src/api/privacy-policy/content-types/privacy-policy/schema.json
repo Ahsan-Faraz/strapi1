@@ -12,71 +12,35 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "seoTitle": {
-      "type": "string",
-      "default": "Privacy Policy | Clensy Cleaning Services"
-    },
-    "seoMetaDescription": {
-      "type": "text",
-      "default": "Read Clensy's privacy policy. Learn how we collect, use, and protect your personal information when you use our cleaning services."
-    },
-    "seoKeywords": {
-      "type": "text",
-      "default": "privacy policy, data protection, personal information, Clensy privacy"
-    },
-    "seoCanonicalUrl": {
-      "type": "string",
-      "default": "https://clensy.com/privacy-policy"
-    },
-    "seoRobots": {
-      "type": "string",
-      "default": "index, follow"
-    },
-    "ogTitle": {
-      "type": "string",
-      "default": "Privacy Policy | Clensy"
-    },
-    "ogDescription": {
-      "type": "text",
-      "default": "Your privacy is important to us. Learn how Clensy protects your information."
-    },
-    "ogType": {
-      "type": "string",
-      "default": "website"
-    },
-    "twitterCard": {
-      "type": "string",
-      "default": "summary"
-    },
-    "headScripts": {
-      "type": "text"
-    },
-    "bodyEndScripts": {
-      "type": "text"
-    },
     "heroHeading": {
       "type": "string",
-      "default": "Privacy Policy"
+      "default": "Privacy Policy",
+      "description": "Main headline at the top of the page"
     },
     "heroDescription": {
       "type": "text",
-      "default": "Your privacy is important to us. Learn how we collect, use, and protect your information."
+      "default": "Your privacy is important to us. Learn how we collect, use, and protect your information.",
+      "description": "Short description under the hero title"
     },
     "websiteUrl": {
       "type": "string",
-      "default": "clensy.com"
+      "default": "clensy.com",
+      "description": "Website URL for reference in policy"
     },
     "companyEmail": {
       "type": "string",
-      "default": "info@clensy.com"
+      "default": "info@clensy.com",
+      "description": "Company email address for privacy inquiries"
     },
     "companyPhone": {
       "type": "string",
-      "default": "(551) 305-4081"
+      "default": "(551) 305-4081",
+      "description": "Company phone number for privacy inquiries"
     },
     "lastUpdated": {
       "type": "string",
-      "default": "December 2024"
+      "default": "December 2024",
+      "description": "Last updated date of the privacy policy"
     },
     "sections": {
       "type": "json",
@@ -116,15 +80,71 @@
           "content": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the 'Last Updated' date.",
           "order": 7
         }
-      ]
+      ],
+      "description": "JSON array of privacy policy sections with title, content, and order"
     },
     "smsConsentDescription": {
       "type": "text",
-      "default": "By providing your phone number, you consent to receive SMS messages from Clensy regarding your bookings, service updates, and promotional offers. Message and data rates may apply."
+      "default": "By providing your phone number, you consent to receive SMS messages from Clensy regarding your bookings, service updates, and promotional offers. Message and data rates may apply.",
+      "description": "SMS consent description text"
     },
     "smsOptOutInstructions": {
       "type": "text",
-      "default": "To opt out of SMS messages, reply STOP to any message. For help, reply HELP or contact us at info@clensy.com."
+      "default": "To opt out of SMS messages, reply STOP to any message. For help, reply HELP or contact us at info@clensy.com.",
+      "description": "SMS opt-out instructions"
+    },
+    "seoTitle": {
+      "type": "string",
+      "default": "Privacy Policy | Clensy Cleaning Services",
+      "description": "SEO meta title for the page"
+    },
+    "seoMetaDescription": {
+      "type": "text",
+      "default": "Read Clensy's privacy policy. Learn how we collect, use, and protect your personal information when you use our cleaning services.",
+      "description": "SEO meta description for search engines"
+    },
+    "seoKeywords": {
+      "type": "text",
+      "default": "privacy policy, data protection, personal information, Clensy privacy",
+      "description": "SEO keywords for the page"
+    },
+    "seoCanonicalUrl": {
+      "type": "string",
+      "default": "https://clensy.com/privacy-policy",
+      "description": "Canonical URL for SEO"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow",
+      "description": "Robots meta tag value (index/noindex, follow/nofollow)"
+    },
+    "ogTitle": {
+      "type": "string",
+      "default": "Privacy Policy | Clensy",
+      "description": "Open Graph title for social media sharing"
+    },
+    "ogDescription": {
+      "type": "text",
+      "default": "Your privacy is important to us. Learn how Clensy protects your information.",
+      "description": "Open Graph description for social media sharing"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website",
+      "description": "Open Graph type (website, article, etc.)"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary",
+      "description": "Twitter card type (summary or summary_large_image)"
+    },
+    "headScripts": {
+      "type": "text",
+      "description": "Custom scripts to inject in the <head> tag"
+    },
+    "bodyEndScripts": {
+      "type": "text",
+      "description": "Custom scripts to inject at the end of <body> tag"
     }
   }
 }
