@@ -1,5 +1,5 @@
 import type { StrapiApp } from '@strapi/strapi/admin';
-import { File, AlertCircle, ArrowRight, CheckCircle, Search, Clock } from '@strapi/icons';
+import { File, ArrowRight, CheckCircle, Search, Clock } from '@strapi/icons';
 
 export default {
   config: {
@@ -92,7 +92,7 @@ export default {
           id: 'admin.dashboard.missingMetaTitles.title',
           defaultMessage: 'Missing Meta Titles',
         },
-        icon: AlertCircle,
+        icon: File,
         component: async () => {
           const { default: MissingMetaTitlesWidget } = await import('./extensions/widgets/MissingMetaTitlesWidget');
           return MissingMetaTitlesWidget;
@@ -191,9 +191,7 @@ export default {
               const element = node as Element;
               const walker = document.createTreeWalker(
                 element,
-                NodeFilter.SHOW_TEXT,
-                null,
-                false
+                NodeFilter.SHOW_TEXT
               );
               
               let textNode;
@@ -250,9 +248,7 @@ export default {
     setTimeout(() => {
       const walker = document.createTreeWalker(
         document.body,
-        NodeFilter.SHOW_TEXT,
-        null,
-        false
+        NodeFilter.SHOW_TEXT
       );
       
       let textNode;
