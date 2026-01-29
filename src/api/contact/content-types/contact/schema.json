@@ -43,7 +43,9 @@
     "ogImage": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "ogImageUrl": {
       "type": "string",
@@ -105,7 +107,9 @@
     "heroImage": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "heroImageUrl": {
       "type": "string",
@@ -121,15 +125,37 @@
     },
     "serviceTags": {
       "type": "json",
-      "default": [{"name": "Residential"}, {"name": "Commercial"}, {"name": "Specialized"}]
+      "default": [
+        {
+          "name": "Residential"
+        },
+        {
+          "name": "Commercial"
+        },
+        {
+          "name": "Specialized"
+        }
+      ]
     },
     "statsIndicators": {
       "type": "json",
       "default": [
-        {"number": "24/7", "description": "Customer Support"},
-        {"number": "1h", "description": "Response Time"},
-        {"number": "4.9", "description": "Customer Rating"},
-        {"number": "100%", "description": "Satisfaction Guarantee"}
+        {
+          "number": "24/7",
+          "description": "Customer Support"
+        },
+        {
+          "number": "1h",
+          "description": "Response Time"
+        },
+        {
+          "number": "4.9",
+          "description": "Customer Rating"
+        },
+        {
+          "number": "100%",
+          "description": "Satisfaction Guarantee"
+        }
       ]
     },
     "contactSectionTitle": {
@@ -191,9 +217,18 @@
     "businessHours": {
       "type": "json",
       "default": [
-        {"day": "Monday - Friday", "hours": "8:00 AM - 6:00 PM"},
-        {"day": "Saturday", "hours": "9:00 AM - 3:00 PM"},
-        {"day": "Sunday", "hours": "Closed"}
+        {
+          "day": "Monday - Friday",
+          "hours": "8:00 AM - 6:00 PM"
+        },
+        {
+          "day": "Saturday",
+          "hours": "9:00 AM - 3:00 PM"
+        },
+        {
+          "day": "Sunday",
+          "hours": "Closed"
+        }
       ]
     },
     "immediateAssistanceTitle": {
@@ -219,6 +254,11 @@
     "consultationButtonText": {
       "type": "string",
       "default": "Schedule a Consultation"
+    },
+    "Contact_Page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::page-builder.template"
     }
   }
 }

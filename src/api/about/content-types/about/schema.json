@@ -43,7 +43,9 @@
     "ogImage": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "ogImageUrl": {
       "type": "string",
@@ -89,7 +91,9 @@
     "heroBackgroundImage": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "heroBackgroundImageUrl": {
       "type": "string",
@@ -113,8 +117,10 @@
     },
     "ourStoryImage": {
       "type": "media",
-      "allowedTypes": ["images"],
-      "multiple": false
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "ourStoryImageUrl": {
       "type": "string",
@@ -174,8 +180,10 @@
     },
     "eliteTeamImage": {
       "type": "media",
-      "allowedTypes": ["images"],
-      "multiple": false
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "eliteTeamImageUrl": {
       "type": "string",
@@ -187,7 +195,12 @@
     },
     "clientFocusedTechFeatures": {
       "type": "json",
-      "default": ["Customer portal to manage your bookings", "Text/email reminders before every job", "Real-time ETA when your cleaner is en route", "Secure online payments for convenience"]
+      "default": [
+        "Customer portal to manage your bookings",
+        "Text/email reminders before every job",
+        "Real-time ETA when your cleaner is en route",
+        "Secure online payments for convenience"
+      ]
     },
     "whoWeServeHeading": {
       "type": "string",
@@ -200,12 +213,30 @@
     "customerTypes": {
       "type": "json",
       "default": [
-        {"title": "Busy parents", "description": "Who need a safe, clean home without the stress"},
-        {"title": "Professionals and entrepreneurs", "description": "Focused on growing, not cleaning"},
-        {"title": "Property managers and business owners", "description": "Who need reliable commercial upkeep"},
-        {"title": "Airbnb hosts", "description": "Who demand fast, spotless turnovers"},
-        {"title": "Contractors or developers", "description": "Who need sharp post-construction cleanup"},
-        {"title": "Anyone who values quality", "description": "And needs a trustworthy cleaning service"}
+        {
+          "title": "Busy parents",
+          "description": "Who need a safe, clean home without the stress"
+        },
+        {
+          "title": "Professionals and entrepreneurs",
+          "description": "Focused on growing, not cleaning"
+        },
+        {
+          "title": "Property managers and business owners",
+          "description": "Who need reliable commercial upkeep"
+        },
+        {
+          "title": "Airbnb hosts",
+          "description": "Who demand fast, spotless turnovers"
+        },
+        {
+          "title": "Contractors or developers",
+          "description": "Who need sharp post-construction cleanup"
+        },
+        {
+          "title": "Anyone who values quality",
+          "description": "And needs a trustworthy cleaning service"
+        }
       ]
     },
     "ourMissionHeading": {
@@ -247,6 +278,11 @@
     "ctaContactButtonText": {
       "type": "string",
       "default": "Contact Us"
+    },
+    "About_Page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::page-builder.template"
     }
   }
 }

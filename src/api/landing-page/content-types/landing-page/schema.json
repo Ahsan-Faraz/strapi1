@@ -10,6 +10,7 @@
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "seoTitle": {
       "type": "string",
@@ -42,7 +43,9 @@
     "ogImage": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "ogImageUrl": {
       "type": "string",
@@ -85,7 +88,13 @@
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
             "opens": "08:00",
             "closes": "18:00"
           },
@@ -140,8 +149,7 @@
       }
     },
     "additionalSchemas": {
-      "type": "json",
-      "default": []
+      "type": "json"
     },
     "headScripts": {
       "type": "text"
@@ -186,7 +194,9 @@
     "heroBackgroundImage": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "heroBackgroundImageUrl": {
       "type": "string",
@@ -310,6 +320,11 @@
     "ctaRightCardButtonText": {
       "type": "string",
       "default": "Get a Quote"
+    },
+    "Landing_Page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::page-builder.template"
     }
   }
 }
