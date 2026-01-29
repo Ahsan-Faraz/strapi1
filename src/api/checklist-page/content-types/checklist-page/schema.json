@@ -190,6 +190,11 @@
     "ctaPhoneNumber": {
       "type": "string",
       "default": "(551) 305-4081"
+    },
+    "Checklist_Page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::page-builder.template"
     }
   }
 }

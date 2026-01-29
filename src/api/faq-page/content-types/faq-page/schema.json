@@ -52,12 +52,24 @@
       "type": "string",
       "default": "summary_large_image"
     },
-    "twitterTitle": { "type": "string" },
-    "twitterDescription": { "type": "text" },
-    "schemaJsonLd": { "type": "json" },
-    "headScripts": { "type": "text" },
-    "bodyEndScripts": { "type": "text" },
-    "customCss": { "type": "text" },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
     "heroTopLabel": {
       "type": "string",
       "default": "Answers to your questions"
@@ -75,8 +87,7 @@
       "default": "https://res.cloudinary.com/dgjmm3usy/image/upload/v1750847616/shutterstock_2209715823_1_x80cn8.jpg"
     },
     "comprehensiveFAQs": {
-      "type": "json",
-      "description": "All 110+ FAQ questions organized by category"
+      "type": "json"
     },
     "stillHaveQuestionsHeading": {
       "type": "string",
@@ -87,8 +98,7 @@
       "default": "Here are some other topics our customers frequently ask about."
     },
     "stillHaveQuestionsCards": {
-      "type": "json",
-      "default": []
+      "type": "json"
     },
     "contactSectionHeading": {
       "type": "string",
@@ -111,8 +121,12 @@
       "default": "Contact Us"
     },
     "trustIndicators": {
-      "type": "json",
-      "default": []
+      "type": "json"
+    },
+    "FAQ_Page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::page-builder.template"
     }
   }
 }
