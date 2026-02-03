@@ -201,6 +201,11 @@
     "excludeFromSitemap": {
       "type": "boolean",
       "default": false
+    },
+    "Service_Page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::page-builder.template"
     }
   }
 }
