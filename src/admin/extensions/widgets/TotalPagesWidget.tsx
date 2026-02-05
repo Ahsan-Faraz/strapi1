@@ -10,7 +10,7 @@ const TotalPagesWidget = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await get('/dashboard/stats');
+        const response = await get('/api/dashboard/stats');
         if (response && response.data) {
           setData(response.data);
         }

@@ -1,78 +1,63 @@
 export default {
   async getStats(ctx) {
     try {
-      const { strapi } = ctx.state;
       const oneWeekAgo = new Date();
       oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
+      // Helper to safely count documents
+      const safeCount = async (uid: string, filters: any = {}) => {
+        try {
+          return await strapi.documents(uid as any).count({ filters });
+        } catch {
+          return 0;
+        }
+      };
+
+      // Helper to safely find documents
+      const safeFind = async (uid: string, options: any = {}) => {
+        try {
+          return await strapi.documents(uid as any).findMany(options);
+        } catch {
+          return [];
+        }
+      };
+
       // Get total pages count (pages + landing pages + blog posts + locations)
       const [pages, landingPages, blogPosts, locations] = await Promise.all([
-        strapi.entityService.findMany('api::page.page', {
-          filters: { publishedAt: { $notNull: true } },
-          count: true,
-        }),
-        strapi.entityService.findMany('api::landing-page.landing-page', {
-          filters: { publishedAt: { $notNull: true } },
-          count: true,
-        }),
-        strapi.entityService.findMany('api::blog-post.blog-post', {
-          filters: { publishedAt: { $notNull: true } },
-          count: true,
-        }),
-        strapi.entityService.findMany('api::location.location', {
-          filters: { publishedAt: { $notNull: true } },
-          count: true,
-        }),
+        safeCount('api::page.page', { publishedAt: { $notNull: true } }),
+        safeCount('api::landing-page.landing-page', { publishedAt: { $notNull: true } }),
+        safeCount('api::blog-post.blog-post', { publishedAt: { $notNull: true } }),
+        safeCount('api::location.location', { publishedAt: { $notNull: true } }),
       ]);
 
       const totalPages = pages + landingPages + blogPosts + locations;
 
       // Get pages created this week
       const [pagesThisWeek, landingPagesThisWeek, blogPostsThisWeek, locationsThisWeek] = await Promise.all([
-        strapi.entityService.findMany('api::page.page', {
-          filters: {
-            publishedAt: { $gte: oneWeekAgo },
-          },
-          count: true,
-        }),
-        strapi.entityService.findMany('api::landing-page.landing-page', {
-          filters: {
-            publishedAt: { $gte: oneWeekAgo },
-          },
-          count: true,
-        }),
-        strapi.entityService.findMany('api::blog-post.blog-post', {
-          filters: {
-            publishedAt: { $gte: oneWeekAgo },
-          },
-          count: true,
-        }),
-        strapi.entityService.findMany('api::location.location', {
-          filters: {
-            publishedAt: { $gte: oneWeekAgo },
-          },
-          count: true,
-        }),
+        safeCount('api::page.page', { publishedAt: { $gte: oneWeekAgo.toISOString() } }),
+        safeCount('api::landing-page.landing-page', { publishedAt: { $gte: oneWeekAgo.toISOString() } }),
+        safeCount('api::blog-post.blog-post', { publishedAt: { $gte: oneWeekAgo.toISOString() } }),
+        safeCount('api::location.location', { publishedAt: { $gte: oneWeekAgo.toISOString() } }),
       ]);
 
       const pagesThisWeekCount = pagesThisWeek + landingPagesThisWeek + blogPostsThisWeek + locationsThisWeek;
 
       // Get all pages with SEO data to check for missing meta titles
-      const allPages = await strapi.entityService.findMany('api::page.page', {
+      const allPages = await safeFind('api::page.page', {
         filters: { publishedAt: { $notNull: true } },
         populate: ['seo'],
       });
 
-      const allLandingPages = await strapi.entityService.findMany('api::landing-page.landing-page', {
+      const allLandingPages = await safeFind('api::landing-page.landing-page', {
         filters: { publishedAt: { $notNull: true } },
       });
 
-      const allBlogPosts = await strapi.entityService.findMany('api::blog-post.blog-post', {
+      const allBlogPosts = await safeFind('api::blog-post.blog-post', {
         filters: { publishedAt: { $notNull: true } },
         populate: ['seo'],
       });
 
-      const allLocations = await strapi.entityService.findMany('api::location.location', {
+      const allLocations = await safeFind('api::location.location', {
         filters: { publishedAt: { $notNull: true } },
         populate: ['seo'],
       });
@@ -106,7 +91,7 @@ export default {
       });
 
       // Check redirect issues
-      const redirects = await strapi.entityService.findMany('api::redirect.redirect', {
+      const redirects = await safeFind('api::redirect.redirect', {
         filters: { isActive: true },
       });
 
@@ -139,7 +124,7 @@ export default {
       });
 
       // Get recently edited pages
-      const recentlyEdited = await strapi.entityService.findMany('api::page.page', {
+      const recentlyEdited = await safeFind('api::page.page', {
         filters: { publishedAt: { $notNull: true } },
         sort: { updatedAt: 'desc' },
         limit: 5,
@@ -157,7 +142,7 @@ export default {
       }));
 
       // Get recently published locations
-      const recentlyPublishedLocations = await strapi.entityService.findMany('api::location.location', {
+      const recentlyPublishedLocations = await safeFind('api::location.location', {
         filters: { publishedAt: { $notNull: true } },
         sort: { publishedAt: 'desc' },
         limit: 3,
@@ -175,7 +160,7 @@ export default {
       }));
 
       // Get recently published blog posts
-      const recentlyPublishedBlogs = await strapi.entityService.findMany('api::blog-post.blog-post', {
+      const recentlyPublishedBlogs = await safeFind('api::blog-post.blog-post', {
         filters: { publishedAt: { $notNull: true } },
         sort: { publishedAt: 'desc' },
         limit: 3,
