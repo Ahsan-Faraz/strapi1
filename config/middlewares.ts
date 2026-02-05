@@ -21,28 +21,7 @@ export default [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      origin: (ctx) => {
-        const allowedOrigins = [
-          'http://localhost:3000',
-          'https://clensy.com',
-          'https://clensy2-0.vercel.app',
-          process.env.FRONTEND_URL,
-        ].filter(Boolean);
-        
-        const requestOrigin = ctx.request.header.origin;
-        
-        // Allow all Vercel preview deployments
-        if (requestOrigin && requestOrigin.endsWith('.vercel.app')) {
-          return requestOrigin;
-        }
-        
-        // Allow explicitly listed origins
-        if (allowedOrigins.includes(requestOrigin)) {
-          return requestOrigin;
-        }
-        
-        return false;
-      },
+      origin: '*',
       headers: ['*'],
     },
   },
