@@ -2,7 +2,7 @@ export default ({ env }) => ({
   seo: {
     enabled: true,
   },
-  'strapi-page-builder': {
+  'page-builder': {
     enabled: true,
     config: {
       apiKey: env('STRAPI_PAGE_BUILDER_API_KEY', ''),
