@@ -1,22 +1,27 @@
 export default {
   async getStats(ctx) {
     try {
+      const { strapi } = ctx.state;
       const oneWeekAgo = new Date();
       oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
       // Get total pages count (pages + landing pages + blog posts + locations)
       const [pages, landingPages, blogPosts, locations] = await Promise.all([
-        strapi.documents('api::page.page').count({
+        strapi.entityService.findMany('api::page.page', {
           filters: { publishedAt: { $notNull: true } },
+          count: true,
         }),
-        strapi.documents('api::landing-page.landing-page').count({
+        strapi.entityService.findMany('api::landing-page.landing-page', {
           filters: { publishedAt: { $notNull: true } },
+          count: true,
         }),
-        strapi.documents('api::blog-post.blog-post').count({
+        strapi.entityService.findMany('api::blog-post.blog-post', {
           filters: { publishedAt: { $notNull: true } },
+          count: true,
         }),
-        strapi.documents('api::location.location').count({
+        strapi.entityService.findMany('api::location.location', {
           filters: { publishedAt: { $notNull: true } },
+          count: true,
         }),
       ]);
 
@@ -24,46 +29,50 @@ export default {
 
       // Get pages created this week
       const [pagesThisWeek, landingPagesThisWeek, blogPostsThisWeek, locationsThisWeek] = await Promise.all([
-        strapi.documents('api::page.page').count({
+        strapi.entityService.findMany('api::page.page', {
           filters: {
-            publishedAt: { $gte: oneWeekAgo.toISOString() },
+            publishedAt: { $gte: oneWeekAgo },
           },
+          count: true,
         }),
-        strapi.documents('api::landing-page.landing-page').count({
+        strapi.entityService.findMany('api::landing-page.landing-page', {
           filters: {
-            publishedAt: { $gte: oneWeekAgo.toISOString() },
+            publishedAt: { $gte: oneWeekAgo },
           },
+          count: true,
         }),
-        strapi.documents('api::blog-post.blog-post').count({
+        strapi.entityService.findMany('api::blog-post.blog-post', {
           filters: {
-            publishedAt: { $gte: oneWeekAgo.toISOString() },
+            publishedAt: { $gte: oneWeekAgo },
           },
+          count: true,
         }),
-        strapi.documents('api::location.location').count({
+        strapi.entityService.findMany('api::location.location', {
           filters: {
-            publishedAt: { $gte: oneWeekAgo.toISOString() },
+            publishedAt: { $gte: oneWeekAgo },
           },
+          count: true,
         }),
       ]);
 
       const pagesThisWeekCount = pagesThisWeek + landingPagesThisWeek + blogPostsThisWeek + locationsThisWeek;
 
       // Get all pages with SEO data to check for missing meta titles
-      const allPages = await strapi.documents('api::page.page').findMany({
+      const allPages = await strapi.entityService.findMany('api::page.page', {
         filters: { publishedAt: { $notNull: true } },
         populate: ['seo'],
       });
 
-      const allLandingPages = await strapi.documents('api::landing-page.landing-page').findMany({
+      const allLandingPages = await strapi.entityService.findMany('api::landing-page.landing-page', {
         filters: { publishedAt: { $notNull: true } },
       });
 
-      const allBlogPosts = await strapi.documents('api::blog-post.blog-post').findMany({
+      const allBlogPosts = await strapi.entityService.findMany('api::blog-post.blog-post', {
         filters: { publishedAt: { $notNull: true } },
         populate: ['seo'],
       });
 
-      const allLocations = await strapi.documents('api::location.location').findMany({
+      const allLocations = await strapi.entityService.findMany('api::location.location', {
         filters: { publishedAt: { $notNull: true } },
         populate: ['seo'],
       });
@@ -97,7 +106,7 @@ export default {
       });
 
       // Check redirect issues
-      const redirects = await strapi.documents('api::redirect.redirect').findMany({
+      const redirects = await strapi.entityService.findMany('api::redirect.redirect', {
         filters: { isActive: true },
       });
 
@@ -130,7 +139,7 @@ export default {
       });
 
       // Get recently edited pages
-      const recentlyEdited = await strapi.documents('api::page.page').findMany({
+      const recentlyEdited = await strapi.entityService.findMany('api::page.page', {
         filters: { publishedAt: { $notNull: true } },
         sort: { updatedAt: 'desc' },
         limit: 5,
@@ -148,7 +157,7 @@ export default {
       }));
 
       // Get recently published locations
-      const recentlyPublishedLocations = await strapi.documents('api::location.location').findMany({
+      const recentlyPublishedLocations = await strapi.entityService.findMany('api::location.location', {
         filters: { publishedAt: { $notNull: true } },
         sort: { publishedAt: 'desc' },
         limit: 3,
@@ -166,7 +175,7 @@ export default {
       }));
 
       // Get recently published blog posts
-      const recentlyPublishedBlogs = await strapi.documents('api::blog-post.blog-post').findMany({
+      const recentlyPublishedBlogs = await strapi.entityService.findMany('api::blog-post.blog-post', {
         filters: { publishedAt: { $notNull: true } },
         sort: { publishedAt: 'desc' },
         limit: 3,
