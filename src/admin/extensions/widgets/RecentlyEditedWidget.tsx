@@ -19,21 +19,30 @@ const RecentlyEditedWidget = () => {
   const { get } = useFetchClient();
 
   useEffect(() => {
+    const controller = new AbortController();
+    let isMounted = true;
+
     async function fetchData() {
       try {
-        const response = await get('/api/dashboard/stats');
-        if (response && response.data) {
+        const response = await get('/api/dashboard/stats', { signal: controller.signal });
+        if (isMounted && response && response.data) {
           setData(response.data);
         }
       } catch (error: any) {
+        if (error?.name === 'AbortError' || controller.signal.aborted) return;
         console.error('Error fetching dashboard stats:', error);
-        setData({ recentActivities: [] });
+        if (isMounted) setData({ recentActivities: [] });
       } finally {
-        setLoading(false);
+        if (isMounted) setLoading(false);
       }
     }
     fetchData();
-  }, [get]);
+
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
+  }, []);
 
   if (loading) {
     return (
