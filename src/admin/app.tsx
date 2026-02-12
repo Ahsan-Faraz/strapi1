@@ -216,7 +216,6 @@ export default {
       // Find and hide specific collection types by their href
       const linksToHide = [
         'a[href*="/admin/content-manager/collection-types/api::redirect.redirect"]',
-        'a[href*="/admin/content-manager/collection-types/api::page.page"]', 
         'a[href*="/admin/content-manager/collection-types/plugin::users-permissions.user"]'
       ];
       
