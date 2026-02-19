@@ -418,7 +418,7 @@ const services = [
 const locations = [
   {
     name: 'Bergen County',
-    slug: 'bergen-county',
+    slug: 'bergen',
     county: 'Bergen',
     state: 'NJ',
     heroTitle: 'Professional Cleaning Services in Bergen County',
@@ -434,7 +434,7 @@ const locations = [
   },
   {
     name: 'Essex County',
-    slug: 'essex-county',
+    slug: 'essex',
     county: 'Essex',
     state: 'NJ',
     heroTitle: 'Professional Cleaning Services in Essex County',
@@ -450,7 +450,7 @@ const locations = [
   },
   {
     name: 'Hudson County',
-    slug: 'hudson-county',
+    slug: 'hudson',
     county: 'Hudson',
     state: 'NJ',
     heroTitle: 'Professional Cleaning Services in Hudson County',
@@ -466,7 +466,7 @@ const locations = [
   },
   {
     name: 'Passaic County',
-    slug: 'passaic-county',
+    slug: 'passaic',
     county: 'Passaic',
     state: 'NJ',
     heroTitle: 'Professional Cleaning Services in Passaic County',
@@ -482,7 +482,7 @@ const locations = [
   },
   {
     name: 'Union County',
-    slug: 'union-county',
+    slug: 'union',
     county: 'Union',
     state: 'NJ',
     heroTitle: 'Professional Cleaning Services in Union County',
@@ -498,7 +498,7 @@ const locations = [
   },
   {
     name: 'Morris County',
-    slug: 'morris-county',
+    slug: 'morris',
     county: 'Morris',
     state: 'NJ',
     heroTitle: 'Professional Cleaning Services in Morris County',
@@ -511,70 +511,6 @@ const locations = [
     contactAddress: 'Morris County, New Jersey',
     aboutTitle: 'About Our Morris County Services',
     aboutDescription: 'Morris County is known for its beautiful homes and thriving businesses, and Clensy is here to help keep them spotless. Our team serves communities from historic Morristown to growing Parsippany.\n\nWe offer comprehensive residential and commercial cleaning services with the flexibility and professionalism Morris County expects.',
-  },
-  {
-    name: 'Middlesex County',
-    slug: 'middlesex-county',
-    county: 'Middlesex',
-    state: 'NJ',
-    heroTitle: 'Professional Cleaning Services in Middlesex County',
-    heroSubtitle: 'Quality cleaning services for Middlesex County homes and businesses. Serving New Brunswick, Edison, Woodbridge, and all surrounding communities.',
-    heroBackgroundImageUrl: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920',
-    ctaButton1Text: 'Get a Quote',
-    ctaButton2Text: 'Contact Us',
-    contactPhone: '(732) 555-0129',
-    contactEmail: 'middlesex@clensy.com',
-    contactAddress: 'Middlesex County, New Jersey',
-    aboutTitle: 'About Our Middlesex County Services',
-    aboutDescription: 'Middlesex County is one of New Jersey most populous counties, and Clensy is proud to serve its diverse communities. From college town New Brunswick to suburban Edison, we bring professional cleaning to every corner.\n\nOur Middlesex County team handles homes of all sizes and commercial spaces of every type.',
-  },
-  {
-    name: 'Monmouth County',
-    slug: 'monmouth-county',
-    county: 'Monmouth',
-    state: 'NJ',
-    heroTitle: 'Professional Cleaning Services in Monmouth County',
-    heroSubtitle: 'Premium cleaning services for Monmouth County homes and businesses. Serving Red Bank, Freehold, Long Branch, and the entire Shore area.',
-    heroBackgroundImageUrl: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920',
-    ctaButton1Text: 'Get a Quote',
-    ctaButton2Text: 'Contact Us',
-    contactPhone: '(732) 555-0130',
-    contactEmail: 'monmouth@clensy.com',
-    contactAddress: 'Monmouth County, New Jersey',
-    aboutTitle: 'About Our Monmouth County Services',
-    aboutDescription: 'From the Jersey Shore to inland communities, Clensy provides exceptional cleaning services throughout Monmouth County. We understand the unique needs of shore properties and year-round residents alike.\n\nOur team offers specialized services including vacation rental turnovers, seasonal deep cleaning, and regular maintenance for homes and businesses.',
-  },
-  {
-    name: 'Somerset County',
-    slug: 'somerset-county',
-    county: 'Somerset',
-    state: 'NJ',
-    heroTitle: 'Professional Cleaning Services in Somerset County',
-    heroSubtitle: 'Expert cleaning services for Somerset County homes and businesses. Serving Bridgewater, Franklin, Somerville, and all surrounding areas.',
-    heroBackgroundImageUrl: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920',
-    ctaButton1Text: 'Get a Quote',
-    ctaButton2Text: 'Contact Us',
-    contactPhone: '(908) 555-0131',
-    contactEmail: 'somerset@clensy.com',
-    contactAddress: 'Somerset County, New Jersey',
-    aboutTitle: 'About Our Somerset County Services',
-    aboutDescription: 'Somerset County is home to beautiful estates and thriving corporate centers, and Clensy serves them all. Our team brings professional cleaning excellence to every community in the county.\n\nWe offer customized cleaning plans for homes of all sizes and commercial spaces from small offices to large corporate facilities.',
-  },
-  {
-    name: 'Ocean County',
-    slug: 'ocean-county',
-    county: 'Ocean',
-    state: 'NJ',
-    heroTitle: 'Professional Cleaning Services in Ocean County',
-    heroSubtitle: 'Quality cleaning services for Ocean County homes and businesses. Serving Toms River, Lakewood, Brick, and the entire Shore region.',
-    heroBackgroundImageUrl: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920',
-    ctaButton1Text: 'Get a Quote',
-    ctaButton2Text: 'Contact Us',
-    contactPhone: '(732) 555-0132',
-    contactEmail: 'ocean@clensy.com',
-    contactAddress: 'Ocean County, New Jersey',
-    aboutTitle: 'About Our Ocean County Services',
-    aboutDescription: 'Ocean County residents enjoy beautiful beaches and a relaxed lifestyle, and Clensy helps keep their homes just as beautiful. We serve communities from Toms River to the barrier islands.\n\nOur Ocean County team specializes in shore property maintenance, vacation rental turnovers, and year-round residential cleaning.',
   }
 ];
 
@@ -595,10 +531,7 @@ const serviceAreasByCounty = {
   'Passaic': ['Paterson', 'Clifton', 'Wayne', 'Passaic', 'Hawthorne', 'Pompton Lakes', 'Little Falls', 'Totowa', 'Woodland Park', 'Ringwood'],
   'Union': ['Elizabeth', 'Westfield', 'Summit', 'Cranford', 'Scotch Plains', 'Rahway', 'Linden', 'Plainfield', 'Union', 'Springfield'],
   'Morris': ['Morristown', 'Parsippany', 'Madison', 'Denville', 'Randolph', 'Rockaway', 'Dover', 'Chatham', 'Florham Park', 'Morris Plains'],
-  'Middlesex': ['New Brunswick', 'Edison', 'Woodbridge', 'Perth Amboy', 'Piscataway', 'Old Bridge', 'East Brunswick', 'South Brunswick', 'Sayreville', 'Metuchen'],
-  'Monmouth': ['Red Bank', 'Freehold', 'Long Branch', 'Asbury Park', 'Middletown', 'Holmdel', 'Marlboro', 'Manalapan', 'Tinton Falls', 'Ocean Township'],
-  'Somerset': ['Bridgewater', 'Franklin', 'Somerville', 'Hillsborough', 'Bound Brook', 'Bernardsville', 'Watchung', 'Warren', 'Bedminster', 'Montgomery'],
-  'Ocean': ['Toms River', 'Lakewood', 'Brick', 'Jackson', 'Howell', 'Manchester', 'Barnegat', 'Point Pleasant', 'Seaside Heights', 'Long Beach Island']
+
 };
 
 locations.forEach(location => {

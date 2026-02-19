@@ -5,9 +5,9 @@ export default {
       path: '/dashboard/stats',
       handler: 'dashboard.getStats',
       config: {
+        auth: false,
         policies: [],
         middlewares: [],
-        auth: false,
       },
     },
   ],

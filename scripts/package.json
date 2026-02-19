@@ -6,7 +6,7 @@
     "migrate": "node migrate-from-mongodb.js"
   },
   "dependencies": {
-    "mongoose": "^8.0.0"
+    "mongoose": "^8.0.0",
+    "pg": "^8.18.0"
   }
 }
-

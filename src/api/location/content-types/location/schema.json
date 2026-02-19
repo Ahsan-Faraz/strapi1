@@ -105,11 +105,6 @@
     "excludeFromSitemap": {
       "type": "boolean",
       "default": false
-    },
-    "Location_Page": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::page-builder.template"
     }
   }
 }

@@ -77,7 +77,7 @@ export default ({ env }) => {
   const isProduction = env('NODE_ENV') === 'production';
   const clientUrl = env('CLIENT_URL') || 
                     env('NEXT_PUBLIC_SITE_URL') || 
-                    (isProduction ? 'https://clensy2.0.vercel.app' : 'http://localhost:3000');
+                    (isProduction ? 'https://clensy.com' : 'http://localhost:3000');
   const previewSecret = env('PREVIEW_SECRET') || 
                         env('NEXT_PUBLIC_PREVIEW_SECRET') || 
                         env('STRAPI_PREVIEW_SECRET') ||

@@ -2,10 +2,6 @@ import path from 'path';
 
 export default ({ env }) => {
   const client = env('DATABASE_CLIENT', 'sqlite');
-  
-  // Log for debugging
-  console.log('Database client:', client);
-  console.log('DATABASE_HOST:', env('DATABASE_HOST', 'not set'));
 
   // PostgreSQL (Supabase) configuration
   if (client === 'postgres') {
