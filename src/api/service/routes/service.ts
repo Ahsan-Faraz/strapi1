@@ -7,6 +7,11 @@ export default {
     },
     {
       method: 'GET',
+      path: '/services/by-slug/:slug',
+      handler: 'service.findBySlug',
+    },
+    {
+      method: 'GET',
       path: '/services/:id',
       handler: 'service.findOne',
     },

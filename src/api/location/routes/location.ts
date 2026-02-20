@@ -7,6 +7,11 @@ export default {
     },
     {
       method: 'GET',
+      path: '/locations/by-slug/:slug',
+      handler: 'location.findBySlug',
+    },
+    {
+      method: 'GET',
       path: '/locations/:id',
       handler: 'location.findOne',
     },
