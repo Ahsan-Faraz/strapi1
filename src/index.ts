@@ -1,7 +1,11 @@
+import * as fs from 'fs';
+import * as path from 'path';
+
 export default {
   register() {},
 
   async bootstrap({ strapi }: { strapi: any }) {
+    await seedTermsAndPrivacy(strapi);
     const landingPageData = {
       heroTopLabel: "Professional Cleaning Services",
       heroHeading: "Professional cleaning for your home",
@@ -123,3 +127,73 @@ export default {
     }
   },
 };
+
+async function seedTermsAndPrivacy(strapi: any) {
+  try {
+    const dataDir = path.join(__dirname, 'data');
+    const termsSectionsPath = path.join(dataDir, 'terms-sections.json');
+    const privacySectionsPath = path.join(dataDir, 'privacy-sections.json');
+
+    const termsSections = fs.existsSync(termsSectionsPath)
+      ? JSON.parse(fs.readFileSync(termsSectionsPath, 'utf-8'))
+      : [];
+    const privacySections = fs.existsSync(privacySectionsPath)
+      ? JSON.parse(fs.readFileSync(privacySectionsPath, 'utf-8'))
+      : [];
+
+    const termsData = {
+      heroHeading: 'Terms & Conditions',
+      heroDescription: 'Please read these terms and conditions carefully before using our services',
+      websiteUrl: 'clensy.com',
+      companyEmail: 'info@clensy.com',
+      companyPhone: '(551) 305-4081',
+      lastUpdated: 'February 2025',
+      agreementDescription: "By booking any service with Clensy LLC (\"Clensy Cleaning\"), either through our website, over the phone, or by email/text, you agree to comply with these Terms & Conditions. If you do not agree with any part of these terms, do not proceed with booking a service.",
+      sections: termsSections,
+      publishedAt: new Date(),
+    };
+
+    const privacyData = {
+      heroHeading: 'Privacy Policy',
+      heroDescription: 'Your privacy is important to us. Learn how we collect, use, and protect your information.',
+      websiteUrl: 'clensy.com',
+      companyEmail: 'Info@clensycleaning.com',
+      companyPhone: '(551) 305-4081',
+      lastUpdated: 'February 2025',
+      sections: privacySections,
+      smsConsentDescription: 'By opting into SMS from a web form or other medium, you are agreeing to receive SMS messages from Clensy Cleaning. This includes SMS messages for appointment scheduling, appointment reminders, post-visit instructions, and billing notifications. Message frequency varies. Message and data rates may apply. See our privacy policy at https://clensy.com/privacy-policy. Message HELP for help. Reply STOP to any message to opt out.',
+      smsOptOutInstructions: 'To opt out of SMS messages, reply STOP to any message. For help, reply HELP or contact us at Info@clensycleaning.com.',
+      publishedAt: new Date(),
+    };
+
+    console.log('🌱 Checking Terms of Service...');
+    const existingTerms = await strapi.entityService.findMany('api::terms-of-service.terms-of-service', { limit: 1 });
+    const termsRecord = Array.isArray(existingTerms) ? existingTerms[0] : existingTerms;
+
+    if (!termsRecord) {
+      console.log('🌱 Creating Terms of Service...');
+      await strapi.entityService.create('api::terms-of-service.terms-of-service', { data: termsData });
+      console.log('✅ Terms of Service created!');
+    } else {
+      console.log('🌱 Updating Terms of Service with new content...');
+      await strapi.entityService.update('api::terms-of-service.terms-of-service', termsRecord.id, { data: termsData });
+      console.log('✅ Terms of Service updated!');
+    }
+
+    console.log('🌱 Checking Privacy Policy...');
+    const existingPrivacy = await strapi.entityService.findMany('api::privacy-policy.privacy-policy', { limit: 1 });
+    const privacyRecord = Array.isArray(existingPrivacy) ? existingPrivacy[0] : existingPrivacy;
+
+    if (!privacyRecord) {
+      console.log('🌱 Creating Privacy Policy...');
+      await strapi.entityService.create('api::privacy-policy.privacy-policy', { data: privacyData });
+      console.log('✅ Privacy Policy created!');
+    } else {
+      console.log('🌱 Updating Privacy Policy with new content...');
+      await strapi.entityService.update('api::privacy-policy.privacy-policy', privacyRecord.id, { data: privacyData });
+      console.log('✅ Privacy Policy updated!');
+    }
+  } catch (error: any) {
+    console.error('❌ Terms/Privacy seed error:', error?.message || error);
+  }
+}
