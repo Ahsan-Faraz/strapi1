@@ -12,9 +12,7 @@
     "start": "node --max-old-space-size=1024 node_modules/.bin/strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry",
-    "seed:privacy": "node --env-file=.env scripts/seed-privacy-policy.js",
-    "seed:terms": "node --env-file=.env scripts/seed-terms-of-service.js"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
     "@strapi/admin": "5.31.2",

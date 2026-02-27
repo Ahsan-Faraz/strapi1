@@ -5,34 +5,127 @@
     "singularName": "careers-page",
     "pluralName": "careers-pages",
     "displayName": "Careers Page",
-    "description": "Careers/jobs page content"
+    "description": "Careers/jobs page - editable in Content Manager"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
+    "heroTopLabel": {
+      "type": "string",
+      "default": "Now Hiring - Multiple Positions"
+    },
     "heroHeading": {
-      "type": "string"
+      "type": "string",
+      "default": "Join The Clensy Team"
     },
-    "heroSubheading": {
-      "type": "text"
+    "heroDescription": {
+      "type": "text",
+      "default": "Build a rewarding career with New Jersey's premier cleaning service. We offer competitive pay, great benefits, and opportunities for growth in a supportive environment."
     },
-    "heroBackgroundImage": {
+    "heroPrimaryButtonText": {
+      "type": "string",
+      "default": "View Open Positions"
+    },
+    "heroSecondaryButtonText": {
+      "type": "string",
+      "default": "Apply Now"
+    },
+    "heroTeamMembersCount": {
+      "type": "string",
+      "default": "50+"
+    },
+    "heroImage": {
       "type": "media",
-      "allowedTypes": ["images"],
-      "multiple": false
+      "multiple": false,
+      "allowedTypes": ["images"]
     },
-    "whyWorkWithUsHeading": {
-      "type": "string"
+    "heroImageUrl": {
+      "type": "string",
+      "default": "https://www.stathakis.com/hs-fs/hubfs/cleaning-team-more-efficient.png?width=837&height=554&name=cleaning-team-more-efficient.png"
+    },
+    "benefitsHeading": {
+      "type": "string",
+      "default": "Why Work With Us?"
+    },
+    "benefitsDescription": {
+      "type": "text",
+      "default": "We believe in taking care of our team members because happy employees provide the best service to our customers."
     },
     "benefits": {
       "type": "component",
       "repeatable": true,
       "component": "content.feature-item"
     },
-    "openPositions": {
-      "type": "json"
+    "positionsHeading": {
+      "type": "string",
+      "default": "Open Positions"
+    },
+    "positionsDescription": {
+      "type": "text",
+      "default": "Find the perfect role that matches your skills and career goals."
+    },
+    "positions": {
+      "type": "json",
+      "default": [
+        {
+          "title": "Residential Cleaner",
+          "type": "Full-time / Part-time",
+          "location": "Multiple NJ Counties",
+          "description": "Join our residential cleaning team and help families maintain beautiful, clean homes.",
+          "requirements": [
+            "Previous cleaning experience preferred but not required",
+            "Reliable transportation",
+            "Attention to detail",
+            "Physical ability to perform cleaning tasks",
+            "Background check required"
+          ],
+          "salary": "$18-22/hour",
+          "link": ""
+        }
+      ]
+    },
+    "testimonialsHeading": {
+      "type": "string",
+      "default": "What Our Team Says"
+    },
+    "testimonialsDescription": {
+      "type": "text",
+      "default": "Hear from our employees about their experience working at Clensy."
+    },
+    "employeeTestimonials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.employee-testimonial"
+    },
+    "applicationHeading": {
+      "type": "string",
+      "default": "Ready to Join Our Team?"
+    },
+    "applicationDescription": {
+      "type": "text",
+      "default": "Fill out the application below and we'll get back to you within 24 hours."
+    },
+    "applicationSubmitButtonText": {
+      "type": "string",
+      "default": "Submit Application"
+    },
+    "contactHeading": {
+      "type": "string",
+      "default": "Have Questions About Working With Us?"
+    },
+    "contactDescription": {
+      "type": "text",
+      "default": "Contact our HR team for more information about career opportunities."
+    },
+    "contactPhoneText": {
+      "type": "string",
+      "default": "Call Us: (551) 305-4081"
+    },
+    "contactEmailText": {
+      "type": "string",
+      "default": "Email: careers@clensy.com"
     },
     "applicationFormEnabled": {
       "type": "boolean",
@@ -55,4 +148,3 @@
     }
   }
 }
-

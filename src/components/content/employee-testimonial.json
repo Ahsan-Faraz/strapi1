@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_content_employee_testimonials",
+  "info": {
+    "displayName": "Employee Testimonial",
+    "icon": "user",
+    "description": "Employee/career testimonial with name, position, content, rating"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "position": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "rating": {
+      "type": "integer",
+      "min": 1,
+      "max": 5,
+      "default": 5
+    }
+  }
+}

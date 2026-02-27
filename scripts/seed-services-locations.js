@@ -8,7 +8,8 @@
  * - STRAPI_ADMIN_PASSWORD
  */
 
-const STRAPI_URL = process.env.STRAPI_URL || 'https://strapi-production-8d56.up.railway.app';
+const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+const API_PREFIX = process.env.STRAPI_API_PREFIX || 'admin/api';
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN || '67eb2c4b5e9661786cbc07a8e245f6feca5539a6b25d371450b6e47ae586b1696c16d0ed67f45d2eb20b1189f91710d0d422b82abe4763e64467a2f6dcb5526e7d23f37110c7925bcd20e46a115bde10200168b131b4ca703f5c9e5eafa743d6691aba335d9a48c7bae2e47d9da3489b3ffa478ceebcd934f7099c40d622e3b2';
 
 let authToken = null;
@@ -20,7 +21,7 @@ async function authenticate() {
   authToken = STRAPI_API_TOKEN;
   
   // Verify token works
-  const response = await fetch(`${STRAPI_URL}/api/services`, {
+  const response = await fetch(`${STRAPI_URL}/${API_PREFIX}/services`, {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${authToken}`,
@@ -39,7 +40,7 @@ async function createOrUpdate(endpoint, data, identifierField = 'slug') {
   
   // Check if exists
   const checkResponse = await fetch(
-    `${STRAPI_URL}/api${endpoint}?filters[${identifierField}][$eq]=${encodeURIComponent(identifier)}`,
+    `${STRAPI_URL}/${API_PREFIX}${endpoint}?filters[${identifierField}][$eq]=${encodeURIComponent(identifier)}`,
     {
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +54,7 @@ async function createOrUpdate(endpoint, data, identifierField = 'slug') {
   if (existing.data && existing.data.length > 0) {
     // Update existing
     const id = existing.data[0].id;
-    const updateResponse = await fetch(`${STRAPI_URL}/api${endpoint}/${id}`, {
+    const updateResponse = await fetch(`${STRAPI_URL}/${API_PREFIX}${endpoint}/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -72,7 +73,7 @@ async function createOrUpdate(endpoint, data, identifierField = 'slug') {
     return await updateResponse.json();
   } else {
     // Create new
-    const createResponse = await fetch(`${STRAPI_URL}/api${endpoint}`, {
+    const createResponse = await fetch(`${STRAPI_URL}/${API_PREFIX}${endpoint}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -525,7 +526,15 @@ locations.forEach(location => {
 
 // Add service areas to each location
 const serviceAreasByCounty = {
-  'Bergen': ['Hackensack', 'Paramus', 'Fort Lee', 'Teaneck', 'Englewood', 'Ridgewood', 'Fair Lawn', 'Bergenfield', 'Garfield', 'Lodi'],
+  'Bergen': [
+    'Allendale', 'Alpine', 'Bergenfield', 'Bogota', 'Carlstadt', 'Cliffside Park', 'Closter', 'Cresskill', 'Demarest', 'Dumont',
+    'East Rutherford', 'Edgewater', 'Emerson', 'Englewood', 'Englewood Cliffs', 'Fairview', 'Fort Lee', 'Franklin Lakes', 'Garfield',
+    'Glen Rock', 'Hackensack', 'Harrington Park', 'Hasbrouck Heights', 'Haworth', 'Hillsdale', 'Ho Ho Kus', 'Leonia', 'Little Ferry',
+    'Lodi', 'Lyndhurst', 'Mahwah', 'Maywood', 'Midland Park', 'Montvale', 'Moonachie', 'New Milford', 'North Arlington', 'Northvale',
+    'Norwood', 'Oakland', 'Oradell', 'Palisades Park', 'Paramus', 'Park Ridge', 'Ramsey', 'Ridgefield', 'Ridgefield Park', 'Ridgewood',
+    'River Edge', 'Rochelle Park', 'Rutherford', 'Saddle Brook', 'Saddle River', 'South Hackensack', 'Teaneck', 'Tenafly',
+    'Teterboro', 'Township of Washington', 'Waldwick', 'Wallington', 'Westwood', 'Wood Ridge', 'Woodcliff Lake', 'Wyckoff'
+  ],
   'Essex': ['Newark', 'Montclair', 'Livingston', 'West Orange', 'Bloomfield', 'Nutley', 'Belleville', 'Irvington', 'Maplewood', 'South Orange'],
   'Hudson': ['Jersey City', 'Hoboken', 'Weehawken', 'Union City', 'North Bergen', 'West New York', 'Bayonne', 'Secaucus', 'Kearny', 'Harrison'],
   'Passaic': ['Paterson', 'Clifton', 'Wayne', 'Passaic', 'Hawthorne', 'Pompton Lakes', 'Little Falls', 'Totowa', 'Woodland Park', 'Ringwood'],

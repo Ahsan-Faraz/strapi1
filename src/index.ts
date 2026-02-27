@@ -6,6 +6,7 @@ export default {
 
   async bootstrap({ strapi }: { strapi: any }) {
     await seedTermsAndPrivacy(strapi);
+    await seedBergenServiceAreas(strapi);
     const landingPageData = {
       heroTopLabel: "Professional Cleaning Services",
       heroHeading: "Professional cleaning for your home",
@@ -195,5 +196,34 @@ async function seedTermsAndPrivacy(strapi: any) {
     }
   } catch (error: any) {
     console.error('❌ Terms/Privacy seed error:', error?.message || error);
+  }
+}
+
+async function seedBergenServiceAreas(strapi: any) {
+  try {
+    const dataPath = path.join(__dirname, 'data', 'bergen-service-areas.json');
+    if (!fs.existsSync(dataPath)) {
+      console.log('⏭️ bergen-service-areas.json not found, skipping Bergen seed');
+      return;
+    }
+    const townNames = JSON.parse(fs.readFileSync(dataPath, 'utf-8')) as string[];
+    const serviceAreas = townNames.map((name) => ({ name }));
+
+    const bergenList = await strapi.entityService.findMany('api::location.location', {
+      filters: { slug: 'bergen' },
+      limit: 1,
+    });
+    const bergen = Array.isArray(bergenList) ? bergenList[0] : bergenList;
+    if (!bergen) {
+      console.log('⏭️ Bergen location not found, skipping service areas seed');
+      return;
+    }
+
+    await strapi.entityService.update('api::location.location', bergen.id, {
+      data: { serviceAreas, publishedAt: bergen.publishedAt ?? new Date() },
+    });
+    console.log(`✅ Bergen County updated with ${townNames.length} service areas`);
+  } catch (error: any) {
+    console.error('❌ Bergen seed error:', error?.message || error);
   }
 }

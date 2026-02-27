@@ -1,10 +1,13 @@
 /**
- * Seed Terms of Service into Strapi
- * 
- * Run with: node scripts/seed-terms-of-service.js
- * 
- * For local dev: STRAPI_URL defaults to http://localhost:1337 (Strapi must be running)
- * For production: set STRAPI_URL and STRAPI_API_TOKEN env vars
+ * Seed Terms of Service into Strapi via REST API
+ *
+ * Run: npm run seed:terms
+ * Requires: Strapi running (npm run dev) + API token with update permission
+ *
+ * Setup API Token in Strapi:
+ * 1. Admin → Settings → API Tokens (or Global settings → API Tokens)
+ * 2. Create token with "Full access" OR Custom: find + update for Terms of Service
+ * 3. Add STRAPI_API_TOKEN to strapi1/.env
  */
 
 const path = require('path');
@@ -12,7 +15,6 @@ const fs = require('fs');
 
 const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN || '';
-// Match config/api.ts rest.prefix: '/admin/api'
 const API_PREFIX = process.env.STRAPI_API_PREFIX || 'admin/api';
 
 const termsOfServiceData = {
@@ -35,56 +37,42 @@ const termsOfServiceData = {
   sections: [],
 };
 
-// Load sections from src/data/terms-sections.json
 const termsJsonPath = path.join(__dirname, '../src/data/terms-sections.json');
 if (fs.existsSync(termsJsonPath)) {
   termsOfServiceData.sections = JSON.parse(fs.readFileSync(termsJsonPath, 'utf-8'));
-} else {
-  console.warn('⚠️ terms-sections.json not found, using minimal fallback');
-  termsOfServiceData.sections = [
-    { title: "1. Booking Confirmation", content: "Appointments are not confirmed until you receive written or verbal confirmation from a Clensy representative.", order: 1 },
-  ];
 }
 
-async function seedTermsOfService() {
+async function run() {
   console.log('🔐 Seeding Terms of Service...');
   console.log(`   Target: ${STRAPI_URL}/${API_PREFIX}/terms-of-service\n`);
-  
-  try {
-    const headers = {
-      'Content-Type': 'application/json',
-    };
-    if (STRAPI_API_TOKEN) {
-      headers['Authorization'] = `Bearer ${STRAPI_API_TOKEN}`;
-    }
 
-    const response = await fetch(`${STRAPI_URL}/${API_PREFIX}/terms-of-service`, {
-      method: 'PUT',
-      headers,
-      body: JSON.stringify({ data: termsOfServiceData }),
-    });
-    
-    if (!response.ok) {
-      const error = await response.text();
-      console.error('❌ Failed to seed Terms of Service:', error);
-      if (STRAPI_URL.includes('localhost')) {
-        console.log('\n💡 Make sure Strapi is running: cd strapi1 && npm run develop');
-      }
-      return;
-    }
-    
-    console.log('✅ Terms of Service seeded successfully! (' + termsOfServiceData.sections.length + ' sections)\n');
-    
-    console.log('📋 Next steps:');
-    console.log('1. Go to Strapi Admin → Content Manager → Terms of Service');
-    console.log('2. Click "Publish" if draft\n');
-    
-  } catch (error) {
-    console.error('❌ Error:', error.message);
-    if (STRAPI_URL.includes('localhost')) {
-      console.log('\n💡 For local dev: Start Strapi first (npm run develop), then run this script.');
-    }
+  if (!STRAPI_API_TOKEN) {
+    console.error('❌ STRAPI_API_TOKEN is required. Add it to strapi1/.env');
+    console.log('\n📋 To create an API Token:');
+    console.log('   1. Open Strapi Admin → Settings → API Tokens');
+    console.log('   2. Create new token with "Full access" (or Custom: find+update for Terms of Service)');
+    console.log('   3. Add STRAPI_API_TOKEN=your-token to strapi1/.env\n');
+    process.exit(1);
   }
+
+  const headers = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${STRAPI_API_TOKEN}` };
+  const res = await fetch(`${STRAPI_URL}/${API_PREFIX}/terms-of-service`, {
+    method: 'PUT',
+    headers,
+    body: JSON.stringify({ data: termsOfServiceData }),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    console.error('❌ Failed:', err);
+    if (res.status === 403 || res.status === 500) {
+      console.log('\n💡 Token may lack "update" permission. In Strapi Admin:');
+      console.log('   Settings → API Tokens → Edit your token → Enable "update" for Terms of Service\n');
+    }
+    process.exit(1);
+  }
+
+  console.log('✅ Terms of Service seeded! (' + termsOfServiceData.sections.length + ' sections)\n');
 }
 
-seedTermsOfService();
+run().catch((e) => { console.error(e); process.exit(1); });
