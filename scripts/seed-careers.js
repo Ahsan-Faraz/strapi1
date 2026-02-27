@@ -4,6 +4,10 @@
  * Run: npm run seed:careers
  * Requires: Strapi running (npm run dev) + API token with update permission
  *
+ * NOTE: Careers is also seeded on Strapi startup via bootstrap (src/index.ts).
+ * If REST seed only partially works (e.g. only benefits), restart Strapi
+ * (npm run dev) to trigger bootstrap which seeds all fields reliably.
+ *
  * Setup API Token in Strapi:
  * 1. Admin → Settings → API Tokens (or Global settings → API Tokens)
  * 2. Create token with "Full access" OR Custom: find + update for Careers Page
@@ -186,6 +190,7 @@ async function run() {
     "Content-Type": "application/json",
     Authorization: `Bearer ${STRAPI_API_TOKEN}`,
   };
+
   const res = await fetch(`${STRAPI_URL}/${API_PREFIX}/careers-page`, {
     method: "PUT",
     headers,

@@ -1,223 +1,87 @@
+const CACHE_TTL_MS = 5 * 60 * 1000;
+let statsCache: { data: any; time: number } | null = null;
+let statsPromise: Promise<any> | null = null;
+
+const PUBLISHED = { status: 'published' as const };
+
 export default {
   async getStats(ctx) {
-    try {
-      const oneWeekAgo = new Date();
-      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-
-      // Helper to safely count documents
-      const safeCount = async (uid: string, filters: any = {}) => {
-        try {
-          return await strapi.documents(uid as any).count({ filters });
-        } catch {
-          return 0;
-        }
-      };
-
-      // Helper to safely find documents
-      const safeFind = async (uid: string, options: any = {}) => {
-        try {
-          return await strapi.documents(uid as any).findMany(options);
-        } catch {
-          return [];
-        }
-      };
-
-      // Get total pages count (pages + landing pages + blog posts + locations)
-      const [pages, landingPages, blogPosts, locations] = await Promise.all([
-        safeCount('api::page.page', { publishedAt: { $notNull: true } }),
-        safeCount('api::landing-page.landing-page', { publishedAt: { $notNull: true } }),
-        safeCount('api::blog-post.blog-post', { publishedAt: { $notNull: true } }),
-        safeCount('api::location.location', { publishedAt: { $notNull: true } }),
-      ]);
-
-      const totalPages = pages + landingPages + blogPosts + locations;
-
-      // Get pages created this week
-      const [pagesThisWeek, landingPagesThisWeek, blogPostsThisWeek, locationsThisWeek] = await Promise.all([
-        safeCount('api::page.page', { publishedAt: { $gte: oneWeekAgo.toISOString() } }),
-        safeCount('api::landing-page.landing-page', { publishedAt: { $gte: oneWeekAgo.toISOString() } }),
-        safeCount('api::blog-post.blog-post', { publishedAt: { $gte: oneWeekAgo.toISOString() } }),
-        safeCount('api::location.location', { publishedAt: { $gte: oneWeekAgo.toISOString() } }),
-      ]);
-
-      const pagesThisWeekCount = pagesThisWeek + landingPagesThisWeek + blogPostsThisWeek + locationsThisWeek;
-
-      // Get all pages with SEO data to check for missing meta titles
-      const allPages = await safeFind('api::page.page', {
-        filters: { publishedAt: { $notNull: true } },
-        populate: ['seo'],
-      });
-
-      const allLandingPages = await safeFind('api::landing-page.landing-page', {
-        filters: { publishedAt: { $notNull: true } },
-      });
-
-      const allBlogPosts = await safeFind('api::blog-post.blog-post', {
-        filters: { publishedAt: { $notNull: true } },
-        populate: ['seo'],
-      });
-
-      const allLocations = await safeFind('api::location.location', {
-        filters: { publishedAt: { $notNull: true } },
-        populate: ['seo'],
-      });
-
-      // Count missing meta titles
-      let missingMetaTitles = 0;
-      
-      allPages.forEach((page: any) => {
-        if (!page.seo?.metaTitle) missingMetaTitles++;
-      });
-
-      allBlogPosts.forEach((post: any) => {
-        if (!post.seo?.metaTitle) missingMetaTitles++;
-      });
-
-      allLocations.forEach((location: any) => {
-        if (!location.seo?.metaTitle) missingMetaTitles++;
-      });
-
-      // Check for noindex pages
-      let noindexPages = 0;
-      let newNoindexPages = 0;
-
-      [...allPages, ...allBlogPosts, ...allLocations].forEach((item: any) => {
-        if (item.seo?.metaRobots?.includes('noindex')) {
-          noindexPages++;
-          if (item.publishedAt && new Date(item.publishedAt) >= oneWeekAgo) {
-            newNoindexPages++;
-          }
-        }
-      });
-
-      // Check redirect issues
-      const redirects = await safeFind('api::redirect.redirect', {
-        filters: { isActive: true },
-      });
-
-      // Detect redirect loops
-      const redirectLoops: any[] = [];
-      redirects.forEach((redirect: any) => {
-        const targetRedirect = redirects.find((r: any) => r.fromPath === redirect.toPath);
-        if (targetRedirect && targetRedirect.toPath === redirect.fromPath) {
-          redirectLoops.push({
-            from: redirect.fromPath,
-            to: redirect.toPath,
-          });
-        }
-      });
-
-      // Check for missing OG images
-      let missingOgImages = 0;
-      [...allPages, ...allBlogPosts, ...allLocations].forEach((item: any) => {
-        if (item.openGraph && !item.openGraph.ogImage && !item.openGraph.ogImageUrl) {
-          missingOgImages++;
-        }
-      });
-
-      // Check for missing schema (landing pages)
-      let missingSchemaPages = 0;
-      allLandingPages.forEach((page: any) => {
-        if (!page.schemaJsonLd || Object.keys(page.schemaJsonLd || {}).length === 0) {
-          missingSchemaPages++;
-        }
-      });
-
-      // Get recently edited pages
-      const recentlyEdited = await safeFind('api::page.page', {
-        filters: { publishedAt: { $notNull: true } },
-        sort: { updatedAt: 'desc' },
-        limit: 5,
-        populate: ['updatedBy'],
-      });
-
-      const recentlyEditedFormatted = recentlyEdited.map((page: any) => ({
-        id: page.id,
-        title: page.title,
-        slug: page.slug,
-        type: 'Page',
-        updatedAt: page.updatedAt,
-        updatedBy: page.updatedBy?.username || 'Unknown',
-        publishedAt: page.publishedAt,
-      }));
-
-      // Get recently published locations
-      const recentlyPublishedLocations = await safeFind('api::location.location', {
-        filters: { publishedAt: { $notNull: true } },
-        sort: { publishedAt: 'desc' },
-        limit: 3,
-        populate: ['updatedBy'],
-      });
-
-      const recentlyPublishedFormatted = recentlyPublishedLocations.map((location: any) => ({
-        id: location.id,
-        title: location.name,
-        slug: location.slug,
-        type: 'Location',
-        updatedAt: location.updatedAt,
-        updatedBy: location.updatedBy?.username || 'Unknown',
-        publishedAt: location.publishedAt,
-      }));
-
-      // Get recently published blog posts
-      const recentlyPublishedBlogs = await safeFind('api::blog-post.blog-post', {
-        filters: { publishedAt: { $notNull: true } },
-        sort: { publishedAt: 'desc' },
-        limit: 3,
-        populate: ['updatedBy'],
-      });
-
-      const recentlyPublishedBlogsFormatted = recentlyPublishedBlogs.map((post: any) => ({
-        id: post.id,
-        title: post.title,
-        slug: post.slug,
-        type: 'Blog',
-        updatedAt: post.updatedAt,
-        updatedBy: post.updatedBy?.username || 'Unknown',
-        publishedAt: post.publishedAt,
-      }));
-
-      // Combine and sort all recent activities
-      const allRecentActivities = [
-        ...recentlyEditedFormatted.map((item: any) => ({ ...item, action: 'Edited' })),
-        ...recentlyPublishedFormatted.map((item: any) => ({ ...item, action: 'Published' })),
-        ...recentlyPublishedBlogsFormatted.map((item: any) => ({ ...item, action: 'Published' })),
-      ]
-        .sort((a: any, b: any) => new Date(b.updatedAt || b.publishedAt).getTime() - new Date(a.updatedAt || a.publishedAt).getTime())
-        .slice(0, 5);
-
-      // Format time ago
-      const formatTimeAgo = (date: string) => {
-        const now = new Date();
-        const past = new Date(date);
-        const diffInMinutes = Math.floor((now.getTime() - past.getTime()) / 60000);
-        
-        if (diffInMinutes < 60) return `${diffInMinutes} minutes ago`;
-        if (diffInMinutes < 1440) return `${Math.floor(diffInMinutes / 60)} hours ago`;
-        return `${Math.floor(diffInMinutes / 1440)} days ago`;
-      };
-
-      const recentActivitiesWithTime = allRecentActivities.map((item: any) => ({
-        ...item,
-        timeAgo: formatTimeAgo(item.updatedAt || item.publishedAt),
-      }));
-
-      ctx.body = {
-        totalPages,
-        pagesThisWeek: pagesThisWeekCount,
-        missingMetaTitles,
-        redirectIssues: redirects.length,
-        redirectLoops: redirectLoops.length,
-        noindexPages,
-        newNoindexPages,
-        missingOgImages,
-        missingSchemaPages,
-        recentActivities: recentActivitiesWithTime,
-        sitemapStatus: 'synced',
-        sitemapLastUpdated: new Date().toISOString(),
-      };
-    } catch (error: any) {
-      ctx.throw(500, error);
+    if (statsCache && Date.now() - statsCache.time < CACHE_TTL_MS) {
+      ctx.body = statsCache.data;
+      return;
     }
+    if (!statsPromise) {
+      statsPromise = (async () => {
+        const oneWeekAgo = new Date();
+        oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+        const safeCount = async (uid: string, opts: { filters?: any; status?: string } = {}) => {
+          try {
+            const params: any = {};
+            if (opts.filters) params.filters = opts.filters;
+            if (opts.status) params.status = opts.status;
+            return await strapi.documents(uid as any).count(params);
+          } catch { return 0; }
+        };
+        const safeFind = async (uid: string, options: any = {}) => {
+          try { return await strapi.documents(uid as any).findMany(options); } catch { return []; }
+        };
+        const [pages, landingPages, blogPosts, locations] = await Promise.all([
+          safeCount('api::page.page', { ...PUBLISHED }),
+          safeCount('api::landing-page.landing-page', { ...PUBLISHED }),
+          safeCount('api::blog-post.blog-post', { ...PUBLISHED }),
+          safeCount('api::location.location', { ...PUBLISHED }),
+        ]);
+        const totalPages = pages + landingPages + blogPosts + locations;
+        const [pw, lw, bw, lcw] = await Promise.all([
+          safeCount('api::page.page', { status: 'published', filters: { publishedAt: { $gte: oneWeekAgo.toISOString() } } }),
+          safeCount('api::landing-page.landing-page', { status: 'published', filters: { publishedAt: { $gte: oneWeekAgo.toISOString() } } }),
+          safeCount('api::blog-post.blog-post', { status: 'published', filters: { publishedAt: { $gte: oneWeekAgo.toISOString() } } }),
+          safeCount('api::location.location', { status: 'published', filters: { publishedAt: { $gte: oneWeekAgo.toISOString() } } }),
+        ]);
+        const pagesThisWeekCount = pw + lw + bw + lcw;
+        const redirectCount = await safeCount('api::redirect.redirect', { filters: { isActive: true } });
+        const [allPages, allLandingPages, allBlogPosts, allLocations, redirects] = await Promise.all([
+          safeFind('api::page.page', { ...PUBLISHED, populate: ['seo', 'openGraph'], limit: 200 }),
+          safeFind('api::landing-page.landing-page', { ...PUBLISHED, limit: 20 }),
+          safeFind('api::blog-post.blog-post', { ...PUBLISHED, populate: ['seo', 'openGraph'], limit: 200 }),
+          safeFind('api::location.location', { ...PUBLISHED, populate: ['seo', 'openGraph'], limit: 200 }),
+          safeFind('api::redirect.redirect', { filters: { isActive: true }, limit: 500 }),
+        ]);
+        let missingMetaTitles = 0, noindexPages = 0, newNoindexPages = 0, missingOgImages = 0, missingSchemaPages = 0;
+        [...allPages, ...allBlogPosts, ...allLocations].forEach((item: any) => {
+          if (!item.seo?.metaTitle) missingMetaTitles++;
+          if (item.seo?.metaRobots?.includes('noindex')) { noindexPages++; if (item.publishedAt && new Date(item.publishedAt) >= oneWeekAgo) newNoindexPages++; }
+          if (item.openGraph && !item.openGraph.ogImage && !item.openGraph.ogImageUrl) missingOgImages++;
+        });
+        allLandingPages.forEach((page: any) => {
+          if (!page.schemaJsonLd || Object.keys(page.schemaJsonLd || {}).length === 0) missingSchemaPages++;
+        });
+        const redirectLoops: any[] = [];
+        redirects.forEach((r: any) => {
+          const t = redirects.find((x: any) => x.fromPath === r.toPath);
+          if (t && t.toPath === r.fromPath) redirectLoops.push({ from: r.fromPath, to: r.toPath });
+        });
+        const [recentlyEdited, recentlyPublishedLocations, recentlyPublishedBlogs] = await Promise.all([
+          safeFind('api::page.page', { ...PUBLISHED, sort: { updatedAt: 'desc' }, limit: 5, populate: ['updatedBy'] }),
+          safeFind('api::location.location', { ...PUBLISHED, sort: { publishedAt: 'desc' }, limit: 3, populate: ['updatedBy'] }),
+          safeFind('api::blog-post.blog-post', { ...PUBLISHED, sort: { publishedAt: 'desc' }, limit: 3, populate: ['updatedBy'] }),
+        ]);
+        const fmt = (p: any) => ({ id: p.id, title: p.title || p.name, slug: p.slug, type: p.name ? 'Location' : (p.slug ? 'Page' : 'Blog'), updatedAt: p.updatedAt, updatedBy: p.updatedBy?.username || 'Unknown', publishedAt: p.publishedAt });
+        const allRecent = [...recentlyEdited.map((p: any) => ({ ...fmt(p), type: 'Page', action: 'Edited' })), ...recentlyPublishedLocations.map((p: any) => ({ ...fmt(p), type: 'Location', action: 'Published' })), ...recentlyPublishedBlogs.map((p: any) => ({ ...fmt(p), type: 'Blog', action: 'Published' }))]
+          .sort((a: any, b: any) => new Date(b.updatedAt || b.publishedAt).getTime() - new Date(a.updatedAt || a.publishedAt).getTime()).slice(0, 5);
+        const formatTimeAgo = (d: string) => { const m = Math.floor((Date.now() - new Date(d).getTime()) / 60000); return m < 60 ? `${m} min ago` : m < 1440 ? `${Math.floor(m/60)}h ago` : `${Math.floor(m/1440)}d ago`; };
+        return { totalPages, pagesThisWeek: pagesThisWeekCount, missingMetaTitles, redirectIssues: redirectCount, redirectLoops: redirectLoops.length, noindexPages, newNoindexPages, missingOgImages, missingSchemaPages, recentActivities: allRecent.map((i: any) => ({ ...i, timeAgo: formatTimeAgo(i.updatedAt || i.publishedAt) })), sitemapStatus: 'synced', sitemapLastUpdated: new Date().toISOString() };
+      })();
+    }
+    try {
+      const body = await statsPromise;
+      statsCache = { data: body, time: Date.now() };
+      statsPromise = null;
+      ctx.body = body;
+    } catch (e) {
+      statsPromise = null;
+      throw e;
+    }
+    return;
   },
 };
