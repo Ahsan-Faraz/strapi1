@@ -106,11 +106,27 @@
     },
     "contactSectionDescription": {
       "type": "text",
-      "default": "Our customer service team is ready to help."
+      "default": "Our customer service team is ready to help with any questions not addressed in our FAQ section. Contact us for personalized assistance."
+    },
+    "contactEmailHeading": {
+      "type": "string",
+      "default": "Email Us"
+    },
+    "contactEmailDescription": {
+      "type": "text",
+      "default": "Send us a message and we'll respond within 24 hours."
     },
     "contactEmail": {
       "type": "string",
       "default": "info@clensy.com"
+    },
+    "contactPhoneHeading": {
+      "type": "string",
+      "default": "Call Us"
+    },
+    "contactPhoneDescription": {
+      "type": "text",
+      "default": "Speak with our customer service team directly."
     },
     "contactPhone": {
       "type": "string",

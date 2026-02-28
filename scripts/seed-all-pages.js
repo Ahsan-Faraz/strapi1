@@ -217,8 +217,8 @@ const faqPageData = {
   contactEmailHeading: "Email Us",
   contactEmailDescription: "Send us a message and we'll respond within 24 hours.",
   contactEmail: "info@clensy.com",
-  contactCallHeading: "Call Us",
-  contactCallDescription: "Speak with our customer service team directly.",
+  contactPhoneHeading: "Call Us",
+  contactPhoneDescription: "Speak with our customer service team directly.",
   contactPhone: "(551) 305-4081",
   contactButtonText: "Contact Us",
   

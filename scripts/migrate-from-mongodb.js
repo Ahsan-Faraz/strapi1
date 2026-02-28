@@ -145,8 +145,13 @@ async function migrateFAQ() {
     stillHaveQuestionsCards: stillHaveQuestionsCards.length > 0 ? stillHaveQuestionsCards : null,
     contactSectionHeading: faqData.contactSection?.heading || '',
     contactSectionDescription: faqData.contactSection?.description || '',
+    contactEmailHeading: faqData.contactSection?.emailSection?.heading || 'Email Us',
+    contactEmailDescription: faqData.contactSection?.emailSection?.description || "Send us a message and we'll respond within 24 hours.",
     contactEmail: faqData.contactSection?.emailSection?.email || 'info@clensy.com',
+    contactPhoneHeading: faqData.contactSection?.callSection?.heading || 'Call Us',
+    contactPhoneDescription: faqData.contactSection?.callSection?.description || 'Speak with our customer service team directly.',
     contactPhone: faqData.contactSection?.callSection?.phone || '(551) 305-4081',
+    contactButtonText: faqData.contactSection?.contactButtonText || 'Contact Us',
     trustIndicators: trustIndicators.length > 0 ? trustIndicators : null,
   };
   

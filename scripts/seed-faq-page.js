@@ -192,7 +192,11 @@ const faqPageData = {
   // Contact Section
   contactSectionHeading: "Can't Find Your Answer?",
   contactSectionDescription: "Our customer service team is ready to help with any questions not addressed in our FAQ section. Contact us for personalized assistance.",
+  contactEmailHeading: "Email Us",
+  contactEmailDescription: "Send us a message and we'll respond within 24 hours.",
   contactEmail: "info@clensy.com",
+  contactPhoneHeading: "Call Us",
+  contactPhoneDescription: "Speak with our customer service team directly.",
   contactPhone: "(551) 305-4081",
   contactButtonText: "Contact Us",
   
