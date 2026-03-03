@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_content_before_after_items",
+  "info": {
+    "displayName": "Before After Item",
+    "icon": "image",
+    "description": "Single before/after comparison item"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "caption": {
+      "type": "string"
+    },
+    "beforeImage": {
+      "type": "string",
+      "required": true
+    },
+    "afterImage": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_content_business_benefit_cards",
+  "info": {
+    "displayName": "Business Benefit Card",
+    "icon": "briefcase",
+    "description": "Card in Business Benefits section (Office)"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "default": "ArrowRight"
+    },
+    "iconColor": {
+      "type": "string",
+      "default": "green"
+    }
+  }
+}

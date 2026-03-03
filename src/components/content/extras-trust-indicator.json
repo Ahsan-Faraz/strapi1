@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_content_extras_trust_indicators",
+  "info": {
+    "displayName": "Extras Trust Indicator",
+    "icon": "shield",
+    "description": "Trust indicator for Extras service (number + text)"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

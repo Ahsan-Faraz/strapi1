@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_content_success_stories_sections",
+  "info": {
+    "displayName": "Success Stories Section",
+    "icon": "star",
+    "description": "Success Stories section (Airbnb)"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Success Stories"
+    },
+    "subheading": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.success-story-item"
+    }
+  }
+}

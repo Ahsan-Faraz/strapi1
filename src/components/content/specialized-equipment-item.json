@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_content_specialized_equipment_items",
+  "info": {
+    "displayName": "Specialized Equipment Item",
+    "icon": "wrench",
+    "description": "Item in Specialized Equipment section (Gym)"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "default": "Sparkles"
+    }
+  }
+}

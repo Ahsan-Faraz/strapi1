@@ -205,6 +205,117 @@
     "customData": {
       "type": "json"
     },
+    "extrasPricing": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.extras-pricing-card"
+    },
+    "premiumExtraServices": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.extras-premium-service"
+    },
+    "howToAddExtraServicesSteps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.extras-how-to-step"
+    },
+    "extrasTrustIndicators": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.extras-trust-indicator"
+    },
+    "extrasClientTestimonials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.testimonial"
+    },
+    "pricingHeading": {
+      "type": "string"
+    },
+    "pricingSubheading": {
+      "type": "text"
+    },
+    "reduceStressSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.reduce-stress-section"
+    },
+    "beforeAfter": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.before-after-section"
+    },
+    "deepCleaningComparison": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.deep-cleaning-comparison"
+    },
+    "whenToChoose": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.when-to-choose-section"
+    },
+    "successStories": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.success-stories-section"
+    },
+    "serviceFeatures": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.service-feature-item"
+    },
+    "businessBenefits": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.business-benefits-section"
+    },
+    "specializedEquipment": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.specialized-equipment-section"
+    },
+    "healthAndSafetyStandards": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.health-safety-section"
+    },
+    "serviceTrustIndicators": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.service-trust-indicator"
+    },
+    "movingClientTestimonials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.testimonial"
+    },
+    "postConstructionSafety": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.post-construction-safety-section"
+    },
+    "postConstructionStep4Title": {
+      "type": "string"
+    },
+    "postConstructionStep4Description": {
+      "type": "text"
+    },
+    "postConstructionClientTestimonials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.testimonial"
+    },
+    "benefit1Icon": {
+      "type": "string"
+    },
+    "benefit2Icon": {
+      "type": "string"
+    },
+    "benefit3Icon": {
+      "type": "string"
+    },
     "htmlBlocks": {
       "type": "component",
       "repeatable": true,

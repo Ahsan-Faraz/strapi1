@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_content_post_construction_safety_sections",
+  "info": {
+    "displayName": "Post Construction Safety Section",
+    "icon": "shield",
+    "description": "Safety standards section (Post-construction)"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Safety Standards"
+    },
+    "subheading": {
+      "type": "string"
+    },
+    "ppeTitle": {
+      "type": "string"
+    },
+    "ppeDescription": {
+      "type": "text"
+    },
+    "ppeFeatures": {
+      "type": "json"
+    },
+    "hazmatTitle": {
+      "type": "string"
+    },
+    "hazmatDescription": {
+      "type": "text"
+    },
+    "hazmatFeatures": {
+      "type": "json"
+    }
+  }
+}

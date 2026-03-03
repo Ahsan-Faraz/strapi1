@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_content_extras_how_to_steps",
+  "info": {
+    "displayName": "Extras How To Step",
+    "icon": "listOrdered",
+    "description": "Step in 'How To Add Extra Services' section"
+  },
+  "options": {},
+  "attributes": {
+    "stepNumber": {
+      "type": "integer",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "badge": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string",
+      "default": "Plus"
+    }
+  }
+}

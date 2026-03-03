@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_content_health_safety_sections",
+  "info": {
+    "displayName": "Health Safety Section",
+    "icon": "shield",
+    "description": "Health & Safety Standards section (Gym)"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Health & Safety Standards"
+    },
+    "subheading": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.health-safety-item"
+    }
+  }
+}

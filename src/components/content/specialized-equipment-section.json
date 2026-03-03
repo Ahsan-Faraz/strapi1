@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_content_specialized_equipment_sections",
+  "info": {
+    "displayName": "Specialized Equipment Section",
+    "icon": "wrench",
+    "description": "Specialized equipment section (Gym)"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Specialized Equipment & Protocols"
+    },
+    "subheading": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.specialized-equipment-item"
+    }
+  }
+}

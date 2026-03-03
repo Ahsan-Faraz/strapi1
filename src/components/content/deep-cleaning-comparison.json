@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_content_deep_cleaning_comparisons",
+  "info": {
+    "displayName": "Deep Cleaning Comparison",
+    "icon": "columns",
+    "description": "Regular vs Deep Cleaning comparison section"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Regular Cleaning vs Deep Cleaning"
+    },
+    "subheading": {
+      "type": "string"
+    },
+    "regularCleaning": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.comparison-side"
+    },
+    "deepCleaning": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.comparison-side"
+    }
+  }
+}

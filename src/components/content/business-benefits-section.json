@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_content_business_benefits_sections",
+  "info": {
+    "displayName": "Business Benefits Section",
+    "icon": "briefcase",
+    "description": "Business benefits section (Office)"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Business Benefits of Professional Office Cleaning"
+    },
+    "subheading": {
+      "type": "string"
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.business-benefit-card"
+    }
+  }
+}

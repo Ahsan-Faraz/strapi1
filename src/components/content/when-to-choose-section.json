@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_content_when_to_choose_sections",
+  "info": {
+    "displayName": "When To Choose Section",
+    "icon": "list",
+    "description": "When to Choose Deep Cleaning section"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "When to Choose Deep Cleaning"
+    },
+    "subheading": {
+      "type": "string"
+    },
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.when-to-choose-option"
+    }
+  }
+}

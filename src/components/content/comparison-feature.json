@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_content_comparison_features",
+  "info": {
+    "displayName": "Comparison Feature",
+    "icon": "check",
+    "description": "Feature in Regular vs Deep comparison"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

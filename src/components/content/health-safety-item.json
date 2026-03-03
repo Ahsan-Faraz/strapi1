@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_content_health_safety_items",
+  "info": {
+    "displayName": "Health Safety Item",
+    "icon": "shield",
+    "description": "Item in Health & Safety section (Gym)"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_content_comparison_sides",
+  "info": {
+    "displayName": "Comparison Side",
+    "icon": "columns",
+    "description": "One side of comparison (Regular or Deep)"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "frequency": {
+      "type": "string"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.comparison-feature"
+    }
+  }
+}

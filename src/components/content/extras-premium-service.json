@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_content_extras_premium_services",
+  "info": {
+    "displayName": "Extras Premium Service",
+    "icon": "sparkles",
+    "description": "Premium extra service (Window Cleaning, Fridge, etc.)"
+  },
+  "options": {},
+  "attributes": {
+    "serviceId": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "price": {
+      "type": "string"
+    },
+    "priceUnit": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "features": {
+      "type": "json"
+    }
+  }
+}

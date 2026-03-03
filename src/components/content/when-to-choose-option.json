@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_content_when_to_choose_options",
+  "info": {
+    "displayName": "When To Choose Option",
+    "icon": "checkCircle",
+    "description": "Option in When to Choose Deep Cleaning"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

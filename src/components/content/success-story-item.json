@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_content_success_story_items",
+  "info": {
+    "displayName": "Success Story Item",
+    "icon": "star",
+    "description": "Single success story (Airbnb)"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "metric": {
+      "type": "string"
+    },
+    "hostName": {
+      "type": "string"
+    },
+    "hostTitle": {
+      "type": "string"
+    },
+    "avatarColor": {
+      "type": "string",
+      "default": "blue-500"
+    }
+  }
+}

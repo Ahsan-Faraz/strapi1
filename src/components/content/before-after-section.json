@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_content_before_after_sections",
+  "info": {
+    "displayName": "Before After Section",
+    "icon": "image",
+    "description": "Before & After section (Moving, Deep, Airbnb, Post-construction)"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "required": true
+    },
+    "subheading": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.before-after-item"
+    }
+  }
+}

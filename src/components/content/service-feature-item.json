@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_content_service_feature_items",
+  "info": {
+    "displayName": "Service Feature Item",
+    "icon": "zap",
+    "description": "Service feature (Airbnb)"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "default": "Star"
+    }
+  }
+}
