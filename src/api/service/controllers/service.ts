@@ -1,14 +1,10 @@
 import { factories } from '@strapi/strapi';
 
-// Selective populate: only fields needed for frontend (reduces payload and query time)
+// Populate only the unified 7-section fields (lean query)
 const SERVICE_BY_SLUG_POPULATE = [
   'heroBackgroundImage',
+  'serviceTrustIndicators',
   'cleaningAreas',
-  'featureSectionImage',
-  'step1Image',
-  'step2Image',
-  'step3Image',
-  'benefitsImage',
   'clientTestimonials',
   'faqs',
   'seo',
@@ -16,25 +12,6 @@ const SERVICE_BY_SLUG_POPULATE = [
   'schema',
   'scripts',
   'htmlBlocks',
-  'extrasPricing',
-  'premiumExtraServices',
-  'howToAddExtraServicesSteps',
-  'extrasTrustIndicators',
-  'extrasClientTestimonials',
-  'reduceStressSection',
-  'beforeAfter',
-  'deepCleaningComparison',
-  'whenToChoose',
-  'successStories',
-  'serviceFeatures',
-  'businessBenefits',
-  'specializedEquipment',
-  'healthAndSafetyStandards',
-  'serviceTrustIndicators',
-  'movingClientTestimonials',
-  'postConstructionSafety',
-  'postConstructionClientTestimonials',
-  'pricingPlans',
 ];
 
 export default factories.createCoreController('api::service.service', ({ strapi }) => ({

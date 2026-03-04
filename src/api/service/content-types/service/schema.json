@@ -5,7 +5,7 @@
     "singularName": "service",
     "pluralName": "services",
     "displayName": "Service",
-    "description": "Cleaning services (routine, deep, airbnb, etc.)"
+    "description": "Cleaning services — unified 7-section template for all service types"
   },
   "options": {
     "draftAndPublish": true
@@ -51,6 +51,11 @@
       "type": "string",
       "default": "100% Satisfaction"
     },
+    "serviceTrustIndicators": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.service-trust-indicator"
+    },
     "includedSectionHeading": {
       "type": "string"
     },
@@ -62,72 +67,11 @@
       "repeatable": true,
       "component": "content.cleaning-area"
     },
-    "featureSectionHeading": {
+    "whyChooseHeading": {
       "type": "string"
     },
-    "featureSectionSubheading": {
+    "whyChooseSubheading": {
       "type": "text"
-    },
-    "featureSectionImage": {
-      "type": "media",
-      "allowedTypes": ["images"],
-      "multiple": false
-    },
-    "featureSectionPoints": {
-      "type": "json"
-    },
-    "howItWorksHeading": {
-      "type": "string"
-    },
-    "howItWorksSubheading": {
-      "type": "text"
-    },
-    "step1Title": {
-      "type": "string",
-      "default": "Book Online"
-    },
-    "step1Description": {
-      "type": "text"
-    },
-    "step1Image": {
-      "type": "media",
-      "allowedTypes": ["images"],
-      "multiple": false
-    },
-    "step2Title": {
-      "type": "string",
-      "default": "We Clean"
-    },
-    "step2Description": {
-      "type": "text"
-    },
-    "step2Image": {
-      "type": "media",
-      "allowedTypes": ["images"],
-      "multiple": false
-    },
-    "step3Title": {
-      "type": "string",
-      "default": "Relax & Enjoy"
-    },
-    "step3Description": {
-      "type": "text"
-    },
-    "step3Image": {
-      "type": "media",
-      "allowedTypes": ["images"],
-      "multiple": false
-    },
-    "benefitsHeading": {
-      "type": "string"
-    },
-    "benefitsSubheading": {
-      "type": "text"
-    },
-    "benefitsImage": {
-      "type": "media",
-      "allowedTypes": ["images"],
-      "multiple": false
     },
     "benefit1Title": {
       "type": "string"
@@ -135,17 +79,26 @@
     "benefit1Description": {
       "type": "text"
     },
+    "benefit1Icon": {
+      "type": "string"
+    },
     "benefit2Title": {
       "type": "string"
     },
     "benefit2Description": {
       "type": "text"
     },
+    "benefit2Icon": {
+      "type": "string"
+    },
     "benefit3Title": {
       "type": "string"
     },
     "benefit3Description": {
       "type": "text"
+    },
+    "benefit3Icon": {
+      "type": "string"
     },
     "clientTestimonialsHeading": {
       "type": "string",
@@ -158,15 +111,6 @@
       "type": "component",
       "repeatable": true,
       "component": "content.testimonial"
-    },
-    "frequencyGuideHeading": {
-      "type": "string"
-    },
-    "frequencyGuideSubheading": {
-      "type": "text"
-    },
-    "frequencyOptions": {
-      "type": "json"
     },
     "faqs": {
       "type": "component",
@@ -183,11 +127,6 @@
       "repeatable": false,
       "component": "shared.open-graph"
     },
-    "localSeo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.local-seo"
-    },
     "scripts": {
       "type": "component",
       "repeatable": false,
@@ -202,146 +141,10 @@
       "type": "boolean",
       "default": false
     },
-    "whyChooseHeading": {
-      "type": "string"
-    },
-    "whyChooseSubheading": {
-      "type": "text"
-    },
-    "pricingPlans": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.pricing-plan"
-    },
-    "pricingCustomSectionHeading": {
-      "type": "string"
-    },
-    "pricingCustomSectionDescription": {
-      "type": "text"
-    },
-    "customData": {
-      "type": "json"
-    },
-    "extrasPricing": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.extras-pricing-card"
-    },
-    "premiumExtraServices": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.extras-premium-service"
-    },
-    "howToAddExtraServicesSteps": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.extras-how-to-step"
-    },
-    "extrasTrustIndicators": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.extras-trust-indicator"
-    },
-    "extrasClientTestimonials": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.testimonial"
-    },
-    "pricingHeading": {
-      "type": "string"
-    },
-    "pricingSubheading": {
-      "type": "text"
-    },
-    "reduceStressSection": {
-      "type": "component",
-      "repeatable": false,
-      "component": "content.reduce-stress-section"
-    },
-    "beforeAfter": {
-      "type": "component",
-      "repeatable": false,
-      "component": "content.before-after-section"
-    },
-    "deepCleaningComparison": {
-      "type": "component",
-      "repeatable": false,
-      "component": "content.deep-cleaning-comparison"
-    },
-    "whenToChoose": {
-      "type": "component",
-      "repeatable": false,
-      "component": "content.when-to-choose-section"
-    },
-    "successStories": {
-      "type": "component",
-      "repeatable": false,
-      "component": "content.success-stories-section"
-    },
-    "serviceFeatures": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.service-feature-item"
-    },
-    "businessBenefits": {
-      "type": "component",
-      "repeatable": false,
-      "component": "content.business-benefits-section"
-    },
-    "specializedEquipment": {
-      "type": "component",
-      "repeatable": false,
-      "component": "content.specialized-equipment-section"
-    },
-    "healthAndSafetyStandards": {
-      "type": "component",
-      "repeatable": false,
-      "component": "content.health-safety-section"
-    },
-    "serviceTrustIndicators": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.service-trust-indicator"
-    },
-    "movingClientTestimonials": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.testimonial"
-    },
-    "postConstructionSafety": {
-      "type": "component",
-      "repeatable": false,
-      "component": "content.post-construction-safety-section"
-    },
-    "postConstructionStep4Title": {
-      "type": "string"
-    },
-    "postConstructionStep4Description": {
-      "type": "text"
-    },
-    "postConstructionClientTestimonials": {
-      "type": "component",
-      "repeatable": true,
-      "component": "content.testimonial"
-    },
-    "benefit1Icon": {
-      "type": "string"
-    },
-    "benefit2Icon": {
-      "type": "string"
-    },
-    "benefit3Icon": {
-      "type": "string"
-    },
     "htmlBlocks": {
       "type": "component",
       "repeatable": true,
       "component": "shared.html-block"
-    },
-    "Service_Page": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::page-builder.template"
     }
   }
 }
