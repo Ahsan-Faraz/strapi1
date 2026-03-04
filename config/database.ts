@@ -21,10 +21,10 @@ export default ({ env }) => {
           statement_timeout: 180000,
         },
         pool: { 
-          min: 2, 
-          max: 15,
+          min: 0, 
+          max: 10,
           acquireTimeoutMillis: 120000,
-          idleTimeoutMillis: 30000,
+          idleTimeoutMillis: 10000,
           afterCreate: (conn: any, done: any) => {
             // Batch all session-level optimizations in a single roundtrip
             conn.query(
