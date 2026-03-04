@@ -18,8 +18,8 @@ module.exports = {
       watch: false,
       max_memory_restart: '2G',
       restart_delay: 3000,
-      kill_timeout: 10000,
-      listen_timeout: 10000,
+      kill_timeout: 30000,
+      listen_timeout: 30000,
     },
   ],
 };

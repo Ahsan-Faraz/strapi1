@@ -34,6 +34,7 @@ const SERVICE_BY_SLUG_POPULATE = [
   'movingClientTestimonials',
   'postConstructionSafety',
   'postConstructionClientTestimonials',
+  'pricingPlans',
 ];
 
 export default factories.createCoreController('api::service.service', ({ strapi }) => ({

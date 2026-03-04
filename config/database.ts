@@ -17,14 +17,28 @@ export default ({ env }) => {
           ssl: {
             rejectUnauthorized: false,
           },
+          // Increase statement timeout — large Service documents need time
+          statement_timeout: 180000,
         },
         pool: { 
-          min: 0, 
-          max: 5,
-          acquireTimeoutMillis: 60000,
+          min: 2, 
+          max: 15,
+          acquireTimeoutMillis: 120000,
           idleTimeoutMillis: 30000,
+          afterCreate: (conn: any, done: any) => {
+            // Batch all session-level optimizations in a single roundtrip
+            conn.query(
+              `SET statement_timeout = 180000;
+               SET synchronous_commit = off;
+               SET work_mem = '16MB';
+               SET random_page_cost = 1.1;`,
+              (err: any) => {
+                done(err, conn);
+              }
+            );
+          },
         },
-        acquireConnectionTimeout: 60000,
+        acquireConnectionTimeout: 120000,
       },
     };
   }
