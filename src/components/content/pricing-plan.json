@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_content_pricing_plans",
+  "info": {
+    "displayName": "Pricing Plan",
+    "icon": "shoppingCart",
+    "description": "Pricing plan card for service pages"
+  },
+  "attributes": {
+    "planName": {
+      "type": "string",
+      "required": true
+    },
+    "planSubtitle": {
+      "type": "string"
+    },
+    "planPrice": {
+      "type": "string",
+      "required": true
+    },
+    "planPriceUnit": {
+      "type": "string",
+      "default": "/ visit"
+    },
+    "planFeatures": {
+      "type": "json"
+    },
+    "planButtonText": {
+      "type": "string",
+      "default": "Get Quote"
+    },
+    "planButtonLink": {
+      "type": "string",
+      "default": "/contact"
+    },
+    "isPopular": {
+      "type": "boolean",
+      "default": false
+    },
+    "planColor": {
+      "type": "string",
+      "default": "blue-600"
+    }
+  }
+}
