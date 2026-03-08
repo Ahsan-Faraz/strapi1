@@ -114,12 +114,44 @@ function injectStyles(): void {
   const style = document.createElement('style');
   style.id = 'clensy-svc-styles';
   style.textContent = `
-    /* ---- Main "Services" heading ---- */
+    /* ---- Theme-aware color vars ---- */
+    :root {
+      --clensy-heading: #32324d;
+      --clensy-subheading: #8e8ea9;
+      --clensy-link: #666687;
+      --clensy-link-hover-bg: #f0f0ff;
+      --clensy-link-hover: #4945ff;
+      --clensy-active-bg: #f0f0ff;
+      --clensy-active: #4945ff;
+    }
+    [data-theme="dark"], .theme-dark {
+      --clensy-heading: #f6f6f9;
+      --clensy-subheading: #a5a5ba;
+      --clensy-link: #c0c0cf;
+      --clensy-link-hover-bg: rgba(73,69,255,0.15);
+      --clensy-link-hover: #7b79ff;
+      --clensy-active-bg: rgba(73,69,255,0.2);
+      --clensy-active: #7b79ff;
+    }
+    /* Auto-detect via prefers-color-scheme if no data-theme attr */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --clensy-heading: #f6f6f9;
+        --clensy-subheading: #a5a5ba;
+        --clensy-link: #c0c0cf;
+        --clensy-link-hover-bg: rgba(73,69,255,0.15);
+        --clensy-link-hover: #7b79ff;
+        --clensy-active-bg: rgba(73,69,255,0.2);
+        --clensy-active: #7b79ff;
+      }
+    }
+
+    /* ---- Main heading (Services, Locations, etc.) ---- */
     .clensy-svc-heading {
       padding: 10px 12px 4px;
       font-size: 14px;
       font-weight: 700;
-      color: #32324d;
+      color: var(--clensy-heading);
       font-family: inherit;
     }
 
@@ -130,7 +162,7 @@ function injectStyles(): void {
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: #8e8ea9;
+      color: var(--clensy-subheading);
       font-family: inherit;
     }
 
@@ -140,7 +172,7 @@ function injectStyles(): void {
       align-items: center;
       padding: 7px 12px 7px 32px;
       font-size: 12px;
-      color: #666687;
+      color: var(--clensy-link);
       text-decoration: none;
       border-radius: 4px;
       margin: 1px 4px;
@@ -148,22 +180,22 @@ function injectStyles(): void {
       font-family: inherit;
     }
     .clensy-svc-link:hover {
-      background: #f0f0ff;
-      color: #4945ff;
+      background: var(--clensy-link-hover-bg);
+      color: var(--clensy-link-hover);
     }
     .clensy-svc-link[data-active="true"] {
-      background: #f0f0ff;
-      color: #4945ff;
+      background: var(--clensy-active-bg);
+      color: var(--clensy-active);
       font-weight: 600;
     }
 
-    /* ---- Location links (indented less – no subheading) ---- */
+    /* ---- Flat section links (Locations, Company, etc.) ---- */
     .clensy-loc-link {
       display: flex;
       align-items: center;
       padding: 7px 12px 7px 20px;
       font-size: 12px;
-      color: #666687;
+      color: var(--clensy-link);
       text-decoration: none;
       border-radius: 4px;
       margin: 1px 4px;
@@ -171,12 +203,12 @@ function injectStyles(): void {
       font-family: inherit;
     }
     .clensy-loc-link:hover {
-      background: #f0f0ff;
-      color: #4945ff;
+      background: var(--clensy-link-hover-bg);
+      color: var(--clensy-link-hover);
     }
     .clensy-loc-link[data-active="true"] {
-      background: #f0f0ff;
-      color: #4945ff;
+      background: var(--clensy-active-bg);
+      color: var(--clensy-active);
       font-weight: 600;
     }
   `;
@@ -300,6 +332,7 @@ const SECTION_IDS = [
 ];
 
 function hideOriginals(): void {
+  // Hide original single-type items that are now grouped
   for (const slug of ALL_SLUGS) {
     const a = document.querySelector<HTMLAnchorElement>(
       `nav a[href*="api::${slug}.${slug}"]`
@@ -310,6 +343,16 @@ function hideOriginals(): void {
       li.style.display = 'none';
     }
   }
+
+  // Hide collection-type items by label text
+  const HIDE_LABELS = ['services', 'locations', 'service', 'location'];
+  document.querySelectorAll<HTMLAnchorElement>('nav a[href*="collection-types"]').forEach((a) => {
+    const text = a.textContent?.trim().toLowerCase() ?? '';
+    if (HIDE_LABELS.includes(text)) {
+      const li = a.closest('li');
+      if (li) li.style.display = 'none';
+    }
+  });
 }
 
 /* ------------------------------------------------------------------ */
