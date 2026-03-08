@@ -570,6 +570,68 @@ export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBergenCountyBergenCounty extends Struct.SingleTypeSchema {
+  collectionName: 'bergen_countys';
+  info: {
+    displayName: 'Bergen County';
+    pluralName: 'bergen-countys';
+    singularName: 'bergen-county';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    aboutDescription: Schema.Attribute.Text;
+    aboutTitle: Schema.Attribute.String;
+    bodyEndScripts: Schema.Attribute.Text;
+    contactAddress: Schema.Attribute.Text;
+    contactEmail: Schema.Attribute.String;
+    contactPhone: Schema.Attribute.String;
+    contactTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Contact Information'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    customCss: Schema.Attribute.Text;
+    headScripts: Schema.Attribute.Text;
+    heroBackgroundImageUrl: Schema.Attribute.String;
+    heroCtaButton1: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'SCHEDULE SERVICE'>;
+    heroCtaButton2: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'CALL US NOW'>;
+    heroSubtitle: Schema.Attribute.Text;
+    heroTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::bergen-county.bergen-county'
+    > &
+      Schema.Attribute.Private;
+    ogDescription: Schema.Attribute.Text;
+    ogImageUrl: Schema.Attribute.String;
+    ogTitle: Schema.Attribute.String;
+    ogType: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'website'>;
+    operatingHours: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    schemaJsonLd: Schema.Attribute.JSON;
+    seoCanonicalUrl: Schema.Attribute.String;
+    seoKeywords: Schema.Attribute.JSON;
+    seoMetaDescription: Schema.Attribute.Text;
+    seoRobots: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'index, follow'>;
+    seoTitle: Schema.Attribute.String;
+    serviceAreas: Schema.Attribute.JSON;
+    twitterCard: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'summary_large_image'>;
+    twitterDescription: Schema.Attribute.Text;
+    twitterTitle: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCareersPageCareersPage extends Struct.SingleTypeSchema {
   collectionName: 'careers_pages';
   info: {
@@ -742,6 +804,68 @@ export interface ApiCtaCta extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     rightCard: Schema.Attribute.Component<'content.cta-card', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiEssexCountyEssexCounty extends Struct.SingleTypeSchema {
+  collectionName: 'essex_countys';
+  info: {
+    displayName: 'Essex County';
+    pluralName: 'essex-countys';
+    singularName: 'essex-county';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    aboutDescription: Schema.Attribute.Text;
+    aboutTitle: Schema.Attribute.String;
+    bodyEndScripts: Schema.Attribute.Text;
+    contactAddress: Schema.Attribute.Text;
+    contactEmail: Schema.Attribute.String;
+    contactPhone: Schema.Attribute.String;
+    contactTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Contact Information'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    customCss: Schema.Attribute.Text;
+    headScripts: Schema.Attribute.Text;
+    heroBackgroundImageUrl: Schema.Attribute.String;
+    heroCtaButton1: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'SCHEDULE SERVICE'>;
+    heroCtaButton2: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'CALL US NOW'>;
+    heroSubtitle: Schema.Attribute.Text;
+    heroTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::essex-county.essex-county'
+    > &
+      Schema.Attribute.Private;
+    ogDescription: Schema.Attribute.Text;
+    ogImageUrl: Schema.Attribute.String;
+    ogTitle: Schema.Attribute.String;
+    ogType: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'website'>;
+    operatingHours: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    schemaJsonLd: Schema.Attribute.JSON;
+    seoCanonicalUrl: Schema.Attribute.String;
+    seoKeywords: Schema.Attribute.JSON;
+    seoMetaDescription: Schema.Attribute.Text;
+    seoRobots: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'index, follow'>;
+    seoTitle: Schema.Attribute.String;
+    serviceAreas: Schema.Attribute.JSON;
+    twitterCard: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'summary_large_image'>;
+    twitterDescription: Schema.Attribute.Text;
+    twitterTitle: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -928,6 +1052,68 @@ export interface ApiHowItWorkHowItWork extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiHudsonCountyHudsonCounty extends Struct.SingleTypeSchema {
+  collectionName: 'hudson_countys';
+  info: {
+    displayName: 'Hudson County';
+    pluralName: 'hudson-countys';
+    singularName: 'hudson-county';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    aboutDescription: Schema.Attribute.Text;
+    aboutTitle: Schema.Attribute.String;
+    bodyEndScripts: Schema.Attribute.Text;
+    contactAddress: Schema.Attribute.Text;
+    contactEmail: Schema.Attribute.String;
+    contactPhone: Schema.Attribute.String;
+    contactTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Contact Information'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    customCss: Schema.Attribute.Text;
+    headScripts: Schema.Attribute.Text;
+    heroBackgroundImageUrl: Schema.Attribute.String;
+    heroCtaButton1: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'SCHEDULE SERVICE'>;
+    heroCtaButton2: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'CALL US NOW'>;
+    heroSubtitle: Schema.Attribute.Text;
+    heroTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hudson-county.hudson-county'
+    > &
+      Schema.Attribute.Private;
+    ogDescription: Schema.Attribute.Text;
+    ogImageUrl: Schema.Attribute.String;
+    ogTitle: Schema.Attribute.String;
+    ogType: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'website'>;
+    operatingHours: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    schemaJsonLd: Schema.Attribute.JSON;
+    seoCanonicalUrl: Schema.Attribute.String;
+    seoKeywords: Schema.Attribute.JSON;
+    seoMetaDescription: Schema.Attribute.Text;
+    seoRobots: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'index, follow'>;
+    seoTitle: Schema.Attribute.String;
+    serviceAreas: Schema.Attribute.JSON;
+    twitterCard: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'summary_large_image'>;
+    twitterDescription: Schema.Attribute.Text;
+    twitterTitle: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
   collectionName: 'locations';
   info: {
@@ -982,6 +1168,68 @@ export interface ApiLocationLocation extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiMorrisCountyMorrisCounty extends Struct.SingleTypeSchema {
+  collectionName: 'morris_countys';
+  info: {
+    displayName: 'Morris County';
+    pluralName: 'morris-countys';
+    singularName: 'morris-county';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    aboutDescription: Schema.Attribute.Text;
+    aboutTitle: Schema.Attribute.String;
+    bodyEndScripts: Schema.Attribute.Text;
+    contactAddress: Schema.Attribute.Text;
+    contactEmail: Schema.Attribute.String;
+    contactPhone: Schema.Attribute.String;
+    contactTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Contact Information'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    customCss: Schema.Attribute.Text;
+    headScripts: Schema.Attribute.Text;
+    heroBackgroundImageUrl: Schema.Attribute.String;
+    heroCtaButton1: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'SCHEDULE SERVICE'>;
+    heroCtaButton2: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'CALL US NOW'>;
+    heroSubtitle: Schema.Attribute.Text;
+    heroTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::morris-county.morris-county'
+    > &
+      Schema.Attribute.Private;
+    ogDescription: Schema.Attribute.Text;
+    ogImageUrl: Schema.Attribute.String;
+    ogTitle: Schema.Attribute.String;
+    ogType: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'website'>;
+    operatingHours: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    schemaJsonLd: Schema.Attribute.JSON;
+    seoCanonicalUrl: Schema.Attribute.String;
+    seoKeywords: Schema.Attribute.JSON;
+    seoMetaDescription: Schema.Attribute.Text;
+    seoRobots: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'index, follow'>;
+    seoTitle: Schema.Attribute.String;
+    serviceAreas: Schema.Attribute.JSON;
+    twitterCard: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'summary_large_image'>;
+    twitterDescription: Schema.Attribute.Text;
+    twitterTitle: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Struct.CollectionTypeSchema {
   collectionName: 'pages';
   info: {
@@ -1011,6 +1259,68 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     seo: Schema.Attribute.Component<'shared.seo', false>;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPassaicCountyPassaicCounty extends Struct.SingleTypeSchema {
+  collectionName: 'passaic_countys';
+  info: {
+    displayName: 'Passaic County';
+    pluralName: 'passaic-countys';
+    singularName: 'passaic-county';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    aboutDescription: Schema.Attribute.Text;
+    aboutTitle: Schema.Attribute.String;
+    bodyEndScripts: Schema.Attribute.Text;
+    contactAddress: Schema.Attribute.Text;
+    contactEmail: Schema.Attribute.String;
+    contactPhone: Schema.Attribute.String;
+    contactTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Contact Information'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    customCss: Schema.Attribute.Text;
+    headScripts: Schema.Attribute.Text;
+    heroBackgroundImageUrl: Schema.Attribute.String;
+    heroCtaButton1: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'SCHEDULE SERVICE'>;
+    heroCtaButton2: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'CALL US NOW'>;
+    heroSubtitle: Schema.Attribute.Text;
+    heroTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::passaic-county.passaic-county'
+    > &
+      Schema.Attribute.Private;
+    ogDescription: Schema.Attribute.Text;
+    ogImageUrl: Schema.Attribute.String;
+    ogTitle: Schema.Attribute.String;
+    ogType: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'website'>;
+    operatingHours: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    schemaJsonLd: Schema.Attribute.JSON;
+    seoCanonicalUrl: Schema.Attribute.String;
+    seoKeywords: Schema.Attribute.JSON;
+    seoMetaDescription: Schema.Attribute.Text;
+    seoRobots: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'index, follow'>;
+    seoTitle: Schema.Attribute.String;
+    serviceAreas: Schema.Attribute.JSON;
+    twitterCard: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'summary_large_image'>;
+    twitterDescription: Schema.Attribute.Text;
+    twitterTitle: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1252,6 +1562,68 @@ export interface ApiTermsOfServiceTermsOfService
     seo: Schema.Attribute.Component<'shared.seo', false>;
     title: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Terms of Service'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiUnionCountyUnionCounty extends Struct.SingleTypeSchema {
+  collectionName: 'union_countys';
+  info: {
+    displayName: 'Union County';
+    pluralName: 'union-countys';
+    singularName: 'union-county';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    aboutDescription: Schema.Attribute.Text;
+    aboutTitle: Schema.Attribute.String;
+    bodyEndScripts: Schema.Attribute.Text;
+    contactAddress: Schema.Attribute.Text;
+    contactEmail: Schema.Attribute.String;
+    contactPhone: Schema.Attribute.String;
+    contactTitle: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Contact Information'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    customCss: Schema.Attribute.Text;
+    headScripts: Schema.Attribute.Text;
+    heroBackgroundImageUrl: Schema.Attribute.String;
+    heroCtaButton1: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'SCHEDULE SERVICE'>;
+    heroCtaButton2: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'CALL US NOW'>;
+    heroSubtitle: Schema.Attribute.Text;
+    heroTitle: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::union-county.union-county'
+    > &
+      Schema.Attribute.Private;
+    ogDescription: Schema.Attribute.Text;
+    ogImageUrl: Schema.Attribute.String;
+    ogTitle: Schema.Attribute.String;
+    ogType: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'website'>;
+    operatingHours: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    schemaJsonLd: Schema.Attribute.JSON;
+    seoCanonicalUrl: Schema.Attribute.String;
+    seoKeywords: Schema.Attribute.JSON;
+    seoMetaDescription: Schema.Attribute.Text;
+    seoRobots: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'index, follow'>;
+    seoTitle: Schema.Attribute.String;
+    serviceAreas: Schema.Attribute.JSON;
+    twitterCard: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'summary_large_image'>;
+    twitterDescription: Schema.Attribute.Text;
+    twitterTitle: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1770,23 +2142,29 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
+      'api::bergen-county.bergen-county': ApiBergenCountyBergenCounty;
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::careers-page.careers-page': ApiCareersPageCareersPage;
       'api::checklist.checklist': ApiChecklistChecklist;
       'api::comparison.comparison': ApiComparisonComparison;
       'api::contact.contact': ApiContactContact;
       'api::cta.cta': ApiCtaCta;
+      'api::essex-county.essex-county': ApiEssexCountyEssexCounty;
       'api::faq-page.faq-page': ApiFaqPageFaqPage;
       'api::global-setting.global-setting': ApiGlobalSettingGlobalSetting;
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
       'api::how-it-work.how-it-work': ApiHowItWorkHowItWork;
+      'api::hudson-county.hudson-county': ApiHudsonCountyHudsonCounty;
       'api::location.location': ApiLocationLocation;
+      'api::morris-county.morris-county': ApiMorrisCountyMorrisCounty;
       'api::page.page': ApiPagePage;
+      'api::passaic-county.passaic-county': ApiPassaicCountyPassaicCounty;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::redirect.redirect': ApiRedirectRedirect;
       'api::review.review': ApiReviewReview;
       'api::service.service': ApiServiceService;
       'api::terms-of-service.terms-of-service': ApiTermsOfServiceTermsOfService;
+      'api::union-county.union-county': ApiUnionCountyUnionCounty;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

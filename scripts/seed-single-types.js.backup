@@ -1,0 +1,2005 @@
+/**
+ * Seed ALL 13 Service Single Types into Strapi
+ *
+ * Seeds each service as a Strapi single-type with all content from Clensy-3-data.
+ *
+ * Run with: node scripts/seed-single-types.js
+ *
+ * Environment variables:
+ *   STRAPI_URL       - Strapi base URL (default: http://localhost:1337)
+ *   STRAPI_API_TOKEN - Full-access API token
+ */
+
+const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+const API_PREFIX = 'admin/api';
+const STRAPI_API_TOKEN =
+  process.env.STRAPI_API_TOKEN ||
+  '67eb2c4b5e9661786cbc07a8e245f6feca5539a6b25d371450b6e47ae586b1696c16d0ed67f45d2eb20b1189f91710d0d422b82abe4763e64467a2f6dcb5526e7d23f37110c7925bcd20e46a115bde10200168b131b4ca703f5c9e5eafa743d6691aba335d9a48c7bae2e47d9da3489b3ffa478ceebcd934f7099c40d622e3b2';
+
+// ─── Seed a single-type ─────────────────────────────────────────────────────
+async function seedSingleType(name, data) {
+  console.log(`\n🌱 Seeding ${name}...`);
+
+  const url = `${STRAPI_URL}/${API_PREFIX}/${name}`;
+
+  // PUT creates or updates a single-type entry
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+    },
+    body: JSON.stringify({ data }),
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    console.error(`❌ Failed to seed ${name}: ${response.status}`, error);
+    return false;
+  }
+
+  console.log(`✅ Seeded: ${name}`);
+
+  // Publish the entry
+  const publishResponse = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+    },
+    body: JSON.stringify({ data: { publishedAt: new Date().toISOString() } }),
+  });
+
+  if (publishResponse.ok) {
+    console.log(`📢 Published: ${name}`);
+  } else {
+    console.warn(`⚠️  Could not publish ${name}: ${publishResponse.status}`);
+  }
+
+  return true;
+}
+
+// ============================================================================
+// ALL 13 SERVICE DATA
+// ============================================================================
+
+const services = {
+  // ══════════════════════════════════════════════════════════════════════════
+  // 1. ROUTINE CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'routine-cleaning': {
+    heroTopLabel: 'Premium Residential Services',
+    heroHeading: 'Experience Pristine Routine Cleaning',
+    heroSubheading:
+      'Our signature routine cleaning service maintains your home in immaculate condition with expert attention to detail. Perfect for busy professionals and families seeking consistent cleanliness.',
+    heroBackgroundImage:
+      'https://images.unsplash.com/photo-1599619351208-3e6c839d6828?q=80&w=2070&auto=format&fit=crop',
+    heroServiceDuration: '2-3 Hour Service',
+    heroServiceGuarantee: '100% Satisfaction',
+
+    includedSectionHeading: "What's Included in Our Routine Cleaning",
+    includedSectionSubheading:
+      'Our comprehensive routine cleaning service ensures every essential area of your home receives meticulous attention.',
+
+    kitchenTitle: 'Kitchen Excellence',
+    kitchenDescription:
+      'The heart of your home deserves special attention. Our routine kitchen cleaning ensures cooking spaces remain fresh and sanitized.',
+    kitchenImage:
+      'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?q=80&w=1470&auto=format&fit=crop',
+    kitchenFeatures: [
+      'Clean and sanitize countertops and backsplash',
+      'Clean exterior of appliances and cabinet fronts',
+      'Thoroughly clean and sanitize sink and fixtures',
+      'Vacuum and mop floors, removing all debris',
+    ],
+
+    bathroomTitle: 'Bathroom Refresh',
+    bathroomDescription:
+      'Our bathroom cleaning routines ensure these essential spaces remain hygienic and sparkling clean after every visit.',
+    bathroomImage:
+      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1470&auto=format&fit=crop',
+    bathroomFeatures: [
+      'Clean and disinfect toilet, shower, tub and sink',
+      'Clean mirrors and glass surfaces to a streak-free shine',
+      'Wipe down bathroom fixtures and cabinet fronts',
+      'Vacuum and mop floors, removing all debris',
+    ],
+
+    livingAreasTitle: 'Living Area Maintenance',
+    livingAreasDescription:
+      'The spaces where you relax and entertain deserve special attention to maintain comfort and cleanliness.',
+    livingAreasImage:
+      'https://images.unsplash.com/photo-1613545325278-f24b0cae1224?q=80&w=1470&auto=format&fit=crop',
+    livingAreasFeatures: [
+      'Dust all accessible surfaces, including furniture',
+      'Vacuum carpets, rugs, and upholstery',
+      'Dust ceiling fans and light fixtures within reach',
+      'Clean baseboards and remove cobwebs',
+    ],
+
+    featureSectionHeading: 'Exceptional Cleaning Results, Every Time',
+    featureSectionSubheading:
+      'Our professional cleaners follow a meticulous process to ensure your home receives the highest standard of cleaning on every visit.',
+    featureSectionImage:
+      'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1770&auto=format&fit=crop',
+    featureSectionPoints: [
+      'Consistently thorough cleaning with attention to detail',
+      'Eco-friendly cleaning products for a healthier home',
+      'Professionally trained and background-checked staff',
+    ],
+
+    howItWorksHeading: 'How Our Routine Cleaning Works',
+    howItWorksSubheading:
+      'Getting started with our premium routine cleaning service is seamless and convenient.',
+    step1Title: 'Book Online',
+    step1Description:
+      'Schedule your cleaning service online in minutes. Choose your preferred date and time that works for your schedule.',
+    step1Image:
+      'https://images.unsplash.com/photo-1586282391129-76a6df230234?q=80&w=400&auto=format&fit=crop',
+    step1Badge: 'Instant Online Pricing',
+    step2Title: 'We Clean',
+    step2Description:
+      'Our professional team arrives promptly at your scheduled time and meticulously cleans your home to exceed your expectations.',
+    step2Image:
+      'https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=400&auto=format&fit=crop',
+    step3Title: 'Relax & Enjoy',
+    step3Description:
+      'Return to a pristine, fresh home. Set up recurring cleanings to maintain your immaculate living space effortlessly.',
+    step3Image:
+      'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?q=80&w=800&auto=format&fit=crop',
+
+    benefitsHeading: 'Why Choose Our Routine Cleaning Service',
+    benefitsSubheading:
+      'Our premium routine cleaning service offers exceptional benefits to maintain your home in pristine condition with minimal effort.',
+    benefitsImage:
+      'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=1287&auto=format&fit=crop',
+    benefit1Title: 'Consistent Excellence',
+    benefit1Description:
+      'Regular professional cleanings ensure your home maintains a consistently pristine appearance and feel, preventing the gradual accumulation of dirt and grime.',
+    benefit2Title: 'Reclaimed Time & Energy',
+    benefit2Description:
+      'Regain your valuable time and energy by entrusting your cleaning needs to our professional team, allowing you to focus on what matters most to you.',
+    benefit3Title: 'Enhanced Well-being',
+    benefit3Description:
+      'Regular professional cleaning significantly reduces allergens, dust, and bacteria, creating a healthier living environment that promotes overall well-being for you and your family.',
+
+    clientTestimonialsHeading: 'What Our Clients Say',
+    clientTestimonialsSubheading:
+      'Hear from our satisfied clients about their experience with our routine cleaning service.',
+    clientTestimonials: [
+      {
+        rating: 5,
+        review:
+          "The attention to detail was incredible. My home has never felt so clean and fresh. I've tried other services before, but Clensy's routine cleaning is in a league of its own.",
+        clientName: 'Sarah Johnson',
+        clientLocation: 'New Jersey, NJ',
+        avatarBgColor: 'pink-500',
+      },
+      {
+        rating: 5,
+        review:
+          "I've been using Clensy's routine cleaning for six months now, and it's been a game-changer. The consistency and reliability of their service is outstanding. My home always looks immaculate.",
+        clientName: 'Michael Rodriguez',
+        clientLocation: 'New Jersey, NJ',
+        avatarBgColor: 'blue-500',
+      },
+      {
+        rating: 5,
+        review:
+          "As a busy professional, having Clensy's routine cleaning service has been life-changing. I come home to a spotless house every time, and their staff is always professional and thorough.",
+        clientName: 'Jennifer Park',
+        clientLocation: 'New Jersey, NJ',
+        avatarBgColor: 'green-500',
+      },
+    ],
+
+    frequencyGuideHeading: 'How Often Should You Schedule Cleaning?',
+    frequencyGuideSubheading:
+      'Finding the right cleaning frequency depends on your household size, lifestyle, and preferences. Use our guide to determine what works best for you.',
+    weeklyTitle: 'Weekly',
+    weeklyPerfectFor: [
+      'Busy families with children',
+      'Households with pets',
+      'High-traffic homes',
+      'Those who love consistently clean spaces',
+    ],
+    weeklyBenefits: [
+      'Maintains pristine condition',
+      'Prevents buildup of dirt and grime',
+      'Perfect for entertaining',
+    ],
+    biWeeklyTitle: 'Bi-Weekly',
+    biWeeklyPerfectFor: [
+      'Working professionals',
+      'Small households (1-2 people)',
+      'Neat and tidy homeowners',
+      'Budget-conscious families',
+    ],
+    biWeeklyBenefits: [
+      'Great balance of cost and cleanliness',
+      'Ideal for most lifestyles',
+      'Keeps home consistently fresh',
+    ],
+    monthlyTitle: 'Monthly',
+    monthlyPerfectFor: [
+      'Minimal-maintenance households',
+      'Vacation homes',
+      'Single professionals',
+      'Supplemental to self-cleaning',
+    ],
+    monthlyBenefits: [
+      'Cost-effective option',
+      'Perfect for deep maintenance',
+      'Tackles overlooked areas',
+    ],
+
+    faqs: [
+      {
+        question: "Do I need to be home during the cleaning?",
+        answer:
+          "No, you don't need to be home. Many of our clients provide a key or access code so we can clean while they're at work. Our cleaners are thoroughly vetted, background-checked, and fully insured for your peace of mind.",
+      },
+      {
+        question: 'Can I change my cleaning schedule if needed?',
+        answer:
+          'Absolutely! We understand schedules change. You can reschedule cleanings with at least 48 hours notice without any fee. We also offer the flexibility to occasionally add additional cleanings when you need them.',
+      },
+      {
+        question: 'What cleaning products do you use?',
+        answer:
+          "We use high-quality, eco-friendly cleaning products as our standard. If you have specific product preferences or sensitivities, we're happy to use products you provide or make accommodations for allergies and preferences.",
+      },
+      {
+        question: "What if I'm not satisfied with the cleaning?",
+        answer:
+          "Your satisfaction is guaranteed. If you're not completely satisfied with any area we've cleaned, contact us within 24 hours and we'll return to reclean that area at no additional cost to you.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 2. DEEP CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'deep-cleaning': {
+    heroTopLabel: 'Premium Deep Cleaning',
+    heroHeading: 'Revitalize Your Space With Deep Cleaning',
+    heroSubheading:
+      'Our comprehensive deep cleaning service targets built-up dirt, grime, and allergens to transform your home with an intensive cleaning experience beyond the surface.',
+    heroBackgroundImage:
+      'https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=2070&auto=format&fit=crop',
+    heroServiceDuration: '4-6 Hour Service',
+    heroServiceGuarantee: '100% Satisfaction',
+
+    includedSectionHeading: "What's Included in Our Deep Cleaning",
+    includedSectionSubheading:
+      'Our deep cleaning service goes beyond standard cleaning to address areas that require special attention.',
+
+    bathroomTitle: 'Bathroom Transformation',
+    bathroomDescription:
+      'Our deep cleaning service gives your bathrooms a complete refresh, targeting built-up soap scum, water stains, and hidden dirt in overlooked areas.',
+    bathroomImage:
+      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1470&auto=format&fit=crop',
+    bathroomFeatures: [
+      'Deep clean tile grout and remove mold/mildew',
+      'Descale shower heads and faucets',
+      'Deep clean behind toilet and under sink',
+      'Sanitize all surfaces, including light switches and door knobs',
+    ],
+
+    kitchenTitle: 'Kitchen Deep Clean',
+    kitchenDescription:
+      'Our kitchen deep cleaning targets grease build-up, appliance interiors, and hidden dirt in cabinets and drawers for a truly fresh kitchen.',
+    kitchenImage:
+      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1470&auto=format&fit=crop',
+    kitchenFeatures: [
+      'Clean inside oven, microwave, and refrigerator',
+      'Degrease range hood, stovetop, and backsplash',
+      'Deep clean cabinet fronts and drawer pulls',
+      'Sanitize countertops and disinfect sink',
+    ],
+
+    livingAreasTitle: 'Living Areas Deep Clean',
+    livingAreasDescription:
+      'We thoroughly clean all living spaces, focusing on areas that accumulate dust, allergens, and everyday wear.',
+    livingAreasImage:
+      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1470&auto=format&fit=crop',
+    livingAreasFeatures: [
+      'Deep vacuum all carpets and upholstery',
+      'Clean baseboards, window sills, and light fixtures',
+      'Dust and polish all furniture surfaces',
+      'Clean mirrors, glass surfaces, and picture frames',
+    ],
+
+    differenceHeading: 'The Deep Cleaning Difference',
+    differenceSubheading:
+      'See the dramatic transformation our deep cleaning service delivers. These before and after comparisons showcase our thorough approach.',
+    deepCleaningDifference: [
+      {
+        heading: 'Kitchen Transformation',
+        beforeImage:
+          'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1470&auto=format&fit=crop',
+        afterImage:
+          'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1470&auto=format&fit=crop',
+        caption:
+          'Experience the difference with our deep cleaning service. From dusty corners to sparkling surfaces, we leave no stone unturned.',
+      },
+      {
+        heading: 'Bathroom Revival',
+        beforeImage:
+          'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=1374&auto=format&fit=crop',
+        afterImage:
+          'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1374&auto=format&fit=crop',
+        caption:
+          'Our deep cleaning tackles soap scum, mold, and grime that regular cleaning misses, restoring your bathroom to like-new condition.',
+      },
+    ],
+
+    whenToChooseHeading: 'When to Choose Deep Cleaning',
+    whenToChooseSubheading:
+      "Our deep cleaning service is ideal for specific situations when standard cleaning isn't enough.",
+    movingTitle: 'Moving In or Out',
+    movingDescription:
+      'Start fresh in your new home or ensure you leave your old one in perfect condition for the next residents. Deep cleaning addresses years of accumulated dirt.',
+    movingIcon:
+      'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=100&auto=format&fit=crop',
+    seasonalTitle: 'Seasonal Refresh',
+    seasonalDescription:
+      'Ideal for spring cleaning or seasonal refreshes when homes need extra attention after prolonged indoor time during winter months.',
+    seasonalIcon:
+      'https://images.unsplash.com/photo-1511988617509-a57c8a288659?q=80&w=100&auto=format&fit=crop',
+    specialOccasionsTitle: 'Special Occasions',
+    specialOccasionsDescription:
+      'Preparing for holidays, important guests, or events? Deep cleaning ensures your home is immaculate for those special moments that matter.',
+    specialOccasionsIcon:
+      'https://images.unsplash.com/photo-1513151233558-d860c5398176?q=80&w=100&auto=format&fit=crop',
+
+    clientReviewsHeading: 'What Our Clients Say',
+    clientReviewsSubheading:
+      'Hear from our satisfied clients about their experience with our deep cleaning service.',
+    clientReviews: [
+      {
+        rating: 5,
+        review:
+          "I couldn't believe the difference after Clensy's deep cleaning service. Areas I didn't even notice were dirty are now spotless. The attention to detail was incredible and it feels like we have a brand new home!",
+        clientName: 'Rebecca Thompson',
+        clientLocation: 'Montclair, NJ',
+        avatarBgColor: 'purple-500',
+      },
+      {
+        rating: 5,
+        review:
+          'We had Clensy do a deep clean before moving into our new home. The previous owners had pets, and there was dust everywhere. After the deep cleaning, it felt like a completely different house - fresh, clean, and ready for our family.',
+        clientName: 'Daniel Morgan',
+        clientLocation: 'Jersey City, NJ',
+        avatarBgColor: 'orange-500',
+      },
+      {
+        rating: 5,
+        review:
+          "I scheduled a deep cleaning after renovating my kitchen and bathroom. The construction dust was everywhere! Clensy's team removed every trace of dust and grime. Their deep cleaning service is worth every penny for the results they deliver.",
+        clientName: 'Jennifer Park',
+        clientLocation: 'Hoboken, NJ',
+        avatarBgColor: 'teal-500',
+      },
+    ],
+
+    comparisonHeading: 'Deep Cleaning vs. Regular Cleaning',
+    comparisonSubheading:
+      'Understanding the difference between our deep cleaning and regular cleaning services helps you choose the right option for your needs.',
+    regularCleaning: {
+      title: 'Regular Cleaning',
+      subtitle: 'Maintenance cleaning for already-clean homes',
+      features: [
+        { title: 'Surface dusting', description: 'Dust visible surfaces and areas' },
+        { title: 'Bathroom basics', description: 'Clean toilets, sinks, and shower surfaces' },
+        { title: 'Kitchen cleaning', description: 'Wipe countertops and appliance exteriors' },
+        { title: 'Floor maintenance', description: 'Vacuum carpets and mop hard floors' },
+      ],
+      frequency: 'Weekly or bi-weekly',
+    },
+    deepCleaning: {
+      title: 'Deep Cleaning',
+      subtitle: 'Intensive cleaning for neglected or heavily used areas',
+      features: [
+        {
+          title: 'Comprehensive dusting',
+          description: 'Dust all surfaces including baseboards, door frames, and ceiling fans',
+        },
+        {
+          title: 'Deep bathroom sanitizing',
+          description: 'Descale shower heads, clean grout, sanitize behind toilets',
+        },
+        {
+          title: 'Inside appliance cleaning',
+          description: 'Clean inside ovens, refrigerators, and cabinet interiors',
+        },
+        {
+          title: 'Detailed floor care',
+          description: 'Edge vacuuming, move furniture, clean under rugs',
+        },
+      ],
+      frequency: 'Quarterly or seasonally',
+    },
+
+    faqs: [
+      {
+        question: 'How often should I get a deep cleaning?',
+        answer:
+          'For most homes, we recommend a deep cleaning 2-4 times per year, depending on your lifestyle and needs. Many customers opt for seasonal deep cleanings, while maintaining regular routine cleanings in between.',
+      },
+      {
+        question: 'How long does deep cleaning take?',
+        answer:
+          'A deep cleaning typically takes 4-6 hours depending on the size of your home and its condition. For larger homes or homes requiring extensive deep cleaning, we may recommend a team of cleaners or multiple sessions.',
+      },
+      {
+        question: "What's the difference between routine and deep cleaning?",
+        answer:
+          "Routine cleaning focuses on maintaining everyday cleanliness, while deep cleaning addresses built-up dirt, grime, and hard-to-reach areas. Deep cleaning includes tasks like cleaning inside appliances, behind furniture, tackling grout, and addressing areas that aren't part of regular maintenance.",
+      },
+      {
+        question: 'Should I prepare my home before a deep cleaning?',
+        answer:
+          'For the most effective deep cleaning, we recommend removing clutter from surfaces and floors. This allows our team to focus on the detailed cleaning tasks rather than organizing your belongings.',
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 3. AIRBNB CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'airbnb-cleaning': {
+    heroTopLabel: 'Specialized Airbnb & Rental Services',
+    heroHeading: 'Specialized Airbnb & Short-Term Rental Cleaning',
+    heroSubheading:
+      'Boost your ratings and streamline your hosting with our professional Airbnb cleaning services. Perfect turnover cleaning between guests with hotel-quality results.',
+    heroBackgroundImage:
+      'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=2070&auto=format&fit=crop',
+    heroServiceDuration: '1-3 Hour Turnaround',
+    heroServiceGuarantee: '5-Star Results',
+
+    includedSectionHeading: "What's Included in Our Airbnb Cleaning",
+    includedSectionSubheading:
+      'Our comprehensive Airbnb cleaning service ensures every aspect of your rental property is guest-ready with hotel-quality attention to detail.',
+
+    bedroomsTitle: 'Bedroom Perfection',
+    bedroomsDescription:
+      'Hotel-quality standards for bedrooms. Fresh linens, pristine surfaces, and attention to every detail that guests notice.',
+    bedroomsImage:
+      'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1471&auto=format&fit=crop',
+    bedroomsFeatures: [
+      'Fresh linen change and bed making',
+      'Dust all surfaces and furniture',
+      'Vacuum carpets and clean floors',
+      'Clean mirrors and glass surfaces',
+    ],
+
+    bathroomsTitle: 'Bathroom Sparkle',
+    bathroomsDescription:
+      'Spotless bathrooms with hotel-level cleanliness. Fresh towels arranged perfectly and every surface sanitized.',
+    bathroomsImage:
+      'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1374&auto=format&fit=crop',
+    bathroomsFeatures: [
+      'Deep clean and sanitize all fixtures',
+      'Fresh towel arrangement and amenity staging',
+      'Mirror and glass cleaning',
+      'Floor scrubbing and sanitization',
+    ],
+
+    kitchenTitle: 'Kitchen Reset',
+    kitchenDescription:
+      'A spotless kitchen ready for your next guests. All dishes washed, appliances cleaned, and surfaces sanitized.',
+    kitchenImage:
+      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1470&auto=format&fit=crop',
+    kitchenFeatures: [
+      'Clean all appliances inside and out',
+      'Wash and put away all dishes',
+      'Sanitize countertops and surfaces',
+      'Clean and organize pantry items',
+    ],
+
+    beforeAfterHeading: 'The Clensy Difference',
+    beforeAfterSubheading:
+      'See the transformation our professional cleaning team delivers for Airbnb hosts.',
+    airBNBCleaningDifference: [
+      {
+        heading: 'Living Room Transformation',
+        beforeImage:
+          'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1470&auto=format&fit=crop',
+        afterImage:
+          'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1470&auto=format&fit=crop',
+        caption: 'From guest checkout to guest-ready in under 3 hours.',
+      },
+      {
+        heading: 'Bathroom Reset',
+        beforeImage:
+          'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?q=80&w=1374&auto=format&fit=crop',
+        afterImage:
+          'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1374&auto=format&fit=crop',
+        caption: 'Sparkling bathrooms that earn 5-star reviews every time.',
+      },
+    ],
+
+    benefitsHeading: 'Why Hosts Choose Clensy',
+    benefitsSubheading:
+      'Professional cleaning that helps you earn more 5-star reviews and increase bookings.',
+    benefit1Title: 'Higher Ratings',
+    benefit1Description:
+      'Our detailed cleaning process ensures 5-star cleanliness reviews. Guests consistently compliment the spotless condition of properties we clean.',
+    benefit1Icon:
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+    benefit2Title: 'Efficient Turnovers',
+    benefit2Description:
+      'Quick turnaround times between guests mean you can accept more bookings without worrying about cleaning delays.',
+    benefit2Icon:
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+    benefit3Title: 'Delighted Guests',
+    benefit3Description:
+      'From perfectly made beds to sparkling bathrooms, every detail is designed to exceed guest expectations and earn repeat bookings.',
+    benefit3Icon:
+      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face',
+
+    clientReviewsHeading: 'What Hosts Say',
+    clientReviewsSubheading:
+      'Hear from Airbnb hosts who trust Clensy for their property cleaning needs.',
+    clientReviews: [
+      {
+        rating: 5,
+        review:
+          "Since switching to Clensy, my Airbnb ratings have gone from 4.6 to a consistent 4.9. Guests always mention how clean the place is. It's been a game-changer for my hosting business.",
+        clientName: 'Marcus Johnson',
+        clientLocation: 'Jersey City, NJ',
+        avatarBgColor: 'blue-500',
+      },
+      {
+        rating: 5,
+        review:
+          "I manage 5 Airbnb properties and Clensy handles all of them. Their attention to detail is incredible and they're always on time for turnovers. I couldn't run my business without them.",
+        clientName: 'Lisa Chen',
+        clientLocation: 'Hoboken, NJ',
+        avatarBgColor: 'pink-500',
+      },
+      {
+        rating: 5,
+        review:
+          "The team goes above and beyond. They stage the place so beautifully that guests feel like they're walking into a hotel. My review scores have never been higher!",
+        clientName: 'David Williams',
+        clientLocation: 'Newark, NJ',
+        avatarBgColor: 'green-500',
+      },
+    ],
+
+    serviceFeatures: [
+      {
+        title: 'Quick Turnovers',
+        description:
+          'Rapid turnover cleaning between guests, ensuring your property is always ready for the next booking without delays.',
+        icon: 'Clock',
+      },
+      {
+        title: 'Pristine Standards',
+        description:
+          'Hotel-quality cleaning standards that consistently earn 5-star cleanliness reviews from guests.',
+        icon: 'Star',
+      },
+      {
+        title: 'Flexible Scheduling',
+        description:
+          'We work around your booking schedule with same-day service and flexible timing options.',
+        icon: 'Calendar',
+      },
+      {
+        title: 'Guest-Ready Touches',
+        description:
+          'Beyond cleaning — we stage your property with welcoming touches that make guests feel special.',
+        icon: 'Sparkles',
+      },
+    ],
+
+    successStoriesHeading: 'Host Success Stories',
+    successStoriesSubheading:
+      'See how our cleaning service has helped Airbnb hosts improve their ratings and increase bookings.',
+    successStories: [
+      {
+        property: 'Downtown Loft',
+        location: 'Jersey City, NJ',
+        beforeRating: '4.3',
+        afterRating: '4.9',
+        testimonial:
+          'Our downtown loft was struggling with cleanliness complaints. After partnering with Clensy, our ratings shot up and we started getting Superhost status consistently.',
+        image:
+          'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1380&auto=format&fit=crop',
+      },
+      {
+        property: 'Beachfront Villa',
+        location: 'Asbury Park, NJ',
+        beforeRating: '4.5',
+        afterRating: '5.0',
+        testimonial:
+          "Managing a beachfront property means sand everywhere. Clensy's team handles the unique challenges of beach properties with expertise.",
+        image:
+          'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=1470&auto=format&fit=crop',
+      },
+      {
+        property: 'Mountain Retreat',
+        location: 'Vernon, NJ',
+        beforeRating: '4.4',
+        afterRating: '4.9',
+        testimonial:
+          'Our mountain cabin was hard to maintain remotely. Clensy provides reliable cleanings even for our remote property, and the results speak for themselves.',
+        image:
+          'https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1265&auto=format&fit=crop',
+      },
+    ],
+
+    faqs: [
+      {
+        question: 'How quickly can you turn over a property?',
+        answer:
+          "Our standard turnover is 2-3 hours depending on the size of the property. For smaller units, we can complete a turnover in as little as 1.5 hours. We accommodate same-day bookings when possible.",
+      },
+      {
+        question: 'Do you provide linens and supplies?',
+        answer:
+          "We can provide fresh linens, towels, and basic cleaning supplies as part of our service. We also offer amenity restocking for toiletries and kitchen essentials at an additional cost.",
+      },
+      {
+        question: 'Can you handle multiple properties?',
+        answer:
+          "Absolutely! We specialize in managing cleaning for multiple properties. We offer property management packages with priority scheduling, bulk pricing, and a dedicated team for your portfolio.",
+      },
+      {
+        question: 'What happens if a guest checks out late?',
+        answer:
+          "We understand that timing can shift. Our flexible scheduling allows us to adjust arrival times. For same-day changes, we ask for at least 2 hours notice to reorganize our team's schedule.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 4. MOVING CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'moving-cleaning': {
+    heroTopLabel: 'Professional Moving Services',
+    heroHeading: 'Moving Cleaning Services',
+    heroSubheading:
+      'Fresh Start, Clean Slate. Whether moving in or out, our professional cleaning ensures every space is spotless for its next chapter.',
+    heroBackgroundImage:
+      'https://thecleanstart.com/wp-content/uploads/2024/08/Living-Room-Clean-for-Move-Out-800x445.jpg.webp',
+    heroServiceDuration: '3-5 Hour Service',
+    heroServiceGuarantee: '100% Satisfaction',
+
+    includedSectionHeading: "What's Included in Our Moving Clean",
+    includedSectionSubheading:
+      'Our comprehensive moving cleaning service covers every area that needs attention during a move.',
+
+    moveOutTitle: 'Move-Out Cleaning',
+    moveOutDescription:
+      'Leave your old place in perfect condition. Our move-out cleaning ensures you get your full security deposit back.',
+    moveOutImage:
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1470&auto=format&fit=crop',
+    moveOutFeatures: [
+      'Deep clean all rooms from top to bottom',
+      'Clean inside all cabinets and closets',
+      'Remove all scuff marks and wall spots',
+      'Clean all appliances inside and out',
+    ],
+
+    moveInTitle: 'Move-In Cleaning',
+    moveInDescription:
+      'Start fresh in your new home with a thorough move-in cleaning that eliminates previous occupant traces.',
+    moveInImage:
+      'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1470&auto=format&fit=crop',
+    moveInFeatures: [
+      'Sanitize all surfaces and high-touch areas',
+      'Deep clean bathrooms and kitchen',
+      'Clean inside all storage spaces',
+      'Detailed floor cleaning throughout',
+    ],
+
+    postRenovationTitle: 'Post-Renovation Cleanup',
+    postRenovationDescription:
+      'After renovations, construction dust and debris are everywhere. Our specialized cleaning removes all traces.',
+    postRenovationImage:
+      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1470&auto=format&fit=crop',
+    postRenovationFeatures: [
+      'Remove all construction dust and debris',
+      'Clean paint splatters and adhesive residue',
+      'Deep clean HVAC vents and registers',
+      'Polish all surfaces and fixtures',
+    ],
+
+    beforeAfterHeading: 'The Moving Clean Difference',
+    beforeAfterSubheading:
+      'See the dramatic before-and-after results of our professional moving cleaning service.',
+    MoveInCleaningDifference: [
+      {
+        heading: 'Kitchen Deep Clean',
+        beforeImage:
+          'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1470&auto=format&fit=crop',
+        afterImage:
+          'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1470&auto=format&fit=crop',
+        caption: 'From move-out mess to move-in ready in a single visit.',
+      },
+      {
+        heading: 'Living Room Refresh',
+        beforeImage:
+          'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1470&auto=format&fit=crop',
+        afterImage:
+          'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1470&auto=format&fit=crop',
+        caption: 'Complete transformation for your fresh start.',
+      },
+    ],
+
+    benefitsHeading: 'Why Choose Our Moving Service',
+    benefitsSubheading:
+      'Professional moving cleaning that ensures a smooth transition to your new home.',
+    benefit1Title: 'Secure Your Deposit',
+    benefit1Description:
+      'Our thorough move-out cleaning maximizes your chances of getting your full security deposit back. We clean to landlord inspection standards.',
+    benefit1Icon:
+      'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?q=80&w=100&auto=format&fit=crop',
+    benefit2Title: 'Reduce Moving Stress',
+    benefit2Description:
+      "Moving is stressful enough without worrying about cleaning. Let our professional team handle it while you focus on your move.",
+    benefit2Icon:
+      'https://images.unsplash.com/photo-1583947581924-860bda6a26df?q=80&w=100&auto=format&fit=crop',
+    benefit3Title: 'Health Protection',
+    benefit3Description:
+      'Our deep sanitization eliminates allergens, bacteria, and previous occupant residue for a healthy fresh start in your new home.',
+    benefit3Icon:
+      'https://images.unsplash.com/photo-1583947581924-860bda6a26df?q=80&w=100&auto=format&fit=crop',
+
+    faqs: [
+      {
+        question: 'How far in advance should I book a moving cleaning?',
+        answer:
+          "We recommend booking at least 3-5 days in advance, especially during peak moving season (May-September). However, we do our best to accommodate last-minute requests when our schedule allows.",
+      },
+      {
+        question: 'Do I need to be present during the cleaning?',
+        answer:
+          "No, you don't need to be present. You can provide access instructions and we'll handle everything. We'll send you before-and-after photos when the cleaning is complete.",
+      },
+      {
+        question: 'What if my landlord finds issues after the cleaning?',
+        answer:
+          "We offer a satisfaction guarantee. If your landlord identifies any cleaning issues within 48 hours, we'll return to address them at no extra charge.",
+      },
+      {
+        question: 'Can you clean before my furniture arrives?',
+        answer:
+          "Absolutely! In fact, cleaning an empty space allows us to be even more thorough. We can reach every corner, clean inside all closets, and ensure the floors are spotless before your furniture arrives.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 5. POST-CONSTRUCTION CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'post-construction-cleaning': {
+    heroTopLabel: 'Professional Post-Construction Services',
+    heroHeading: 'Post-Construction Cleaning Experts',
+    heroSubheading:
+      'From Construction Zone to Move-In Ready. Our specialized team removes all construction debris, dust, and residue to transform your newly built or renovated space.',
+    heroBackgroundImage:
+      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076&auto=format&fit=crop',
+    heroServiceDuration: '4-8 Hour Service',
+    heroServiceGuarantee: '100% Satisfaction',
+
+    includedSectionHeading: "What's Included in Our Post-Construction Clean",
+    includedSectionSubheading:
+      'Our comprehensive post-construction cleaning service addresses all the unique challenges that come after building or renovation work.',
+
+    debrisRemovalTitle: 'Debris & Material Removal',
+    debrisRemovalDescription:
+      'Complete removal of construction debris, leftover materials, and packaging waste from your newly built or renovated space.',
+    debrisRemovalImage:
+      'https://images.unsplash.com/photo-1617791160536-598cf32026fb?q=80&w=1364&auto=format&fit=crop',
+    debrisRemovalFeatures: [
+      'Remove all construction waste and packaging',
+      'Clear leftover building materials',
+      'Clean out debris from cabinets and closets',
+      'Sweep and collect all loose debris from floors',
+    ],
+
+    dustEliminationTitle: 'Dust Elimination',
+    dustEliminationDescription:
+      'Thorough dust removal from every surface, vent, and crevice. Construction dust gets everywhere — we find and eliminate it all.',
+    dustEliminationImage:
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1470&auto=format&fit=crop',
+    dustEliminationFeatures: [
+      'HEPA vacuum all surfaces and crevices',
+      'Clean all HVAC vents and air returns',
+      'Wipe down every surface including ceilings',
+      'Clean light fixtures and electrical outlets',
+    ],
+
+    surfaceFinishingTitle: 'Surface Finishing & Polish',
+    surfaceFinishingDescription:
+      'Final detailing of all surfaces — windows, countertops, fixtures, and floors polished to a move-in ready shine.',
+    surfaceFinishingImage:
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1470&auto=format&fit=crop',
+    surfaceFinishingFeatures: [
+      'Clean and polish all windows and glass',
+      'Detail all countertops and fixtures',
+      'Clean and polish hardware and handles',
+      'Final floor treatment and polishing',
+    ],
+
+    beforeAfterHeading: 'Construction to Clean',
+    beforeAfterSubheading:
+      'See the dramatic transformation our post-construction cleaning delivers.',
+    postConstructionDifference: [
+      {
+        heading: 'Kitchen Renovation Cleanup',
+        beforeImage:
+          'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076&auto=format&fit=crop',
+        afterImage:
+          'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1470&auto=format&fit=crop',
+        caption: 'From construction dust to move-in ready in a single service visit.',
+      },
+      {
+        heading: 'Bathroom Finishing',
+        beforeImage:
+          'https://images.unsplash.com/photo-1617791160536-598cf32026fb?q=80&w=1364&auto=format&fit=crop',
+        afterImage:
+          'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1374&auto=format&fit=crop',
+        caption: 'Professional finishing that reveals the beauty of your renovation.',
+      },
+    ],
+
+    processHeading: 'Our Post-Construction Process',
+    processSubheading:
+      'We follow a systematic 4-phase approach to ensure nothing is missed during your post-construction cleanup.',
+    step1Title: 'Initial Assessment',
+    step1Description:
+      'We start with a thorough walkthrough to assess the scope of work, identify specific materials used, and create a customized cleaning plan.',
+    step2Title: 'Rough Clean',
+    step2Description:
+      'Remove all large debris, leftover materials, and construction waste. This phase clears the space for detailed cleaning.',
+    step3Title: 'Detail Clean',
+    step3Description:
+      'Thorough cleaning of all surfaces, fixtures, and installations. We address dust, paint splatters, adhesive residue, and more.',
+    step4Title: 'Final Polish',
+    step4Description:
+      'The finishing touches — window cleaning, floor polishing, and a final inspection to ensure every detail meets our exacting standards.',
+
+    safetyHeading: 'Safety Standards',
+    safetySubheading:
+      'Our teams are trained in construction site safety and use professional-grade protective equipment.',
+    ppeTitle: 'Personal Protective Equipment',
+    ppeDescription:
+      'All team members are equipped with proper safety gear for post-construction environments.',
+    ppeFeatures: [
+      'Professional-grade respirators and dust masks',
+      'Safety goggles and work gloves',
+      'Steel-toe boots for construction sites',
+      'Disposable coveralls for dusty environments',
+    ],
+    hazmatTitle: 'Hazardous Material Handling',
+    hazmatDescription:
+      'We follow strict protocols for handling potentially hazardous construction materials.',
+    hazmatFeatures: [
+      'Proper identification of hazardous materials',
+      'Safe disposal following local regulations',
+      'MSDS compliance for chemical products',
+      'Ventilation protocols during chemical cleaning',
+    ],
+
+    faqs: [
+      {
+        question: 'When should I schedule post-construction cleaning?',
+        answer:
+          "Schedule your cleaning once all construction work is fully completed, including painting, tiling, and fixture installation. We recommend booking 3-5 days before your planned move-in date.",
+      },
+      {
+        question: 'How long does post-construction cleaning take?',
+        answer:
+          "The duration depends on the scope of the construction project and the size of the space. A typical home renovation cleanup takes 4-8 hours. Larger projects or new construction may require multiple visits.",
+      },
+      {
+        question: 'Do you handle paint and adhesive removal?',
+        answer:
+          "Yes, we have specialized products and techniques for removing paint splatters, adhesive residue, grout haze, and other construction-related marks from various surfaces without causing damage.",
+      },
+      {
+        question: 'Can you clean during construction if needed?',
+        answer:
+          "We offer interim construction cleaning to keep the workspace manageable during long projects. This includes regular debris removal and dust control to maintain a safer, cleaner work environment.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 6. OFFICE CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'office-cleaning': {
+    heroTopLabel: 'Professional Office Services',
+    heroHeading: 'Professional Office Cleaning Services',
+    heroSubheading:
+      'Create a pristine work environment that boosts productivity and impresses clients. Our specialized office cleaning teams deliver consistent, thorough results for businesses of all sizes.',
+    heroBackgroundImage:
+      'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop',
+    heroServiceDuration: 'Business Hours Flexible',
+    heroServiceGuarantee: '100% Satisfaction',
+
+    trustIndicator1Number: '500+',
+    trustIndicator1Text: 'Corporate Clients',
+    trustIndicator2Number: '24/7',
+    trustIndicator2Text: 'Customer Support',
+    trustIndicator3Number: '4.9',
+    trustIndicator3Text: 'Client Satisfaction',
+    trustIndicator4Number: '100%',
+    trustIndicator4Text: 'Quality Guarantee',
+
+    includedSectionHeading: 'Our Office Cleaning Services',
+    includedSectionSubheading:
+      'We provide comprehensive cleaning solutions tailored to meet the unique demands of modern office environments.',
+
+    receptionTitle: 'Reception & Lobby Areas',
+    receptionDescription:
+      'First impressions matter. Our reception area cleaning ensures your front-of-house always presents a professional, welcoming appearance to clients and visitors.',
+    receptionImage:
+      'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop',
+    receptionFeatures: [
+      'Thorough lobby and waiting area cleaning',
+      'Reception desk sanitization and organization',
+      'Glass door and partition cleaning',
+      'Disinfection of high-touch surfaces and handles',
+    ],
+
+    workstationsTitle: 'Workstations & Offices',
+    workstationsDescription:
+      'Clean workspaces improve employee health and productivity. We carefully clean around equipment and personal items with attention to detail.',
+    workstationsImage:
+      'https://images.unsplash.com/photo-1497215842964-222b430dc094?q=80&w=2070&auto=format&fit=crop',
+    workstationsFeatures: [
+      'Desk surface sanitization and dusting',
+      'Monitor and keyboard gentle cleaning',
+      'Trash removal and bin liner replacement',
+      'Chair and surface wiping',
+    ],
+
+    meetingRoomsTitle: 'Meeting & Conference Rooms',
+    meetingRoomsDescription:
+      'Ensure your meeting spaces are always presentation-ready with our thorough conference room cleaning service.',
+    meetingRoomsImage:
+      'https://images.unsplash.com/photo-1431540015116-907a72a45e25?q=80&w=2070&auto=format&fit=crop',
+    meetingRoomsFeatures: [
+      'Table and chair sanitization',
+      'Whiteboard and presentation equipment cleaning',
+      'AV equipment careful dusting',
+      'Floor cleaning and waste removal',
+    ],
+
+    whyChooseHeading: 'Why Choose Clensy for Your Office',
+    whyChooseSubheading:
+      'We understand the unique cleaning requirements of professional work environments and deliver customized solutions that exceed expectations.',
+    feature1Title: 'Trained Professionals',
+    feature1Description:
+      'Our office cleaning specialists undergo rigorous training in commercial cleaning techniques, office equipment handling, and workplace safety protocols.',
+    feature1Icon: 'Users',
+    feature2Title: 'Flexible Scheduling',
+    feature2Description:
+      'We work around your business hours — early morning, evening, or weekend cleaning options available to minimize disruption to your operations.',
+    feature2Icon: 'Clock',
+    feature3Title: 'Eco-Friendly Products',
+    feature3Description:
+      'We use environmentally responsible, non-toxic cleaning products that are safe for your employees while delivering superior cleaning results.',
+    feature3Icon: 'Leaf',
+
+    faqs: [
+      {
+        question: 'Can you clean outside of business hours?',
+        answer:
+          "Absolutely! Most of our office clients prefer after-hours cleaning. We offer early morning (before 8am), evening (after 6pm), and weekend cleaning schedules to avoid disrupting your business operations.",
+      },
+      {
+        question: 'How do you handle sensitive areas and documents?',
+        answer:
+          "Our team is trained in confidentiality protocols. We don't touch documents on desks, locked offices are only cleaned when authorized, and all our staff undergo background checks. We can also sign NDAs if required.",
+      },
+      {
+        question: 'Do you provide all cleaning supplies and equipment?',
+        answer:
+          "Yes, we bring all necessary professional-grade cleaning supplies and equipment. Our products are commercial-grade yet safe for office environments. We can also accommodate specific product preferences if you have them.",
+      },
+      {
+        question: 'Can you accommodate our specific office layout?',
+        answer:
+          "We create a customized cleaning plan based on your office layout, traffic patterns, and specific requirements. Whether you have an open floor plan, private offices, or a mix, we tailor our service to your space.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 7. MEDICAL CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'medical-cleaning': {
+    heroTopLabel: 'Healthcare Facility Services',
+    heroHeading: 'Medical & Healthcare Facility Cleaning',
+    heroSubheading:
+      'Specialized cleaning services for healthcare environments that meet strict hygiene standards. Our trained teams ensure your medical facility maintains the highest levels of cleanliness and patient safety.',
+    heroBackgroundImage:
+      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop',
+    heroServiceDuration: 'Healthcare Specialists',
+    heroServiceGuarantee: '100% Compliance',
+
+    trustIndicator1Number: '350+',
+    trustIndicator1Text: 'Healthcare Facilities',
+    trustIndicator2Number: '24/7',
+    trustIndicator2Text: 'Emergency Response',
+    trustIndicator3Number: '4.9',
+    trustIndicator3Text: 'Facility Rating',
+    trustIndicator4Number: '100%',
+    trustIndicator4Text: 'Compliance Record',
+
+    includedSectionHeading: 'Our Medical Cleaning Services',
+    includedSectionSubheading:
+      'We provide comprehensive cleaning solutions that meet the stringent hygiene requirements of healthcare environments.',
+
+    receptionTitle: 'Reception & Waiting Areas',
+    receptionDescription:
+      'Create a welcoming, hygienic first impression for patients with our thorough reception and waiting area cleaning services.',
+    receptionImage:
+      'https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=2068&auto=format&fit=crop',
+    receptionFeatures: [
+      'Sanitization of all waiting room seating',
+      'Reception counter and desk disinfection',
+      'Magazine and brochure area organization',
+      'High-touch surface disinfection (door handles, armrests)',
+    ],
+
+    examinationTitle: 'Examination & Treatment Rooms',
+    examinationDescription:
+      'Meticulous cleaning and disinfection of examination rooms to maintain sterile environments for patient care.',
+    examinationImage:
+      'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?q=80&w=2071&auto=format&fit=crop',
+    examinationFeatures: [
+      'Hospital-grade disinfection of all surfaces',
+      'Examination table and equipment sanitization',
+      'Medical waste container maintenance',
+      'Floor cleaning with antimicrobial solutions',
+    ],
+
+    restroomsTitle: 'Restrooms & Common Areas',
+    restroomsDescription:
+      'Healthcare facility restrooms require enhanced cleaning protocols to prevent cross-contamination and maintain patient safety.',
+    restroomsImage:
+      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1470&auto=format&fit=crop',
+    restroomsFeatures: [
+      'Hospital-grade disinfection of all fixtures',
+      'Touchpoint sanitization (handles, switches, dispensers)',
+      'Floor disinfection with medical-grade products',
+      'Supply replenishment (soap, towels, sanitizer)',
+    ],
+
+    whyChooseHeading: 'Why Choose Clensy for Your Healthcare Facility',
+    whyChooseSubheading:
+      'We specialize in healthcare cleaning with teams trained to meet the rigorous standards required in medical environments.',
+    feature1Title: 'Healthcare Compliance',
+    feature1Description:
+      'Our cleaning protocols are designed to meet or exceed healthcare industry standards including OSHA, CDC, and state health department requirements.',
+    feature1Icon: 'ShieldCheck',
+    feature2Title: 'Specialized Training',
+    feature2Description:
+      'Every team member receives specialized training in healthcare cleaning, infection control, bloodborne pathogen handling, and HIPAA compliance.',
+    feature2Icon: 'GraduationCap',
+    feature3Title: 'Advanced Technology',
+    feature3Description:
+      'We utilize hospital-grade disinfectants, UV-C sanitization technology, and electrostatic sprayers for thorough, science-backed cleaning.',
+    feature3Icon: 'Cpu',
+
+    faqs: [
+      {
+        question: 'Are your cleaning products safe for medical environments?',
+        answer:
+          "Yes, we exclusively use hospital-grade, EPA-registered disinfectants that are proven effective against healthcare-associated pathogens. Our products meet all healthcare facility requirements while being safe for patients and staff.",
+      },
+      {
+        question: 'Do your staff receive healthcare-specific training?',
+        answer:
+          "All our healthcare cleaning staff complete specialized training programs covering infection control, bloodborne pathogen handling, proper PPE usage, HIPAA compliance, and healthcare-specific cleaning protocols before being assigned to any medical facility.",
+      },
+      {
+        question: 'Can you work around patient schedules?',
+        answer:
+          "Absolutely. We understand that healthcare facilities operate on unique schedules. We offer 24/7 cleaning services and can schedule our teams during off-peak hours, between patient appointments, or overnight to minimize disruption to your operations.",
+      },
+      {
+        question: 'How do you handle medical waste areas?',
+        answer:
+          "We follow strict protocols for cleaning areas that contain or are adjacent to medical waste. Our staff is trained in proper handling procedures and we work in coordination with your facility's waste management protocols. We do not handle the medical waste itself, but ensure surrounding areas are thoroughly sanitized.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 8. GYM CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'gym-cleaning': {
+    heroTopLabel: 'Fitness Facility Services',
+    heroHeading: 'Professional Gym & Fitness Center Cleaning',
+    heroSubheading:
+      'Keep your fitness facility spotless and hygienic with our specialized gym cleaning services. We understand the unique cleaning challenges of high-traffic fitness environments.',
+    heroBackgroundImage:
+      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop',
+    heroServiceDuration: 'Fitness Specialists',
+    heroServiceGuarantee: '100% Satisfaction',
+
+    trustIndicator1Number: '300+',
+    trustIndicator1Text: 'Fitness Centers',
+    trustIndicator2Number: '24/7',
+    trustIndicator2Text: 'Availability',
+    trustIndicator3Number: '4.9',
+    trustIndicator3Text: 'Client Rating',
+    trustIndicator4Number: '100%',
+    trustIndicator4Text: 'Hygiene Standards',
+
+    includedSectionHeading: 'Our Gym Cleaning Services',
+    includedSectionSubheading:
+      'We provide comprehensive cleaning solutions designed specifically for the unique demands of fitness facilities.',
+
+    equipmentTitle: 'Equipment & Workout Areas',
+    equipmentDescription:
+      'Thorough sanitization of all fitness equipment and workout zones to maintain a hygienic exercise environment.',
+    equipmentImage:
+      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop',
+    equipmentFeatures: [
+      'Sanitize all cardio and strength equipment',
+      'Clean and disinfect exercise mats and accessories',
+      'Wipe down benches and weight racks',
+      'Floor cleaning and disinfection throughout',
+    ],
+
+    lockerRoomsTitle: 'Locker Rooms & Showers',
+    lockerRoomsDescription:
+      'Maintain immaculate locker room facilities with our deep cleaning and sanitization services for high-moisture areas.',
+    lockerRoomsImage:
+      'https://images.unsplash.com/photo-1620735692151-26a7e0748f53?q=80&w=1974&auto=format&fit=crop',
+    lockerRoomsFeatures: [
+      'Deep clean showers, sinks, and toilet areas',
+      'Sanitize lockers inside and out',
+      'Treat floors with anti-slip cleaning solutions',
+      'Mold and mildew prevention treatments',
+    ],
+
+    studioTitle: 'Group Fitness & Studio Spaces',
+    studioDescription:
+      'Keep your group fitness studios fresh and inviting with specialized cleaning for high-use class environments.',
+    studioImage:
+      'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2070&auto=format&fit=crop',
+    studioFeatures: [
+      'Mirror cleaning and polishing',
+      'Studio floor cleaning and treatment',
+      'Equipment storage area organization',
+      'Air freshening and ventilation maintenance',
+    ],
+
+    whyChooseHeading: 'Why Choose Clensy for Your Fitness Facility',
+    whyChooseSubheading:
+      'We specialize in fitness facility cleaning with teams trained to address the unique hygiene challenges of gyms and health clubs.',
+    feature1Title: 'Specialized Sanitization',
+    feature1Description:
+      'We use commercial-grade disinfectants effective against gym-specific bacteria and fungi, including MRSA, staph, and athlete\'s foot, to protect your members.',
+    feature1Icon: 'Sparkles',
+    feature2Title: '24/7 Flexibility',
+    feature2Description:
+      'We work around your gym\'s operating hours, including early morning, late night, and holiday cleaning to ensure your facility is always member-ready.',
+    feature2Icon: 'Clock',
+    feature3Title: 'Health-Focused Approach',
+    feature3Description:
+      'Our cleaning protocols prioritize member health with anti-microbial treatments, air quality maintenance, and targeted sanitization of high-contact surfaces.',
+    feature3Icon: 'Heart',
+
+    faqs: [
+      {
+        question: 'How often should a gym be professionally cleaned?',
+        answer:
+          "We recommend daily cleaning for high-traffic gyms, with deep cleaning sessions at least twice per week. The frequency depends on your membership volume and operating hours. We'll create a customized schedule that meets your facility's specific needs.",
+      },
+      {
+        question: 'Do you use products safe for gym equipment?',
+        answer:
+          "Yes, all our cleaning products are specifically chosen to be effective against germs while being safe for gym equipment surfaces. We use pH-neutral cleaners on sensitive equipment and commercial-grade disinfectants on high-touch areas.",
+      },
+      {
+        question: 'Can you clean while the gym is open?',
+        answer:
+          "Yes, we can perform maintenance cleaning during operating hours without disrupting your members. Our teams are trained to work efficiently and unobtrusively. Deep cleaning is typically scheduled during off-hours for minimal disruption.",
+      },
+      {
+        question: 'Do you handle pool and spa areas?',
+        answer:
+          "Yes, we offer specialized cleaning for pool decks, spa areas, and surrounding facilities. This includes deck scrubbing, drain cleaning, changing area maintenance, and ensuring all wet areas meet health code requirements.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 9. RETAIL CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'retail-cleaning': {
+    heroTopLabel: 'Professional Retail Services',
+    heroHeading: 'Professional Retail & Store Cleaning',
+    heroSubheading:
+      'Create an inviting shopping experience with our professional retail cleaning services. A clean store drives customer satisfaction, longer visits, and increased sales.',
+    heroBackgroundImage:
+      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop',
+    heroServiceDuration: 'Retail Specialists',
+    heroServiceGuarantee: '100% Satisfaction',
+
+    trustIndicator1Number: '400+',
+    trustIndicator1Text: 'Retail Locations',
+    trustIndicator2Number: '24/7',
+    trustIndicator2Text: 'Support Available',
+    trustIndicator3Number: '4.9',
+    trustIndicator3Text: 'Store Rating',
+    trustIndicator4Number: '100%',
+    trustIndicator4Text: 'Satisfaction Rate',
+
+    includedSectionHeading: 'Our Retail Cleaning Services',
+    includedSectionSubheading:
+      'We provide comprehensive cleaning solutions designed to maintain a welcoming and professional retail environment.',
+
+    entrancesTitle: 'Store Entrances & Windows',
+    entrancesDescription:
+      'Create an outstanding first impression with sparkling clean entrances and window displays that draw customers in.',
+    entrancesImage:
+      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop',
+    entrancesFeatures: [
+      'Window and glass door cleaning',
+      'Entrance mat cleaning and maintenance',
+      'Sidewalk sweeping and debris removal',
+      'Display window interior cleaning',
+    ],
+
+    salesFloorTitle: 'Sales Floor & Displays',
+    salesFloorDescription:
+      'Maintain a pristine sales environment that showcases your merchandise at its best and encourages customer browsing.',
+    salesFloorImage:
+      'https://images.unsplash.com/photo-1604719312566-8912e9227c6a?q=80&w=1974&auto=format&fit=crop',
+    salesFloorFeatures: [
+      'Floor cleaning and polishing',
+      'Display case and shelf dusting',
+      'Fixture and hardware cleaning',
+      'High-touch surface sanitization',
+    ],
+
+    fittingRoomsTitle: 'Fitting Rooms & Customer Areas',
+    fittingRoomsDescription:
+      'Keep customer-facing areas spotless and inviting to enhance the shopping experience and build brand loyalty.',
+    fittingRoomsImage:
+      'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?q=80&w=2070&auto=format&fit=crop',
+    fittingRoomsFeatures: [
+      'Fitting room deep cleaning and sanitization',
+      'Mirror and lighting cleaning',
+      'Customer seating area maintenance',
+      'Restroom cleaning and supply management',
+    ],
+
+    whyChooseHeading: 'Why Choose Clensy for Your Retail Space',
+    whyChooseSubheading:
+      'We understand the unique cleaning needs of retail environments and deliver services that enhance your customer experience.',
+    feature1Title: 'Flexible Scheduling',
+    feature1Description:
+      'We clean before, after, or around your store hours to ensure zero disruption to your business operations and customer experience.',
+    feature1Icon: 'Calendar',
+    feature2Title: 'Retail Experience',
+    feature2Description:
+      'Our teams understand retail environments — from handling merchandise areas carefully to maintaining brand presentation standards.',
+    feature2Icon: 'Store',
+    feature3Title: 'Safe Products',
+    feature3Description:
+      'We use non-toxic, retail-safe cleaning products that protect your merchandise, displays, and most importantly, your customers.',
+    feature3Icon: 'ShieldCheck',
+
+    faqs: [
+      {
+        question: 'Can you clean during store hours?',
+        answer:
+          "Yes, we offer discreet maintenance cleaning services during operating hours. Our teams are trained to work efficiently and unobtrusively around customers. Deep cleaning tasks are typically scheduled before or after store hours.",
+      },
+      {
+        question: 'How do you handle cleaning around merchandise?',
+        answer:
+          "Our retail cleaning teams are specifically trained to clean around merchandise without disturbing displays. We use careful cleaning techniques and appropriate products that won't damage your products or fixtures.",
+      },
+      {
+        question: 'Do you offer seasonal deep cleaning?',
+        answer:
+          "Absolutely! We offer comprehensive seasonal deep cleaning services that are perfect for pre-holiday preparation, post-sale cleanup, and seasonal transitions. These include deep floor treatment, high-level dusting, and thorough fixture cleaning.",
+      },
+      {
+        question: 'Can you help prepare for store openings or events?',
+        answer:
+          "Yes! We provide specialized cleaning services for grand openings, special events, and VIP shopping events. We'll ensure your store looks its absolute best for any occasion.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 10. SCHOOL CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'school-cleaning': {
+    heroTopLabel: 'Educational Facility Services',
+    heroHeading: 'School & Educational Facility Cleaning',
+    heroSubheading:
+      'Provide a clean, healthy learning environment for students and staff. Our specialized educational facility cleaning services meet the highest standards of hygiene and safety.',
+    heroBackgroundImage:
+      'https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2032&auto=format&fit=crop',
+    heroServiceDuration: 'Education Specialists',
+    heroServiceGuarantee: '100% Safety',
+
+    trustIndicator1Number: '450+',
+    trustIndicator1Text: 'Educational Facilities',
+    trustIndicator2Number: '24/7',
+    trustIndicator2Text: 'Support Available',
+    trustIndicator3Number: '4.9',
+    trustIndicator3Text: 'School Rating',
+    trustIndicator4Number: '100%',
+    trustIndicator4Text: 'Safety Compliance',
+
+    includedSectionHeading: 'Our School Cleaning Services',
+    includedSectionSubheading:
+      'We provide comprehensive cleaning solutions that create safe, healthy learning environments for students and educators.',
+
+    classroomsTitle: 'Classrooms & Learning Spaces',
+    classroomsDescription:
+      'Maintain fresh, organized classrooms that promote focus and learning with our thorough educational space cleaning.',
+    classroomsImage:
+      'https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2032&auto=format&fit=crop',
+    classroomsFeatures: [
+      'Desk and table sanitization with child-safe products',
+      'Whiteboard and teaching surface cleaning',
+      'Floor vacuuming and mopping',
+      'Dust removal from shelving and storage areas',
+      'Window sill and ledge cleaning',
+      'Trash removal and recycling bin maintenance',
+    ],
+
+    cafeteriasTitle: 'Cafeterias & Kitchen Areas',
+    cafeteriasDescription:
+      'Maintain food-safe cafeteria environments with our specialized kitchen and dining area cleaning services.',
+    cafeteriasImage:
+      'https://images.unsplash.com/photo-1567521464027-f127ff144326?q=80&w=2048&auto=format&fit=crop',
+    cafeteriasFeatures: [
+      'Table and seating deep sanitization',
+      'Kitchen surface and equipment cleaning',
+      'Floor degreasing and sanitization',
+      'Serving area and counter cleaning',
+      'Food preparation area disinfection',
+      'Waste management and bin sanitization',
+    ],
+
+    restroomsTitle: 'Restrooms & Facilities',
+    restroomsDescription:
+      'School restrooms require enhanced cleaning protocols to protect student health and maintain hygienic conditions.',
+    restroomsImage:
+      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1470&auto=format&fit=crop',
+    restroomsFeatures: [
+      'Hospital-grade disinfection of all fixtures',
+      'Touchpoint sanitization throughout',
+      'Floor deep cleaning with anti-bacterial solutions',
+      'Soap, towel, and sanitizer replenishment',
+      'Mirror and surface cleaning',
+      'Odor control and air freshening',
+    ],
+
+    whyChooseHeading: 'Why Choose Clensy for Your School',
+    whyChooseSubheading:
+      'We specialize in educational facility cleaning with teams trained to create safe, healthy environments for students and staff.',
+    feature1Title: 'Child-Safe Products',
+    feature1Description:
+      'We exclusively use non-toxic, child-safe cleaning products that are effective against germs while being gentle enough for school environments where children learn and play.',
+    feature1Icon: 'https://cdn-icons-png.flaticon.com/512/2913/2913461.png',
+    feature2Title: 'Flexible Scheduling',
+    feature2Description:
+      'We work around school schedules — after hours, weekends, and during school breaks — to ensure cleaning never disrupts the learning environment.',
+    feature2Icon: 'https://cdn-icons-png.flaticon.com/512/2784/2784459.png',
+    feature3Title: 'Health-Focused Protocols',
+    feature3Description:
+      'Our cleaning protocols prioritize student health with enhanced disinfection of high-touch surfaces, proper ventilation practices, and allergen reduction techniques.',
+    feature3Icon: 'https://cdn-icons-png.flaticon.com/512/2966/2966327.png',
+
+    faqs: [
+      {
+        question: 'Are your cleaning products safe for children?',
+        answer:
+          "Absolutely! We exclusively use non-toxic, EPA-approved cleaning products that are safe for children and staff. All our products are Green Seal certified or equivalent, ensuring they're effective against germs while being gentle for school environments.",
+      },
+      {
+        question: 'Can you clean during school hours?',
+        answer:
+          "We primarily schedule cleaning after school hours to avoid disruption. However, we can provide restroom maintenance and emergency cleaning during school hours as needed. Our teams are trained to work quietly and efficiently around students.",
+      },
+      {
+        question: 'How do you handle flu season or illness outbreaks?',
+        answer:
+          "We offer enhanced disinfection protocols during flu season and illness outbreaks. This includes more frequent cleaning of high-touch surfaces, use of hospital-grade disinfectants, and electrostatic spraying of classrooms and common areas.",
+      },
+      {
+        question: 'Do you clean athletic facilities and gymnasiums?',
+        answer:
+          "Yes! We provide specialized cleaning for gymnasiums, athletic equipment, locker rooms, and outdoor sports facilities. We use appropriate products that maintain court surfaces while providing thorough sanitization.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 11. PROPERTY CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'property-cleaning': {
+    heroTopLabel: 'Premium Property Services',
+    heroHeading: 'Property & Building Common Areas Cleaning',
+    heroSubheading:
+      'Specialized cleaning services for apartment buildings, condominiums, and commercial property common areas that enhance property value and resident satisfaction.',
+    heroBackgroundImage:
+      'https://softwashaustralia.com.au/cdn/shop/articles/man-cleaning-patio-tiles-with-a-pressure-washer-in-2025-03-15-23-02-39-utc.jpg?v=1742306383&width=1500',
+    heroServiceDuration: 'Property Specialists',
+    heroServiceGuarantee: '100% Satisfaction',
+
+    trustIndicator1Number: '250+',
+    trustIndicator1Text: 'Buildings Serviced',
+    trustIndicator2Number: '24/7',
+    trustIndicator2Text: 'Property Support',
+    trustIndicator3Number: '4.9',
+    trustIndicator3Text: 'Management Rating',
+    trustIndicator4Number: '100%',
+    trustIndicator4Text: 'Property Manager Satisfaction',
+
+    includedSectionHeading: 'Our Property Cleaning Services',
+    includedSectionSubheading:
+      'We provide comprehensive cleaning solutions tailored to meet the unique demands of multi-unit residential and commercial properties.',
+
+    lobbiesTitle: 'Lobbies & Entrance Areas',
+    lobbiesDescription:
+      'Create an impeccable first impression with meticulously maintained lobbies and entrances that welcome residents and visitors.',
+    lobbiesImage:
+      'https://images.unsplash.com/photo-1593696140826-c58b021acf8b?q=80&w=2070&auto=format&fit=crop',
+    lobbiesFeatures: [
+      'Detailed floor cleaning tailored to your flooring type',
+      'Glass door and window cleaning',
+      'Dusting and cleaning of reception furniture and fixtures',
+      'Disinfection of high-touch areas and surfaces',
+    ],
+
+    hallwaysTitle: 'Hallways & Corridors',
+    hallwaysDescription:
+      'Maintain pristine, safe passageways throughout your property with our thorough hallway and corridor cleaning services.',
+    hallwaysImage:
+      'https://sygrove.com/wp-content/uploads/2019/02/hallway-interior-design.jpg',
+    hallwaysFeatures: [
+      'Vacuuming and floor maintenance for all corridor areas',
+      'Spot cleaning of walls and surfaces',
+      'Sanitization of handrails, door handles, and light switches',
+      'Trash removal and maintenance of waste receptacles',
+    ],
+
+    stairwellsTitle: 'Stairwells & Elevators',
+    stairwellsDescription:
+      'Ensure safe, clean vertical transportation areas with our specialized stairwell and elevator cleaning services.',
+    stairwellsImage:
+      'https://www.westcoastelevators.com.au/wp-content/uploads/2021/05/Location-1-The-Staircase-scaled.jpg',
+    stairwellsFeatures: [
+      'Thorough cleaning of stair treads, risers, and handrails',
+      'Complete disinfection of elevator buttons and panels',
+      'Cleaning of elevator doors, tracks, and interior surfaces',
+      'Maintenance of emergency exit signage and pathways',
+    ],
+
+    whyChooseHeading: 'Why Choose Clensy for Your Property',
+    whyChooseSubheading:
+      'We understand the unique cleaning requirements of multi-unit buildings and deliver specialized solutions that enhance property value and resident satisfaction.',
+    feature1Title: 'Property Management Focus',
+    feature1Description:
+      'We partner with property managers to develop customized cleaning programs that align with your operational goals and budget requirements.',
+    feature1Icon: 'Building',
+    feature2Title: 'Reliable Scheduling',
+    feature2Description:
+      'Our consistent cleaning schedules ensure your property always looks its best, with flexibility to accommodate special events or seasonal needs.',
+    feature2Icon: 'Clock',
+    feature3Title: 'Resident Satisfaction',
+    feature3Description:
+      'Our meticulous cleaning services create living environments that residents are proud to call home, enhancing tenant retention and property reputation.',
+    feature3Icon: 'Home',
+
+    faqs: [
+      {
+        question: 'How often should common areas be professionally cleaned?',
+        answer:
+          'We recommend daily cleaning for high-traffic areas like lobbies and hallways, with weekly deep cleaning for stairwells and monthly comprehensive cleaning for all common areas. The frequency can be adjusted based on building size, resident count, and specific needs.',
+      },
+      {
+        question: 'Do you work with property management companies?',
+        answer:
+          'Yes, we specialize in working with property management companies and building owners. We provide customized cleaning programs, detailed reporting, and flexible scheduling to meet the unique needs of multi-unit residential and commercial properties.',
+      },
+      {
+        question: 'Can you provide emergency cleaning services?',
+        answer:
+          'Absolutely! We offer 24/7 emergency cleaning services for unexpected situations like spills, accidents, or urgent preparations for property showings or special events. Our rapid response team can be on-site quickly when needed.',
+      },
+      {
+        question: "What's included in your property cleaning service?",
+        answer:
+          "Our comprehensive service includes lobby and entrance cleaning, hallway and corridor maintenance, stairwell cleaning, elevator sanitization, common bathroom maintenance, trash removal, and cleaning of all common area surfaces. We customize our service based on your property's specific layout and needs.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 12. EXTRAS CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'extras-cleaning': {
+    heroTopLabel: 'Premium Add-On Services',
+    heroHeading: 'Extra Cleaning Services On Demand',
+    heroSubheading:
+      'Enhance your regular cleaning experience with our specialized add-on services. From window cleaning to oven scrubbing, customize your cleaning package to address your specific needs.',
+    heroBackgroundImage:
+      'https://static.vecteezy.com/system/resources/previews/037/280/967/non_2x/ai-generated-minimalist-vivid-advertisment-spring-cleaning-background-with-copy-space-free-photo.jpeg',
+    heroServiceDuration: 'Customizable Services',
+    heroServiceGuarantee: '100% Satisfaction',
+
+    trustIndicatorsHeading: 'Why Choose Our Extra Services',
+    trustIndicator1Number: '8+',
+    trustIndicator1Text: 'Extra Services',
+    trustIndicator2Number: '100%',
+    trustIndicator2Text: 'Customizable',
+    trustIndicator3Number: '5.0',
+    trustIndicator3Text: 'Satisfaction Rating',
+    trustIndicator4Number: '1000+',
+    trustIndicator4Text: 'Extra Services Completed',
+
+    extrasHeading: 'Our Premium Extra Services',
+    extrasSubheading:
+      'Customize your cleaning experience with these specialized add-on services, designed to address specific cleaning needs beyond our standard service packages.',
+    premiumExtraServices: [
+      {
+        id: 'windows',
+        name: 'Window Cleaning',
+        description: 'Crystal clear windows inside and out',
+        image: 'https://res.cloudinary.com/dgjmm3usy/image/upload/v1750845184/image74_pnropc.png',
+        icon: 'Sparkles',
+        features: [
+          'Interior and exterior window cleaning',
+          'Screen cleaning and frame wiping',
+          'Streak-free finish',
+          'Sill and track cleaning',
+        ],
+      },
+      {
+        id: 'fridge',
+        name: 'Refrigerator Cleaning',
+        description: 'Thorough cleaning and sanitizing of refrigerators',
+        image:
+          'https://www.tasteofhome.com/wp-content/uploads/2023/01/GettyImages-484299846.jpg',
+        icon: 'Plus',
+        features: [
+          'Empty and clean all shelves and drawers',
+          'Sanitize interior surfaces',
+          'Clean exterior and handles',
+          'Clean under and behind refrigerator when accessible',
+        ],
+      },
+      {
+        id: 'oven',
+        name: 'Oven Cleaning',
+        description: 'Deep cleaning for ovens and ranges',
+        image:
+          'https://cdn.prod.website-files.com/6397d1f7c4e0e51d3bd5a80f/650a589d1e631adc7e916b04_Regular%20cleanings.webp',
+        icon: 'Plus',
+        features: [
+          'Removal of built-up grease and carbon',
+          'Cleaning of racks, trays, and knobs',
+          'Hood and filter cleaning',
+          'Full sanitization of interior and exterior',
+        ],
+      },
+      {
+        id: 'cabinets',
+        name: 'Cabinet Cleaning',
+        description: 'Interior and exterior cabinet cleaning',
+        image:
+          'https://res.cloudinary.com/dgjmm3usy/image/upload/v1750845302/shutterstock_1806194872_1_kszrsn.jpg',
+        icon: 'Plus',
+        features: [
+          'Empty and clean interior shelves',
+          'Degrease and polish exteriors',
+          'Clean handles and hardware',
+          'Reorganize contents as desired',
+        ],
+      },
+      {
+        id: 'organization',
+        name: 'Organization Service',
+        description: 'Professional organization of your spaces',
+        image:
+          'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=1470&auto=format&fit=crop',
+        icon: 'FolderOpen',
+        features: [
+          'Declutter and organize rooms',
+          'Sort and categorize belongings',
+          'Storage solution recommendations',
+          'Labeling and maintenance tips',
+        ],
+      },
+      {
+        id: 'laundry',
+        name: 'Laundry Service',
+        description: 'Complete laundry washing and folding',
+        image:
+          'https://res.cloudinary.com/dgjmm3usy/image/upload/v1750845558/shutterstock_2497352097_1_xavz0c.jpg',
+        icon: 'Shirt',
+        features: [
+          'Wash, dry, and fold clothes',
+          'Separate colors and delicates',
+          'Stain treatment when possible',
+          'Organize and put away clean laundry',
+        ],
+      },
+      {
+        id: 'wet-wipe-blinds',
+        name: 'Wet Wipe Blinds',
+        description: 'Deep cleaning of blinds with wet wiping',
+        image:
+          'https://res.cloudinary.com/dgjmm3usy/image/upload/v1750845646/shutterstock_2458948647_tx9wra.jpg',
+        icon: 'Droplets',
+        features: [
+          'Individual slat wet wiping',
+          'Remove dust and grime buildup',
+          'Sanitize blind surfaces',
+          'Clean cords and hardware',
+        ],
+      },
+      {
+        id: 'wash-dishes',
+        name: 'Wash Dishes',
+        description: 'Complete dish washing and kitchen cleanup',
+        image:
+          'https://res.cloudinary.com/dgjmm3usy/image/upload/v1750845709/shutterstock_2470888323_m4hl14.jpg',
+        icon: 'Utensils',
+        features: [
+          'Wash all dirty dishes and utensils',
+          'Clean pots, pans, and cookware',
+          'Dry and put away dishes',
+          'Clean and sanitize sink area',
+        ],
+      },
+    ],
+
+    howItWorksHeading: 'How To Add Extra Services',
+    howItWorksSubheading:
+      'Adding extra services to your cleaning package is simple and flexible.',
+    howToAddExtraServicesSteps: [
+      {
+        stepNumber: 1,
+        title: 'Browse Available Extras',
+        description:
+          'Open our app or website and browse through our selection of premium add-on services that can be added to any cleaning appointment.',
+        badge: '8+ specialized extra services available',
+        icon: 'Sparkles',
+      },
+      {
+        stepNumber: 2,
+        title: 'Select Your Extras',
+        description:
+          'Simply tap to add the services you want. You can add multiple extras to customize your cleaning experience exactly to your needs.',
+        badge: 'Mix and match any combination of services',
+        icon: 'Check',
+      },
+      {
+        stepNumber: 3,
+        title: 'Confirm and Schedule',
+        description:
+          'Review your selections, proceed to schedule your appointment, and our specialized team will take care of everything during your service.',
+        badge: 'Same-day and next-day scheduling available',
+        icon: 'Calendar',
+      },
+    ],
+
+    pricingHeading: 'Extras Pricing',
+    pricingSubheading:
+      'Transparent pricing for our most popular extra services.',
+    extrasPricing: [
+      {
+        serviceId: 'windows',
+        serviceName: 'Window Cleaning',
+        price: '$5',
+        priceUnit: 'per window',
+        icon: 'Sparkles',
+        features: ['Interior glass and frame', 'Window sill cleaning', 'Streak-free finish'],
+      },
+      {
+        serviceId: 'fridge',
+        serviceName: 'Refrigerator Cleaning',
+        price: '$35',
+        priceUnit: 'per service',
+        icon: 'Plus',
+        features: [
+          'Complete emptying and organizing',
+          'Shelf and drawer cleaning',
+          'Interior and exterior wiping',
+        ],
+      },
+      {
+        serviceId: 'oven',
+        serviceName: 'Oven Cleaning',
+        price: '$35',
+        priceUnit: 'per service',
+        icon: 'Plus',
+        features: ['Deep grease removal', 'Rack and tray cleaning', 'Interior and door cleaning'],
+      },
+      {
+        serviceId: 'cabinets',
+        serviceName: 'Cabinet Cleaning',
+        price: '$60',
+        priceUnit: 'per service',
+        icon: 'Plus',
+        features: [
+          'Interior and exterior cleaning',
+          'Door and handle sanitizing',
+          'Shelf organization',
+        ],
+      },
+      {
+        serviceId: 'organization',
+        serviceName: 'Organization Service',
+        price: '$60',
+        priceUnit: 'per service',
+        icon: 'FolderOpen',
+        features: [
+          'Declutter and organize rooms',
+          'Sort and categorize belongings',
+          'Storage solution recommendations',
+        ],
+      },
+      {
+        serviceId: 'laundry',
+        serviceName: 'Laundry Service',
+        price: '$20',
+        priceUnit: 'per service',
+        icon: 'Shirt',
+        features: [
+          'Wash, dry, and fold clothes',
+          'Separate colors and delicates',
+          'Organize and put away laundry',
+        ],
+      },
+      {
+        serviceId: 'wet-wipe-blinds',
+        serviceName: 'Wet Wipe Blinds',
+        price: '$5',
+        priceUnit: 'per blind',
+        icon: 'Droplets',
+        features: [
+          'Individual slat wet wiping',
+          'Remove dust and grime buildup',
+          'Clean cords and hardware',
+        ],
+      },
+      {
+        serviceId: 'wash-dishes',
+        serviceName: 'Wash Dishes',
+        price: '$20',
+        priceUnit: 'per service',
+        icon: 'Utensils',
+        features: [
+          'Wash all dirty dishes and utensils',
+          'Clean pots, pans, and cookware',
+          'Dry and put away dishes',
+        ],
+      },
+    ],
+
+    faqs: [
+      {
+        question: 'Can I add extra services to my regular cleaning?',
+        answer:
+          'Absolutely! Extra services are designed to complement your regular cleaning. You can add any combination of our extra services when booking your appointment or even request them during a scheduled cleaning.',
+      },
+      {
+        question: 'How much extra time do these services add?',
+        answer:
+          'Extra services typically add 30 minutes to 2 hours depending on what you select. Window cleaning and organization services tend to take longer, while simpler additions like washing dishes or cleaning the fridge are quicker.',
+      },
+      {
+        question: 'Do you bring all the supplies for extra services?',
+        answer:
+          'Yes, we bring all professional-grade supplies and equipment needed for our extra services. This includes specialized window cleaning solutions, organization containers, and commercial-grade cleaning products.',
+      },
+      {
+        question: 'Can I request extra services on short notice?',
+        answer:
+          'While we recommend booking extra services in advance for the best scheduling, we can often accommodate same-day requests depending on availability and the complexity of the service requested.',
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // 13. OTHER COMMERCIAL CLEANING
+  // ══════════════════════════════════════════════════════════════════════════
+  'other-commercial-cleaning': {
+    heroTopLabel: 'Premium Commercial Services',
+    heroHeading: 'Specialized Commercial Cleaning Services',
+    heroSubheading:
+      'From bustling restaurants to sacred worship spaces, every specialized venue deserves exceptional care. Our customized cleaning solutions are crafted specifically for your unique commercial environment.',
+    heroBackgroundImage:
+      'https://5.imimg.com/data5/SELLER/Default/2021/1/GS/UV/BZ/207102/commercial-cleaning-services.jpg',
+    heroServiceDuration: 'Industry Specialists',
+    heroServiceGuarantee: '100% Satisfaction',
+
+    trustIndicator1Number: '600+',
+    trustIndicator1Text: 'Commercial Clients',
+    trustIndicator2Number: '24/7',
+    trustIndicator2Text: 'Business Support',
+    trustIndicator3Number: '4.9',
+    trustIndicator3Text: 'Business Rating',
+    trustIndicator4Number: '100%',
+    trustIndicator4Text: 'Quality Guarantee',
+
+    includedSectionHeading: 'Our Specialized Commercial Cleaning Services',
+    includedSectionSubheading:
+      'We provide comprehensive cleaning solutions tailored to meet the unique demands of various commercial environments.',
+
+    restaurantsTitle: 'Restaurants & Food Service',
+    restaurantsDescription:
+      'Maintain the highest standards of cleanliness and hygiene in food service environments with our specialized restaurant cleaning services.',
+    restaurantsImage:
+      'https://www.vip-cleaning-london.com/wp-content/uploads/2024/05/restaurant-cleaning-services-london.jpg',
+    restaurantsFeatures: [
+      'Kitchen deep cleaning and sanitization',
+      'Dining area and front-of-house cleaning',
+      'Restroom sanitation and maintenance',
+      'Compliance with food safety regulations',
+    ],
+
+    warehousesTitle: 'Warehouses & Industrial Spaces',
+    warehousesDescription:
+      'Keep your industrial facilities clean, safe, and efficient with our specialized warehouse and industrial cleaning services.',
+    warehousesImage:
+      'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop',
+    warehousesFeatures: [
+      'Large-area floor cleaning with industrial equipment',
+      'Dust control and air quality maintenance',
+      'Cleaning of machinery areas and equipment exteriors',
+      'Staff facilities and break room maintenance',
+    ],
+
+    worshipTitle: 'Places of Worship',
+    worshipDescription:
+      'Provide a clean, welcoming environment for worship with our respectful, thorough church and religious facility cleaning services.',
+    worshipImage:
+      'https://cm.cleanmaster.ie/wp-content/uploads/2023/07/20220103-quiapo-church-aa.webp',
+    worshipFeatures: [
+      'Sanctuary and worship area cleaning',
+      'Community rooms and fellowship halls',
+      'Offices and administrative areas',
+      'Event cleanup and special service preparation',
+    ],
+
+    whyChooseHeading: 'Why Choose Clensy for Your Specialized Space',
+    whyChooseSubheading:
+      'We understand the unique cleaning requirements of different commercial environments and deliver tailored solutions that meet industry-specific needs.',
+    feature1Title: 'Industry Expertise',
+    feature1Description:
+      'Our cleaning teams receive specialized training for different commercial environments, understanding the unique requirements of each industry.',
+    feature1Icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+    feature2Title: 'Custom Scheduling',
+    feature2Description:
+      'We work around your business hours and operational needs, providing cleaning services at times that minimize disruption to your activities.',
+    feature2Icon: 'https://cdn-icons-png.flaticon.com/512/2784/2784459.png',
+    feature3Title: 'Value-Focused Solutions',
+    feature3Description:
+      'Our cleaning programs are designed to deliver the highest standards of cleanliness while respecting your budget constraints and business priorities.',
+    feature3Icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135706.png',
+
+    pricingHeading: 'Tailored Cleaning Plans & Pricing',
+    pricingSubheading:
+      'We understand that each commercial space has unique requirements. Our flexible packages are designed to provide exactly what your business needs.',
+    pricingPlans: [
+      {
+        planName: 'Essential Clean',
+        planSubtitle: 'For smaller businesses',
+        planPrice: 'Custom',
+        planPriceUnit: '/ visit',
+        planFeatures: [
+          'Basic area cleaning & sanitization',
+          'Restroom maintenance',
+          'Trash removal & replacement',
+          'High-touch surface disinfection',
+        ],
+        planButtonText: 'Get Quote',
+        planButtonLink: '/contact',
+        isPopular: false,
+        planColor: 'blue-600',
+      },
+      {
+        planName: 'Professional Clean',
+        planSubtitle: 'For most businesses',
+        planPrice: 'Custom',
+        planPriceUnit: '/ visit',
+        planFeatures: [
+          'All Essential Clean services',
+          'Deep floor cleaning & treatment',
+          'Window & glass cleaning',
+          'Dusting of high & hard-to-reach areas',
+          'Industry-specific sanitization',
+        ],
+        planButtonText: 'Get Quote',
+        planButtonLink: '/contact',
+        isPopular: true,
+        planColor: 'blue-700',
+      },
+      {
+        planName: 'Premium Clean',
+        planSubtitle: 'For specialized facilities',
+        planPrice: 'Custom',
+        planPriceUnit: '/ visit',
+        planFeatures: [
+          'All Professional Clean services',
+          'Advanced equipment sanitization',
+          'Specialized surface treatments',
+          'Dedicated account manager',
+          '24/7 emergency cleaning response',
+        ],
+        planButtonText: 'Get Quote',
+        planButtonLink: '/contact',
+        isPopular: false,
+        planColor: 'blue-600',
+      },
+    ],
+
+    pricingCustomSectionHeading: 'Need More Flexibility?',
+    pricingCustomSectionDescription:
+      'We understand that every business has unique requirements. Contact us for a completely customized cleaning plan tailored to your specific needs, budget, and schedule.',
+    pricingCustomButton1Text: 'Contact for Custom Quote',
+    pricingCustomButton1Link: '/contact',
+    pricingCustomButton2Text: 'Call (800) 555-1234',
+    pricingCustomButton2Link: '/tel:+18005551234',
+
+    faqs: [
+      {
+        question: 'What types of commercial spaces do you clean?',
+        answer:
+          'We provide specialized cleaning for a wide variety of commercial environments including restaurants and food service facilities, warehouses and industrial spaces, places of worship, automotive dealerships, manufacturing facilities, banks, law offices, and other unique commercial venues. Each space receives customized cleaning protocols suited to its specific needs.',
+      },
+      {
+        question: 'Do you follow industry-specific cleaning standards?',
+        answer:
+          'Absolutely! We tailor our cleaning procedures to meet the specific regulatory requirements of each industry. For restaurants, we follow food safety protocols; for industrial spaces, we adhere to safety standards; and for places of worship, we use respectful, gentle cleaning methods appropriate for sacred spaces.',
+      },
+      {
+        question: 'Can you work around our business hours?',
+        answer:
+          'Yes, we understand that every business has unique operational schedules. We offer flexible scheduling including after-hours, weekend, and holiday cleaning to ensure minimal disruption to your business operations. We\'ll work with you to find the perfect cleaning schedule.',
+      },
+      {
+        question: 'How do you handle specialized equipment or delicate items?',
+        answer:
+          "Our team is trained to work around and carefully clean specialized equipment, delicate items, and valuable assets. We use appropriate cleaning methods and products for different surfaces and materials, and we can coordinate with your team for specific handling requirements or restricted areas.",
+      },
+    ],
+  },
+};
+
+// ─── Main ───────────────────────────────────────────────────────────────────
+async function main() {
+  console.log('🚀 Starting seed of all 13 service single-types...\n');
+
+  let success = 0;
+  let failed = 0;
+
+  for (const [name, data] of Object.entries(services)) {
+    const ok = await seedSingleType(name, data);
+    if (ok) success++;
+    else failed++;
+  }
+
+  console.log(`\n${'═'.repeat(60)}`);
+  console.log(`✅ Seeded: ${success} | ❌ Failed: ${failed} | Total: ${Object.keys(services).length}`);
+  console.log(`${'═'.repeat(60)}\n`);
+}
+
+main().catch(console.error);

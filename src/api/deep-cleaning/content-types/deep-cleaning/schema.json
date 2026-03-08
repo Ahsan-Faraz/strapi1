@@ -1,0 +1,278 @@
+{
+  "kind": "singleType",
+  "collectionName": "deep_cleanings",
+  "info": {
+    "singularName": "deep-cleaning",
+    "pluralName": "deep-cleanings",
+    "displayName": "Deep Cleaning"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoMetaDescription": {
+      "type": "text"
+    },
+    "seoKeywords": {
+      "type": "text"
+    },
+    "seoCanonicalUrl": {
+      "type": "string"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string"
+    },
+    "ogDescription": {
+      "type": "text"
+    },
+    "ogImageUrl": {
+      "type": "string"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
+    "heroTopLabel": {
+      "type": "string"
+    },
+    "heroHeading": {
+      "type": "string"
+    },
+    "heroSubheading": {
+      "type": "text"
+    },
+    "heroBackgroundImage": {
+      "type": "string"
+    },
+    "heroServiceDuration": {
+      "type": "string"
+    },
+    "heroServiceGuarantee": {
+      "type": "string"
+    },
+    "includedSectionHeading": {
+      "type": "string"
+    },
+    "includedSectionSubheading": {
+      "type": "text"
+    },
+    "bathroomTitle": {
+      "type": "string"
+    },
+    "bathroomDescription": {
+      "type": "text"
+    },
+    "bathroomImage": {
+      "type": "string"
+    },
+    "bathroomFeatures": {
+      "type": "json"
+    },
+    "kitchenTitle": {
+      "type": "string"
+    },
+    "kitchenDescription": {
+      "type": "text"
+    },
+    "kitchenImage": {
+      "type": "string"
+    },
+    "kitchenFeatures": {
+      "type": "json"
+    },
+    "livingAreasTitle": {
+      "type": "string"
+    },
+    "livingAreasDescription": {
+      "type": "text"
+    },
+    "livingAreasImage": {
+      "type": "string"
+    },
+    "livingAreasFeatures": {
+      "type": "json"
+    },
+    "differenceHeading": {
+      "type": "string"
+    },
+    "differenceSubheading": {
+      "type": "text"
+    },
+    "deepCleaningDifference": {
+      "type": "json"
+    },
+    "whenToChooseHeading": {
+      "type": "string"
+    },
+    "whenToChooseSubheading": {
+      "type": "text"
+    },
+    "movingTitle": {
+      "type": "string"
+    },
+    "movingDescription": {
+      "type": "text"
+    },
+    "movingIcon": {
+      "type": "string"
+    },
+    "seasonalTitle": {
+      "type": "string"
+    },
+    "seasonalDescription": {
+      "type": "text"
+    },
+    "seasonalIcon": {
+      "type": "string"
+    },
+    "specialOccasionsTitle": {
+      "type": "string"
+    },
+    "specialOccasionsDescription": {
+      "type": "text"
+    },
+    "specialOccasionsIcon": {
+      "type": "string"
+    },
+    "benefitsHeading": {
+      "type": "string"
+    },
+    "benefitsSubheading": {
+      "type": "text"
+    },
+    "benefit1Title": {
+      "type": "string"
+    },
+    "benefit1Description": {
+      "type": "text"
+    },
+    "benefit1Icon": {
+      "type": "string"
+    },
+    "benefit2Title": {
+      "type": "string"
+    },
+    "benefit2Description": {
+      "type": "text"
+    },
+    "benefit2Icon": {
+      "type": "string"
+    },
+    "benefit3Title": {
+      "type": "string"
+    },
+    "benefit3Description": {
+      "type": "text"
+    },
+    "benefit3Icon": {
+      "type": "string"
+    },
+    "benefit4Title": {
+      "type": "string"
+    },
+    "benefit4Description": {
+      "type": "text"
+    },
+    "benefit4Icon": {
+      "type": "string"
+    },
+    "processHeading": {
+      "type": "string"
+    },
+    "processSubheading": {
+      "type": "text"
+    },
+    "processStep1Title": {
+      "type": "string"
+    },
+    "processStep1Description": {
+      "type": "text"
+    },
+    "processStep1Icon": {
+      "type": "string"
+    },
+    "processStep2Title": {
+      "type": "string"
+    },
+    "processStep2Description": {
+      "type": "text"
+    },
+    "processStep2Icon": {
+      "type": "string"
+    },
+    "processStep3Title": {
+      "type": "string"
+    },
+    "processStep3Description": {
+      "type": "text"
+    },
+    "processStep3Icon": {
+      "type": "string"
+    },
+    "pricingHeading": {
+      "type": "string"
+    },
+    "pricingSubheading": {
+      "type": "text"
+    },
+    "faqHeading": {
+      "type": "string"
+    },
+    "faqSubheading": {
+      "type": "text"
+    },
+    "clientReviewsHeading": {
+      "type": "string"
+    },
+    "clientReviewsSubheading": {
+      "type": "text"
+    },
+    "clientReviews": {
+      "type": "json"
+    },
+    "comparisonHeading": {
+      "type": "string"
+    },
+    "comparisonSubheading": {
+      "type": "text"
+    },
+    "regularCleaning": {
+      "type": "json"
+    },
+    "deepCleaning": {
+      "type": "json"
+    },
+    "faqs": {
+      "type": "json"
+    }
+  }
+}

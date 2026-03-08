@@ -1,0 +1,185 @@
+{
+  "kind": "singleType",
+  "collectionName": "gym_cleanings",
+  "info": {
+    "singularName": "gym-cleaning",
+    "pluralName": "gym-cleanings",
+    "displayName": "Gym Cleaning"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoMetaDescription": {
+      "type": "text"
+    },
+    "seoKeywords": {
+      "type": "text"
+    },
+    "seoCanonicalUrl": {
+      "type": "string"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string"
+    },
+    "ogDescription": {
+      "type": "text"
+    },
+    "ogImageUrl": {
+      "type": "string"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
+    "heroTopLabel": {
+      "type": "string"
+    },
+    "heroHeading": {
+      "type": "string"
+    },
+    "heroSubheading": {
+      "type": "text"
+    },
+    "heroBackgroundImage": {
+      "type": "string"
+    },
+    "heroServiceDuration": {
+      "type": "string"
+    },
+    "heroServiceGuarantee": {
+      "type": "string"
+    },
+    "trustIndicator1Number": {
+      "type": "string"
+    },
+    "trustIndicator1Text": {
+      "type": "string"
+    },
+    "trustIndicator2Number": {
+      "type": "string"
+    },
+    "trustIndicator2Text": {
+      "type": "string"
+    },
+    "trustIndicator3Number": {
+      "type": "string"
+    },
+    "trustIndicator3Text": {
+      "type": "string"
+    },
+    "trustIndicator4Number": {
+      "type": "string"
+    },
+    "trustIndicator4Text": {
+      "type": "string"
+    },
+    "includedSectionHeading": {
+      "type": "string"
+    },
+    "includedSectionSubheading": {
+      "type": "text"
+    },
+    "equipmentTitle": {
+      "type": "string"
+    },
+    "equipmentDescription": {
+      "type": "text"
+    },
+    "equipmentImage": {
+      "type": "string"
+    },
+    "equipmentFeatures": {
+      "type": "json"
+    },
+    "lockerRoomsTitle": {
+      "type": "string"
+    },
+    "lockerRoomsDescription": {
+      "type": "text"
+    },
+    "lockerRoomsImage": {
+      "type": "string"
+    },
+    "lockerRoomsFeatures": {
+      "type": "json"
+    },
+    "studioTitle": {
+      "type": "string"
+    },
+    "studioDescription": {
+      "type": "text"
+    },
+    "studioImage": {
+      "type": "string"
+    },
+    "studioFeatures": {
+      "type": "json"
+    },
+    "whyChooseHeading": {
+      "type": "string"
+    },
+    "whyChooseSubheading": {
+      "type": "text"
+    },
+    "feature1Title": {
+      "type": "string"
+    },
+    "feature1Description": {
+      "type": "text"
+    },
+    "feature1Icon": {
+      "type": "string"
+    },
+    "feature2Title": {
+      "type": "string"
+    },
+    "feature2Description": {
+      "type": "text"
+    },
+    "feature2Icon": {
+      "type": "string"
+    },
+    "feature3Title": {
+      "type": "string"
+    },
+    "feature3Description": {
+      "type": "text"
+    },
+    "feature3Icon": {
+      "type": "string"
+    },
+    "faqs": {
+      "type": "json"
+    }
+  }
+}

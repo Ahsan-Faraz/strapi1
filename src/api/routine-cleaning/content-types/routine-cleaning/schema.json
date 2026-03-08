@@ -1,0 +1,245 @@
+{
+  "kind": "singleType",
+  "collectionName": "routine_cleanings",
+  "info": {
+    "singularName": "routine-cleaning",
+    "pluralName": "routine-cleanings",
+    "displayName": "Routine Cleaning"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoMetaDescription": {
+      "type": "text"
+    },
+    "seoKeywords": {
+      "type": "text"
+    },
+    "seoCanonicalUrl": {
+      "type": "string"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string"
+    },
+    "ogDescription": {
+      "type": "text"
+    },
+    "ogImageUrl": {
+      "type": "string"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
+    "heroTopLabel": {
+      "type": "string"
+    },
+    "heroHeading": {
+      "type": "string"
+    },
+    "heroSubheading": {
+      "type": "text"
+    },
+    "heroBackgroundImage": {
+      "type": "string"
+    },
+    "heroServiceDuration": {
+      "type": "string"
+    },
+    "heroServiceGuarantee": {
+      "type": "string"
+    },
+    "includedSectionHeading": {
+      "type": "string"
+    },
+    "includedSectionSubheading": {
+      "type": "text"
+    },
+    "kitchenTitle": {
+      "type": "string"
+    },
+    "kitchenDescription": {
+      "type": "text"
+    },
+    "kitchenImage": {
+      "type": "string"
+    },
+    "kitchenFeatures": {
+      "type": "json"
+    },
+    "bathroomTitle": {
+      "type": "string"
+    },
+    "bathroomDescription": {
+      "type": "text"
+    },
+    "bathroomImage": {
+      "type": "string"
+    },
+    "bathroomFeatures": {
+      "type": "json"
+    },
+    "livingAreasTitle": {
+      "type": "string"
+    },
+    "livingAreasDescription": {
+      "type": "text"
+    },
+    "livingAreasImage": {
+      "type": "string"
+    },
+    "livingAreasFeatures": {
+      "type": "json"
+    },
+    "featureSectionHeading": {
+      "type": "string"
+    },
+    "featureSectionSubheading": {
+      "type": "text"
+    },
+    "featureSectionImage": {
+      "type": "string"
+    },
+    "featureSectionPoints": {
+      "type": "json"
+    },
+    "howItWorksHeading": {
+      "type": "string"
+    },
+    "howItWorksSubheading": {
+      "type": "text"
+    },
+    "step1Title": {
+      "type": "string"
+    },
+    "step1Description": {
+      "type": "text"
+    },
+    "step1Image": {
+      "type": "string"
+    },
+    "step1Badge": {
+      "type": "string"
+    },
+    "step2Title": {
+      "type": "string"
+    },
+    "step2Description": {
+      "type": "text"
+    },
+    "step2Image": {
+      "type": "string"
+    },
+    "step3Title": {
+      "type": "string"
+    },
+    "step3Description": {
+      "type": "text"
+    },
+    "step3Image": {
+      "type": "string"
+    },
+    "benefitsHeading": {
+      "type": "string"
+    },
+    "benefitsSubheading": {
+      "type": "text"
+    },
+    "benefitsImage": {
+      "type": "string"
+    },
+    "benefit1Title": {
+      "type": "string"
+    },
+    "benefit1Description": {
+      "type": "text"
+    },
+    "benefit2Title": {
+      "type": "string"
+    },
+    "benefit2Description": {
+      "type": "text"
+    },
+    "benefit3Title": {
+      "type": "string"
+    },
+    "benefit3Description": {
+      "type": "text"
+    },
+    "clientTestimonialsHeading": {
+      "type": "string"
+    },
+    "clientTestimonialsSubheading": {
+      "type": "text"
+    },
+    "clientTestimonials": {
+      "type": "json"
+    },
+    "frequencyGuideHeading": {
+      "type": "string"
+    },
+    "frequencyGuideSubheading": {
+      "type": "text"
+    },
+    "weeklyTitle": {
+      "type": "string"
+    },
+    "weeklyPerfectFor": {
+      "type": "json"
+    },
+    "weeklyBenefits": {
+      "type": "json"
+    },
+    "biWeeklyTitle": {
+      "type": "string"
+    },
+    "biWeeklyPerfectFor": {
+      "type": "json"
+    },
+    "biWeeklyBenefits": {
+      "type": "json"
+    },
+    "monthlyTitle": {
+      "type": "string"
+    },
+    "monthlyPerfectFor": {
+      "type": "json"
+    },
+    "monthlyBenefits": {
+      "type": "json"
+    },
+    "faqs": {
+      "type": "json"
+    }
+  }
+}

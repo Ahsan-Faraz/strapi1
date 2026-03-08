@@ -1,0 +1,140 @@
+{
+  "kind": "singleType",
+  "collectionName": "extras_cleanings",
+  "info": {
+    "singularName": "extras-cleaning",
+    "pluralName": "extras-cleanings",
+    "displayName": "Extras Cleaning"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoMetaDescription": {
+      "type": "text"
+    },
+    "seoKeywords": {
+      "type": "text"
+    },
+    "seoCanonicalUrl": {
+      "type": "string"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string"
+    },
+    "ogDescription": {
+      "type": "text"
+    },
+    "ogImageUrl": {
+      "type": "string"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
+    "heroTopLabel": {
+      "type": "string"
+    },
+    "heroHeading": {
+      "type": "string"
+    },
+    "heroSubheading": {
+      "type": "text"
+    },
+    "heroBackgroundImage": {
+      "type": "string"
+    },
+    "heroServiceDuration": {
+      "type": "string"
+    },
+    "heroServiceGuarantee": {
+      "type": "string"
+    },
+    "trustIndicatorsHeading": {
+      "type": "string"
+    },
+    "trustIndicator1Number": {
+      "type": "string"
+    },
+    "trustIndicator1Text": {
+      "type": "string"
+    },
+    "trustIndicator2Number": {
+      "type": "string"
+    },
+    "trustIndicator2Text": {
+      "type": "string"
+    },
+    "trustIndicator3Number": {
+      "type": "string"
+    },
+    "trustIndicator3Text": {
+      "type": "string"
+    },
+    "trustIndicator4Number": {
+      "type": "string"
+    },
+    "trustIndicator4Text": {
+      "type": "string"
+    },
+    "extrasHeading": {
+      "type": "string"
+    },
+    "extrasSubheading": {
+      "type": "text"
+    },
+    "premiumExtraServices": {
+      "type": "json"
+    },
+    "howItWorksHeading": {
+      "type": "string"
+    },
+    "howItWorksSubheading": {
+      "type": "text"
+    },
+    "howToAddExtraServicesSteps": {
+      "type": "json"
+    },
+    "pricingHeading": {
+      "type": "string"
+    },
+    "pricingSubheading": {
+      "type": "text"
+    },
+    "extrasPricing": {
+      "type": "json"
+    },
+    "faqs": {
+      "type": "json"
+    }
+  }
+}

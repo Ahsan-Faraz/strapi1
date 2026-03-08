@@ -1,0 +1,191 @@
+{
+  "kind": "singleType",
+  "collectionName": "post_construction_cleanings",
+  "info": {
+    "singularName": "post-construction-cleaning",
+    "pluralName": "post-construction-cleanings",
+    "displayName": "Post Construction Cleaning"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoMetaDescription": {
+      "type": "text"
+    },
+    "seoKeywords": {
+      "type": "text"
+    },
+    "seoCanonicalUrl": {
+      "type": "string"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string"
+    },
+    "ogDescription": {
+      "type": "text"
+    },
+    "ogImageUrl": {
+      "type": "string"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
+    "heroTopLabel": {
+      "type": "string"
+    },
+    "heroHeading": {
+      "type": "string"
+    },
+    "heroSubheading": {
+      "type": "text"
+    },
+    "heroBackgroundImage": {
+      "type": "string"
+    },
+    "heroServiceDuration": {
+      "type": "string"
+    },
+    "heroServiceGuarantee": {
+      "type": "string"
+    },
+    "includedSectionHeading": {
+      "type": "string"
+    },
+    "includedSectionSubheading": {
+      "type": "text"
+    },
+    "debrisRemovalTitle": {
+      "type": "string"
+    },
+    "debrisRemovalDescription": {
+      "type": "text"
+    },
+    "debrisRemovalImage": {
+      "type": "string"
+    },
+    "debrisRemovalFeatures": {
+      "type": "json"
+    },
+    "dustEliminationTitle": {
+      "type": "string"
+    },
+    "dustEliminationDescription": {
+      "type": "text"
+    },
+    "dustEliminationImage": {
+      "type": "string"
+    },
+    "dustEliminationFeatures": {
+      "type": "json"
+    },
+    "surfaceFinishingTitle": {
+      "type": "string"
+    },
+    "surfaceFinishingDescription": {
+      "type": "text"
+    },
+    "surfaceFinishingImage": {
+      "type": "string"
+    },
+    "surfaceFinishingFeatures": {
+      "type": "json"
+    },
+    "beforeAfterHeading": {
+      "type": "string"
+    },
+    "beforeAfterSubheading": {
+      "type": "text"
+    },
+    "postConstructionDifference": {
+      "type": "json"
+    },
+    "processHeading": {
+      "type": "string"
+    },
+    "processSubheading": {
+      "type": "text"
+    },
+    "step1Title": {
+      "type": "string"
+    },
+    "step1Description": {
+      "type": "text"
+    },
+    "step2Title": {
+      "type": "string"
+    },
+    "step2Description": {
+      "type": "text"
+    },
+    "step3Title": {
+      "type": "string"
+    },
+    "step3Description": {
+      "type": "text"
+    },
+    "step4Title": {
+      "type": "string"
+    },
+    "step4Description": {
+      "type": "text"
+    },
+    "safetyHeading": {
+      "type": "string"
+    },
+    "safetySubheading": {
+      "type": "text"
+    },
+    "ppeTitle": {
+      "type": "string"
+    },
+    "ppeDescription": {
+      "type": "text"
+    },
+    "ppeFeatures": {
+      "type": "json"
+    },
+    "hazmatTitle": {
+      "type": "string"
+    },
+    "hazmatDescription": {
+      "type": "text"
+    },
+    "hazmatFeatures": {
+      "type": "json"
+    },
+    "faqs": {
+      "type": "json"
+    }
+  }
+}

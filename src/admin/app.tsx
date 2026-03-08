@@ -1,5 +1,7 @@
 import type { StrapiApp } from '@strapi/strapi/admin';
 import { File, ArrowRight, CheckCircle, Search, Clock } from '@strapi/icons';
+import { setupServicesSidebarGrouping } from './extensions/services-sidebar-grouping';
+import { setupExpandedSidebar } from './extensions/expanded-sidebar';
 
 export default {
   config: {
@@ -165,7 +167,9 @@ export default {
     }
   },
   bootstrap(_app: StrapiApp) {
-    // Lightweight: Removed heavy MutationObserver and TreeWalker (observed entire DOM on every change).
-    // Use config.translations for "Listings" / "Single Pages" - no runtime DOM mutation needed.
+    // Inject collapsible Services dropdown (Residential / Commercial) into Content Manager sidebar
+    setupServicesSidebarGrouping();
+    // Expand the icon sidebar to always show labels next to icons
+    setupExpandedSidebar();
   },
 };
