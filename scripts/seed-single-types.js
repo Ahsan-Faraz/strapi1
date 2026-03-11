@@ -137,18 +137,21 @@ const services = {
           review: 'The attention to detail was incredible. My home has never felt so clean and fresh. I\'ve tried other services before, but Clensy\'s routine cleaning is in a league of its own.',
           clientName: 'Sarah Johnson',
           clientLocation: 'New Jersey, NJ',
+          avatarBgColor: 'pink-500',
         },
         {
           rating: 5,
           review: 'I\'ve been using Clensy\'s routine cleaning for six months now, and it\'s been a game-changer. The consistency and reliability of their service is outstanding. My home always looks immaculate.',
           clientName: 'Michael Rodriguez',
           clientLocation: 'New Jersey, NJ',
+          avatarBgColor: 'blue-500',
         },
         {
           rating: 5,
           review: 'As a busy professional, having Clensy\'s routine cleaning service has been life-changing. I come home to a spotless house every time, and their staff is always professional and thorough.',
           clientName: 'Jennifer Park',
           clientLocation: 'New Jersey, NJ',
+          avatarBgColor: 'teal-500',
         },
       ],
       faqs: [

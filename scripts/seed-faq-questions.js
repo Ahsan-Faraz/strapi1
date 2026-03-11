@@ -1,0 +1,193 @@
+/**
+ * Seed FAQ Questions into Strapi FAQ Page (comprehensiveFAQs JSON field)
+ * Auto-generated from MongoDB export (clensy-cms.faqquestions.json).
+ * Run with: node scripts/seed-faq-questions.js
+ */
+
+const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+const API_PREFIX = 'admin/api';
+const STRAPI_API_TOKEN =
+  process.env.STRAPI_API_TOKEN ||
+  '67eb2c4b5e9661786cbc07a8e245f6feca5539a6b25d371450b6e47ae586b1696c16d0ed67f45d2eb20b1189f91710d0d422b82abe4763e64467a2f6dcb5526e7d23f37110c7925bcd20e46a115bde10200168b131b4ca703f5c9e5eafa743d6691aba335d9a48c7bae2e47d9da3489b3ffa478ceebcd934f7099c40d622e3b2';
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// 92 FAQ Questions from MongoDB export - organized by category
+// Categories: general, staff, insurance, pricing, policies, cleaning-products,
+//             scheduling, services, commercial, payment, booking, special-requests,
+//             maintenance
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const faqQuestions = [
+  // ==================== GENERAL (6) ====================
+  { id: 1, question: 'What areas do you serve?', answer: "Clensy is quickly expanding, so be sure to check our Locations page for the most up to date service areas and any newly added locations.", category: 'general', tags: ['service area', 'location', 'coverage'], priority: 10, isActive: true, order: 1 },
+  { id: 2, question: 'Do I need to be home during the cleaning?', answer: "No, that\u2019s totally up to you. Many clients provide entry instructions or lockbox codes. We handle all access securely.", category: 'general', tags: ['home presence', 'keys', 'access', 'security'], priority: 8, isActive: true, order: 2 },
+  { id: 3, question: 'How long has Clensy been in business?', answer: "Clensy has been providing professional cleaning services since the beginning of 2024 and has quickly grown into one of New Jersey\u2019s fastest-scaling home cleaning companies.", category: 'general', tags: ['experience', 'history', 'reputation'], priority: 7, isActive: true, order: 3 },
+  { id: 4, question: 'What makes Clensy different from other cleaning services?', answer: "We make cleaning simple and stress free. You\u2019ll always know what\u2019s included, get clear communication, and come home to a space that actually feels clean. Our team shows up on time, follows a detailed checklist, and takes care of the little things most companies miss so you don\u2019t have to double check after we leave.", category: 'general', tags: ['difference', 'unique', 'advantages', 'benefits'], priority: 7, isActive: true, order: 4 },
+  { id: 5, question: 'How do I contact customer service?', answer: 'You can reach our customer service team by phone at (551) 305-4081, email us at info@clensy.com, or use the contact form on our website. We typically respond to inquiries within 24 hours during normal business hours.', category: 'general', tags: ['contact', 'customer service', 'support'], priority: 6, isActive: true, order: 5 },
+  { id: 6, question: 'How do I prepare my home for a cleaning service?', answer: "Minimal preparation is needed. We recommend picking up personal items, securing valuable objects, and ensuring clear access to areas to be cleaned. Our team will handle the rest!", category: 'general', tags: ['preparation', 'home', 'ready', 'tips'], priority: 5, isActive: true, order: 6 },
+
+  // ==================== STAFF (11) ====================
+  { id: 7, question: 'Are your cleaners background checked?', answer: 'Yes. Our cleaners undergo a full background check and training before joining our team.', category: 'staff', tags: ['background check', 'safety', 'security', 'staff'], priority: 9, isActive: true, order: 1 },
+  { id: 8, question: 'How do you ensure staff reliability and trustworthiness?', answer: "We run thorough background checks, verify references, and provide training before anyone enters a client\u2019s home.", category: 'staff', tags: ['reliability', 'trustworthy', 'background', 'bonded'], priority: 8, isActive: true, order: 2 },
+  { id: 9, question: 'How do you train your cleaning staff?', answer: 'All team members undergo comprehensive training covering cleaning techniques, product knowledge, customer service, and safety protocols. We provide ongoing training to maintain high standards.', category: 'staff', tags: ['training', 'comprehensive', 'techniques', 'standards'], priority: 7, isActive: true, order: 3 },
+  { id: 10, question: 'Are your employees or independent contractors?', answer: "Most of our cleaners are W-2 employees, which means they\u2019re fully trained, insured, and covered under our policies. We also work with a few trusted independent contractors, but they meet the same high standards before entering a client\u2019s home.", category: 'staff', tags: ['employees', 'benefits', 'training', 'insurance'], priority: 6, isActive: true, order: 4 },
+  { id: 11, question: "What if I'm not happy with a particular team member?", answer: "We want you to be completely comfortable with our team. If you have concerns about any team member, please contact us immediately and we\u2019ll address the situation and make appropriate changes.", category: 'staff', tags: ['concerns', 'comfortable', 'address', 'changes'], priority: 6, isActive: true, order: 5 },
+  { id: 12, question: 'Can I leave special instructions for the cleaning team?', answer: "Absolutely, yes! We encourage you to share any preferences or special instructions. To make sure nothing is missed, we recommend giving those notes to the office when booking so they\u2019re added directly to your account for the team to follow.", category: 'staff', tags: ['instructions', 'preferences', 'focus', 'requirements'], priority: 6, isActive: true, order: 6 },
+  { id: 13, question: 'Will the same person clean my home each time?', answer: "We try to keep the same cleaner for recurring clients whenever possible. If you have a favorite, let us know and we\u2019ll add them as a preference on your account. While we can\u2019t guarantee the same person every time due to routes, availability, and scheduling, we\u2019ll do our best to honor your request.", category: 'staff', tags: ['consistency', 'same team', 'illness', 'trained'], priority: 6, isActive: true, order: 7 },
+  { id: 14, question: 'Do your staff speak English?', answer: "Our office team is fluent in English, and most of our cleaners can communicate basic instructions. For anything detailed, we recommend sharing notes with the office so your preferences are clearly added to your account.", category: 'staff', tags: ['english', 'communicate', 'clear', 'essential'], priority: 5, isActive: true, order: 8 },
+  { id: 15, question: 'Are your staff members uniformed and identifiable?', answer: 'Yes, our team members wear Clensy uniforms.', category: 'staff', tags: ['uniform', 'identification', 'badges', 'security'], priority: 5, isActive: true, order: 9 },
+  { id: 16, question: 'How do you handle staff turnover?', answer: 'We maintain low turnover through competitive compensation and good working conditions. When changes occur, we ensure new team members are fully trained and briefed on your specific preferences.', category: 'staff', tags: ['turnover', 'compensation', 'training', 'briefed'], priority: 4, isActive: true, order: 10 },
+  { id: 17, question: 'What should I do if a team member gets injured in my home?', answer: "Our team is covered by workers\u2019 compensation insurance. If an injury occurs, please call us immediately. Do not attempt to provide medical care - we\u2019ll handle all necessary procedures.", category: 'staff', tags: ['injury', 'workers compensation', 'medical', 'procedures'], priority: 4, isActive: true, order: 11 },
+
+  // ==================== INSURANCE (3) ====================
+  { id: 18, question: 'Are you insured and bonded?', answer: 'Yes, we are fully insured and bonded. This provides protection for both our clients and our team in the rare event of an accident or damage during service.', category: 'insurance', tags: ['insurance', 'bonded', 'protection', 'liability'], priority: 9, isActive: true, order: 1 },
+  { id: 19, question: 'What does your insurance cover?', answer: "Our insurance covers general liability and workers\u2019 compensation. This means both your property and our employees are protected if an accident occurs.", category: 'insurance', tags: ['coverage', 'liability', 'property', 'theft'], priority: 8, isActive: true, order: 2 },
+  { id: 20, question: 'What if something gets broken during cleaning?', answer: "Accidents are rare, but if damage occurs, we\u2019ll repair or replace the item through our insurance. Please report any damage within 24 hours so we can address it promptly.", category: 'insurance', tags: ['broken', 'damage', 'repair', 'replace'], priority: 7, isActive: true, order: 3 },
+
+  // ==================== PRICING (13) ====================
+  { id: 21, question: 'How do you determine pricing for cleaning services?', answer: 'Our pricing is based on several factors: home size (square footage and number of rooms), type of service, frequency of cleaning, current condition of the home, and any special requests or add-on services.', category: 'pricing', tags: ['factors', 'calculation', 'size', 'frequency'], priority: 9, isActive: true, order: 1 },
+  { id: 22, question: 'Do you offer free estimates?', answer: 'Absolutely. You can get an instant quote online or request a personalized estimate by phone.', category: 'pricing', tags: ['estimate', 'quote', 'free', 'pricing'], priority: 8, isActive: true, order: 2 },
+  { id: 23, question: 'Do you charge by the hour or have flat rates?', answer: 'We primarily use flat-rate pricing based on your specific needs and home size. This gives you predictable costs and ensures our team focuses on quality rather than speed.', category: 'pricing', tags: ['flat rate', 'hourly', 'predictable', 'quality'], priority: 8, isActive: true, order: 3 },
+  { id: 24, question: "What's the average cost for routine cleaning?", answer: "Routine cleaning typically ranges from $135\u2013$250 depending on the size and condition of your home.", category: 'pricing', tags: ['average', 'routine', 'range', 'estimate'], priority: 8, isActive: true, order: 4 },
+  { id: 25, question: 'Are there any hidden fees or extra charges?', answer: 'No hidden fees! We provide transparent, upfront pricing. The only additional charges would be for extra services you specifically request or if your home requires significantly more time than estimated.', category: 'pricing', tags: ['transparent', 'hidden fees', 'upfront', 'honest'], priority: 8, isActive: true, order: 5 },
+  { id: 26, question: 'How much does deep cleaning cost?', answer: "Deep cleaning generally costs 50\u2013100% more than routine cleaning due to the detail involved. Prices usually range from $220\u2013$500", category: 'pricing', tags: ['deep cleaning', 'cost', 'range', 'detailed'], priority: 7, isActive: true, order: 6 },
+  { id: 27, question: 'Do you offer discounts for regular customers?', answer: 'Yes, we offer attractive discounts for recurring cleaning services. ', category: 'pricing', tags: ['discount', 'regular', 'recurring', 'savings'], priority: 6, isActive: true, order: 7 },
+  { id: 28, question: 'Do you offer package deals or discounts?', answer: "Yes! We offer recurring service discounts, seasonal packages, and first-time customer promotions. We also provide discounts for booking multiple services at once.", category: 'pricing', tags: ['packages', 'discounts', 'recurring', 'promotions'], priority: 6, isActive: true, order: 8 },
+  { id: 29, question: 'How much do add-on services cost?', answer: "You can view all extra services and pricing on our Extras page. Once you book, you\u2019ll also see the prices in your online portal, where you can easily add extras directly to your cleaning appointment.", category: 'pricing', tags: ['add-on', 'individual', 'extras', 'specific'], priority: 6, isActive: true, order: 9 },
+  { id: 30, question: 'What factors might increase the cost of cleaning?', answer: "Costs may increase for: heavily soiled homes requiring extra time, homes with excessive pet hair, hoarding situations, post-construction cleanup, or homes that haven\u2019t been cleaned in over 6 months.", category: 'pricing', tags: ['increase', 'factors', 'extra time', 'condition'], priority: 5, isActive: true, order: 10 },
+  { id: 31, question: 'Do you offer senior or military discounts?', answer: 'Yes, we proudly offer a 10% discount for seniors (65+) and active military personnel or veterans. Please mention this when booking to receive your discount.', category: 'pricing', tags: ['senior', 'military', 'veteran', 'discount'], priority: 5, isActive: true, order: 11 },
+  { id: 32, question: 'Do prices vary by location within your service area?', answer: 'Yes, pricing can vary slightly by location. Factors like travel time, parking, and local demand may affect the final cost.', category: 'pricing', tags: ['location', 'consistent', 'travel', 'service area'], priority: 4, isActive: true, order: 12 },
+  { id: 33, question: 'Is tipping expected or included in the price?', answer: 'Tipping is not required but is always appreciated by our team members. If you\'re happy with the service, a tip of 10-20% is customary but never expected or included in our pricing.', category: 'pricing', tags: ['tipping', 'optional', 'appreciated', 'customary'], priority: 4, isActive: true, order: 13 },
+
+  // ==================== POLICIES (11) ====================
+  { id: 34, question: 'What is your satisfaction guarantee policy?', answer: "We stand behind our work with a 100% satisfaction guarantee. If you\u2019re not completely satisfied with our service, we\u2019ll return within 24 hours to address any concerns at no additional cost.", category: 'policies', tags: ['guarantee', 'satisfaction', 'policy', 'quality'], priority: 8, isActive: true, order: 1 },
+  { id: 35, question: 'What if I need to cancel or reschedule my appointment?', answer: 'We understand plans change. You can cancel or reschedule your appointment up to 24 hours before the scheduled time without any fees. Changes made with less than 24 hours notice may incur a rescheduling fee.', category: 'policies', tags: ['cancel', 'reschedule', 'policy', 'fees'], priority: 7, isActive: true, order: 2 },
+  { id: 36, question: "Can I get a refund if I'm not satisfied?", answer: 'Instead of refunds, we stand by our satisfaction guarantee and return to re-clean at no cost.', category: 'policies', tags: ['refund', 'satisfaction', 'guarantee', 'return'], priority: 7, isActive: true, order: 3 },
+  { id: 37, question: 'How do you handle keys and home access?', answer: 'We use secure key handling practices and can work with lockboxes. Your access instructions are kept private and secure.', category: 'policies', tags: ['keys', 'access', 'secure', 'lockbox'], priority: 7, isActive: true, order: 4 },
+  { id: 38, question: 'How do you ensure quality control?', answer: 'We conduct regular quality inspections, follow detailed checklists, provide team leader oversight, and actively seek customer feedback. Unsatisfied customers receive priority re-cleaning at no charge.', category: 'policies', tags: ['quality', 'inspections', 'checklists', 'feedback'], priority: 6, isActive: true, order: 5 },
+  { id: 39, question: "What's your policy on pets during cleaning?", answer: "We love pets! For safety, please secure aggressive animals. Friendly pets can stay, but we recommend keeping them in a separate area to avoid stress and ensure thorough cleaning.", category: 'policies', tags: ['pets', 'safety', 'secure', 'separate'], priority: 6, isActive: true, order: 6 },
+  { id: 40, question: 'Do you have a privacy policy?', answer: 'Yes, we maintain strict confidentiality about your home, schedule, and personal information. Our staff signs confidentiality agreements and we never share client information with third parties.', category: 'policies', tags: ['privacy', 'confidentiality', 'personal', 'agreements'], priority: 6, isActive: true, order: 7 },
+  { id: 41, question: "What's your process for handling delicate or valuable items?", answer: "We treat all items with care, but we recommend securing extremely valuable or fragile items before our arrival. Our team is trained in careful handling, and we\u2019re fully insured for your protection.", category: 'policies', tags: ['delicate', 'valuable', 'careful', 'secure'], priority: 5, isActive: true, order: 8 },
+  { id: 42, question: 'What if I have security systems or alarms?', answer: 'Please provide alarm codes and instructions when booking. Our team is experienced with various security systems and will follow your specific protocols for arming/disarming.', category: 'policies', tags: ['security', 'alarms', 'codes', 'protocols'], priority: 5, isActive: true, order: 9 },
+  { id: 43, question: "What's your policy on children being home during cleaning?", answer: "Children are welcome to be home during cleaning. For safety, we ask that young children be supervised by an adult and kept away from cleaning areas until we\u2019re finished.", category: 'policies', tags: ['children', 'supervised', 'safety', 'adult'], priority: 5, isActive: true, order: 10 },
+  { id: 44, question: "What's your weather cancellation policy?", answer: "We clean in most weather conditions. Severe weather (blizzards, hurricanes) may require rescheduling for safety. We\u2019ll contact you as soon as possible if weather affects your appointment.", category: 'policies', tags: ['weather', 'cancellation', 'severe', 'rescheduling'], priority: 4, isActive: true, order: 11 },
+
+  // ==================== CLEANING-PRODUCTS (2) ====================
+  { id: 45, question: 'Do you provide cleaning supplies and equipment?', answer: "Yes, we bring all necessary cleaning supplies, equipment, and tools. Our professional-grade supplies ensure the best results. If you prefer us to use your own products, we\u2019re happy to accommodate that request.", category: 'cleaning-products', tags: ['supplies', 'equipment', 'tools', 'professional'], priority: 7, isActive: true, order: 1 },
+  { id: 46, question: 'Do you use eco-friendly or non-toxic cleaning products?', answer: "Our cleaning teams prioritize the health and safety of our clients and their homes. While we don\u2019t carry our own non-toxic or organic cleaning products, we\u2019re more than happy to accommodate your preferences. If you\u2019d like us to use non-toxic or eco-friendly products, you\u2019re welcome to provide them, and our cleaners will gladly use them during your service. Your satisfaction and well-being are always our top priorities.", category: 'cleaning-products', tags: ['non-toxic', 'eco-friendly', 'organic'], priority: 9, isActive: true, order: 2 },
+
+  // ==================== SCHEDULING (9) ====================
+  { id: 47, question: 'Are your services available on weekends?', answer: 'Yes, we offer cleaning services seven days a week, including weekends. Weekend appointments may have limited availability, so we recommend booking in advance.', category: 'scheduling', tags: ['weekend', 'availability', 'schedule', 'flexible'], priority: 6, isActive: true, order: 1 },
+  { id: 48, question: 'Can I schedule recurring cleaning services?', answer: 'Absolutely! We offer weekly, bi-weekly, and monthly recurring services. Recurring customers receive priority scheduling and discounted rates.', category: 'scheduling', tags: ['recurring', 'weekly', 'bi-weekly', 'monthly'], priority: 8, isActive: true, order: 2 },
+  { id: 49, question: 'What time of day do you typically clean?', answer: "We typically schedule cleanings between 8 AM and 5 PM, Monday through Friday. Weekend appointments are available but limited. We\u2019ll work with your schedule to find convenient times.", category: 'scheduling', tags: ['time', 'schedule', '8am-6pm', 'convenient'], priority: 7, isActive: true, order: 3 },
+  { id: 50, question: 'How long does a typical cleaning take?', answer: "Routine cleanings take about 2\u20133 hours. Deep cleanings may take 3\u20136 hours depending on home size and condition.", category: 'scheduling', tags: ['duration', 'time', 'varies', 'estimate'], priority: 7, isActive: true, order: 4 },
+  { id: 51, question: 'Can I request the same cleaning team each time?', answer: "Yes, you can. If you have a preferred cleaner or team, let us know and we\u2019ll note it in your account as a preference. While we can\u2019t always guarantee the same team every time due to routes and availability, we\u2019ll do our best to accommodate your request whenever possible.", category: 'scheduling', tags: ['same team', 'consistency', 'familiarity', 'recurring'], priority: 6, isActive: true, order: 5 },
+  { id: 52, question: 'What if I need to change my regular cleaning day?', answer: "Of course, just let us know at least 24 hours in advance and we\u2019ll reschedule for any day and time that works best for you.", category: 'scheduling', tags: ['change', 'reschedule', '24 hours', 'accommodate'], priority: 6, isActive: true, order: 6 },
+  { id: 53, question: 'What if no one is home during the scheduled time?', answer: "If you\u2019ve arranged for key access, we can clean while you\u2019re away. If no access is arranged and no one is home, you will be charged a lockout fee and will need to reschedule.", category: 'scheduling', tags: ['not home', 'key access', 'trip fee', 'reschedule'], priority: 5, isActive: true, order: 7 },
+  { id: 54, question: 'Do you clean on holidays?', answer: "We\u2019re closed on major holidays (Christmas, New Year\u2019s Day, Thanksgiving). For other holidays, we operate with limited availability. Holiday cleaning may include a small surcharge.", category: 'scheduling', tags: ['holidays', 'closed', 'limited', 'surcharge'], priority: 4, isActive: true, order: 8 },
+  { id: 55, question: 'Can I pause or temporarily stop my recurring service?', answer: "Yes, you can pause your recurring service for vacations or other reasons. Just give us at least one week\u2019s notice. We\u2019ll resume your regular schedule when you\u2019re ready.", category: 'scheduling', tags: ['pause', 'stop', 'vacation', 'resume'], priority: 4, isActive: true, order: 9 },
+
+  // ==================== SERVICES (17) ====================
+  { id: 56, question: 'What types of cleaning services do you offer?', answer: 'We provide routine cleaning, deep cleaning, move-in/move-out cleaning, Airbnb turnovers, post-construction cleaning, and commercial cleaning.', category: 'services', tags: ['types', 'services', 'comprehensive', 'variety'], priority: 9, isActive: true, order: 1 },
+  { id: 57, question: "What's included in your routine cleaning service?", answer: 'Routine cleaning includes light dusting, vacuuming, mopping, wiping countertops, cleaning sinks, toilets, showers, mirrors, appliance exteriors, and taking out trash.', category: 'services', tags: ['routine', 'regular', 'included', 'standard'], priority: 8, isActive: true, order: 2 },
+  { id: 58, question: "What's included in your deep cleaning service?", answer: "Deep cleaning includes everything in a routine cleaning plus detailed attention to baseboards, light fixtures, ceiling fans, door frames, cabinet exteriors, and stubborn buildup in bathrooms and kitchens.", category: 'services', tags: ['deep cleaning', 'detailed', 'thorough', 'comprehensive'], priority: 8, isActive: true, order: 3 },
+  { id: 59, question: "What's the difference between routine and deep cleaning?", answer: 'Routine cleaning keeps your home tidy with surface-level tasks. Deep cleaning goes further by targeting buildup, detailing baseboards, fans, and other often-missed areas.', category: 'services', tags: ['difference', 'routine', 'deep', 'thorough'], priority: 8, isActive: true, order: 4 },
+  { id: 60, question: 'Do you provide move-in/move-out cleaning?', answer: 'Absolutely! Our move-in/move-out cleaning is perfect for transitions. We deep clean empty homes, including inside all appliances, cabinets, closets, and detailed cleaning of all surfaces.', category: 'services', tags: ['move-in', 'move-out', 'transition', 'empty'], priority: 7, isActive: true, order: 5 },
+  { id: 61, question: 'Do you offer one-time cleaning services?', answer: "Yes, we welcome one-time cleaning requests! Whether you need a deep clean before a special event, seasonal cleaning, or just want to try our services, we\u2019re happy to help.", category: 'services', tags: ['one-time', 'trial', 'seasonal', 'event'], priority: 6, isActive: true, order: 6 },
+  { id: 62, question: 'Do you clean Airbnb or rental properties?', answer: 'Absolutely! We specialize in Airbnb turnovers, with fast scheduling and attention to detail that helps boost your ratings.', category: 'services', tags: ['airbnb', 'rental', 'vacation', 'turnaround'], priority: 6, isActive: true, order: 7 },
+  { id: 63, question: 'Do you clean inside appliances?', answer: 'Yes. Inside appliances (like oven, fridge, cabinets) can be added as extras or included in moving cleanings and post construction cleans.', category: 'services', tags: ['appliances', 'inside', 'deep cleaning', 'extra'], priority: 6, isActive: true, order: 8 },
+  { id: 64, question: 'Do you clean windows?', answer: 'We can clean interior windows as an extra. We do not offer any exterior window cleaning services.', category: 'services', tags: ['windows', 'interior', 'exterior', 'additional'], priority: 6, isActive: true, order: 9 },
+  { id: 65, question: 'Can you clean during construction or renovation?', answer: 'Yes, we offer post-construction cleaning services. This specialized service removes construction dust, debris, and residue. We use appropriate equipment and techniques for construction cleanup.', category: 'services', tags: ['construction', 'renovation', 'dust', 'debris'], priority: 6, isActive: true, order: 10 },
+  { id: 66, question: 'What about cleaning after parties or events?', answer: "We specialize in post-event cleanup! Whether it\u2019s after a house party, family gathering, or special event, we can restore your home to pristine condition. Contact us for same-day or next-day service.", category: 'services', tags: ['party', 'event', 'post-event', 'cleanup'], priority: 5, isActive: true, order: 11 },
+  { id: 67, question: 'Can you clean my carpets and upholstery?', answer: "We provide basic carpet vacuuming as part of every service. However, we do not offer professional carpet or upholstery cleaning as this is a specialty service we don\u2019t provide. If needed, we can possibly recommend trusted providers.", category: 'services', tags: ['carpet', 'upholstery', 'specialized', 'partnership'], priority: 5, isActive: true, order: 12 },
+  { id: 68, question: 'What areas of the house do you not clean?', answer: "For safety reasons, we don\u2019t clean heights requiring ladders over 2 steps, handle biohazard materials, or clean inside personal safes. We also don\u2019t move heavy furniture without prior arrangement.", category: 'services', tags: ['limitations', 'safety', 'restrictions', 'biohazard'], priority: 5, isActive: true, order: 13 },
+  { id: 69, question: 'Can you organize and declutter my home?', answer: 'We offer basic organization services as an add-on. This includes organizing items you\'ve already sorted and light decluttering. For major organization projects, we recommend our professional organizing partners.', category: 'services', tags: ['organize', 'declutter', 'add-on', 'basic'], priority: 4, isActive: true, order: 14 },
+  { id: 70, question: 'Do you offer laundry services?', answer: "Basic laundry services like washing, drying, and folding can be added to your cleaning service for an additional fee. We don\u2019t provide dry cleaning or handle delicate items requiring special care.", category: 'services', tags: ['laundry', 'washing', 'folding', 'additional'], priority: 4, isActive: true, order: 15 },
+  { id: 71, question: 'Do you clean garages and basements?', answer: "Yes, we can clean finished garages and basements. Unfinished spaces may require special consideration and pricing. We\u2019ll assess the area and provide a customized quote for these spaces.", category: 'services', tags: ['garage', 'basement', 'finished', 'unfinished'], priority: 4, isActive: true, order: 16 },
+  { id: 72, question: 'Can you clean outdoor spaces?', answer: "We can clean covered patios, porches, or similar spaces, but we don\u2019t provide outdoor cleaning services.", category: 'services', tags: ['outdoor', 'pool', 'patio', 'deck'], priority: 4, isActive: true, order: 17 },
+
+  // ==================== COMMERCIAL (1) ====================
+  { id: 73, question: 'Can you clean my office or commercial space?', answer: 'Yes, we provide comprehensive commercial cleaning services for offices, retail spaces, medical facilities, and other commercial properties. We offer flexible scheduling including after-hours service.', category: 'commercial', tags: ['office', 'commercial', 'business', 'flexible'], priority: 7, isActive: true, order: 1 },
+
+  // ==================== PAYMENT (3) ====================
+  { id: 74, question: 'What payment methods do you accept?', answer: 'We accept all major credit and debit cards. You can easily update your card information anytime through your secure online client portal.', category: 'payment', tags: ['payment methods', 'credit cards', 'cash', 'check'], priority: 7, isActive: true, order: 1 },
+  { id: 75, question: 'When is payment due?', answer: "A pre-authorization is placed on your card 24 hours before your appointment to ensure funds are available, but the card isn\u2019t actually processed until after your cleaning is completed.", category: 'payment', tags: ['payment due', 'completion', 'automatic billing'], priority: 6, isActive: true, order: 2 },
+  { id: 76, question: 'Do you require a deposit or advance payment?', answer: 'For most residential services, no deposit is required. Large commercial jobs or extensive deep cleaning projects may require a 25% deposit to secure your booking.', category: 'payment', tags: ['deposit', 'advance', 'commercial', 'booking'], priority: 5, isActive: true, order: 3 },
+
+  // ==================== BOOKING (6) ====================
+  { id: 77, question: 'How do I book a cleaning service?', answer: 'The fastest way is to book online through our website for instant pricing and scheduling. You can also call us at (551) 305-4081.', category: 'booking', tags: ['book', 'online', 'phone', 'email'], priority: 9, isActive: true, order: 1 },
+  { id: 78, question: 'How far in advance should I book?', answer: 'We recommend booking at least 48-72 hours in advance, especially during busy seasons. However, we often accommodate same-day or next-day requests based on availability.', category: 'booking', tags: ['advance', '48 hours', 'same-day', 'availability'], priority: 8, isActive: true, order: 2 },
+  { id: 79, question: 'What information do you need when I book?', answer: 'We need your contact information, property address, type of service needed, home size, number of bedrooms/bathrooms, and any special requests!', category: 'booking', tags: ['information', 'contact', 'address', 'preferences'], priority: 6, isActive: true, order: 3 },
+  { id: 80, question: 'Can I book emergency or same-day cleaning?', answer: "We offer emergency cleaning services based on availability. Same-day service may include a rush fee. Call us directly for urgent cleaning needs and we\u2019ll do our best to help.", category: 'booking', tags: ['emergency', 'same-day', 'rush fee', 'urgent'], priority: 6, isActive: true, order: 4 },
+  { id: 81, question: 'Can I book multiple services at once?', answer: 'Yes, you can book multiple services together and often receive package discounts. For example, combine routine cleaning with window cleaning or organize multiple properties in one booking.', category: 'booking', tags: ['multiple', 'package', 'discount', 'combine'], priority: 5, isActive: true, order: 5 },
+  { id: 82, question: 'How do I know my booking is confirmed?', answer: "You\u2019ll receive a confirmation email or text within 2 hours of booking. This includes appointment details, team information, and our contact number for any questions.", category: 'booking', tags: ['confirmation', 'email', 'text', 'details'], priority: 5, isActive: true, order: 6 },
+
+  // ==================== SPECIAL-REQUESTS (9) ====================
+  { id: 83, question: 'Can you accommodate special cleaning requests?', answer: "Yes! We\u2019re happy to accommodate special requests like cleaning specific areas, using particular products, or following unique instructions. Just let us know your needs when booking.", category: 'special-requests', tags: ['accommodate', 'special', 'requests', 'unique'], priority: 6, isActive: true, order: 1 },
+  { id: 84, question: 'Do you offer allergy-specific cleaning?', answer: 'Yes. We can focus on dust reduction, use HEPA-filtered vacuums, and work with client-provided products upon request. Please specify allergies and sensitivities when booking.', category: 'special-requests', tags: ['allergy', 'hypoallergenic', 'dust mites', 'hepa'], priority: 6, isActive: true, order: 2 },
+  { id: 85, question: 'Can you clean properties with medical equipment?', answer: 'Yes, we can clean around medical equipment with proper precautions. Please inform us of any medical equipment or special sanitization needs when booking so we can prepare appropriately.', category: 'special-requests', tags: ['medical', 'equipment', 'precautions', 'sanitization'], priority: 5, isActive: true, order: 3 },
+  { id: 86, question: 'What about homes with multiple pets?', answer: 'We\u2019re experienced with multi pet homes. We use specialized equipment for pet hair removal and can focus extra attention on areas where pets spend time.', category: 'special-requests', tags: ['multiple pets', 'pet hair', 'odor', 'specialized'], priority: 5, isActive: true, order: 4 },
+  { id: 87, question: 'Can you help prepare my home for sale?', answer: 'Yes! Our pre-sale deep cleaning makes homes show-ready. We focus on details that matter to buyers: sparkling bathrooms, pristine kitchens, and overall freshness that helps homes sell faster.', category: 'special-requests', tags: ['home sale', 'show-ready', 'buyers', 'details'], priority: 5, isActive: true, order: 5 },
+  { id: 88, question: 'Do you clean homes with hoarding situations?', answer: 'We can help with light to moderate hoarding situations. Severe cases may require specialized services. We approach these situations with sensitivity and can recommend additional resources if needed.', category: 'special-requests', tags: ['hoarding', 'specialized', 'sensitivity', 'resources'], priority: 4, isActive: true, order: 6 },
+  { id: 89, question: 'Do you clean vacation homes or seasonal properties?', answer: 'Yes, we provide opening and closing services for seasonal homes, maintenance cleaning for vacant properties, and pre-arrival cleaning for vacation rentals.', category: 'special-requests', tags: ['vacation', 'seasonal', 'maintenance', 'vacant'], priority: 4, isActive: true, order: 7 },
+  { id: 90, question: 'Can you clean after illness or contamination?', answer: 'We can handle standard post-illness cleaning with appropriate sanitization. For serious contamination or infectious diseases, we may recommend specialized biohazard cleaning services.', category: 'special-requests', tags: ['illness', 'contamination', 'sanitization', 'biohazard'], priority: 4, isActive: true, order: 8 },
+  { id: 91, question: 'What about cleaning extremely dirty or neglected homes?', answer: "We can handle heavily soiled properties, though these may require multiple visits or extended time. We\u2019ll assess the situation and provide a realistic timeline and pricing for restoration.", category: 'special-requests', tags: ['dirty', 'neglected', 'multiple visits', 'restoration'], priority: 4, isActive: true, order: 9 },
+
+  // ==================== MAINTENANCE (1) ====================
+  { id: 92, question: 'Do you provide maintenance between deep cleans?', answer: 'Yes, we can provide light maintenance visits between scheduled deep cleans. This might include quick tidying, bathroom touch-ups, or kitchen maintenance to keep your home fresh.', category: 'maintenance', tags: ['maintenance', 'light', 'touch-ups', 'fresh'], priority: 4, isActive: true, order: 1 },
+];
+
+async function seedFAQQuestions() {
+  console.log('\n🌱 Seeding FAQ Questions to Strapi FAQ Page...');
+  console.log(`📊 Total questions: ${faqQuestions.length}`);
+  
+  const categories = [...new Set(faqQuestions.map(q => q.category))];
+  console.log(`📂 Categories (${categories.length}): ${categories.join(', ')}`);
+
+  const url = `${STRAPI_URL}/${API_PREFIX}/faq-page`;
+
+  // Update just the comprehensiveFAQs JSON field on the FAQ Page single type
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+    },
+    body: JSON.stringify({
+      data: {
+        comprehensiveFAQs: faqQuestions,
+      },
+    }),
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    console.error(`❌ Failed to seed FAQ questions: ${response.status}`, error);
+    return false;
+  }
+
+  console.log('✅ FAQ questions seeded successfully!');
+
+  // Publish
+  const publishResponse = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+    },
+    body: JSON.stringify({ data: { publishedAt: new Date().toISOString() } }),
+  });
+
+  if (publishResponse.ok) {
+    console.log('📢 Published FAQ Page');
+  } else {
+    console.warn(`⚠️  Could not publish FAQ Page: ${publishResponse.status}`);
+  }
+
+  return true;
+}
+
+// Run
+seedFAQQuestions()
+  .then(() => console.log('\n✅ FAQ seeding complete!'))
+  .catch((err) => console.error('\n❌ FAQ seeding failed:', err));
