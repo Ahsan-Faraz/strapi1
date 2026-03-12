@@ -6,8 +6,7 @@
 
 const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
 const API_PREFIX = 'admin/api';
-const STRAPI_API_TOKEN =
-  process.env.STRAPI_API_TOKEN ;
+const STRAPI_API_TOKEN =process.env.STRAPI_API_TOKEN;
 
 // Map old single-type name → collection slug
 const SLUG_MAP = {
@@ -201,6 +200,7 @@ const locations = {
     // About
     aboutTitle: 'About Our Bergen County Services',
     aboutDescription: 'Serving Bergen County with top-quality cleaning services for both residential and commercial properties. Our team of professional cleaners is dedicated to providing exceptional service with attention to detail.',
+    mapImageUrl: 'https://www.cccarto.com/nj/bergen_zipcodes/files/bergen_county_zip_codes.jpg',
   },
 
   // ══════════════════════════════════════════════════════════════════════
@@ -272,6 +272,7 @@ const locations = {
     // About
     aboutTitle: 'About Our Essex County Services',
     aboutDescription: 'Serving Essex County with top-quality cleaning services for both residential and commercial properties. Our team of professional cleaners is dedicated to providing exceptional service with attention to detail.',
+    // Essex has no map image intentionally
   },
 
   // ══════════════════════════════════════════════════════════════════════
@@ -338,6 +339,7 @@ const locations = {
     // About
     aboutTitle: 'About Our Hudson County Services',
     aboutDescription: 'Serving Hudson County with top-quality cleaning services for both residential and commercial properties. Our team of professional cleaners is dedicated to providing exceptional service with attention to detail.',
+    mapImageUrl: 'https://www.cccarto.com/nj/hudson_zipcodes/files/hudson_county_zip_codes.jpg',
   },
 
   // ══════════════════════════════════════════════════════════════════════
@@ -405,6 +407,7 @@ const locations = {
     // About
     aboutTitle: 'About Our Morris County Services',
     aboutDescription: 'Serving Morris County with top-quality cleaning services for both residential and commercial properties. Our team of professional cleaners is dedicated to providing exceptional service with attention to detail.',
+    mapImageUrl: 'https://www.njitalianheritage.org/wp-content/uploads/2016/06/Morris-County-Municipalities-Map.gif',
   },
 
   // ══════════════════════════════════════════════════════════════════════
@@ -475,6 +478,7 @@ const locations = {
     // About
     aboutTitle: 'About Our Passaic County Services',
     aboutDescription: 'Serving Passaic County with top-quality cleaning services for both residential and commercial properties. Our team of professional cleaners is dedicated to providing exceptional service with attention to detail.',
+    mapImageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/74/Passaic_County%2C_New_Jersey_Municipalities.png',
   },
 
   // ══════════════════════════════════════════════════════════════════════
@@ -546,6 +550,7 @@ const locations = {
     // About
     aboutTitle: 'About Our Union County Services',
     aboutDescription: 'Serving Union County with top-quality cleaning services for both residential and commercial properties. Our team of professional cleaners is dedicated to providing exceptional service with attention to detail.',
+    mapImageUrl: 'https://media.istockphoto.com/id/1432144928/vector/nj-union-county-vector-map-green.jpg?s=612x612&w=0&k=20&c=MO1sD_9MQa1CBP1TelSLuU4ELsyx_IyxsS2KTOsTIdQ=',
   },
 };
 

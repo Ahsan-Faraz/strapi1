@@ -12,7 +12,7 @@ module.exports = {
       script: 'node_modules/.bin/strapi',
       args: 'start',
       node_args: '--max-old-space-size=2048',
-      env: { NODE_ENV: 'production' },
+      env: { NODE_ENV: 'production', PORT: 1337, HOST: '0.0.0.0' },
       instances: 1,
       autorestart: true,
       watch: false,
