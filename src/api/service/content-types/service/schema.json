@@ -1,0 +1,112 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Service"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "serviceTemplate": {
+      "type": "enumeration",
+      "enum": [
+        "routine",
+        "deep",
+        "airbnb",
+        "moving",
+        "post-construction",
+        "extras",
+        "commercial"
+      ],
+      "required": true
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoMetaDescription": {
+      "type": "text"
+    },
+    "seoKeywords": {
+      "type": "text"
+    },
+    "seoCanonicalUrl": {
+      "type": "string"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string"
+    },
+    "ogDescription": {
+      "type": "text"
+    },
+    "ogImageUrl": {
+      "type": "string"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
+    "heroTopLabel": {
+      "type": "string"
+    },
+    "heroHeading": {
+      "type": "string"
+    },
+    "heroSubheading": {
+      "type": "text"
+    },
+    "heroBackgroundImage": {
+      "type": "string"
+    },
+    "heroServiceDuration": {
+      "type": "string"
+    },
+    "heroServiceGuarantee": {
+      "type": "string"
+    },
+    "pageData": {
+      "type": "json"
+    },
+    "faqs": {
+      "type": "json"
+    }
+  }
+}

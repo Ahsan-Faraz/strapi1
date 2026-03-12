@@ -1,6 +1,6 @@
 /**
- * Seed ALL 13 Service Single Types into Strapi
-  * Auto-generated from MongoDB exports.
+ * Seed ALL 13 Services into the "service" Collection Type in Strapi
+ * Auto-generated from MongoDB exports.
  * Run with: node scripts/seed-single-types.js
  */
 
@@ -10,40 +10,104 @@ const STRAPI_API_TOKEN =
   process.env.STRAPI_API_TOKEN ||
   '67eb2c4b5e9661786cbc07a8e245f6feca5539a6b25d371450b6e47ae586b1696c16d0ed67f45d2eb20b1189f91710d0d422b82abe4763e64467a2f6dcb5526e7d23f37110c7925bcd20e46a115bde10200168b131b4ca703f5c9e5eafa743d6691aba335d9a48c7bae2e47d9da3489b3ffa478ceebcd934f7099c40d622e3b2';
 
-async function seedSingleType(name, data) {
-  console.log(`\n🌱 Seeding ${name}...`);
-  const url = `${STRAPI_URL}/${API_PREFIX}/${name}`;
+// Fields stored as top-level columns in the service collection type
+const TOP_LEVEL_FIELDS = new Set([
+  'seoTitle', 'seoMetaDescription', 'seoKeywords', 'seoCanonicalUrl', 'seoRobots',
+  'ogTitle', 'ogDescription', 'ogImageUrl', 'ogType',
+  'twitterCard', 'twitterTitle', 'twitterDescription',
+  'schemaJsonLd', 'headScripts', 'bodyEndScripts', 'customCss',
+  'heroTopLabel', 'heroHeading', 'heroSubheading', 'heroBackgroundImage',
+  'heroServiceDuration', 'heroServiceGuarantee',
+  'faqs',
+]);
 
-  const response = await fetch(url, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${STRAPI_API_TOKEN}`,
-    },
-    body: JSON.stringify({ data }),
-  });
+const SERVICE_TEMPLATES = {
+  'routine-cleaning':           { template: 'routine',           name: 'Routine Cleaning' },
+  'deep-cleaning':              { template: 'deep',              name: 'Deep Cleaning' },
+  'airbnb-cleaning':            { template: 'airbnb',            name: 'Airbnb Cleaning' },
+  'moving-cleaning':            { template: 'moving',            name: 'Moving Cleaning' },
+  'post-construction-cleaning': { template: 'post-construction', name: 'Post Construction Cleaning' },
+  'extras-cleaning':            { template: 'extras',            name: 'Extras & Add-Ons' },
+  'office-cleaning':            { template: 'commercial',        name: 'Office Cleaning' },
+  'medical-cleaning':           { template: 'commercial',        name: 'Medical Cleaning' },
+  'gym-cleaning':               { template: 'commercial',        name: 'Gym Cleaning' },
+  'retail-cleaning':            { template: 'commercial',        name: 'Retail Cleaning' },
+  'school-cleaning':            { template: 'commercial',        name: 'School Cleaning' },
+  'property-cleaning':          { template: 'commercial',        name: 'Property Cleaning' },
+  'other-commercial-cleaning':  { template: 'commercial',        name: 'Other Commercial Cleaning' },
+};
 
-  if (!response.ok) {
-    const error = await response.text();
-    console.error(`❌ Failed to seed ${name}: ${response.status}`, error);
-    return false;
+async function seedService(slug, rawData) {
+  const meta = SERVICE_TEMPLATES[slug];
+  console.log(`\n🌱 Seeding service: ${slug}...`);
+  const url = `${STRAPI_URL}/${API_PREFIX}/services`;
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+  };
+
+  // Split data into top-level fields + pageData JSON
+  const entry = {
+    slug,
+    name: meta.name,
+    serviceTemplate: meta.template,
+  };
+  const pageData = {};
+
+  for (const [key, value] of Object.entries(rawData)) {
+    if (TOP_LEVEL_FIELDS.has(key)) {
+      entry[key] = value;
+    } else {
+      pageData[key] = value;
+    }
+  }
+  entry.pageData = pageData;
+
+  // Check if already exists
+  const checkRes = await fetch(`${url}?filters[slug][$eq]=${slug}`, { headers });
+  const checkJson = await checkRes.json();
+  const existing = checkJson.data?.[0];
+
+  let docId;
+  if (existing) {
+    // Update existing entry
+    docId = existing.documentId;
+    const response = await fetch(`${url}/${docId}`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({ data: entry }),
+    });
+    if (!response.ok) {
+      const error = await response.text();
+      console.error(`❌ Failed to update ${slug}: ${response.status}`, error);
+      return false;
+    }
+    console.log(`✅ Updated: ${slug}`);
+  } else {
+    // Create new entry
+    const response = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ data: entry }),
+    });
+    if (!response.ok) {
+      const error = await response.text();
+      console.error(`❌ Failed to create ${slug}: ${response.status}`, error);
+      return false;
+    }
+    const json = await response.json();
+    docId = json.data?.documentId;
+    console.log(`✅ Created: ${slug}`);
   }
 
-  console.log(`✅ Seeded: ${name}`);
-
-  const publishResponse = await fetch(url, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${STRAPI_API_TOKEN}`,
-    },
-    body: JSON.stringify({ data: { publishedAt: new Date().toISOString() } }),
-  });
-
-  if (publishResponse.ok) {
-    console.log(`📢 Published: ${name}`);
-  } else {
-    console.warn(`⚠️  Could not publish ${name}: ${publishResponse.status}`);
+  // Publish
+  if (docId) {
+    const pubRes = await fetch(`${url}/${docId}`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({ data: { publishedAt: new Date().toISOString() } }),
+    });
+    if (pubRes.ok) console.log(`📢 Published: ${slug}`);
   }
 
   return true;
@@ -1731,13 +1795,13 @@ const services = {
 
 // ─── Main ───────────────────────────────────────────────────────────────────
 async function main() {
-  console.log('🚀 Starting seed of all 13 service single-types...\n');
+  console.log('🚀 Starting seed of all 13 services into collection type...\n');
 
   let success = 0;
   let failed = 0;
 
-  for (const [name, data] of Object.entries(services)) {
-    const ok = await seedSingleType(name, data);
+  for (const [slug, data] of Object.entries(services)) {
+    const ok = await seedService(slug, data);
     if (ok) success++;
     else failed++;
   }

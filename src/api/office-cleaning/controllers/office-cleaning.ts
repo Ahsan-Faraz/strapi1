@@ -1,2 +1,0 @@
-import { factories } from '@strapi/strapi';
-export default factories.createCoreController('api::office-cleaning.office-cleaning' as any);

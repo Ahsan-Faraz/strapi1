@@ -1,0 +1,113 @@
+{
+  "kind": "collectionType",
+  "collectionName": "locations",
+  "info": {
+    "singularName": "location",
+    "pluralName": "locations",
+    "displayName": "Location"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "seoTitle": {
+      "type": "string"
+    },
+    "seoMetaDescription": {
+      "type": "text"
+    },
+    "seoKeywords": {
+      "type": "json"
+    },
+    "seoCanonicalUrl": {
+      "type": "string"
+    },
+    "seoRobots": {
+      "type": "string",
+      "default": "index, follow"
+    },
+    "ogTitle": {
+      "type": "string"
+    },
+    "ogDescription": {
+      "type": "text"
+    },
+    "ogImageUrl": {
+      "type": "string"
+    },
+    "ogType": {
+      "type": "string",
+      "default": "website"
+    },
+    "twitterCard": {
+      "type": "string",
+      "default": "summary_large_image"
+    },
+    "twitterTitle": {
+      "type": "string"
+    },
+    "twitterDescription": {
+      "type": "text"
+    },
+    "schemaJsonLd": {
+      "type": "json"
+    },
+    "headScripts": {
+      "type": "text"
+    },
+    "bodyEndScripts": {
+      "type": "text"
+    },
+    "customCss": {
+      "type": "text"
+    },
+    "heroTitle": {
+      "type": "string"
+    },
+    "heroSubtitle": {
+      "type": "text"
+    },
+    "heroBackgroundImageUrl": {
+      "type": "string"
+    },
+    "heroCtaButton1": {
+      "type": "string",
+      "default": "SCHEDULE SERVICE"
+    },
+    "heroCtaButton2": {
+      "type": "string",
+      "default": "CALL US NOW"
+    },
+    "contactTitle": {
+      "type": "string",
+      "default": "Contact Information"
+    },
+    "contactPhone": {
+      "type": "string"
+    },
+    "contactEmail": {
+      "type": "string"
+    },
+    "contactAddress": {
+      "type": "text"
+    },
+    "operatingHours": {
+      "type": "json"
+    },
+    "serviceAreas": {
+      "type": "json"
+    },
+    "aboutTitle": {
+      "type": "string"
+    },
+    "aboutDescription": {
+      "type": "text"
+    }
+  }
+}

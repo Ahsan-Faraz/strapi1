@@ -344,15 +344,7 @@ function hideOriginals(): void {
     }
   }
 
-  // Hide collection-type items by label text
-  const HIDE_LABELS = ['services', 'locations', 'service', 'location'];
-  document.querySelectorAll<HTMLAnchorElement>('nav a[href*="collection-types"]').forEach((a) => {
-    const text = a.textContent?.trim().toLowerCase() ?? '';
-    if (HIDE_LABELS.includes(text)) {
-      const li = a.closest('li');
-      if (li) li.style.display = 'none';
-    }
-  });
+
 }
 
 /* ------------------------------------------------------------------ */

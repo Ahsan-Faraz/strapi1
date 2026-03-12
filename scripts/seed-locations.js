@@ -1,5 +1,5 @@
 /**
- * Seed ALL 6 Location Single Types into Strapi
+ * Seed ALL 6 Locations into the "location" Collection Type in Strapi
  * Auto-generated from MongoDB exports.
  * Run with: node scripts/seed-locations.js
  */
@@ -10,40 +10,70 @@ const STRAPI_API_TOKEN =
   process.env.STRAPI_API_TOKEN ||
   '67eb2c4b5e9661786cbc07a8e245f6feca5539a6b25d371450b6e47ae586b1696c16d0ed67f45d2eb20b1189f91710d0d422b82abe4763e64467a2f6dcb5526e7d23f37110c7925bcd20e46a115bde10200168b131b4ca703f5c9e5eafa743d6691aba335d9a48c7bae2e47d9da3489b3ffa478ceebcd934f7099c40d622e3b2';
 
-async function seedSingleType(name, data) {
-  console.log(`\n🌱 Seeding ${name}...`);
-  const url = `${STRAPI_URL}/${API_PREFIX}/${name}`;
+// Map old single-type name → collection slug
+const SLUG_MAP = {
+  'bergen-county': 'bergen',
+  'essex-county': 'essex',
+  'hudson-county': 'hudson',
+  'morris-county': 'morris',
+  'passaic-county': 'passaic',
+  'union-county': 'union',
+};
 
-  const response = await fetch(url, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${STRAPI_API_TOKEN}`,
-    },
-    body: JSON.stringify({ data }),
-  });
+async function seedLocation(oldName, data) {
+  const slug = SLUG_MAP[oldName];
+  console.log(`\n🌱 Seeding location: ${slug}...`);
+  const url = `${STRAPI_URL}/${API_PREFIX}/locations`;
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+  };
 
-  if (!response.ok) {
-    const error = await response.text();
-    console.error(`❌ Failed to seed ${name}: ${response.status}`, error);
-    return false;
+  // Check if already exists
+  const checkRes = await fetch(`${url}?filters[slug][$eq]=${slug}`, { headers });
+  const checkJson = await checkRes.json();
+  const existing = checkJson.data?.[0];
+
+  let docId;
+  if (existing) {
+    // Update existing entry
+    docId = existing.documentId;
+    const response = await fetch(`${url}/${docId}`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({ data: { slug, ...data } }),
+    });
+    if (!response.ok) {
+      const error = await response.text();
+      console.error(`❌ Failed to update ${slug}: ${response.status}`, error);
+      return false;
+    }
+    console.log(`✅ Updated: ${slug}`);
+  } else {
+    // Create new entry
+    const response = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ data: { slug, ...data } }),
+    });
+    if (!response.ok) {
+      const error = await response.text();
+      console.error(`❌ Failed to create ${slug}: ${response.status}`, error);
+      return false;
+    }
+    const json = await response.json();
+    docId = json.data?.documentId;
+    console.log(`✅ Created: ${slug}`);
   }
 
-  console.log(`✅ Seeded: ${name}`);
-
-  const publishResponse = await fetch(url, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${STRAPI_API_TOKEN}`,
-    },
-    body: JSON.stringify({ data: { publishedAt: new Date().toISOString() } }),
-  });
-
-  if (publishResponse.ok) {
-    console.log(`📢 Published: ${name}`);
-  } else {
-    console.warn(`⚠️  Could not publish ${name}: ${publishResponse.status}`);
+  // Publish
+  if (docId) {
+    const pubRes = await fetch(`${url}/${docId}`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({ data: { publishedAt: new Date().toISOString() } }),
+    });
+    if (pubRes.ok) console.log(`📢 Published: ${slug}`);
   }
 
   return true;
@@ -522,13 +552,13 @@ const locations = {
 
 // ─── Main ───────────────────────────────────────────────────────────────────
 async function main() {
-  console.log('🚀 Starting seed of all 6 location single-types...\n');
+  console.log('🚀 Starting seed of all 6 locations into collection type...\n');
 
   let success = 0;
   let failed = 0;
 
   for (const [name, data] of Object.entries(locations)) {
-    const ok = await seedSingleType(name, data);
+    const ok = await seedLocation(name, data);
     if (ok) success++;
     else failed++;
   }
