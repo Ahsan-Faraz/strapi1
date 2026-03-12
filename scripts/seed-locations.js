@@ -7,8 +7,7 @@
 const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
 const API_PREFIX = 'admin/api';
 const STRAPI_API_TOKEN =
-  process.env.STRAPI_API_TOKEN ||
-  '67eb2c4b5e9661786cbc07a8e245f6feca5539a6b25d371450b6e47ae586b1696c16d0ed67f45d2eb20b1189f91710d0d422b82abe4763e64467a2f6dcb5526e7d23f37110c7925bcd20e46a115bde10200168b131b4ca703f5c9e5eafa743d6691aba335d9a48c7bae2e47d9da3489b3ffa478ceebcd934f7099c40d622e3b2';
+  process.env.STRAPI_API_TOKEN ;
 
 // Map old single-type name → collection slug
 const SLUG_MAP = {
