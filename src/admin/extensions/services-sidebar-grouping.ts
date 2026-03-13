@@ -24,42 +24,8 @@ interface GroupDef {
   services: ServiceDef[];
 }
 
-const GROUPS: GroupDef[] = [
-  {
-    id: 'residential',
-    label: 'Residential',
-    services: [
-      { slug: 'routine-cleaning', label: 'Routine Cleaning' },
-      { slug: 'deep-cleaning', label: 'Deep Cleaning' },
-      { slug: 'airbnb-cleaning', label: 'Airbnb Cleaning' },
-      { slug: 'moving-cleaning', label: 'Moving Cleaning' },
-      { slug: 'post-construction-cleaning', label: 'Post Construction' },
-      { slug: 'extras-cleaning', label: 'Extras' },
-    ],
-  },
-  {
-    id: 'commercial',
-    label: 'Commercial',
-    services: [
-      { slug: 'office-cleaning', label: 'Office Cleaning' },
-      { slug: 'medical-cleaning', label: 'Medical Cleaning' },
-      { slug: 'gym-cleaning', label: 'Gym Cleaning' },
-      { slug: 'retail-cleaning', label: 'Retail Cleaning' },
-      { slug: 'school-cleaning', label: 'School Cleaning' },
-      { slug: 'property-cleaning', label: 'Property Cleaning' },
-      { slug: 'other-commercial-cleaning', label: 'Other Commercial' },
-    ],
-  },
-];
-
-const LOCATIONS: ServiceDef[] = [
-  { slug: 'bergen-county', label: 'Bergen County' },
-  { slug: 'essex-county', label: 'Essex County' },
-  { slug: 'hudson-county', label: 'Hudson County' },
-  { slug: 'morris-county', label: 'Morris County' },
-  { slug: 'passaic-county', label: 'Passaic County' },
-  { slug: 'union-county', label: 'Union County' },
-];
+// Services and Locations are now collection types — no more individual single-type entries.
+// We link directly to the collection type list views.
 
 const COMPANY: ServiceDef[] = [
   { slug: 'checklist-page', label: 'Checklist Page' },
@@ -88,8 +54,6 @@ const SETTINGS: ServiceDef[] = [
   { slug: 'global-setting', label: 'Global Settings' },
 ];
 
-const ALL_SERVICE_SLUGS = GROUPS.flatMap((g) => g.services.map((s) => s.slug));
-const ALL_LOCATION_SLUGS = LOCATIONS.map((l) => l.slug);
 const ALL_EXTRA_SLUGS = [
   ...COMPANY.map((c) => c.slug),
   ...FAQ.map((f) => f.slug),
@@ -98,7 +62,7 @@ const ALL_EXTRA_SLUGS = [
   ...LANDING.map((l) => l.slug),
   ...SETTINGS.map((s) => s.slug),
 ];
-const ALL_SLUGS = [...ALL_SERVICE_SLUGS, ...ALL_LOCATION_SLUGS, ...ALL_EXTRA_SLUGS];
+const ALL_SLUGS = [...ALL_EXTRA_SLUGS];
 
 function getSingleTypeUrl(slug: string): string {
   return `/admin/content-manager/single-types/api::${slug}.${slug}`;
@@ -223,28 +187,18 @@ function createGroupedSection(): HTMLElement {
   const wrapper = document.createElement('li');
   wrapper.id = 'clensy-services-dropdown';
 
-  // Main heading
   const heading = document.createElement('div');
   heading.className = 'clensy-svc-heading';
   heading.textContent = 'Services';
   wrapper.appendChild(heading);
 
-  // Build each subgroup
-  for (const group of GROUPS) {
-    const subHeading = document.createElement('div');
-    subHeading.className = 'clensy-svc-subheading';
-    subHeading.textContent = group.label;
-    wrapper.appendChild(subHeading);
-
-    for (const svc of group.services) {
-      const link = document.createElement('a');
-      link.className = 'clensy-svc-link';
-      link.href = getSingleTypeUrl(svc.slug);
-      link.textContent = svc.label;
-      link.addEventListener('click', onLinkClick);
-      wrapper.appendChild(link);
-    }
-  }
+  // Link to the Services collection type list view
+  const link = document.createElement('a');
+  link.className = 'clensy-loc-link';
+  link.href = '/admin/content-manager/collection-types/api::service.service';
+  link.textContent = 'All Services';
+  link.addEventListener('click', onLinkClick);
+  wrapper.appendChild(link);
 
   return wrapper;
 }
@@ -258,14 +212,13 @@ function createLocationsSection(): HTMLElement {
   heading.textContent = 'Locations';
   wrapper.appendChild(heading);
 
-  for (const loc of LOCATIONS) {
-    const link = document.createElement('a');
-    link.className = 'clensy-loc-link';
-    link.href = getSingleTypeUrl(loc.slug);
-    link.textContent = loc.label;
-    link.addEventListener('click', onLinkClick);
-    wrapper.appendChild(link);
-  }
+  // Link to the Locations collection type list view
+  const link = document.createElement('a');
+  link.className = 'clensy-loc-link';
+  link.href = '/admin/content-manager/collection-types/api::location.location';
+  link.textContent = 'All Locations';
+  link.addEventListener('click', onLinkClick);
+  wrapper.appendChild(link);
 
   return wrapper;
 }
@@ -344,43 +297,55 @@ function hideOriginals(): void {
     }
   }
 
-
+  // Also hide the default "Service" and "Location" collection type nav items
+  // (we replace them with our custom grouped sections)
+  const collectionSlugs = ['api::service.service', 'api::location.location'];
+  for (const slug of collectionSlugs) {
+    const a = document.querySelector<HTMLAnchorElement>(
+      `nav a[href*="${slug}"]`
+    );
+    if (!a) continue;
+    const li = a.closest('li');
+    if (li && !SECTION_IDS.includes(li.id)) {
+      li.style.display = 'none';
+    }
+  }
 }
 
 /* ------------------------------------------------------------------ */
 /*  Injection logic                                                    */
 /* ------------------------------------------------------------------ */
 
+function findSidebarList(): HTMLElement | null {
+  // Find the sidebar nav list by looking for any single-type or collection-type link
+  const anyLink = document.querySelector<HTMLAnchorElement>(
+    'nav a[href*="/content-manager/"]'
+  );
+  if (!anyLink) return null;
+  const li = anyLink.closest('li');
+  return li?.parentElement || null;
+}
+
 function tryInject(): void {
-  // Services section
+  const parentList = findSidebarList();
+  if (!parentList) return;
+
+  // Services section (collection type)
   if (!document.getElementById('clensy-services-dropdown')) {
-    const anchor = document.querySelector<HTMLAnchorElement>(
-      'nav a[href*="api::routine-cleaning.routine-cleaning"]'
-    );
-    if (anchor) {
-      const anchorLi = anchor.closest('li');
-      const parentList = anchorLi?.parentElement;
-      if (parentList) {
-        hideOriginals();
-        const section = createGroupedSection();
-        parentList.insertBefore(section, anchorLi);
-      }
-    }
+    hideOriginals();
+    const section = createGroupedSection();
+    parentList.insertBefore(section, parentList.firstChild);
   }
 
-  // Locations section
+  // Locations section (collection type)
   if (!document.getElementById('clensy-locations-dropdown')) {
-    const anchor = document.querySelector<HTMLAnchorElement>(
-      'nav a[href*="api::bergen-county.bergen-county"]'
-    );
-    if (anchor) {
-      const anchorLi = anchor.closest('li');
-      const parentList = anchorLi?.parentElement;
-      if (parentList) {
-        hideOriginals();
-        const section = createLocationsSection();
-        parentList.insertBefore(section, anchorLi);
-      }
+    hideOriginals();
+    const section = createLocationsSection();
+    const servicesSection = document.getElementById('clensy-services-dropdown');
+    if (servicesSection?.nextSibling) {
+      parentList.insertBefore(section, servicesSection.nextSibling);
+    } else {
+      parentList.appendChild(section);
     }
   }
 

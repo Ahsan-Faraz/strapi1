@@ -1162,6 +1162,24 @@ const services = {
       feature3Title: 'Eco-Friendly Practices',
       feature3Description: 'We use environmentally responsible cleaning products and practices that are safe for your employees and better for the planet.',
       feature3Icon: 'Sparkles',
+      testimonialsHeading: 'What Our Business Clients Say',
+      testimonialsSubheading: 'Hear from companies that trust us with their office cleaning needs.',
+      testimonials: [
+        {
+          name: 'Sarah Johnson',
+          role: 'Operations Manager, TechCorp',
+          text: 'Clensy has been cleaning our corporate headquarters for over two years. Their attention to detail and reliability is exceptional. Our employees and clients always comment on how clean and professional our office looks.',
+          rating: 5,
+          avatarColor: 'bg-blue-500',
+        },
+        {
+          name: 'Michael Chen',
+          role: 'Facility Director, Financial Services Inc.',
+          text: 'The flexibility of Clensy\'s scheduling has been a game-changer for our business. They work around our hours and never disrupt our operations. The quality of their work is consistently excellent.',
+          rating: 5,
+          avatarColor: 'bg-green-500',
+        },
+      ],
       faqs: [
         {
           question: 'How often do you recommend cleaning for office spaces?',
@@ -1252,6 +1270,31 @@ const services = {
       feature3Title: 'Advanced Technology',
       feature3Description: 'We employ state-of-the-art equipment including electrostatic sprayers, UV-C disinfection, and microfiber systems for superior results.',
       feature3Icon: 'Activity',
+      testimonialsHeading: 'What Our Clients Say',
+      testimonialsSubheading: 'Hear from our satisfied healthcare clients about their experience with our medical facility cleaning service.',
+      testimonials: [
+        {
+          name: 'Dr. Michael Chen',
+          role: 'Northside Medical Center',
+          text: 'Clensy\'s understanding of healthcare facility cleaning is unmatched. They consistently maintain our clinic to the highest standards, giving our staff and patients confidence in our infection control practices.',
+          rating: 5,
+          avatarColor: 'bg-purple-500',
+        },
+        {
+          name: 'Sarah Johnson, RN',
+          role: 'Eastside Dental Group',
+          text: 'Since partnering with Clensy, our infection control metrics have improved significantly. Their attention to detail in our operatories and sterilization areas has been exceptional. I appreciate their documentation and adherence to our protocols.',
+          rating: 5,
+          avatarColor: 'bg-emerald-500',
+        },
+        {
+          name: 'Dr. Rebecca Taylor',
+          role: 'Westview Medical Associates',
+          text: 'Clensy provides the level of clean that our patients expect and deserve. Their cleaning technicians understand the unique requirements of medical environments, and their detailed cleaning protocols have helped us maintain a safe and sanitary facility for everyone.',
+          rating: 5,
+          avatarColor: 'bg-blue-500',
+        },
+      ],
       faqs: [
         {
           question: 'Do you follow healthcare cleaning regulations?',
@@ -1342,6 +1385,31 @@ const services = {
       feature3Title: 'Health-Focused Approach',
       feature3Description: 'Our cleaning protocols are designed with member health in mind, targeting high-touch surfaces and using eco-friendly products that are effective yet safe.',
       feature3Icon: 'Heart',
+      testimonialsHeading: 'What Our Clients Say',
+      testimonialsSubheading: 'Hear from gym and fitness facility owners about their experience with our specialized cleaning service.',
+      testimonials: [
+        {
+          name: 'Jason Mitchell',
+          role: 'Owner, FitLife Gym',
+          text: 'Clensy transformed our gym\'s cleanliness standards. Members constantly compliment how fresh everything smells and how spotless the locker rooms are. Their sanitization of equipment gives our members real confidence.',
+          rating: 5,
+          avatarColor: 'bg-blue-500',
+        },
+        {
+          name: 'Amanda Rodriguez',
+          role: 'Manager, CrossFit NJ',
+          text: 'Finding a cleaning company that understood the unique demands of a fitness facility was challenging until we found Clensy. They know how to handle rubber flooring, specialized equipment, and high-humidity areas perfectly.',
+          rating: 5,
+          avatarColor: 'bg-green-500',
+        },
+        {
+          name: 'David Park',
+          role: 'Director, Premier Athletic Club',
+          text: 'Our members expect a premium experience, and Clensy delivers. Their after-hours cleaning crew is thorough, reliable, and their attention to detail in our spa and pool areas is outstanding.',
+          rating: 5,
+          avatarColor: 'bg-purple-500',
+        },
+      ],
       faqs: [
         {
           question: 'How often should a gym be professionally cleaned?',
@@ -1432,6 +1500,31 @@ const services = {
       feature3Title: 'Safe, Gentle Products',
       feature3Description: 'We use retail-friendly cleaning products that effectively clean without damaging merchandise, displays, or sensitive surfaces in your store.',
       feature3Icon: 'Sparkles',
+      testimonialsHeading: 'What Our Clients Say',
+      testimonialsSubheading: 'Discover why retail businesses trust us for their professional cleaning needs.',
+      testimonials: [
+        {
+          name: 'Rebecca Martin',
+          role: 'Store Manager, Urban Fashion Boutique',
+          text: 'Clensy has transformed our boutique\'s appearance. Their attention to detail is remarkable - from polishing our glass display cases to keeping our fitting rooms pristine. Our customers frequently comment on how clean and inviting our store feels.',
+          rating: 5,
+          avatarColor: 'bg-pink-500',
+        },
+        {
+          name: 'Marcus Johnson',
+          role: 'Owner, Luxury Home Goods',
+          text: 'What sets Clensy apart is their understanding of retail spaces. They know how to clean around delicate merchandise and fixtures without causing damage. Their flexible scheduling means they work around our store hours, and we never have to worry about cleaning disrupting our business.',
+          rating: 5,
+          avatarColor: 'bg-teal-500',
+        },
+        {
+          name: 'Jennifer Torres',
+          role: 'Regional Manager, HomeStyle Decor',
+          text: 'Since partnering with Clensy for our retail store cleaning, we\'ve seen a noticeable increase in customer dwell time and positive feedback. The detailed cleaning of our display cases and product shelving has significantly enhanced our merchandise presentation.',
+          rating: 5,
+          avatarColor: 'bg-amber-500',
+        },
+      ],
       faqs: [
         {
           question: 'Can you clean outside of retail business hours?',
@@ -1521,13 +1614,38 @@ const services = {
       whyChooseSubheading: 'We understand the unique challenges of maintaining educational facilities and provide specialized solutions for a safe learning environment.',
       feature1Title: 'Child-Safe Products',
       feature1Description: 'We use only non-toxic, eco-friendly cleaning products that are safe for children and meet all educational facility standards.',
-      feature1Icon: 'https://res.cloudinary.com/dgjmm3usy/image/upload/v1751536309/2913465_azfcvx.png',
+      feature1Icon: 'Shield',
       feature2Title: 'Flexible Scheduling',
       feature2Description: 'Our cleaning services work around your school schedule, including after-hours, weekends, and holiday cleaning options.',
-      feature2Icon: 'https://res.cloudinary.com/dgjmm3usy/image/upload/v1751536336/2784459_c1xgny.png',
+      feature2Icon: 'Clock',
       feature3Title: 'Health-Focused Approach',
       feature3Description: 'Our specialized protocols reduce the spread of germs and create a healthier environment for students and staff.',
-      feature3Icon: 'https://res.cloudinary.com/dgjmm3usy/image/upload/v1751536355/2966327_meyra7.png',
+      feature3Icon: 'Heart',
+      testimonialsHeading: 'What Our Clients Say',
+      testimonialsSubheading: 'Discover why schools and childcare centers trust us for their specialized cleaning needs.',
+      testimonials: [
+        {
+          name: 'Sarah Johnson',
+          role: 'Elementary School Principal',
+          text: 'Clensy has been instrumental in maintaining a clean and healthy environment for our students. Their attention to detail and use of child-safe products gives us complete peace of mind.',
+          rating: 5,
+          avatarColor: 'bg-blue-500',
+        },
+        {
+          name: 'Michael Chen',
+          role: 'Daycare Center Director',
+          text: 'The flexibility of their scheduling has been amazing. They work around our school hours and special events, ensuring minimal disruption to our educational programs.',
+          rating: 5,
+          avatarColor: 'bg-green-500',
+        },
+        {
+          name: 'Lisa Rodriguez',
+          role: 'High School Administrator',
+          text: 'Since partnering with Clensy, we\'ve noticed a significant reduction in sick days among our staff and students. Their thorough sanitization protocols make a real difference.',
+          rating: 5,
+          avatarColor: 'bg-purple-500',
+        },
+      ],
       faqs: [
         {
           question: 'Do you use child-safe cleaning products?',
@@ -1618,6 +1736,31 @@ const services = {
       feature3Title: 'Resident Satisfaction',
       feature3Description: 'Our meticulous cleaning services create living environments that residents are proud to call home, enhancing tenant retention and property reputation.',
       feature3Icon: 'Home',
+      testimonialsHeading: 'What Our Clients Say',
+      testimonialsSubheading: 'Discover why property managers and building owners trust us for their cleaning needs.',
+      testimonials: [
+        {
+          name: 'Michael Rivera',
+          role: 'Property Manager, The Grand Residences',
+          text: 'Since contracting with Clensy for our common area cleaning, resident satisfaction scores have increased significantly. Their attention to detail and consistent quality have made my job easier and our building more appealing to current and prospective residents.',
+          rating: 5,
+          avatarColor: 'bg-green-500',
+        },
+        {
+          name: 'Lauren Thompson',
+          role: 'HOA President, Parkview Condominiums',
+          text: 'Our condominium association has worked with several cleaning companies over the years, but Clensy stands out for their professionalism and thoroughness. Their team is responsive to our requests and proactive about identifying issues before they become problems. The value they provide to our community is exceptional.',
+          rating: 5,
+          avatarColor: 'bg-violet-500',
+        },
+        {
+          name: 'Jonathan Santiago',
+          role: 'Director, Urban Living Properties',
+          text: 'As a property developer, maintaining a pristine appearance in our buildings is crucial for attracting tenants. Clensy\'s attention to detail and reliable service have helped us maintain high occupancy rates and positive tenant reviews across all our properties.',
+          rating: 5,
+          avatarColor: 'bg-rose-500',
+        },
+      ],
       faqs: [
         {
           question: 'How often should common areas be professionally cleaned?',
@@ -1701,13 +1844,13 @@ const services = {
       whyChooseSubheading: 'We understand the unique cleaning requirements of different commercial environments and deliver tailored solutions that meet industry-specific needs.',
       feature1Title: 'Industry Expertise',
       feature1Description: 'Our cleaning teams receive specialized training for different commercial environments, understanding the unique requirements of each industry.',
-      feature1Icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+      feature1Icon: 'Building2',
       feature2Title: 'Custom Scheduling',
       feature2Description: 'We work around your business hours and operational needs, providing cleaning services at times that minimize disruption to your activities.',
-      feature2Icon: 'https://cdn-icons-png.flaticon.com/512/2784/2784459.png',
+      feature2Icon: 'Clock',
       feature3Title: 'Value-Focused Solutions',
-      feature3Description: 'Our cleaning programs are designed to deliver the highest standards of cleanliness while respecting your budget constraints and business priorities.\n',
-      feature3Icon: 'https://cdn-icons-png.flaticon.com/512/3135/3135706.png',
+      feature3Description: 'Our cleaning programs are designed to deliver the highest standards of cleanliness while respecting your budget constraints and business priorities.',
+      feature3Icon: 'HandCoins',
       pricingHeading: 'Tailored Cleaning Plans & Pricing',
       pricingSubheading: 'We understand that each commercial space has unique requirements. Our flexible packages are designed to provide exactly what your business needs.',
       pricingPlans: [
@@ -1768,6 +1911,31 @@ const services = {
       pricingCustomButton1Link: '/contact',
       pricingCustomButton2Text: 'Call (800) 555-1234',
       pricingCustomButton2Link: '/tel:+15513054081',
+      testimonialsHeading: 'What Our Clients Say',
+      testimonialsSubheading: 'Discover why businesses across different industries trust us for their cleaning needs.',
+      testimonials: [
+        {
+          name: 'Carlos Mendez',
+          role: 'Owner, Seaside Grill Restaurant',
+          text: 'In the restaurant business, cleanliness isn\'t just about appearance\u2014it\'s about food safety and customer confidence. Clensy understands this perfectly. Their team has been handling our after-hours cleaning for three years, and their attention to detail in our kitchen and dining areas has helped us maintain our perfect health inspection record.',
+          rating: 5,
+          avatarColor: 'bg-amber-500',
+        },
+        {
+          name: 'Reverend Sarah Williams',
+          role: 'Administrator, Grace Community Church',
+          text: 'Our worship center serves hundreds of people each week, and Clensy ensures our facility is always immaculate and welcoming. They\'re respectful of our sacred spaces and artifacts while providing thorough cleaning. Their flexibility in handling both our regular maintenance and special event cleanups has made them an invaluable partner to our ministry.',
+          rating: 5,
+          avatarColor: 'bg-sky-500',
+        },
+        {
+          name: 'Anita Kapur',
+          role: 'Operations Manager, PrecisionTech Industries',
+          text: 'We hired Clensy to handle the specialized cleaning needs of our manufacturing facility, and they\'ve exceeded our expectations. Their understanding of industrial cleaning requirements and attention to safety protocols has made our facility both cleaner and safer for our employees.',
+          rating: 5,
+          avatarColor: 'bg-lime-500',
+        },
+      ],
       faqs: [
         {
           question: 'What types of commercial spaces do you clean?',
