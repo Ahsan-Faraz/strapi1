@@ -1,15 +1,10 @@
 /**
  * Sidebar Grouping
  *
- * Injects grouped sections into the Content Manager sidebar:
- *  - Services (Residential / Commercial subheadings)
- *  - Locations (flat list)
- *  - Company (Checklist, About Us, Careers)
- *  - FAQ
- *  - Contact Us
- *  - Legal (Privacy Policy, Terms of Service)
- *  - Landing Page
- *  - Global Settings
+ * - Services & Locations: visible under Listings (collection types),
+ *   hidden from Single Pages (single types) if any leftover entries exist.
+ * - Injects grouped sections for single-type pages:
+ *   Company, FAQ, Contact Us, Legal, Landing Page, Global Settings.
  * Always expanded.
  */
 
@@ -99,13 +94,10 @@ function injectStyles(): void {
       --clensy-active: #7b79ff;
     }
 
-    /* ---- CSS-based hiding of Service & Location sidebar items ---- */
-    /* Uses > (direct child) so only the immediate <li> parent is hidden,
-       NOT an ancestor <li> that wraps the whole Collection Types section. */
-    nav li:not([id^="clensy-"]):has(> a[href*="/collection-types/api::service.service"]),
-    nav li:not([id^="clensy-"]):has(> a[href*="/collection-types/api::location.location"]),
-    nav li:not([id^="clensy-"]):has(> a[href*="/single-types/api::service.service"]),
-    nav li:not([id^="clensy-"]):has(> a[href*="/single-types/api::location.location"]) {
+    /* ---- Hide Service & Location from Single Pages only ---- */
+    /* Collection-type (Listings) items are left visible. */
+    nav li:has(> a[href*="/single-types/api::service.service"]),
+    nav li:has(> a[href*="/single-types/api::location.location"]) {
       display: none !important;
     }
 
@@ -182,46 +174,6 @@ function injectStyles(): void {
 /*  DOM construction                                                   */
 /* ------------------------------------------------------------------ */
 
-function createGroupedSection(): HTMLElement {
-  const wrapper = document.createElement('li');
-  wrapper.id = 'clensy-services-dropdown';
-
-  const heading = document.createElement('div');
-  heading.className = 'clensy-svc-heading';
-  heading.textContent = 'Services';
-  wrapper.appendChild(heading);
-
-  // Link to the Services collection type list view
-  const link = document.createElement('a');
-  link.className = 'clensy-loc-link';
-  link.href = '/admin/content-manager/collection-types/api::service.service';
-  link.textContent = 'All Services';
-  link.addEventListener('click', onLinkClick);
-  wrapper.appendChild(link);
-
-  return wrapper;
-}
-
-function createLocationsSection(): HTMLElement {
-  const wrapper = document.createElement('li');
-  wrapper.id = 'clensy-locations-dropdown';
-
-  const heading = document.createElement('div');
-  heading.className = 'clensy-svc-heading';
-  heading.textContent = 'Locations';
-  wrapper.appendChild(heading);
-
-  // Link to the Locations collection type list view
-  const link = document.createElement('a');
-  link.className = 'clensy-loc-link';
-  link.href = '/admin/content-manager/collection-types/api::location.location';
-  link.textContent = 'All Locations';
-  link.addEventListener('click', onLinkClick);
-  wrapper.appendChild(link);
-
-  return wrapper;
-}
-
 function createFlatSection(id: string, title: string, items: ServiceDef[]): HTMLElement {
   const wrapper = document.createElement('li');
   wrapper.id = id;
@@ -273,8 +225,6 @@ function refreshActiveStates(): void {
 /* ------------------------------------------------------------------ */
 
 const SECTION_IDS = [
-  'clensy-services-dropdown',
-  'clensy-locations-dropdown',
   'clensy-company-dropdown',
   'clensy-faq-dropdown',
   'clensy-contact-dropdown',
@@ -296,17 +246,15 @@ function hideOriginals(): void {
     }
   }
 
-  // Also hide the default "Service" and "Location" nav items (both collection & single type)
-  // Only hide the DIRECT parent <li>, not ancestor section <li> wrappers
-  const hideSlugs = ['api::service.service', 'api::location.location'];
-  for (const slug of hideSlugs) {
+  // Hide Service & Location from Single Pages (single-types) only.
+  // They remain visible under Listings (collection-types).
+  const singleTypeSlugs = ['service', 'location'];
+  for (const name of singleTypeSlugs) {
     document
-      .querySelectorAll<HTMLAnchorElement>(`nav a[href*="${slug}"]`)
+      .querySelectorAll<HTMLAnchorElement>(`nav a[href*="/single-types/api::${name}.${name}"]`)
       .forEach((a) => {
-        const li = a.parentElement?.closest('li') ?? a.closest('li');
-        if (li && li.querySelector(`:scope > a[href*="${slug}"]`) && !SECTION_IDS.includes(li.id)) {
-          li.style.display = 'none';
-        }
+        const li = a.closest('li');
+        if (li) li.style.display = 'none';
       });
   }
 }
@@ -369,25 +317,6 @@ function findSidebarList(): HTMLElement | null {
 function tryInject(): void {
   const parentList = findSidebarList();
   if (!parentList) return;
-
-  // Services section (collection type)
-  if (!document.getElementById('clensy-services-dropdown')) {
-    hideOriginals();
-    const section = createGroupedSection();
-    parentList.insertBefore(section, parentList.firstChild);
-  }
-
-  // Locations section (collection type)
-  if (!document.getElementById('clensy-locations-dropdown')) {
-    hideOriginals();
-    const section = createLocationsSection();
-    const servicesSection = document.getElementById('clensy-services-dropdown');
-    if (servicesSection?.nextSibling) {
-      parentList.insertBefore(section, servicesSection.nextSibling);
-    } else {
-      parentList.appendChild(section);
-    }
-  }
 
   // Company section
   injectFlatSection('clensy-company-dropdown', 'Company', COMPANY, 'checklist-page');
