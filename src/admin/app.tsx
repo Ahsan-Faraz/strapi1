@@ -13,11 +13,10 @@ export default {
     menu: {
       logo: 'https://res.cloudinary.com/dgjmm3usy/image/upload/v1754578702/x50aedpsjrpfubhn0d8b_-_Edited_cvx0kj.png',
     },
-    // Override theme to force light mode
+    // Override theme colors
     theme: {
       light: {
         colors: {
-          // Light theme colors - keeping defaults but ensuring light mode
           primary100: '#f0f0ff',
           primary200: '#e0e0ff',
           primary500: '#7b79ff',
@@ -28,10 +27,28 @@ export default {
           neutral200: '#eaeaef',
           neutral500: '#8e8ea9',
           neutral600: '#6b6b7a',
-          neutral700: '#4945ff',
+          neutral700: '#4a4a6a',
           neutral800: '#32324d',
           neutral900: '#212134',
           danger700: '#b72b1a',
+        },
+      },
+      dark: {
+        colors: {
+          primary100: 'rgba(73,69,255,0.15)',
+          primary200: 'rgba(73,69,255,0.25)',
+          primary500: '#7b79ff',
+          primary600: '#4945ff',
+          primary700: '#7b79ff',
+          neutral0: '#212134',
+          neutral100: '#181826',
+          neutral200: '#252540',
+          neutral500: '#a5a5ba',
+          neutral600: '#c0c0cf',
+          neutral700: '#dcdce4',
+          neutral800: '#eaeaef',
+          neutral900: '#f6f6f9',
+          danger700: '#ee5e52',
         },
       },
     },
