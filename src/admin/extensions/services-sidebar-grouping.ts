@@ -88,7 +88,8 @@ function injectStyles(): void {
       --clensy-active-bg: #f0f0ff;
       --clensy-active: #4945ff;
     }
-    [data-theme="dark"], .theme-dark {
+    /* Dark mode — detected by JS and set as data-clensy-theme */
+    [data-clensy-theme="dark"] {
       --clensy-heading: #f6f6f9;
       --clensy-subheading: #a5a5ba;
       --clensy-link: #c0c0cf;
@@ -97,17 +98,15 @@ function injectStyles(): void {
       --clensy-active-bg: rgba(73,69,255,0.2);
       --clensy-active: #7b79ff;
     }
-    /* Auto-detect via prefers-color-scheme if no data-theme attr */
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --clensy-heading: #f6f6f9;
-        --clensy-subheading: #a5a5ba;
-        --clensy-link: #c0c0cf;
-        --clensy-link-hover-bg: rgba(73,69,255,0.15);
-        --clensy-link-hover: #7b79ff;
-        --clensy-active-bg: rgba(73,69,255,0.2);
-        --clensy-active: #7b79ff;
-      }
+
+    /* ---- CSS-based hiding of Service & Location sidebar items ---- */
+    /* Hides the Strapi-generated nav items for these collection types,
+       but preserves our custom clensy-* sections. */
+    nav li:not([id^="clensy-"]):has(a[href*="/collection-types/api::service.service"]),
+    nav li:not([id^="clensy-"]):has(a[href*="/collection-types/api::location.location"]),
+    nav li:not([id^="clensy-"]):has(a[href*="/single-types/api::service.service"]),
+    nav li:not([id^="clensy-"]):has(a[href*="/single-types/api::location.location"]) {
+      display: none !important;
     }
 
     /* ---- Main heading (Services, Locations, etc.) ---- */
@@ -297,19 +296,60 @@ function hideOriginals(): void {
     }
   }
 
-  // Also hide the default "Service" and "Location" collection type nav items
-  // (we replace them with our custom grouped sections)
-  const collectionSlugs = ['api::service.service', 'api::location.location'];
-  for (const slug of collectionSlugs) {
-    const a = document.querySelector<HTMLAnchorElement>(
-      `nav a[href*="${slug}"]`
-    );
-    if (!a) continue;
-    const li = a.closest('li');
-    if (li && !SECTION_IDS.includes(li.id)) {
-      li.style.display = 'none';
+  // Also hide the default "Service" and "Location" nav items (both collection & single type)
+  // CSS :has() rules handle this too, but JS is a fallback for older browsers
+  const hideSlugs = ['api::service.service', 'api::location.location'];
+  for (const slug of hideSlugs) {
+    document
+      .querySelectorAll<HTMLAnchorElement>(`nav a[href*="${slug}"]`)
+      .forEach((a) => {
+        const li = a.closest('li');
+        if (li && !SECTION_IDS.includes(li.id)) {
+          li.style.display = 'none';
+        }
+      });
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Theme detection                                                    */
+/* ------------------------------------------------------------------ */
+
+function detectAndApplyTheme(): void {
+  const root = document.documentElement;
+
+  // Check explicit Strapi theme attributes
+  const htmlTheme = root.getAttribute('data-theme');
+  const bodyTheme = document.body?.getAttribute('data-theme');
+
+  if (htmlTheme === 'dark' || bodyTheme === 'dark' ||
+      root.classList.contains('theme-dark') ||
+      document.body?.classList.contains('theme-dark')) {
+    root.setAttribute('data-clensy-theme', 'dark');
+    return;
+  }
+
+  if (htmlTheme === 'light' || bodyTheme === 'light') {
+    root.setAttribute('data-clensy-theme', 'light');
+    return;
+  }
+
+  // Sample background color of the content-manager sidebar to detect dark mode
+  const sidebar = document.querySelector('nav[aria-label]') || document.querySelector('nav');
+  if (sidebar) {
+    const bg = getComputedStyle(sidebar).backgroundColor;
+    const match = bg.match(/(\d+)/g);
+    if (match && match.length >= 3) {
+      const [r, g, b] = match.map(Number);
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      root.setAttribute('data-clensy-theme', luminance < 0.4 ? 'dark' : 'light');
+      return;
     }
   }
+
+  // Fall back to system preference
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  root.setAttribute('data-clensy-theme', prefersDark ? 'dark' : 'light');
 }
 
 /* ------------------------------------------------------------------ */
@@ -399,9 +439,11 @@ function injectFlatSection(
 
 export function setupServicesSidebarGrouping(): void {
   injectStyles();
+  detectAndApplyTheme();
 
-  // Periodically check: re-hide originals & re-inject if React re-rendered
+  // Periodically check: re-hide originals, re-inject if React re-rendered, and sync theme
   setInterval(() => {
+    detectAndApplyTheme();
     if (window.location.pathname.includes('/content-manager')) {
       hideOriginals();
       tryInject();
@@ -412,4 +454,7 @@ export function setupServicesSidebarGrouping(): void {
   window.addEventListener('popstate', () =>
     requestAnimationFrame(refreshActiveStates)
   );
+
+  // React to system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectAndApplyTheme);
 }
