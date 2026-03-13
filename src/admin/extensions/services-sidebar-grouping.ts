@@ -100,12 +100,12 @@ function injectStyles(): void {
     }
 
     /* ---- CSS-based hiding of Service & Location sidebar items ---- */
-    /* Hides the Strapi-generated nav items for these collection types,
-       but preserves our custom clensy-* sections. */
-    nav li:not([id^="clensy-"]):has(a[href*="/collection-types/api::service.service"]),
-    nav li:not([id^="clensy-"]):has(a[href*="/collection-types/api::location.location"]),
-    nav li:not([id^="clensy-"]):has(a[href*="/single-types/api::service.service"]),
-    nav li:not([id^="clensy-"]):has(a[href*="/single-types/api::location.location"]) {
+    /* Uses > (direct child) so only the immediate <li> parent is hidden,
+       NOT an ancestor <li> that wraps the whole Collection Types section. */
+    nav li:not([id^="clensy-"]):has(> a[href*="/collection-types/api::service.service"]),
+    nav li:not([id^="clensy-"]):has(> a[href*="/collection-types/api::location.location"]),
+    nav li:not([id^="clensy-"]):has(> a[href*="/single-types/api::service.service"]),
+    nav li:not([id^="clensy-"]):has(> a[href*="/single-types/api::location.location"]) {
       display: none !important;
     }
 
@@ -297,14 +297,14 @@ function hideOriginals(): void {
   }
 
   // Also hide the default "Service" and "Location" nav items (both collection & single type)
-  // CSS :has() rules handle this too, but JS is a fallback for older browsers
+  // Only hide the DIRECT parent <li>, not ancestor section <li> wrappers
   const hideSlugs = ['api::service.service', 'api::location.location'];
   for (const slug of hideSlugs) {
     document
       .querySelectorAll<HTMLAnchorElement>(`nav a[href*="${slug}"]`)
       .forEach((a) => {
-        const li = a.closest('li');
-        if (li && !SECTION_IDS.includes(li.id)) {
+        const li = a.parentElement?.closest('li') ?? a.closest('li');
+        if (li && li.querySelector(`:scope > a[href*="${slug}"]`) && !SECTION_IDS.includes(li.id)) {
           li.style.display = 'none';
         }
       });
